@@ -1,11 +1,15 @@
+[zh]
+title = "柏华"
+LanguageName = "中文"
+weight = 1
 
 [en]
-  title = "Clarity"
-  LanguageName = "English"
-  weight = 1
+title = "Clarity"
+LanguageName = "English"
+weight = 2
 
-[pt]
-  title = "Claridade" # just for the sake of showing this is possible
-  LanguageName = "Português"
-  weight = 2
+#[pt]
+#title = "Claridade" # just for the sake of showing this is possible
+#LanguageName = "Português"
+#weight = 3
   
