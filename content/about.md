@@ -1,6 +1,10 @@
 +++
 author = "baihua.huang"
 date = 2021-03-24
+description = "作者个人简介"
+tags = [
+"关于"
+]
 +++
 
 ---
@@ -9,6 +13,7 @@ date = 2021-03-24
 
 # 网络信息
 
+- Email: huangbaihua@vip.qq.com
 - GitHub: [https://github.com/huangbaihua001](https://github.com/huangbaihua001)
 - 座右铭:  知识改变命运，技术成就梦想
 

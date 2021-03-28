@@ -1,26 +1,26 @@
 +++
-author = "柏华"
-title = "Markdown 语法指南"
+author = "baihua.huang"
+title = "Markdown Syntax Guide"
 date = "2019-03-11"
-description = "展示基本的Markdown语法和Html元素的格式"
+description = "Sample article showcasing basic Markdown syntax and formatting for HTML elements."
 featured = true
 tags = [
     "markdown",
     "css",
     "html",
-    "主题",
-    "特性"
+    "themes",
+    "featured"
 ]
 categories = [
-    "主题",
-    "语法",
+    "themes",
+    "syntax",
 ]
-series = ["主题指南"]
+series = ["Themes Guide"]
 aliases = ["migrate-from-jekyl"]
 thumbnail = "images/building.png"
 +++
 
-该文章包括在Hugo文件里使用基本的Markdown语法的示例，还演示了在Hugo主题里用Css是如何装饰基本的Html元素的。
+This article offers a sample of basic Markdown syntax that can be used in Hugo content files, also it shows whether basic HTML elements are decorated with CSS in a Hugo theme.
 <!--more-->
 
 ## Headings
