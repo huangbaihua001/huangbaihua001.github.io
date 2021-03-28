@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>柏华</title>
-    <link>https://example.com/</link>
+    <link>https://huangbaihua.gitee.io/walker/</link>
     <description>Recent content on 柏华</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright © 2008–2021, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
-    <lastBuildDate>Sun, 28 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://example.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 28 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://huangbaihua.gitee.io/walker/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>10倍程序员的秘密</title>
-      <link>https://example.com/post/the-mythical-10x-programmer/</link>
+      <link>https://huangbaihua.gitee.io/walker/post/the-mythical-10x-programmer/</link>
       <pubDate>Sun, 28 Mar 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://example.com/post/the-mythical-10x-programmer/</guid>
+      <guid>https://huangbaihua.gitee.io/walker/post/the-mythical-10x-programmer/</guid>
       <description>
         
           &lt;p&gt;源文: &lt;a href=&#34;http://antirez.com/news/112&#34;&gt;The mythical 10x programmer&lt;/a&gt; (antirez)&lt;/p&gt;
@@ -87,10 +87,10 @@
     
     <item>
       <title>Markdown 语法指南</title>
-      <link>https://example.com/post/markdown-syntax/</link>
+      <link>https://huangbaihua.gitee.io/walker/post/markdown-syntax/</link>
       <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://example.com/post/markdown-syntax/</guid>
+      <guid>https://huangbaihua.gitee.io/walker/post/markdown-syntax/</guid>
       <description>
         
           &lt;p&gt;该文章包括在Hugo文件里使用基本的Markdown语法的示例，还演示了在Hugo主题里用Css是如何装饰基本的Html元素的。&lt;/p&gt;
@@ -239,10 +239,10 @@
     
     <item>
       <title>Rich Content</title>
-      <link>https://example.com/post/rich-content/</link>
+      <link>https://huangbaihua.gitee.io/walker/post/rich-content/</link>
       <pubDate>Sun, 10 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://example.com/post/rich-content/</guid>
+      <guid>https://huangbaihua.gitee.io/walker/post/rich-content/</guid>
       <description>
         
           &lt;p&gt;Hugo我 ships with several &lt;a href=&#34;https://gohugo.io/content-management/shortcodes/#use-hugo-s-built-in-shortcodes&#34;&gt;Built-in Shortcodes&lt;/a&gt; for rich content, along with a &lt;a href=&#34;https://gohugo.io/about/hugo-and-gdpr/&#34;&gt;Privacy Config&lt;/a&gt; and a set of Simple Shortcodes that enable static and no-JS versions of various social media embeds.&lt;/p&gt;
@@ -330,10 +330,10 @@
     
     <item>
       <title>Placeholder Text</title>
-      <link>https://example.com/post/placeholder-text/</link>
+      <link>https://huangbaihua.gitee.io/walker/post/placeholder-text/</link>
       <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://example.com/post/placeholder-text/</guid>
+      <guid>https://huangbaihua.gitee.io/walker/post/placeholder-text/</guid>
       <description>
         
           &lt;p&gt;Lorem est tota propiore conpellat pectoribus de pectora summo.&lt;/p&gt;
@@ -365,10 +365,10 @@
     
     <item>
       <title>Math Typesetting</title>
-      <link>https://example.com/post/math-typesetting/</link>
+      <link>https://huangbaihua.gitee.io/walker/post/math-typesetting/</link>
       <pubDate>Fri, 08 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://example.com/post/math-typesetting/</guid>
+      <guid>https://huangbaihua.gitee.io/walker/post/math-typesetting/</guid>
       <description>
         
           &lt;p&gt;Mathematical notation in a Hugo project can be enabled by using third party JavaScript libraries.&lt;/p&gt;
@@ -399,10 +399,10 @@ $$&lt;/p&gt;
     
     <item>
       <title>Emoji Support</title>
-      <link>https://example.com/post/emoji-support/</link>
+      <link>https://huangbaihua.gitee.io/walker/post/emoji-support/</link>
       <pubDate>Tue, 05 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://example.com/post/emoji-support/</guid>
+      <guid>https://huangbaihua.gitee.io/walker/post/emoji-support/</guid>
       <description>
         
           &lt;p&gt;Emoji can be enabled in a Hugo project in a number of ways.&lt;/p&gt;

@@ -2,236 +2,236 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://example.com/en/about/</loc>
+    <loc>https://huangbaihua.gitee.io/walker/en/about/</loc>
     <lastmod>2021-03-24T00:00:00+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="https://example.com/about/"
+                href="https://huangbaihua.gitee.io/walker/about/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://example.com/en/about/"
+                href="https://huangbaihua.gitee.io/walker/en/about/"
                 />
   </url><url>
-    <loc>https://example.com/en/tags/about/</loc>
+    <loc>https://huangbaihua.gitee.io/walker/en/tags/about/</loc>
     <lastmod>2021-03-24T00:00:00+08:00</lastmod>
   </url><url>
-    <loc>https://example.com/en/</loc>
-    <lastmod>2021-03-24T00:00:00+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="https://example.com/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="pt"
-                href="https://example.com/pt/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://example.com/en/"
-                />
-  </url><url>
-    <loc>https://example.com/en/tags/</loc>
+    <loc>https://huangbaihua.gitee.io/walker/en/</loc>
     <lastmod>2021-03-24T00:00:00+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="https://example.com/tags/"
+                href="https://huangbaihua.gitee.io/walker/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="pt"
-                href="https://example.com/pt/tags/"
+                href="https://huangbaihua.gitee.io/walker/pt/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://example.com/en/tags/"
+                href="https://huangbaihua.gitee.io/walker/en/"
                 />
   </url><url>
-    <loc>https://example.com/en/categories/</loc>
+    <loc>https://huangbaihua.gitee.io/walker/en/tags/</loc>
+    <lastmod>2021-03-24T00:00:00+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://huangbaihua.gitee.io/walker/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="pt"
+                href="https://huangbaihua.gitee.io/walker/pt/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://huangbaihua.gitee.io/walker/en/tags/"
+                />
+  </url><url>
+    <loc>https://huangbaihua.gitee.io/walker/en/categories/</loc>
     <lastmod>2019-03-11T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="https://example.com/categories/"
+                href="https://huangbaihua.gitee.io/walker/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="pt"
-                href="https://example.com/pt/categories/"
+                href="https://huangbaihua.gitee.io/walker/pt/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://example.com/en/categories/"
+                href="https://huangbaihua.gitee.io/walker/en/categories/"
                 />
   </url><url>
-    <loc>https://example.com/en/tags/css/</loc>
+    <loc>https://huangbaihua.gitee.io/walker/en/tags/css/</loc>
     <lastmod>2019-03-11T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="https://example.com/tags/css/"
+                href="https://huangbaihua.gitee.io/walker/tags/css/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="pt"
-                href="https://example.com/pt/tags/css/"
+                href="https://huangbaihua.gitee.io/walker/pt/tags/css/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://example.com/en/tags/css/"
+                href="https://huangbaihua.gitee.io/walker/en/tags/css/"
                 />
   </url><url>
-    <loc>https://example.com/en/tags/featured/</loc>
+    <loc>https://huangbaihua.gitee.io/walker/en/tags/featured/</loc>
     <lastmod>2019-03-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.com/en/tags/html/</loc>
+    <loc>https://huangbaihua.gitee.io/walker/en/tags/html/</loc>
     <lastmod>2019-03-11T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="https://example.com/tags/html/"
+                href="https://huangbaihua.gitee.io/walker/tags/html/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="pt"
-                href="https://example.com/pt/tags/html/"
+                href="https://huangbaihua.gitee.io/walker/pt/tags/html/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://example.com/en/tags/html/"
+                href="https://huangbaihua.gitee.io/walker/en/tags/html/"
                 />
   </url><url>
-    <loc>https://example.com/en/tags/markdown/</loc>
+    <loc>https://huangbaihua.gitee.io/walker/en/tags/markdown/</loc>
     <lastmod>2019-03-11T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="https://example.com/tags/markdown/"
+                href="https://huangbaihua.gitee.io/walker/tags/markdown/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="pt"
-                href="https://example.com/pt/tags/markdown/"
+                href="https://huangbaihua.gitee.io/walker/pt/tags/markdown/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://example.com/en/tags/markdown/"
+                href="https://huangbaihua.gitee.io/walker/en/tags/markdown/"
                 />
   </url><url>
-    <loc>https://example.com/en/post/markdown-syntax/</loc>
+    <loc>https://huangbaihua.gitee.io/walker/en/post/markdown-syntax/</loc>
     <lastmod>2019-03-11T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="https://example.com/post/markdown-syntax/"
+                href="https://huangbaihua.gitee.io/walker/post/markdown-syntax/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="pt"
-                href="https://example.com/pt/post/markdown-syntax/"
+                href="https://huangbaihua.gitee.io/walker/pt/post/markdown-syntax/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://example.com/en/post/markdown-syntax/"
+                href="https://huangbaihua.gitee.io/walker/en/post/markdown-syntax/"
                 />
   </url><url>
-    <loc>https://example.com/en/post/</loc>
+    <loc>https://huangbaihua.gitee.io/walker/en/post/</loc>
     <lastmod>2019-03-11T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="https://example.com/post/"
+                href="https://huangbaihua.gitee.io/walker/post/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="pt"
-                href="https://example.com/pt/post/"
+                href="https://huangbaihua.gitee.io/walker/pt/post/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://example.com/en/post/"
+                href="https://huangbaihua.gitee.io/walker/en/post/"
                 />
   </url><url>
-    <loc>https://example.com/en/series/</loc>
+    <loc>https://huangbaihua.gitee.io/walker/en/series/</loc>
     <lastmod>2019-03-11T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="https://example.com/series/"
+                href="https://huangbaihua.gitee.io/walker/series/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="pt"
-                href="https://example.com/pt/series/"
+                href="https://huangbaihua.gitee.io/walker/pt/series/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://example.com/en/series/"
+                href="https://huangbaihua.gitee.io/walker/en/series/"
                 />
   </url><url>
-    <loc>https://example.com/en/categories/syntax/</loc>
+    <loc>https://huangbaihua.gitee.io/walker/en/categories/syntax/</loc>
     <lastmod>2019-03-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.com/en/tags/themes/</loc>
+    <loc>https://huangbaihua.gitee.io/walker/en/tags/themes/</loc>
     <lastmod>2019-03-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.com/en/categories/themes/</loc>
+    <loc>https://huangbaihua.gitee.io/walker/en/categories/themes/</loc>
     <lastmod>2019-03-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.com/en/series/themes-guide/</loc>
+    <loc>https://huangbaihua.gitee.io/walker/en/series/themes-guide/</loc>
     <lastmod>2019-03-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://example.com/en/tags/privacy/</loc>
+    <loc>https://huangbaihua.gitee.io/walker/en/tags/privacy/</loc>
     <lastmod>2019-03-10T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="https://example.com/tags/privacy/"
+                href="https://huangbaihua.gitee.io/walker/tags/privacy/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://example.com/en/tags/privacy/"
+                href="https://huangbaihua.gitee.io/walker/en/tags/privacy/"
                 />
   </url><url>
-    <loc>https://example.com/en/post/rich-content/</loc>
+    <loc>https://huangbaihua.gitee.io/walker/en/post/rich-content/</loc>
     <lastmod>2019-03-10T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="https://example.com/post/rich-content/"
+                href="https://huangbaihua.gitee.io/walker/post/rich-content/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://example.com/en/post/rich-content/"
+                href="https://huangbaihua.gitee.io/walker/en/post/rich-content/"
                 />
   </url><url>
-    <loc>https://example.com/en/tags/shortcodes/</loc>
+    <loc>https://huangbaihua.gitee.io/walker/en/tags/shortcodes/</loc>
     <lastmod>2019-03-10T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="https://example.com/tags/shortcodes/"
+                href="https://huangbaihua.gitee.io/walker/tags/shortcodes/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://example.com/en/tags/shortcodes/"
+                href="https://huangbaihua.gitee.io/walker/en/tags/shortcodes/"
                 />
   </url>
 </urlset>

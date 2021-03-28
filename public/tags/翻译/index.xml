@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>翻译 on 柏华</title>
-    <link>https://example.com/tags/%E7%BF%BB%E8%AF%91/</link>
+    <link>https://huangbaihua.gitee.io/walker/tags/%E7%BF%BB%E8%AF%91/</link>
     <description>Recent content in 翻译 on 柏华</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright © 2008–2021, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
-    <lastBuildDate>Sun, 28 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://example.com/tags/%E7%BF%BB%E8%AF%91/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 28 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://huangbaihua.gitee.io/walker/tags/%E7%BF%BB%E8%AF%91/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>10倍程序员的秘密</title>
-      <link>https://example.com/post/the-mythical-10x-programmer/</link>
+      <link>https://huangbaihua.gitee.io/walker/post/the-mythical-10x-programmer/</link>
       <pubDate>Sun, 28 Mar 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://example.com/post/the-mythical-10x-programmer/</guid>
+      <guid>https://huangbaihua.gitee.io/walker/post/the-mythical-10x-programmer/</guid>
       <description>
         
           &lt;p&gt;源文: &lt;a href=&#34;http://antirez.com/news/112&#34;&gt;The mythical 10x programmer&lt;/a&gt; (antirez)&lt;/p&gt;
