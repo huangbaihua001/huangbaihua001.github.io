@@ -85,5 +85,287 @@
       </description>
     </item>
     
+    <item>
+      <title>Awesome CTO</title>
+      <link>https://huangbaihua.gitee.io/walker/post/awesome-cto/</link>
+      <pubDate>Sun, 28 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://huangbaihua.gitee.io/walker/post/awesome-cto/</guid>
+      <description>
+        
+          &lt;p&gt;源文: &lt;a href=&#34;https://github.com/kuchin/awesome-cto&#34;&gt;Awesome CTO&lt;/a&gt; (kuchin)&lt;/p&gt;
+&lt;h1 id=&#34;awesome-cto-优秀的首席技术官&#34;&gt;Awesome CTO 优秀的首席技术官&lt;/h1&gt;
+&lt;h2 id=&#34;内容&#34;&gt;内容&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#general&#34;&gt;综合&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#hiring&#34;&gt;招聘&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#management&#34;&gt;管理&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#handbooks&#34;&gt;手册&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#development-process&#34;&gt;研发流程&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#architecture&#34;&gt;架构&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#technologies&#34;&gt;技术&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#startups&#34;&gt;创业公司&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#related-stuff&#34;&gt;相关内容&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#product&#34;&gt;产品&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#marketing&#34;&gt;市场营销&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#more-links&#34;&gt;更多链接&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;综合&#34;&gt;综合&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.allthingsdistributed.com/2007/07/the_different_cto_roles.html&#34;&gt;首席技术官的多角色&lt;/a&gt; - Werner Vogels &lt;em&gt;(Amazon CTO)&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.quora.com/Is-it-required-to-be-a-developer-coder-to-become-a-CTO-Why-cant-an-architect-become-a-CTO&#34;&gt;成为首席技术官必须是开发人员吗?&lt;/a&gt; &lt;em&gt;(Quora)&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.rudebaguette.com/2011/12/01/three-golden-rules-to-finding-a-cto/&#34;&gt;寻找首席技术官的三大黄金法则&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://web.archive.org/web/20171128214925/https://juokaz.com/blog/becoming-a-cto&#34;&gt;成为首席技术官&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://avc.com/2011/10/vp-engineering-vs-cto/&#34;&gt;技术副总裁VS首席技术官&lt;/a&gt; - Fred Wilson &lt;em&gt;(Union Square Ventures)&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.quora.com/What-makes-for-a-successful-CEO-and-CTO-relationship-in-a-startup&#34;&gt;创业公司中首席执行官和首席技术官之间成功的关系是什么?&lt;/a&gt; &lt;em&gt;(Quora)&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.gregbrockman.com/figuring-out-the-cto-role-at-stripe&#34;&gt;#定义首席技术官&lt;/a&gt; - Greg Brockman &lt;em&gt;(Stripe CTO)&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://engineering.gusto.com/how-my-role-as-cto-has-changed-as-weve-grown-to-100-engineers/&#34;&gt;当发展到100名工程师时,首席技术官的角色演变&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://lethain.com/first-ninety-days-cto-vpe/&#34;&gt;作为首席技术官或技术副总裁的第一个90天&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.linkedin.com/pulse/20140615184118-4928723-the-differences-between-a-cto-and-a-vp-engineering/&#34;&gt;成为首席技术官跟技术副总裁的不同之处&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;招聘&#34;&gt;招聘&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.joelonsoftware.com/2006/10/25/the-guerrilla-guide-to-interviewing-version-30/&#34;&gt;面试指南&lt;/a&gt; - Joel Spolsky &lt;em&gt;(StackOverflow co-founder)&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.joelonsoftware.com/2000/08/09/the-joel-test-12-steps-to-better-code/&#34;&gt;Joel测试： 改进代码的12个步骤&lt;/a&gt; - Joel Spolsky&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.codinghorror.com/why-cant-programmers-program/&#34;&gt;为什么程序员不会编程？&lt;/a&gt; - Jeff Atwood &lt;em&gt;(StackOverflow co-founder)&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.codinghorror.com/we-hire-the-best-just-like-everyone-else/&#34;&gt;雇用最优秀的人&lt;/a&gt; - Jeff Atwood&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.codinghorror.com/getting-the-interview-phone-screen-right/&#34;&gt;做好电话面试筛选&lt;/a&gt; - Jeff Atwood&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.quora.com/What-is-the-engineering-interview-process-like-at-Stripe&#34;&gt;Stripe工程面试流程&lt;/a&gt; &lt;em&gt;(Quora)&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://medium.com/foursquare-direct/improving-our-engineering-interview-process-106173ba25a9&#34;&gt;改进我们的工程面试流程&lt;/a&gt; &lt;em&gt;(Foursquare)&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.joelonsoftware.com/2005/07/25/hitting-the-high-notes/&#34;&gt;Hitting the High Notes&lt;/a&gt; - Joel Spolsky&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://hackernoon.com/top-10-system-design-interview-questions-for-software-engineers-8561290f0444&#34;&gt;10大系统设计面试题&lt;/a&gt; - &lt;em&gt;(HackerNoon)&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://angel.co/blog/how-to-hire-world-class-engineers&#34;&gt;如何雇用世界级工程师？&lt;/a&gt; &lt;em&gt;(angel.co)&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://hiringengineersbook.com/post/trouble-hiring/&#34;&gt;招聘高级工程师很困难？可能是你的问题&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/viraptor/reverse-interview&#34;&gt;反向面试&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://charity.wtf/2019/10/18/the-real-11-reasons-i-dont-hire-you/&#34;&gt;我不雇用你的11个真实原因&lt;/a&gt; - Charity Majors&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.linkedin.com/pulse/how-interview-amazon-leadership-david-anderson/&#34;&gt;亚马逊是如何面试的&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://delian.io/lessons-2&#34;&gt;来自 Keith Rabois的教训: 如何面试高管？&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://delian.io/lessons-5&#34;&gt;来自 Keith Rabois的教训: 如何吸引人才？&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/viraptor/reverse-interview&#34;&gt;反向面试题&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;管理&#34;&gt;管理&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://antirez.com/news/112&#34;&gt;10倍程序员的秘密&lt;/a&gt; - Salvatore Sanfilippo &lt;em&gt;(author of Redis)&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://charity.wtf/2017/05/11/the-engineer-manager-pendulum/&#34;&gt;做工程师还是做项目经理?&lt;/a&gt; - Charity Majors&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.paulgraham.com/makersschedule.html&#34;&gt;研发的日程表，管理者的日程表&lt;/a&gt; - Paul Graham &lt;em&gt;(Y Combinator)&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://arxiv.org/pdf/1702.01715.pdf&#34;&gt;谷歌的软件工程&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://rework.withgoogle.com&#34;&gt;Google re:Work&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.defmacro.org/2014/10/03/engman.html&#34;&gt;44节工程管理课程&lt;/a&gt; (correct link to &lt;a href=&#34;https://review.firstround.com/power-up-your-team-with-nonviolent-communication-principles&#34;&gt;non-violent communication&lt;/a&gt; for lesson 34)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.officevibe.com/blog/secret-to-discussing-pay-with-employees&#34;&gt;与员工谈薪酬的秘密&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/LappleApple/awesome-leading-and-managing&#34;&gt;优秀的领导和管理&lt;/a&gt; &lt;em&gt;(Github)&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://lcamtuf.blogspot.com/2018/02/on-leadership.html&#34;&gt;从技术到领导力的进步&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://capwatkins.com/blog/a-review-process&#34;&gt;审查流程&lt;/a&gt; - Cap Watkins&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://hackernoon.com/12-manager-readmes-from-silicon-valleys-top-tech-companies-26588a660afe&#34;&gt;来自顶级科技公司的12名经理自述&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.google.com/presentation/d/1weEU1G-4JAhD6tRlYinYS1ZOHI_SAUQkvTBFBzi67G0/edit&#34;&gt;可预测的交付&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.quora.com/How-do-some-people-get-stuck-at-a-senior-engineer-position-while-a-few-starts-or-rise-up-to-EVP-level-in-big-organizations-like-Microsoft-Amazon-Apple-Google-What-exactly-should-I-keep-doing-to-go-up-the-ladder&#34;&gt;在大公司中，如何升到执行副总裁？&lt;/a&gt; &lt;em&gt;(Quora)&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://capwatkins.com/blog/should-i-become-a-manager&#34;&gt;我应该成为一名管理者么?&lt;/a&gt; - Cap Watkins&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.usejournal.com/how-to-fail-as-a-new-engineering-manager-30b5fb617a&#34;&gt;刚成为项目经理时，是如何失败的？&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://queue.acm.org/detail.cfm?id=3308563&#34;&gt;最多管理的设计模式&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/charlax/engineering-management&#34;&gt;工程管理&lt;/a&gt; &lt;em&gt;(Github)&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://medium.com/@odedmagger/on-boarding-software-engineers-10-techniques-to-get-it-right-927cb73e3dab&#34;&gt;入职软件工程师&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://marker.medium.com/how-to-hold-your-team-accountable-9fa57bfb315d&#34;&gt;让你的团队负责任&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.seebs.net/faqs/manager.html&#34;&gt;管理者常见问题&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://firstround.com/review/the-power-of-performance-reviews-use-this-system-to-become-a-better-manager/&#34;&gt;绩效考核的力量&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://medium.com/swlh/principles-of-engineering-management-c9cae1b34a8b&#34;&gt;工程管理的原则&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.payscale.com/cbpr&#34;&gt;补偿最佳实践&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://firstround.com/review/draw-the-owl-and-other-company-values-you-didnt-know-you-should-have/&#34;&gt;Draw The Owl and Other Company Values You Didn’t Know You Should Have&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://charity.wtf/2019/10/30/a-managers-bill-of-responsibilities-and-rights/&#34;&gt;经理的职责及权利&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://charity.wtf/2019/11/23/questionable-advice-after-being-a-manager-can-i-be-happy-as-a-cog/&#34;&gt;做了经理人，我还能快乐么?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://firstround.com/review/the-secret-to-a-great-planning-process-lessons-from-airbnb-and-eventbrite/&#34;&gt;优秀的规划流程的秘密 — 来自 Airbnb and Eventbrite 的教训&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://increment.com/teams/&#34;&gt;Increment: 团队&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://medium.com/better-programming/career-growth-frameworks-in-software-engineering-a-review-4aa6c59a9cf6&#34;&gt;软件工程师的职业发展框架&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://noamelf.com/posts/hacking-team-communications/&#34;&gt;黑客团队的沟通&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://increment.com/teams/how-to-build-a-startup-engineering-team/&#34;&gt;如何组建创业公司的工程师团队&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://buttondown.email/cote/archive/hug-your-manager/&#34;&gt;拥抱你的经理&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://delian.io/lessons-3&#34;&gt;来自 Keith Rabois的教训: 如何成为一名高效的执行者&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.doist.com/context-switching/&#34;&gt;上下文切换如何破坏您的生产力&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;手册&#34;&gt;手册&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.atlassian.com/team-playbook&#34;&gt;Atlassian 团队游戏手册&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.valvesoftware.com/company/Valve_Handbook_LowRes.pdf&#34;&gt;Valve 员工手册&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/basecamp/handbook&#34;&gt;Basecamp 员工手册&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://about.gitlab.com/handbook/&#34;&gt;GitLab 团队手册&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://works.hashicorp.com/&#34;&gt;HashiCorp是如何运作的&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;研发流程&#34;&gt;研发流程&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Scrum/敏捷开发
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.goodagile.com/resources/goodagile_managers_presentation.pdf&#34;&gt;给经理和高管的Scrum介绍&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.yodiz.com/blog/writing-user-stories-examples-and-templates-in-agile-methodologies/&#34;&gt;用敏捷方法编写用户故事，实例和模板&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;持续集成 / 持续部署
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.quora.com/What-are-the-fundamental-principles-of-continuous-integration&#34;&gt;持续集成的基本原则是什么?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.mindtheproduct.com/2016/02/what-the-hell-are-ci-cd-and-devops-a-cheatsheet-for-the-rest-of-us/&#34;&gt;产品经理的持续交付和DevOps指南&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Git代码管理
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.atlassian.com/git/tutorials/comparing-workflows&#34;&gt;Git工作流比较&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://nvie.com/posts/a-successful-git-branching-model/&#34;&gt;一个成功的Git分支模型&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;替代方案: &lt;a href=&#34;https://www.atlassian.com/continuous-delivery/continuous-integration/trunk-based-development&#34;&gt;基于主干的开发&lt;/a&gt; (focused on &lt;a href=&#34;https://cloud.google.com/solutions/devops/devops-tech-trunk-based-development&#34;&gt;DevOps and CI/CD&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;计划
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.joelonsoftware.com/2007/10/26/evidence-based-scheduling/&#34;&gt;Evidence Based Scheduling&lt;/a&gt; - Joel Spolsky &lt;em&gt;(StackOverflow co-founder)&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://marker.medium.com/why-you-should-learn-to-stop-worrying-and-love-technical-debt-55bb5684f94c&#34;&gt;为什么要停止担心并爱上技术债务&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;[书籍] &lt;a href=&#34;https://en.wikipedia.org/wiki/The_Mythical_Man-Month&#34;&gt;人月神话&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;危机
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.serverdensity.com/how-to-write-a-postmortem/&#34;&gt;如何写事故报告&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/danluu/post-mortems&#34;&gt;事故报告清单&lt;/a&gt; &lt;em&gt;(GitHub)&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.startuplessonslearned.com/2008/11/five-whys.html&#34;&gt;创业者的经验教训--五个为什么？&lt;/a&gt; - Eric Ries &lt;em&gt;(creator of the Lean Startup)&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://thenewstack.io/call-rotations-best-wake-devs-middle-night/&#34;&gt;在半夜叫醒开发人员的最佳方法&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://medium.com/@copyconstruct/testing-in-production-the-safe-way-18ca102d0ef1&#34;&gt;用安全的方法在生产环境上测试&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;架构&#34;&gt;架构&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://12factor.net&#34;&gt;十二要素 App&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.reactivemanifesto.org&#34;&gt;响应式宣言&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/aphyr/distsys-class&#34;&gt;分布式系统介绍&lt;/a&gt; - Kyle Kingsbury &lt;em&gt;(aphyr, author of Jepsen)&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://riak.com/posts/technical/microservices-please-dont/&#34;&gt;微服务--请不要这样做&lt;/a&gt; (also: &lt;a href=&#34;https://news.ycombinator.com/item?id=12508655&#34;&gt;HackerNews discussion&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.dwmkerr.com/the-death-of-microservice-madness-in-2018/&#34;&gt;2018年微服务疯狂之殇&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://highscalability.com/blog/2017/3/27/faster-networks-cheaper-messages-microservices-functions-edg.html&#34;&gt;将微服务缩小为功能&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://azure.microsoft.com/en-us/blog/design-patterns-for-microservices/&#34;&gt;微服务的设计模式&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.quora.com/What-is-Serverless-Computing&#34;&gt;无服务器架构&lt;/a&gt; &lt;em&gt;(Quora)&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://medium.baqend.com/nosql-databases-a-survey-and-decision-guidance-ea7823a822d&#34;&gt;NoSQL数据库：调查与决策指南&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api&#34;&gt;设计实用性RESTful API的最佳实践&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://medium.com/@rdsubhas/10-modern-software-engineering-mistakes-bc67fbef4fc8&#34;&gt;10个现代软件过度工程的错误&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.nelhage.com/2016/12/how-i-test/&#34;&gt;我如何编写测试&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Lambda_architecture&#34;&gt;Lambda 架构&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://martinfowler.com/articles/evodb.html&#34;&gt;进化式数据库设计&lt;/a&gt; &lt;em&gt;(Martin Fowler)&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.brunton-spall.co.uk/post/2014/05/06/database-migrations-done-right/&#34;&gt;正确进行数据库迁移&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/binhnguyennus/awesome-scalability&#34;&gt;强大的可扩展性&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.sametab.com/blog/frameworks-for-remote-working&#34;&gt;亚马逊历史上最重要的一封内部邮件&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/danistefanovic/build-your-own-x&#34;&gt;建立你自己的X&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://medium.com/dangerous-engineering/a-reference-guide-for-fintech-small-data-engineering-bd65b9796d90&#34;&gt;金融科技与小数据工程的参考指南&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;技术&#34;&gt;技术&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;General
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/a/487278/472433&#34;&gt;Big-O explained in plain English&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/jwasham/coding-interview-university&#34;&gt;Coding Interview University&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Javascript
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://superherojs.com&#34;&gt;SuperheroJS collection&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://jstherightway.org&#34;&gt;JS: The Right Way&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/FrontendMasters/front-end-handbook-2017/blob/master/SUMMARY.md&#34;&gt;Frontend developer handbook 2017&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Machine Learning
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/josephmisiti/awesome-machine-learning&#34;&gt;Awesome Machine Learning&lt;/a&gt; &lt;em&gt;(GitHub)&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.quora.com/As-a-data-scientist-what-is-your-best-resource-of-everyday-learning&#34;&gt;Best resources of everyday ML learning&lt;/a&gt; &lt;em&gt;(Quora)&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://developers.google.com/machine-learning/crash-course/&#34;&gt;Machine Learning Crash Course: with TensorFlow APIs&lt;/a&gt; &lt;em&gt;(Google)&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://course.fast.ai&#34;&gt;Deep Learning For Coders&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Big scale
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.quora.com/What-Is-CAP-Theorem-1&#34;&gt;What is CAP Theorem?&lt;/a&gt; &lt;em&gt;(Quora)&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://robertgreiner.com/cap-theorem-revisited/&#34;&gt;CAP Theorem: Revisited&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Security
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.sqreen.com/checklists/saas-cto-security-checklist&#34;&gt;SaaS CTO Security Checklist&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Cloud
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/open-guides/og-aws&#34;&gt;Open Guide to Amazon Web Services&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.expeditedssl.com/aws-in-plain-english&#34;&gt;Amazon AWS in Plain English&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://web.archive.org/web/20190508145128/https://www.expeditedssl.com/azure-in-plain-english&#34;&gt;Microsoft Azure in Plain English&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://cloudacademy.com/blog/google-cloud-services-aws-expert/&#34;&gt;Google Cloud Services for the AWS expert&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;创业公司&#34;&gt;创业公司&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.quora.com/What-are-the-things-startups-have-to-get-right&#34;&gt;What are the things startups have to get right?&lt;/a&gt; &lt;em&gt;(Quora)&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://hackernoon.com/85-things-i-learned-being-a-ceo-4c25fc1c7b99&#34;&gt;85 Things I learned being a CEO&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.ycombinator.com/the-second-job-of-a-startup-ceo/&#34;&gt;What’s the Second Job of a Startup CEO?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.slideshare.net/laurenthaug/things-i-will-tell-my-kids-if-they-become-entrepreneurs&#34;&gt;Things I will tell my kids if they become entrepreneurs&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.quora.com/What-do-VCs-really-look-for-when-making-investments&#34;&gt;What do VCs really look for when making investments?&lt;/a&gt; &lt;em&gt;(Quora)&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.quora.com/What-would-a-CTO-compensation-equity-be-for-a-small-startup&#34;&gt;What would a CTO equity be for a small startup?&lt;/a&gt; &lt;em&gt;(Quora)&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.quora.com/As-an-employee-of-a-startup-how-do-you-know-when-to-quit&#34;&gt;As an employee of a startup, how do you know when to quit?&lt;/a&gt; &lt;em&gt;(Quora)&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.alexanderjarvis.com/pitch-deck-collection-from-vc-funded-startups/&#34;&gt;Pitch deck collection from VC funded startups&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.ycombinator.com/ycs-series-a-diligence-checklist/&#34;&gt;YC’s Series A Diligence Checklist&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://danluu.com/startup-options/&#34;&gt;Options vs Cash&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.samaltman.com/how-to-invest-in-startups&#34;&gt;How To Invest In Startups&lt;/a&gt; - Sam Altman&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.ycombinator.com/how-to-raise-a-seed-round/&#34;&gt;A Guide to Seed Fundraising&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://playbook.samaltman.com&#34;&gt;Startup Playbook&lt;/a&gt; - Sam Altman&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://startupclass.samaltman.com&#34;&gt;Y Combinator Startup Class&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://leanstack.com/leancanvas&#34;&gt;Lean Canvas&lt;/a&gt; + &lt;a href=&#34;https://miro.com/templates/lean-canvas/&#34;&gt;Miro template&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.figmafinder.com/figma-pitch-deck&#34;&gt;Open Source Pitch Deck Templates for Figma&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;相关内容&#34;&gt;相关内容&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://ithare.com/knowledge-sharing-architects-as-an-alternative-to-coding-architects/&#34;&gt;Knowledge-Sharing Architects As An Alternative to Coding Architects&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://medium.freecodecamp.com/ten-rules-for-negotiating-a-job-offer-ee17cccbdab6&#34;&gt;Ten Rules for Negotiating a Job Offer&lt;/a&gt; (also: &lt;a href=&#34;https://news.ycombinator.com/item?id=12197795&#34;&gt;HackerNews discussion&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.quora.com/What-are-some-traits-practices-of-experienced-good-programmers-that-every-beginner-programmer-should-know&#34;&gt;What are best practices of experienced programmers?&lt;/a&gt; &lt;em&gt;(Quora)&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.kalzumeus.com/2010/06/17/falsehoods-programmers-believe-about-names/&#34;&gt;Falsehoods Programmers Believe About Names&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.oreilly.com/programming/free/files/2016-european-software-development-salary-survey.pdf&#34;&gt;2016 European Software Development Salary Survey&lt;/a&gt; &lt;em&gt;(O&#39;Reilly)&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.atlassian.com/devops&#34;&gt;DevOps: Bringing development and operations together&lt;/a&gt; &lt;em&gt;(Atlassian)&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Dataops&#34;&gt;DataOps&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.deconstructconf.com/blog/how-to-prepare-a-talk&#34;&gt;How to Prepare a Talk&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.pragmaticengineer.com/on-writing-well/&#34;&gt;Undervalued Software Engineering Skills: Writing Well&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://medium.com/lessons-from-mckinsey/the-pyramid-principle-f0885dd3c5c7&#34;&gt;The Pyramid Principle&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://medium.com/@littleblah/my-top-25-items-in-a-senior-engineers-checklist-c8e9f9f6e3c2&#34;&gt;Senior Engineer’s Checklist&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://akfpartners.com/growth-blog/technical-due-diligence-checklists&#34;&gt;Technology Due Diligence Checklist&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;产品&#34;&gt;产品&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://hackernoon.com/what-makes-a-great-product-manager-3c1d03b90356&#34;&gt;What Makes a Great Product Manager&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.saastr.com/if-you-dont-think-you-need-a-vp-of-product-marketing-etc-then-you-havent-worked-with-a-great-one/&#34;&gt;If You Don’t Think You Need a VP of Product...&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://capitalandgrowth.org/answers/Article/3143488/How-to-Find-Profitable-Business-Ideas&#34;&gt;Red Oceans: How to Find Profitable Startup Ideas&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://amplitude.com/blog/2018/03/21/product-north-star-metric&#34;&gt;Product North Star Metric&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.quora.com/What-distinguishes-the-Top-1-of-product-managers-from-the-Top-10/answer/Ian-McAllister&#34;&gt;What distinguishes the Top 1% of product managers from the Top 10%?&lt;/a&gt; - &lt;em&gt;(Quora)&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.kennorton.com/essays/productmanager.html&#34;&gt;How to Hire a Product Manager&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.lemonade.com/blog/creative-thinking-hacks/&#34;&gt;The Secrets Of Creative Thinking&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://medium.com/stellarpeers&#34;&gt;StellarPeers - Product Management Interviews&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://svpg.com/product-vs-feature-teams/&#34;&gt;Product vs. Feature Teams&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://bothsidesofthetable.com/most-startups-should-be-deer-hunters-7fdecf58f4f6&#34;&gt;Most Startups Should Be Deer Hunters&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://basecamp.com/shapeup&#34;&gt;Shape Up: Stop Running in Circles and Ship Work that Matters&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://ganotnoa.com/how-to-write-your-first-strategic-roadmap-part-1/&#34;&gt;How to Write Your First Strategic Roadmap&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;市场营销&#34;&gt;市场营销&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.devmarketingguide.com&#34;&gt;Developer Marketing Guide&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.google.com/spreadsheets/d/1tAiya71mDQgtwn_F9-mNQhuc7GdsQ5e2_BeG69Cb82A/edit#gid=0&#34;&gt;Top Resources for Startup Marketing and PR&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://saasemailmarketing.net&#34;&gt;SaaS Email Marketing Handbook&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;更多链接&#34;&gt;更多链接&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/kdeldycke/awesome-falsehood&#34;&gt;Awesome Falsehood&lt;/a&gt; &lt;em&gt;(GitHub)&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/kilimchoi/engineering-blogs&#34;&gt;Engineering blogs&lt;/a&gt; &lt;em&gt;(GitHub)&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/bayandin/awesome-awesomeness&#34;&gt;Awesome Awesomeness&lt;/a&gt; &lt;em&gt;(GitHub)&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/sindresorhus/awesome&#34;&gt;Awesome.re&lt;/a&gt; &lt;em&gt;(GitHub)&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/92bondstreet/cto&#34;&gt;Chief Technology Officer vs Coder Thinker Organizer&lt;/a&gt; &lt;em&gt;(GitHub)&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://staffeng.com&#34;&gt;Senior Software Engineer&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.socalcto.com/2011/09/startup-cto.html&#34;&gt;Socal CTO&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/92bondstreet/cto&#34;&gt;Curated list of CTO resources&lt;/a&gt; &lt;em&gt;(GitHub)&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/mateusz-brainhub/awesome-cto-resources&#34;&gt;Awesome CTO Resources&lt;/a&gt; &lt;em&gt;(GitHub)&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://free-for.dev&#34;&gt;Free Tools for Developers&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;版权&#34;&gt;版权&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://creativecommons.org/publicdomain/zero/1.0/&#34;&gt;&lt;img src=&#34;https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/cc-zero.svg&#34; alt=&#34;CC0&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p style=&#34;color: red; text-align: center&#34;&gt;（因本人水平有限，错误和不足之处在所难免，敬请同仁批评指正。仅限个人学习研究交流使用，请勿用于任何商业用途）&lt;/p&gt;
+
+        
+      </description>
+    </item>
+    
   </channel>
 </rss>
