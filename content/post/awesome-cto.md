@@ -7,8 +7,12 @@ categories = [
 "技术管理",
 "系统架构",
 ]
-tags = ["技术管理","系统架构", "翻译"]
+tags = ["技术管理","系统架构", "译文"]
+thumbnail = "images/building.png"
 +++
+
+不想当CTO的工程师不是好的工程师，那么如何才能成为一名优秀的CTO?
+<!--more-->
 
 源文: [Awesome CTO](https://github.com/kuchin/awesome-cto) (kuchin)
 
@@ -46,14 +50,14 @@ tags = ["技术管理","系统架构", "翻译"]
 
 * [面试指南](https://www.joelonsoftware.com/2006/10/25/the-guerrilla-guide-to-interviewing-version-30/) - Joel Spolsky *(StackOverflow co-founder)*
 * [Joel测试： 改进代码的12个步骤](https://www.joelonsoftware.com/2000/08/09/the-joel-test-12-steps-to-better-code/) - Joel Spolsky
-* [为什么程序员不会编程？](https://blog.codinghorror.com/why-cant-programmers-program/) - Jeff Atwood *(StackOverflow co-founder)*
+* [为什么程序员反而不会编程？](https://blog.codinghorror.com/why-cant-programmers-program/) - Jeff Atwood *(StackOverflow co-founder)*
 * [雇用最优秀的人](https://blog.codinghorror.com/we-hire-the-best-just-like-everyone-else/) - Jeff Atwood
 * [做好电话面试筛选](https://blog.codinghorror.com/getting-the-interview-phone-screen-right/) - Jeff Atwood
 * [Stripe工程面试流程](https://www.quora.com/What-is-the-engineering-interview-process-like-at-Stripe) *(Quora)*
 * [改进我们的工程面试流程](https://medium.com/foursquare-direct/improving-our-engineering-interview-process-106173ba25a9) *(Foursquare)*
 * [Hitting the High Notes](https://www.joelonsoftware.com/2005/07/25/hitting-the-high-notes/) - Joel Spolsky
 * [10大系统设计面试题](https://hackernoon.com/top-10-system-design-interview-questions-for-software-engineers-8561290f0444) - *(HackerNoon)*
-* [如何雇用世界级工程师？](https://angel.co/blog/how-to-hire-world-class-engineers) *(angel.co)*
+* [如何雇用世界级的工程师？](https://angel.co/blog/how-to-hire-world-class-engineers) *(angel.co)*
 * [招聘高级工程师很困难？可能是你的问题](https://hiringengineersbook.com/post/trouble-hiring/)
 * [反向面试](https://github.com/viraptor/reverse-interview)
 * [我不雇用你的11个真实原因](https://charity.wtf/2019/10/18/the-real-11-reasons-i-dont-hire-you/) - Charity Majors
@@ -155,98 +159,97 @@ tags = ["技术管理","系统架构", "翻译"]
 
 ## 技术
 
-* General
-    * [Big-O explained in plain English](https://stackoverflow.com/a/487278/472433)
+* 综合
+    * [用通俗易懂的语言解释大O表示法](https://stackoverflow.com/a/487278/472433)
     * [Coding Interview University](https://github.com/jwasham/coding-interview-university)
+* 机器学习
+    * [棒极了的机器学习](https://github.com/josephmisiti/awesome-machine-learning) *(GitHub)*
+    * [日常机器学习的最佳资源](https://www.quora.com/As-a-data-scientist-what-is-your-best-resource-of-everyday-learning) *(Quora)*
+    * [机器学习速成班：使用TensorFlow APIs](https://developers.google.com/machine-learning/crash-course/) *(Google)*
+    * [编码者的深度学习](https://course.fast.ai)
+* 分布式基础理论
+    * [什么是CAP定理](https://www.quora.com/What-Is-CAP-Theorem-1) *(Quora)*
+    * [重新审视CAP定理](https://robertgreiner.com/cap-theorem-revisited/)
+* 安全
+    * [SaaS CTO安全检查表](https://www.sqreen.com/checklists/saas-cto-security-checklist)
+* 云计算
+    * [亚马逊网络服务开放指南](https://github.com/open-guides/og-aws)
+    * [亚马逊网络服务](https://www.expeditedssl.com/aws-in-plain-english)
+    * [微软Azure](https://web.archive.org/web/20190508145128/https://www.expeditedssl.com/azure-in-plain-english)
+    * [为AWS专家提供的谷歌云服务](https://cloudacademy.com/blog/google-cloud-services-aws-expert/)
 * Javascript
-    * [SuperheroJS collection](http://superherojs.com)
-    * [JS: The Right Way](http://jstherightway.org)
-    * [Frontend developer handbook 2017](https://github.com/FrontendMasters/front-end-handbook-2017/blob/master/SUMMARY.md)
-* Machine Learning
-    * [Awesome Machine Learning](https://github.com/josephmisiti/awesome-machine-learning) *(GitHub)*
-    * [Best resources of everyday ML learning](https://www.quora.com/As-a-data-scientist-what-is-your-best-resource-of-everyday-learning) *(Quora)*
-    * [Machine Learning Crash Course: with TensorFlow APIs](https://developers.google.com/machine-learning/crash-course/) *(Google)*
-    * [Deep Learning For Coders](https://course.fast.ai)
-* Big scale
-    * [What is CAP Theorem?](https://www.quora.com/What-Is-CAP-Theorem-1) *(Quora)*
-    * [CAP Theorem: Revisited](https://robertgreiner.com/cap-theorem-revisited/)
-* Security
-    * [SaaS CTO Security Checklist](https://www.sqreen.com/checklists/saas-cto-security-checklist)
-* Cloud
-    * [Open Guide to Amazon Web Services](https://github.com/open-guides/og-aws)
-    * [Amazon AWS in Plain English](https://www.expeditedssl.com/aws-in-plain-english)
-    * [Microsoft Azure in Plain English](https://web.archive.org/web/20190508145128/https://www.expeditedssl.com/azure-in-plain-english)
-    * [Google Cloud Services for the AWS expert](https://cloudacademy.com/blog/google-cloud-services-aws-expert/)
-
+  * [SuperheroJS collection](http://superherojs.com)
+  * [JS: The Right Way](http://jstherightway.org)
+  * [前端开发手册2017版](https://github.com/FrontendMasters/front-end-handbook-2017/blob/master/SUMMARY.md)
 
 ## 创业公司
 
-* [What are the things startups have to get right?](https://www.quora.com/What-are-the-things-startups-have-to-get-right) *(Quora)*
-* [85 Things I learned being a CEO](https://hackernoon.com/85-things-i-learned-being-a-ceo-4c25fc1c7b99)
-* [What’s the Second Job of a Startup CEO?](https://blog.ycombinator.com/the-second-job-of-a-startup-ceo/)
-* [Things I will tell my kids if they become entrepreneurs](https://www.slideshare.net/laurenthaug/things-i-will-tell-my-kids-if-they-become-entrepreneurs)
-* [What do VCs really look for when making investments?](https://www.quora.com/What-do-VCs-really-look-for-when-making-investments) *(Quora)*
-* [What would a CTO equity be for a small startup?](https://www.quora.com/What-would-a-CTO-compensation-equity-be-for-a-small-startup) *(Quora)*
-* [As an employee of a startup, how do you know when to quit?](https://www.quora.com/As-an-employee-of-a-startup-how-do-you-know-when-to-quit) *(Quora)*
-* [Pitch deck collection from VC funded startups](https://www.alexanderjarvis.com/pitch-deck-collection-from-vc-funded-startups/)
-* [YC’s Series A Diligence Checklist](https://blog.ycombinator.com/ycs-series-a-diligence-checklist/)
-* [Options vs Cash](https://danluu.com/startup-options/)
-* [How To Invest In Startups](https://blog.samaltman.com/how-to-invest-in-startups) - Sam Altman
-* [A Guide to Seed Fundraising](https://blog.ycombinator.com/how-to-raise-a-seed-round/)
-* [Startup Playbook](https://playbook.samaltman.com) - Sam Altman
-* [Y Combinator Startup Class](https://startupclass.samaltman.com)
-* [Lean Canvas](https://leanstack.com/leancanvas) + [Miro template](https://miro.com/templates/lean-canvas/)
-* [Open Source Pitch Deck Templates for Figma](https://www.figmafinder.com/figma-pitch-deck)
+* [创业公司必须要做好哪些事情?](https://www.quora.com/What-are-the-things-startups-have-to-get-right) *(Quora)*
+* [我做CEO学到的85件事](https://hackernoon.com/85-things-i-learned-being-a-ceo-4c25fc1c7b99)
+* [创业公司CEO的第二份工作是什么?](https://blog.ycombinator.com/the-second-job-of-a-startup-ceo/)
+* [如果我的孩子成为创业者，我会告诉他们的事](https://www.slideshare.net/laurenthaug/things-i-will-tell-my-kids-if-they-become-entrepreneurs)
+* [风投在做投资时到底看中的是什么?](https://www.quora.com/What-do-VCs-really-look-for-when-making-investments) *(Quora)*
+* [对于一个小型创业公司来说，CTO的股权会是多少?](https://www.quora.com/What-would-a-CTO-compensation-equity-be-for-a-small-startup) *(Quora)*
+* [作为创业公司的员工，你怎么知道什么时候该辞职?](https://www.quora.com/As-an-employee-of-a-startup-how-do-you-know-when-to-quit) *(Quora)*
+* [来自风险投资的创业公司的融资演讲稿集合](https://www.alexanderjarvis.com/pitch-deck-collection-from-vc-funded-startups/)
+* [YC的A轮尽职调查表](https://blog.ycombinator.com/ycs-series-a-diligence-checklist/)
+* [期权与现金](https://danluu.com/startup-options/)
+* [如何投资创业公司](https://blog.samaltman.com/how-to-invest-in-startups) - Sam Altman
+* [种子资金筹集指南](https://blog.ycombinator.com/how-to-raise-a-seed-round/)
+* [创业者游戏手册](https://playbook.samaltman.com) - Sam Altman
+* [Y Combinator 创业班](https://startupclass.samaltman.com)
+* [精益画布](https://leanstack.com/leancanvas) + [Miro template](https://miro.com/templates/lean-canvas/)
+* [开源的Figma 融资演讲稿模板](https://www.figmafinder.com/figma-pitch-deck)
 
 
 ## 相关内容
 
 * [Knowledge-Sharing Architects As An Alternative to Coding Architects](http://ithare.com/knowledge-sharing-architects-as-an-alternative-to-coding-architects/)
-* [Ten Rules for Negotiating a Job Offer](https://medium.freecodecamp.com/ten-rules-for-negotiating-a-job-offer-ee17cccbdab6) (also: [HackerNews discussion](https://news.ycombinator.com/item?id=12197795))
-* [What are best practices of experienced programmers?](https://www.quora.com/What-are-some-traits-practices-of-experienced-good-programmers-that-every-beginner-programmer-should-know) *(Quora)*
-* [Falsehoods Programmers Believe About Names](https://www.kalzumeus.com/2010/06/17/falsehoods-programmers-believe-about-names/)
-* [2016 European Software Development Salary Survey](https://www.oreilly.com/programming/free/files/2016-european-software-development-salary-survey.pdf) *(O'Reilly)*
-* [DevOps: Bringing development and operations together](https://www.atlassian.com/devops) *(Atlassian)*
-* [DataOps](https://en.wikipedia.org/wiki/Dataops)
-* [How to Prepare a Talk](https://www.deconstructconf.com/blog/how-to-prepare-a-talk)
-* [Undervalued Software Engineering Skills: Writing Well](https://blog.pragmaticengineer.com/on-writing-well/)
-* [The Pyramid Principle](https://medium.com/lessons-from-mckinsey/the-pyramid-principle-f0885dd3c5c7)
-* [Senior Engineer’s Checklist](https://medium.com/@littleblah/my-top-25-items-in-a-senior-engineers-checklist-c8e9f9f6e3c2)
-* [Technology Due Diligence Checklist](https://akfpartners.com/growth-blog/technical-due-diligence-checklists)
+* [洽谈工作机会的十条规则](https://medium.freecodecamp.com/ten-rules-for-negotiating-a-job-offer-ee17cccbdab6) (also: [HackerNews discussion](https://news.ycombinator.com/item?id=12197795))
+* [经验丰富的程序员有哪些最佳实践?](https://www.quora.com/What-are-some-traits-practices-of-experienced-good-programmers-that-every-beginner-programmer-should-know) *(Quora)*
+* [对程序员名称的误解](https://www.kalzumeus.com/2010/06/17/falsehoods-programmers-believe-about-names/)
+* [2016年欧洲软件开发薪资调查](https://www.oreilly.com/programming/free/files/2016-european-software-development-salary-survey.pdf) *(O'Reilly)*
+* [DevOps：将开发和运营结合起来](https://www.atlassian.com/devops) *(Atlassian)*
+* [数据运营](https://en.wikipedia.org/wiki/Dataops)
+* [如何准备演讲](https://www.deconstructconf.com/blog/how-to-prepare-a-talk)
+* [被低估的软件工程技能：良好的写作能力](https://blog.pragmaticengineer.com/on-writing-well/)
+* [金字塔原理](https://medium.com/lessons-from-mckinsey/the-pyramid-principle-f0885dd3c5c7)
+* [高级工程师的检查单](https://medium.com/@littleblah/my-top-25-items-in-a-senior-engineers-checklist-c8e9f9f6e3c2)
+* [技术尽职调查表](https://akfpartners.com/growth-blog/technical-due-diligence-checklists)
 
 ## 产品
-* [What Makes a Great Product Manager](https://hackernoon.com/what-makes-a-great-product-manager-3c1d03b90356)
-* [If You Don’t Think You Need a VP of Product...](https://www.saastr.com/if-you-dont-think-you-need-a-vp-of-product-marketing-etc-then-you-havent-worked-with-a-great-one/)
-* [Red Oceans: How to Find Profitable Startup Ideas](https://capitalandgrowth.org/answers/Article/3143488/How-to-Find-Profitable-Business-Ideas)
+* [怎样才能成为优秀的产品经理](https://hackernoon.com/what-makes-a-great-product-manager-3c1d03b90356)
+* [如果你认为你不需要产品副总裁......](https://www.saastr.com/if-you-dont-think-you-need-a-vp-of-product-marketing-etc-then-you-havent-worked-with-a-great-one/)
+* [红海，如何寻找有利可图的创业点子](https://capitalandgrowth.org/answers/Article/3143488/How-to-Find-Profitable-Business-Ideas)
 * [Product North Star Metric](https://amplitude.com/blog/2018/03/21/product-north-star-metric)
-* [What distinguishes the Top 1% of product managers from the Top 10%?](https://www.quora.com/What-distinguishes-the-Top-1-of-product-managers-from-the-Top-10/answer/Ian-McAllister) - *(Quora)*
-* [How to Hire a Product Manager](https://www.kennorton.com/essays/productmanager.html)
-* [The Secrets Of Creative Thinking](https://www.lemonade.com/blog/creative-thinking-hacks/)
-* [StellarPeers - Product Management Interviews](https://medium.com/stellarpeers)
-* [Product vs. Feature Teams](https://svpg.com/product-vs-feature-teams/)
-* [Most Startups Should Be Deer Hunters](https://bothsidesofthetable.com/most-startups-should-be-deer-hunters-7fdecf58f4f6)
+* [前1%的产品经理和前10%的产品经理有什么区别?](https://www.quora.com/What-distinguishes-the-Top-1-of-product-managers-from-the-Top-10/answer/Ian-McAllister) - *(Quora)*
+* [如何聘请产品经理](https://www.kennorton.com/essays/productmanager.html)
+* [创造性思维的秘密](https://www.lemonade.com/blog/creative-thinking-hacks/)
+* [StellarPeers - 产品管理专访](https://medium.com/stellarpeers)
+* [产品团队VS功能团队](https://svpg.com/product-vs-feature-teams/)
+* [大多数创业公司应该是猎鹿人](https://bothsidesofthetable.com/most-startups-should-be-deer-hunters-7fdecf58f4f6)
 * [Shape Up: Stop Running in Circles and Ship Work that Matters](https://basecamp.com/shapeup)
-* [How to Write Your First Strategic Roadmap](https://ganotnoa.com/how-to-write-your-first-strategic-roadmap-part-1/)
+* [如何编写你的第一份战略路线图](https://ganotnoa.com/how-to-write-your-first-strategic-roadmap-part-1/)
 
 ## 市场营销
 
-* [Developer Marketing Guide](https://www.devmarketingguide.com)
-* [Top Resources for Startup Marketing and PR](https://docs.google.com/spreadsheets/d/1tAiya71mDQgtwn_F9-mNQhuc7GdsQ5e2_BeG69Cb82A/edit#gid=0)
-* [SaaS Email Marketing Handbook](https://saasemailmarketing.net)
+* [开发人员营销指南](https://www.devmarketingguide.com)
+* [创业公司营销和公关的顶级资源](https://docs.google.com/spreadsheets/d/1tAiya71mDQgtwn_F9-mNQhuc7GdsQ5e2_BeG69Cb82A/edit#gid=0)
+* [SaaS电子邮件营销手册](https://saasemailmarketing.net)
 
 
 ## 更多链接
 
-* [Awesome Falsehood](https://github.com/kdeldycke/awesome-falsehood) *(GitHub)*
-* [Engineering blogs](https://github.com/kilimchoi/engineering-blogs) *(GitHub)*
+* [惊人的假象](https://github.com/kdeldycke/awesome-falsehood) *(GitHub)*
+* [工程博客](https://github.com/kilimchoi/engineering-blogs) *(GitHub)*
 * [Awesome Awesomeness](https://github.com/bayandin/awesome-awesomeness) *(GitHub)*
 * [Awesome.re](https://github.com/sindresorhus/awesome) *(GitHub)*
 * [Chief Technology Officer vs Coder Thinker Organizer](https://github.com/92bondstreet/cto) *(GitHub)*
-* [Senior Software Engineer](https://staffeng.com)
+* [高级软件工程师](https://staffeng.com)
 * [Socal CTO](https://www.socalcto.com/2011/09/startup-cto.html)
-* [Curated list of CTO resources](https://github.com/92bondstreet/cto) *(GitHub)*
-* [Awesome CTO Resources](https://github.com/mateusz-brainhub/awesome-cto-resources) *(GitHub)*
-* [Free Tools for Developers](https://free-for.dev)
+* [CTO资源列表](https://github.com/92bondstreet/cto) *(GitHub)*
+* [Awesome CTO 资源](https://github.com/mateusz-brainhub/awesome-cto-resources) *(GitHub)*
+* [开发者的免费工具](https://free-for.dev)
 
 
 ## 版权

@@ -7,8 +7,13 @@ categories = [
 "程序设计",
 "经典译文",
 ]
-tags = ["程序员","翻译"]
+tags = ["程序员","译文"]
+thumbnail = "images/building.png"
 +++
+
+高效的程序员应该具备哪些素质，"10倍程序员"给你答案!。
+
+<!--more-->
 
 源文: [The mythical 10x programmer](http://antirez.com/news/112) (antirez)
 
