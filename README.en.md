@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 # walker
 
 #### Description
 walker blog.
+=======
+# huangbaihua
+
+#### Description
+Technologist, perpetual student, dreamer, continual incremental improvement.
+>>>>>>> 055d5c54aed00fbe3713ae8667aff9d94842863b
 
 #### Software Architecture
 Software architecture description
