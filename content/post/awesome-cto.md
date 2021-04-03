@@ -18,20 +18,20 @@ thumbnail = "images/building.png"
 
 # Awesome CTO 优秀的首席技术官
 
-## 内容
+## 目录
 
-* [综合](#general)
-* [招聘](#hiring)
-* [管理](#management)
-* [手册](#handbooks)
-* [研发流程](#development-process)
-* [架构](#architecture)
-* [技术](#technologies)
-* [创业公司](#startups)
-* [相关内容](#related-stuff)
-* [产品](#product)
-* [市场营销](#marketing)
-* [更多链接](#more-links)
+* [综合](#综合)
+* [招聘](#招聘)
+* [管理](#管理)
+* [手册](#手册)
+* [研发流程](#研发流程)
+* [架构](#架构)
+* [技术](#技术)
+* [创业公司](#创业公司)
+* [相关内容](#相关内容)
+* [产品](#产品)
+* [市场营销](#市场营销)
+* [更多链接](#更多链接)
 
 
 ## 综合
