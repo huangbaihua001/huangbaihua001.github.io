@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>主题指南 on 柏华</title>
-    <link>https://huangbaihua.gitee.io/walker/series/%E4%B8%BB%E9%A2%98%E6%8C%87%E5%8D%97/</link>
+    <link>https://huangbaihua.gitee.io/series/%E4%B8%BB%E9%A2%98%E6%8C%87%E5%8D%97/</link>
     <description>Recent content in 主题指南 on 柏华</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright © 2008–2021, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
-    <lastBuildDate>Mon, 11 Mar 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://huangbaihua.gitee.io/walker/series/%E4%B8%BB%E9%A2%98%E6%8C%87%E5%8D%97/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 11 Mar 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://huangbaihua.gitee.io/series/%E4%B8%BB%E9%A2%98%E6%8C%87%E5%8D%97/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Markdown 语法指南</title>
-      <link>https://huangbaihua.gitee.io/walker/post/markdown-syntax/</link>
+      <link>https://huangbaihua.gitee.io/post/markdown-syntax/</link>
       <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://huangbaihua.gitee.io/walker/post/markdown-syntax/</guid>
+      <guid>https://huangbaihua.gitee.io/post/markdown-syntax/</guid>
       <description>
         
           &lt;p&gt;该文章包括在Hugo文件里使用基本的Markdown语法的示例，还演示了在Hugo主题里用Css是如何装饰基本的Html元素的。&lt;/p&gt;

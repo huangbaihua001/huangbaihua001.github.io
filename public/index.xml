@@ -2,17 +2,132 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>柏华</title>
-    <link>https://huangbaihua.gitee.io/walker/</link>
+    <link>https://huangbaihua.gitee.io/</link>
     <description>Recent content on 柏华</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright © 2008–2021, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
-    <lastBuildDate>Sun, 28 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://huangbaihua.gitee.io/walker/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 03 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://huangbaihua.gitee.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>10大系统设计面试题</title>
+      <link>https://huangbaihua.gitee.io/post/top-10-sdis/</link>
+      <pubDate>Sat, 03 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://huangbaihua.gitee.io/post/top-10-sdis/</guid>
+      <description>
+        
+          &lt;p&gt;如何设计大规模分布式系统已经成为软件工程师面试的标配。工程师们在系统设计面试中表现吃力，主要有两个原因：一、缺少开发大规模系统的经验；二、系统设计面试非机构化，开放性的特点，问题都没有标准答案。&lt;/p&gt;
+&lt;p&gt;在系统设计面试中表现出色将给你带来高回报，因为它能反映你处理复杂系统的能力，并能转化成面试公司为你提供的高级职位和高薪水。&lt;/p&gt;
+&lt;p&gt;本文列举了10大系统设计面试题，以及这类面试题，你应该如何来回答，讨论的关注点应该在哪里。&lt;/p&gt;
+&lt;p&gt;源文: &lt;a href=&#34;https://hackernoon.com/top-10-system-design-interview-questions-for-software-engineers-8561290f0444&#34;&gt;Top 10 System Design Interview Questions for Software Engineers&lt;/a&gt; (Fahim ul Haq)&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://huangbaihua.gitee.io/images/system_design.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;1设计一个短地址服务&#34;&gt;1、设计一个短地址服务&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://huangbaihua.gitee.io/images/top_10_1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;给定一个典型的长地址，你应该如何设计服务，生成一个短地址并保证唯一&lt;/p&gt;
+&lt;p&gt;做如下讨论:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;如何为每个URL生成一个唯一的ID?&lt;/li&gt;
+&lt;li&gt;如何大规模地生成唯一的ID（每秒都有成千上万的URL短地址请求）?&lt;/li&gt;
+&lt;li&gt;如何处理重定向?&lt;/li&gt;
+&lt;li&gt;如何支持自定义短网址?&lt;/li&gt;
+&lt;li&gt;如何删除过期的URL等?&lt;/li&gt;
+&lt;li&gt;如何跟踪点击统计?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;2设计面向全球用户的视频流媒体服务&#34;&gt;2、设计面向全球用户的视频流媒体服务&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://huangbaihua.gitee.io/images/top_10_2.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;一想到视频，意味着你的服务将储存和传输PB级的数据。 你要讨论的是如何有效的存储和分发数据，以便大量用户同时观看和分享视频。&lt;/p&gt;
+&lt;p&gt;此外，还要讨论：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;如何记录视频的统计数据？如视频总浏览量，投票量等&lt;/li&gt;
+&lt;li&gt;如何给视频添加实时的评论（如弹幕）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;3设计面向全球用户的聊天服务&#34;&gt;3、设计面向全球用户的聊天服务&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://huangbaihua.gitee.io/images/top_10_3.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;该服务面试官想知道的是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;如何设计用户间的一对一的聊天？&lt;/li&gt;
+&lt;li&gt;如何扩展你的设计来支持群聊？&lt;/li&gt;
+&lt;li&gt;当用户断网如何处理？&lt;/li&gt;
+&lt;li&gt;什么时候发送推送消息？&lt;/li&gt;
+&lt;li&gt;你能否提供端到端的加密？如何做？&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;4设计社交网络留言板服务&#34;&gt;4、设计社交网络，留言板服务&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://huangbaihua.gitee.io/images/top_10_4.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;用户可以发布问题或分享链接。其他用户可以回答问题或对共享链接发表评论。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;记录每个回答的统计数据，例如总浏览量、投票数等&lt;/li&gt;
+&lt;li&gt;用户可以关注其他用户或主题&lt;/li&gt;
+&lt;li&gt;时间线将由所有用户的最新问题和他们关注的话题组成（类似于信息流生成）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;5设计面向全球用户的文件存储和分享服务&#34;&gt;5、设计面向全球用户的文件存储和分享服务&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://huangbaihua.gitee.io/images/top_10_5.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;讨论点:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;用户如何上传/查看/搜索/共享文件或照片&lt;/li&gt;
+&lt;li&gt;如何跟踪文件共享的传输情况&lt;/li&gt;
+&lt;li&gt;如何允许多个用户编辑同一个文档&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;6服务上亿用户的社交媒体服务&#34;&gt;6、服务上亿用户的社交媒体服务&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://huangbaihua.gitee.io/images/top_10_6.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;当设计一个拥有数亿（或数十亿）用户的社交媒体服务时，面试官很想知道你会如何设计以下组件:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;高效存储和搜索帖子或微博&lt;/li&gt;
+&lt;li&gt;信息流的生成&lt;/li&gt;
+&lt;li&gt;社交图谱（谁与谁成为好友或谁关注谁--特别是当数百万用户关注一个名人的时候&lt;/li&gt;
+&lt;li&gt;很多时候，面试官会用整个面试的时间来讨论信息流的设计&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;7设计一个共享打车服务&#34;&gt;7、设计一个共享打车服务&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://huangbaihua.gitee.io/images/top_10_7.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;在设计共享打车服务的时候，要讨论以下内容&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;最核心的业务场景--当用户请求乘车时，如何有效地将他们与附近的司机匹配&lt;/li&gt;
+&lt;li&gt;如何为总是在移动的司机和乘车人存储数百万个地理位置&lt;/li&gt;
+&lt;li&gt;如何处理司机/骑手位置的更新（每秒更新数百万次）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;8设计搜索引擎相关服务&#34;&gt;8、设计搜索引擎相关服务&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://huangbaihua.gitee.io/images/top_10_8.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;对于Type-Ahead，当用户输入查询时，你需要设计一个服务，它将根据用户输入的关键字推荐前10个搜索词。讨论的内容包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;如何存储以前的搜索查询&lt;/li&gt;
+&lt;li&gt;如何保持返回的数据总是新的&lt;/li&gt;
+&lt;li&gt;如何为已经输入的字符串找到最佳匹配&lt;/li&gt;
+&lt;li&gt;如何处理更新和用户输入太快的情况&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;对于网络爬虫来说，我们必须设计一个可扩展的服务，它可以抓取整个Web，并且可以获取数以亿计的Web文档。讨论的内容包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;如何找到新的网页&lt;/li&gt;
+&lt;li&gt;如何对动态变化的网页进行优先级排序&lt;/li&gt;
+&lt;li&gt;如何确保你的爬虫不会无限地停留在同一个域名上&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;9设计一个api速率限制器&#34;&gt;9、设计一个API速率限制器&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://huangbaihua.gitee.io/images/top_10_9.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;开发一个速率限制器服务&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;限制一个实体在一个时间窗口内可以向一个API发送的请求数量，例如，每秒15个请求&lt;/li&gt;
+&lt;li&gt;速率限制应该适用于分布式设置，因为API是通过服务器集群访问的&lt;/li&gt;
+&lt;li&gt;你将如何处理流量调节&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;10设计一个查找附近的人或地点的服务&#34;&gt;10、设计一个查找附近的人或地点的服务&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://huangbaihua.gitee.io/images/top_10_10.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;这项服务将需要为数百万人/地点存储位置。讨论的内容包括&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;该服务的用户如何能够搜索附近的朋友或地点&lt;/li&gt;
+&lt;li&gt;如何对地方进行排名（根据距离、用户评价）&lt;/li&gt;
+&lt;li&gt;如何根据人口密度有效地存储位置数据（例如，纽约市的一个街区可能比一个小城市的人都多）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;(全文完)&lt;/p&gt;
+&lt;p style=&#34;color: red; text-align: left&#34;&gt;（因本人水平有限，错误和不足之处在所难免，敬请同仁批评指正。
+仅限个人学习研究交流使用，请勿用于任何商业用途。
+如有侵权，请联系作者，作者在收到消息后，会第一时间删除！）&lt;/p&gt;
+        
+      </description>
+    </item>
+    
     <item>
       <title>10倍程序员的秘密</title>
-      <link>https://huangbaihua.gitee.io/walker/post/the-mythical-10x-programmer/</link>
+      <link>https://huangbaihua.gitee.io/post/the-mythical-10x-programmer/</link>
       <pubDate>Sun, 28 Mar 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://huangbaihua.gitee.io/walker/post/the-mythical-10x-programmer/</guid>
+      <guid>https://huangbaihua.gitee.io/post/the-mythical-10x-programmer/</guid>
       <description>
         
           &lt;p&gt;高效的程序员应该具备哪些素质，&amp;quot;10倍程序员&amp;quot;给你答案!。&lt;/p&gt;
@@ -80,17 +195,19 @@
 &lt;p&gt;程序员的以上素质对工作输出的影响是10倍的，这一点我并不奇怪。综合来看，他们可以从可行模型的开始设计良好的实现，并且可能比替代方法简单好几倍。 有一种强调简单的方法，我喜欢称之为 &amp;quot;机会编程&amp;quot;
 。基本上，在每个开发步骤中，都会选择要实现的功能集，以便以最小的工作量对程序的用户群体产生最大的影响。&lt;/p&gt;
 &lt;p&gt;(全文完)&lt;/p&gt;
-&lt;p style=&#34;color: red; text-align: center&#34;&gt;（因本人水平有限，错误和不足之处在所难免，敬请同仁批评指正。仅限个人学习研究交流使用，请勿用于任何商业用途）&lt;/p&gt;
+&lt;p style=&#34;color: red; text-align: left&#34;&gt;（因本人水平有限，错误和不足之处在所难免，敬请同仁批评指正。
+仅限个人学习研究交流使用，请勿用于任何商业用途。
+如有侵权，请联系作者，作者在收到消息后，会第一时间删除！）&lt;/p&gt;
         
       </description>
     </item>
     
     <item>
       <title>Awesome CTO</title>
-      <link>https://huangbaihua.gitee.io/walker/post/awesome-cto/</link>
+      <link>https://huangbaihua.gitee.io/post/awesome-cto/</link>
       <pubDate>Sun, 28 Mar 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://huangbaihua.gitee.io/walker/post/awesome-cto/</guid>
+      <guid>https://huangbaihua.gitee.io/post/awesome-cto/</guid>
       <description>
         
           &lt;p&gt;不想当CTO的工程师不是好的工程师，那么如何才能成为一名优秀的CTO?&lt;/p&gt;
@@ -362,17 +479,19 @@
 &lt;/ul&gt;
 &lt;h2 id=&#34;版权&#34;&gt;版权&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&#34;https://creativecommons.org/publicdomain/zero/1.0/&#34;&gt;&lt;img src=&#34;https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/cc-zero.svg&#34; alt=&#34;CC0&#34;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p style=&#34;color: red; text-align: center&#34;&gt;（因本人水平有限，错误和不足之处在所难免，敬请同仁批评指正。仅限个人学习研究交流使用，请勿用于任何商业用途）&lt;/p&gt;
+&lt;p style=&#34;color: red; text-align: left&#34;&gt;（因本人水平有限，错误和不足之处在所难免，敬请同仁批评指正。
+仅限个人学习研究交流使用，请勿用于任何商业用途。
+如有侵权，请联系作者，作者在收到消息后，会第一时间删除！）&lt;/p&gt;
         
       </description>
     </item>
     
     <item>
       <title>Markdown 语法指南</title>
-      <link>https://huangbaihua.gitee.io/walker/post/markdown-syntax/</link>
+      <link>https://huangbaihua.gitee.io/post/markdown-syntax/</link>
       <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://huangbaihua.gitee.io/walker/post/markdown-syntax/</guid>
+      <guid>https://huangbaihua.gitee.io/post/markdown-syntax/</guid>
       <description>
         
           &lt;p&gt;该文章包括在Hugo文件里使用基本的Markdown语法的示例，还演示了在Hugo主题里用Css是如何装饰基本的Html元素的。&lt;/p&gt;
@@ -521,10 +640,10 @@
     
     <item>
       <title>Rich Content</title>
-      <link>https://huangbaihua.gitee.io/walker/post/rich-content/</link>
+      <link>https://huangbaihua.gitee.io/post/rich-content/</link>
       <pubDate>Sun, 10 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://huangbaihua.gitee.io/walker/post/rich-content/</guid>
+      <guid>https://huangbaihua.gitee.io/post/rich-content/</guid>
       <description>
         
           &lt;p&gt;Hugo我 ships with several &lt;a href=&#34;https://gohugo.io/content-management/shortcodes/#use-hugo-s-built-in-shortcodes&#34;&gt;Built-in Shortcodes&lt;/a&gt; for rich content, along with a &lt;a href=&#34;https://gohugo.io/about/hugo-and-gdpr/&#34;&gt;Privacy Config&lt;/a&gt; and a set of Simple Shortcodes that enable static and no-JS versions of various social media embeds.&lt;/p&gt;
@@ -612,10 +731,10 @@
     
     <item>
       <title>Placeholder Text</title>
-      <link>https://huangbaihua.gitee.io/walker/post/placeholder-text/</link>
+      <link>https://huangbaihua.gitee.io/post/placeholder-text/</link>
       <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://huangbaihua.gitee.io/walker/post/placeholder-text/</guid>
+      <guid>https://huangbaihua.gitee.io/post/placeholder-text/</guid>
       <description>
         
           &lt;p&gt;Lorem est tota propiore conpellat pectoribus de pectora summo.&lt;/p&gt;
@@ -647,10 +766,10 @@
     
     <item>
       <title>Math Typesetting</title>
-      <link>https://huangbaihua.gitee.io/walker/post/math-typesetting/</link>
+      <link>https://huangbaihua.gitee.io/post/math-typesetting/</link>
       <pubDate>Fri, 08 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://huangbaihua.gitee.io/walker/post/math-typesetting/</guid>
+      <guid>https://huangbaihua.gitee.io/post/math-typesetting/</guid>
       <description>
         
           &lt;p&gt;Mathematical notation in a Hugo project can be enabled by using third party JavaScript libraries.&lt;/p&gt;
@@ -681,10 +800,10 @@ $$&lt;/p&gt;
     
     <item>
       <title>Emoji Support</title>
-      <link>https://huangbaihua.gitee.io/walker/post/emoji-support/</link>
+      <link>https://huangbaihua.gitee.io/post/emoji-support/</link>
       <pubDate>Tue, 05 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://huangbaihua.gitee.io/walker/post/emoji-support/</guid>
+      <guid>https://huangbaihua.gitee.io/post/emoji-support/</guid>
       <description>
         
           &lt;p&gt;Emoji can be enabled in a Hugo project in a number of ways.&lt;/p&gt;

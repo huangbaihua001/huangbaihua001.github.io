@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>程序设计 on 柏华</title>
-    <link>https://huangbaihua.gitee.io/walker/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/</link>
+    <link>https://huangbaihua.gitee.io/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/</link>
     <description>Recent content in 程序设计 on 柏华</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright © 2008–2021, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
-    <lastBuildDate>Sun, 28 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://huangbaihua.gitee.io/walker/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 28 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://huangbaihua.gitee.io/categories/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>10倍程序员的秘密</title>
-      <link>https://huangbaihua.gitee.io/walker/post/the-mythical-10x-programmer/</link>
+      <link>https://huangbaihua.gitee.io/post/the-mythical-10x-programmer/</link>
       <pubDate>Sun, 28 Mar 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://huangbaihua.gitee.io/walker/post/the-mythical-10x-programmer/</guid>
+      <guid>https://huangbaihua.gitee.io/post/the-mythical-10x-programmer/</guid>
       <description>
         
           &lt;p&gt;高效的程序员应该具备哪些素质，&amp;quot;10倍程序员&amp;quot;给你答案!。&lt;/p&gt;
@@ -80,7 +80,9 @@
 &lt;p&gt;程序员的以上素质对工作输出的影响是10倍的，这一点我并不奇怪。综合来看，他们可以从可行模型的开始设计良好的实现，并且可能比替代方法简单好几倍。 有一种强调简单的方法，我喜欢称之为 &amp;quot;机会编程&amp;quot;
 。基本上，在每个开发步骤中，都会选择要实现的功能集，以便以最小的工作量对程序的用户群体产生最大的影响。&lt;/p&gt;
 &lt;p&gt;(全文完)&lt;/p&gt;
-&lt;p style=&#34;color: red; text-align: center&#34;&gt;（因本人水平有限，错误和不足之处在所难免，敬请同仁批评指正。仅限个人学习研究交流使用，请勿用于任何商业用途）&lt;/p&gt;
+&lt;p style=&#34;color: red; text-align: left&#34;&gt;（因本人水平有限，错误和不足之处在所难免，敬请同仁批评指正。
+仅限个人学习研究交流使用，请勿用于任何商业用途。
+如有侵权，请联系作者，作者在收到消息后，会第一时间删除！）&lt;/p&gt;
         
       </description>
     </item>
