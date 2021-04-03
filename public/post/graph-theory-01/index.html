@@ -249,7 +249,28 @@
 <p>如上图所示，图的应用很广泛，不仅在计算机领域，在其它领域（如电路设计,商业分析）基本是最核心的应用。 如果不理解图，那么开发并优化此类应用就无从下手。</p>
 <p>如上图所示，在现实业务场景中，只要能将业务对象抽象成节点和链接，那么由<strong>节点</strong>和<strong>链接</strong>就组成了一张<strong>图</strong>，就可以基于图的基本性质，基本算法，实现很多很酷的应用。比如工作中常用到的脑图就是图的典型应用。</p>
 <h2 id="图的基本概念">图的基本概念</h2>
-<p>文章完善中~敬请期待~</p>
+<p>一个图(Graph)包含两个部分，一部分是顶点(Vertices)，另一部分是边(Edges)。用集合记作：
+$$
+\color{blue} G = (V,E)
+$$
+其中V是非空有限顶点集合，E是边的集合(简称边集)。 当顶点分别是u,v时，连接两个顶点的边可以表示为一个二元组(u,v),或是 &lt;u,v&gt;。其中(u,v)表示的边是没有方向的,叫无向边，&lt;u,v&gt;表示的边是有方向的，叫有向边。</p>
+<p>图中的边都是无向的叫无向图，图中的边都是有向边叫有向图，图中即含有无向边又含有有向边，可以将其中所有的无向边表示为对应的有向边，从而成为有向图。</p>
+<p>如下所示无向图G1 由 5个顶点 和 7条无向边组成。
+$$
+顶点集合： \color{blue} V = \text{\textbraceleft}0,1,2,3,4\text{\textbraceright}
+$$
+$$
+边集： \color{blue} V = \text{\textbraceleft}(0,0),(0,2),(0,3),(2,3),(2,4),(3,4),(1,4)\text{\textbraceright}
+$$
+<img src="/images/graph/g1.png" alt="无向图G1"></p>
+<p>如下所示有向图G2 由 3个顶点 和 6条有向边组成。
+$$
+顶点集合： \color{blue} V = \text{\textbraceleft}A,B,C\text{\textbraceright}
+$$
+$$
+边集： \color{blue} V = \text{\textbraceleft}&lt;A,B&gt;,&lt;B,A&gt;,&lt;B,C&gt;,&lt;C,B&gt;,&lt;A,C&gt;,&lt;C,A&gt;\text{\textbraceright}
+$$
+<img src="/images/graph/g2.png" alt="有向图G2"></p>
 <h2 id="图的表示">图的表示</h2>
 <p>文章完善中~敬请期待~</p>
 <h2 id="图的连通性">图的连通性</h2>
@@ -475,6 +496,9 @@
 </svg>
 
 
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
 
 <footer class="footer">
   <div class="footer_inner wrap pale">

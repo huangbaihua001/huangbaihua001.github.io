@@ -26,7 +26,7 @@ codeMaxLines = 7
 codeLineNumbers = false
 
 # enable math notation. Switch to `true` to enable mathjax in your site.
-enableMathNotation = false
+enableMathNotation = true
 
 # directory(s) where your articles are located
 mainSections = ["post"] # see config details here https://gohugo.io/functions/where/#mainsections

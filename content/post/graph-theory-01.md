@@ -4,6 +4,7 @@ title = "离散数学-图论-理解图"
 date = "2021-04-03"
 description = "离散数学-图论-理解图"
 featured = true
+math = true
 tags = [
     "离散数学",
     "数据结构",
@@ -61,7 +62,31 @@ series = ["离散数学-图论"]
 
 ## 图的基本概念
 
-文章完善中~敬请期待~
+一个图(Graph)包含两个部分，一部分是顶点(Vertices)，另一部分是边(Edges)。用集合记作：
+$$
+\color{blue} G = (V,E)
+$$
+其中V是非空有限顶点集合，E是边的集合(简称边集)。 当顶点分别是u,v时，连接两个顶点的边可以表示为一个二元组(u,v),或是 <u,v>。其中(u,v)表示的边是没有方向的,叫无向边，<u,v>表示的边是有方向的，叫有向边。
+
+图中的边都是无向的叫无向图，图中的边都是有向边叫有向图，图中即含有无向边又含有有向边，可以将其中所有的无向边表示为对应的有向边，从而成为有向图。
+
+如下所示无向图G1 由 5个顶点 和 7条无向边组成。
+$$
+顶点集合： \color{blue} V = \text{\textbraceleft}0,1,2,3,4\text{\textbraceright}
+$$
+$$
+边集： \color{blue} V = \text{\textbraceleft}(0,0),(0,2),(0,3),(2,3),(2,4),(3,4),(1,4)\text{\textbraceright}
+$$
+![无向图G1](/images/graph/g1.png)
+
+如下所示有向图G2 由 3个顶点 和 6条有向边组成。
+$$
+顶点集合： \color{blue} V = \text{\textbraceleft}A,B,C\text{\textbraceright}
+$$
+$$
+边集： \color{blue} V = \text{\textbraceleft}<A,B>,<B,A>,<B,C>,<C,B>,<A,C>,<C,A>\text{\textbraceright}
+$$
+![有向图G2](/images/graph/g2.png)
 
 ## 图的表示
 
