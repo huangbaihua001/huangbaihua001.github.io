@@ -1,6 +1,6 @@
 # set `baseurl` to your root domain
 # if you set it to "/" share icons won't work properly on production
-baseurl = "https://huangbaihua.gitee.io/walker/"  # Include trailing slash
+baseurl = "https://huangbaihua.gitee.io/"  # Include trailing slash
 title = "baihua.huang"
 author = "黄柏华(baihua.huang)"
 copyright = "Copyright © 2008–2021, Steve Francia and the Hugo Authors; all rights reserved."

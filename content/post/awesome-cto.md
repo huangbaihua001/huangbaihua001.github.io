@@ -257,7 +257,9 @@ thumbnail = "images/building.png"
 [![CC0](https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/cc-zero.svg)](https://creativecommons.org/publicdomain/zero/1.0/)
 
 
-<p style="color: red; text-align: center">（因本人水平有限，错误和不足之处在所难免，敬请同仁批评指正。仅限个人学习研究交流使用，请勿用于任何商业用途）</p>
+<p style="color: red; text-align: left">（因本人水平有限，错误和不足之处在所难免，敬请同仁批评指正。
+仅限个人学习研究交流使用，请勿用于任何商业用途。
+如有侵权，请联系作者，作者在收到消息后，会第一时间删除！）</p>
 
 
 
