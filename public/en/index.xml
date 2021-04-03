@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Clarity</title>
+    <title>Baihua</title>
     <link>https://huangbaihua.gitee.io/en/</link>
-    <description>Recent content on Clarity</description>
+    <description>Recent content on Baihua</description>
     <generator>Hugo -- gohugo.io</generator>
-    <copyright>Copyright © 2008–2021, Steve Francia and the Hugo Authors; all rights reserved.</copyright>
+    <copyright>Copyright © 2008–2021, 柏华; all rights reserved. Powered by Hugo</copyright>
     <lastBuildDate>Wed, 24 Mar 2021 00:00:00 +0800</lastBuildDate><atom:link href="https://huangbaihua.gitee.io/en/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Markdown Syntax Guide</title>
