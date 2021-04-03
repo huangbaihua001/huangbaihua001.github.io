@@ -154,7 +154,7 @@ $$
 顶点集合： \color{blue} V = \text{\textbraceleft}0,1,2,3,4\text{\textbraceright}
 $$
 $$
-边集： \color{blue} V = \text{\textbraceleft}(0,0),(0,2),(0,3),(2,3),(2,4),(3,4),(1,4)\text{\textbraceright}
+边集： \color{blue} E = \text{\textbraceleft}(0,0),(0,2),(0,3),(2,3),(2,4),(3,4),(1,4)\text{\textbraceright}
 $$
 &lt;img src=&#34;https://huangbaihua.gitee.io/images/graph/g1.png&#34; alt=&#34;无向图G1&#34;&gt;&lt;/p&gt;
 &lt;p&gt;如下所示有向图G2 由 3个顶点 和 6条有向边组成。
@@ -162,7 +162,7 @@ $$
 顶点集合： \color{blue} V = \text{\textbraceleft}A,B,C\text{\textbraceright}
 $$
 $$
-边集： \color{blue} V = \text{\textbraceleft}&amp;lt;A,B&amp;gt;,&amp;lt;B,A&amp;gt;,&amp;lt;B,C&amp;gt;,&amp;lt;C,B&amp;gt;,&amp;lt;A,C&amp;gt;,&amp;lt;C,A&amp;gt;\text{\textbraceright}
+边集： \color{blue} E = \text{\textbraceleft}&amp;lt;A,B&amp;gt;,&amp;lt;B,A&amp;gt;,&amp;lt;B,C&amp;gt;,&amp;lt;C,B&amp;gt;,&amp;lt;A,C&amp;gt;,&amp;lt;C,A&amp;gt;\text{\textbraceright}
 $$
 &lt;img src=&#34;https://huangbaihua.gitee.io/images/graph/g2.png&#34; alt=&#34;有向图G2&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;图的表示&#34;&gt;图的表示&lt;/h2&gt;

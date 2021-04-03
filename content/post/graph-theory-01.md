@@ -75,7 +75,7 @@ $$
 顶点集合： \color{blue} V = \text{\textbraceleft}0,1,2,3,4\text{\textbraceright}
 $$
 $$
-边集： \color{blue} V = \text{\textbraceleft}(0,0),(0,2),(0,3),(2,3),(2,4),(3,4),(1,4)\text{\textbraceright}
+边集： \color{blue} E = \text{\textbraceleft}(0,0),(0,2),(0,3),(2,3),(2,4),(3,4),(1,4)\text{\textbraceright}
 $$
 ![无向图G1](/images/graph/g1.png)
 
@@ -84,7 +84,7 @@ $$
 顶点集合： \color{blue} V = \text{\textbraceleft}A,B,C\text{\textbraceright}
 $$
 $$
-边集： \color{blue} V = \text{\textbraceleft}<A,B>,<B,A>,<B,C>,<C,B>,<A,C>,<C,A>\text{\textbraceright}
+边集： \color{blue} E = \text{\textbraceleft}<A,B>,<B,A>,<B,C>,<C,B>,<A,C>,<C,A>\text{\textbraceright}
 $$
 ![有向图G2](/images/graph/g2.png)
 
