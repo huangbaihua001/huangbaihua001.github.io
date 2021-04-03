@@ -13,7 +13,7 @@ tags = [
 ]
 categories = [
     "主题",
-    "语法",
+    "Markdown语法",
 ]
 series = ["主题指南"]
 aliases = ["migrate-from-jekyl"]

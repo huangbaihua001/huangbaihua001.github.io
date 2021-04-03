@@ -11,11 +11,6 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="pt"
-                href="https://huangbaihua.gitee.io/pt/"
-                />
-    <xhtml:link
-                rel="alternate"
                 hreflang="zh"
                 href="https://huangbaihua.gitee.io/"
                 />
@@ -23,22 +18,30 @@
     <loc>https://huangbaihua.gitee.io/post/top-10-sdis/</loc>
     <lastmod>2021-04-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://huangbaihua.gitee.io/post/</loc>
+    <loc>https://huangbaihua.gitee.io/categories/</loc>
     <lastmod>2021-04-03T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://huangbaihua.gitee.io/en/post/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="pt"
-                href="https://huangbaihua.gitee.io/pt/post/"
+                href="https://huangbaihua.gitee.io/en/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="https://huangbaihua.gitee.io/post/"
+                href="https://huangbaihua.gitee.io/categories/"
+                />
+  </url><url>
+    <loc>https://huangbaihua.gitee.io/series/</loc>
+    <lastmod>2021-04-03T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://huangbaihua.gitee.io/en/series/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://huangbaihua.gitee.io/series/"
                 />
   </url><url>
     <loc>https://huangbaihua.gitee.io/tags/</loc>
@@ -50,11 +53,6 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="pt"
-                href="https://huangbaihua.gitee.io/pt/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
                 hreflang="zh"
                 href="https://huangbaihua.gitee.io/tags/"
                 />
@@ -62,10 +60,29 @@
     <loc>https://huangbaihua.gitee.io/tags/%E5%9B%BE%E8%AE%BA/</loc>
     <lastmod>2021-04-03T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://huangbaihua.gitee.io/post/</loc>
+    <lastmod>2021-04-03T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://huangbaihua.gitee.io/en/post/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://huangbaihua.gitee.io/post/"
+                />
+  </url><url>
     <loc>https://huangbaihua.gitee.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</loc>
     <lastmod>2021-04-03T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://huangbaihua.gitee.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/</loc>
+    <lastmod>2021-04-03T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://huangbaihua.gitee.io/tags/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/</loc>
+    <lastmod>2021-04-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://huangbaihua.gitee.io/series/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6-%E5%9B%BE%E8%AE%BA/</loc>
     <lastmod>2021-04-03T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://huangbaihua.gitee.io/post/graph-theory-03/</loc>
@@ -91,24 +108,6 @@
   </url><url>
     <loc>https://huangbaihua.gitee.io/post/awesome-cto/</loc>
     <lastmod>2021-03-28T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://huangbaihua.gitee.io/categories/</loc>
-    <lastmod>2021-03-28T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://huangbaihua.gitee.io/en/categories/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="pt"
-                href="https://huangbaihua.gitee.io/pt/categories/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="https://huangbaihua.gitee.io/categories/"
-                />
   </url><url>
     <loc>https://huangbaihua.gitee.io/tags/%E6%8A%80%E6%9C%AF%E7%AE%A1%E7%90%86/</loc>
     <lastmod>2021-03-28T00:00:00+00:00</lastmod>
@@ -141,6 +140,12 @@
                 href="https://huangbaihua.gitee.io/about/"
                 />
   </url><url>
+    <loc>https://huangbaihua.gitee.io/dsclaimer/</loc>
+    <lastmod>2021-03-24T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://huangbaihua.gitee.io/tags/%E5%85%8D%E8%B4%A3%E5%A3%B0%E6%98%8E/</loc>
+    <lastmod>2021-03-24T00:00:00+08:00</lastmod>
+  </url><url>
     <loc>https://huangbaihua.gitee.io/tags/%E5%85%B3%E4%BA%8E/</loc>
     <lastmod>2021-03-24T00:00:00+08:00</lastmod>
   </url><url>
@@ -153,11 +158,6 @@
                 rel="alternate"
                 hreflang="en"
                 href="https://huangbaihua.gitee.io/en/tags/css/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="pt"
-                href="https://huangbaihua.gitee.io/pt/tags/css/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -174,11 +174,6 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="pt"
-                href="https://huangbaihua.gitee.io/pt/tags/html/"
-                />
-    <xhtml:link
-                rel="alternate"
                 hreflang="zh"
                 href="https://huangbaihua.gitee.io/tags/html/"
                 />
@@ -189,11 +184,6 @@
                 rel="alternate"
                 hreflang="en"
                 href="https://huangbaihua.gitee.io/en/tags/markdown/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="pt"
-                href="https://huangbaihua.gitee.io/pt/tags/markdown/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -210,32 +200,12 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="pt"
-                href="https://huangbaihua.gitee.io/pt/post/markdown-syntax/"
-                />
-    <xhtml:link
-                rel="alternate"
                 hreflang="zh"
                 href="https://huangbaihua.gitee.io/post/markdown-syntax/"
                 />
   </url><url>
-    <loc>https://huangbaihua.gitee.io/series/</loc>
+    <loc>https://huangbaihua.gitee.io/categories/markdown%E8%AF%AD%E6%B3%95/</loc>
     <lastmod>2019-03-11T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://huangbaihua.gitee.io/en/series/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="pt"
-                href="https://huangbaihua.gitee.io/pt/series/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="https://huangbaihua.gitee.io/series/"
-                />
   </url><url>
     <loc>https://huangbaihua.gitee.io/tags/%E4%B8%BB%E9%A2%98/</loc>
     <lastmod>2019-03-11T00:00:00+00:00</lastmod>
@@ -248,54 +218,6 @@
   </url><url>
     <loc>https://huangbaihua.gitee.io/tags/%E7%89%B9%E6%80%A7/</loc>
     <lastmod>2019-03-11T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://huangbaihua.gitee.io/categories/%E8%AF%AD%E6%B3%95/</loc>
-    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://huangbaihua.gitee.io/tags/privacy/</loc>
-    <lastmod>2019-03-10T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://huangbaihua.gitee.io/en/tags/privacy/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="https://huangbaihua.gitee.io/tags/privacy/"
-                />
-  </url><url>
-    <loc>https://huangbaihua.gitee.io/post/rich-content/</loc>
-    <lastmod>2019-03-10T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://huangbaihua.gitee.io/en/post/rich-content/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="https://huangbaihua.gitee.io/post/rich-content/"
-                />
-  </url><url>
-    <loc>https://huangbaihua.gitee.io/tags/shortcodes/</loc>
-    <lastmod>2019-03-10T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://huangbaihua.gitee.io/en/tags/shortcodes/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="https://huangbaihua.gitee.io/tags/shortcodes/"
-                />
-  </url><url>
-    <loc>https://huangbaihua.gitee.io/post/placeholder-text/</loc>
-    <lastmod>2019-03-09T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://huangbaihua.gitee.io/tags/text/</loc>
-    <lastmod>2019-03-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://huangbaihua.gitee.io/post/math-typesetting/</loc>
     <lastmod>2019-03-08T00:00:00+00:00</lastmod>

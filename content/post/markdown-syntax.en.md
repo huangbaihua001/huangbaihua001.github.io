@@ -13,7 +13,7 @@ tags = [
 ]
 categories = [
     "themes",
-    "syntax",
+    "markdown syntax",
 ]
 series = ["Themes Guide"]
 aliases = ["migrate-from-jekyl"]

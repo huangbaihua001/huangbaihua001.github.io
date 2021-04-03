@@ -5,22 +5,15 @@
 
 [[main]]
   name = "文章"
-  url = "post/rich-content/"
+  url = "post/"
   weight = -109
 
 # Submenus are done this way: parent -> identifier
 [[main]]
-  name = "链接"
+  name = "免责声明"
   identifier = "Links"
   weight = -108
-[[main]]
-  parent = "Links"
-  name = "LinkedIn"
-  url = "https://www.linkedin.com/"
-[[main]]
-  parent = "Links"
-  name = "Twitter"
-  url = "https://twitter.com/"
+  url = "dsclaimer/"
 
 [[main]]
   name = "关于柏华"

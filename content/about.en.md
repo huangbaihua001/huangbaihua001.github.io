@@ -24,7 +24,7 @@ About Baihua
 
 <pre>
 
-13 years of experience in software development, more than 5 years of project and team management experience.
+Full-stack developer,13 years of experience in software development, more than 5 years of project and team management experience.
 Specialized in system analysis, technical architecture,software engineering,and soft development consulting.
 I have some experience and insights in high performance, high availability,distributed,high concurrency,and
 large scale data processing systems.

@@ -3,6 +3,7 @@
 {{- if or .Params.enableMathNotation $s.enableMathNotation }}
   {{ partialCached "math" . }}
 {{- end }}
+
 <footer class="footer">
   <div class="footer_inner wrap pale">
     <img src='{{ absURL (default "icons/favicon.png" $s.footerLogo) }}' class="icon icon_2 transparent" alt="{{ $t }}">

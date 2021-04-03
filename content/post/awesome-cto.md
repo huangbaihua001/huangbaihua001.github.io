@@ -1,8 +1,8 @@
 +++ aliases = ["posts", "articles", "blog", "translate"]
-title = "Awesome CTO"
+title = "优秀的首席技术官"
 author = "柏华"
 date = "2021-03-28"
-description = "Awesome CTO"
+description = "优秀的首席技术官"
 categories = [
 "技术管理",
 "系统架构",
@@ -11,12 +11,12 @@ tags = ["技术管理","系统架构", "译文"]
 thumbnail = "images/building.png"
 +++
 
-不想当CTO的工程师不是好的工程师，那么如何才能成为一名优秀的CTO?
+不想当CTO的工程师不是合格的工程师，那么如何才能成为一名优秀的CTO? 本文从网络上精心挑选了一系列文章，对有志成为一名CTO的工程师提供一些经验和方法。
 <!--more-->
 
 源文: [Awesome CTO](https://github.com/kuchin/awesome-cto) (kuchin)
 
-# Awesome CTO 优秀的首席技术官
+# 优秀的首席技术官
 
 ## 目录
 
@@ -257,9 +257,7 @@ thumbnail = "images/building.png"
 [![CC0](https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/cc-zero.svg)](https://creativecommons.org/publicdomain/zero/1.0/)
 
 
-<p style="color: red; text-align: left">（因本人水平有限，错误和不足之处在所难免，敬请同仁批评指正。
-仅限个人学习研究交流使用，请勿用于任何商业用途。
-如有侵权，请联系作者，作者在收到消息后，会第一时间删除！）</p>
+
 
 
 
