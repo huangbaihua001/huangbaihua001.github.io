@@ -5,8 +5,9 @@
 {{- end }}
 <footer class="footer">
   <div class="footer_inner wrap pale">
-    <img src='{{ absURL (default "icons/apple-touch-icon.png" $s.footerLogo) }}' class="icon icon_2 transparent" alt="{{ $t }}">
-    <p>{{ T "copyright" }}{{ with $s.since }}&nbsp;{{ . }}-{{ end }}&nbsp;<span class="year"></span>&nbsp;{{ upper $t }}. {{ T "all_rights" }}</p>
+    <img src='{{ absURL (default "icons/favicon.png" $s.footerLogo) }}' class="icon icon_2 transparent" alt="{{ $t }}">
+    <p>{{ T "copyright" }}{{ with $s.since }}&nbsp;{{ . }}-{{ end }}&nbsp;<span class="year"></span>&nbsp;{{ upper $t }}. {{ T "all_rights" }} <span>&nbsp;&nbsp;&nbsp;&nbsp;Powered by <a href="https://gohugo.io/" style="color: blue">Hugo</a>,<a href="https://themes.gohugo.io/hugo-clarity/" style="color: blue">Clarity</a></span>
+    </p>
     {{- partialCached "top" .}}
   </div>
 </footer>
