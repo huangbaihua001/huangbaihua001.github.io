@@ -15,14 +15,14 @@
       <guid>https://huangbaihua.gitee.io/post/top-10-sdis/</guid>
       <description>
         
-          &lt;p&gt;如何设计大规模分布式系统已经成为软件工程师面试的标配。工程师们在系统设计面试中表现吃力，主要有两个原因：一、缺少开发大规模系统的经验；二、系统设计面试非机构化，开放性的特点，问题都没有标准答案。&lt;/p&gt;
+          &lt;p&gt;如何设计大规模分布式系统已经成为软件工程师面试的标配。工程师们在系统设计面试中表现吃力，主要有两个原因：一、缺少开发大规模系统的经验；二、系统设计面试非机构化，开放性的特点，通常问题都没有标准答案。&lt;/p&gt;
 &lt;p&gt;在系统设计面试中表现出色将给你带来高回报，因为它能反映你处理复杂系统的能力，并能转化成面试公司为你提供的高级职位和高薪水。&lt;/p&gt;
-&lt;p&gt;本文列举了10大系统设计面试题，以及这类面试题，你应该如何来回答，讨论的关注点应该在哪里。&lt;/p&gt;
+&lt;p&gt;本文列举了10大系统设计面试题，在这些面试题中，应该如何回答，跟面试官讨论的关键点应该在哪里。&lt;/p&gt;
 &lt;p&gt;源文: &lt;a href=&#34;https://hackernoon.com/top-10-system-design-interview-questions-for-software-engineers-8561290f0444&#34;&gt;Top 10 System Design Interview Questions for Software Engineers&lt;/a&gt; (Fahim ul Haq)&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://huangbaihua.gitee.io/images/system_design.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;1设计一个短地址服务&#34;&gt;1、设计一个短地址服务&lt;/h3&gt;
 &lt;p&gt;&lt;img src=&#34;https://huangbaihua.gitee.io/images/top_10_1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;p&gt;给定一个典型的长地址，你应该如何设计服务，生成一个短地址并保证唯一&lt;/p&gt;
+&lt;p&gt;给定一个典型的长地址(URL)，如何设计服务生成一个短地址并保证它的唯一&lt;/p&gt;
 &lt;p&gt;做如下讨论:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;如何为每个URL生成一个唯一的ID?&lt;/li&gt;
