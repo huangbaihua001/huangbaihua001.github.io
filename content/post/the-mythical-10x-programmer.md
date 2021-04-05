@@ -7,9 +7,9 @@ categories = [
 "系统架构",
 ]
 tags = ["系统架构","译文"]
-thumbnail = "images/building.png"
 isCJKLanguage = true
 +++
+![](/images/graph/g5.jpg)
 
 高效的程序员应该具备哪些素质，"10倍程序员"给你答案!。
 

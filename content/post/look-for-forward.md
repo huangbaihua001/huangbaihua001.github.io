@@ -10,6 +10,7 @@ tags = [
 
 isCJKLanguage = true
 +++
+![](/images/graph/g7.jpg)
 
 2021年度计划分享预告，敬请期待!
 

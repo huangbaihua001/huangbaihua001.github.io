@@ -15,7 +15,8 @@
       <guid>https://huangbaihua.gitee.io/post/graph-theory-03/</guid>
       <description>
         
-          &lt;p&gt;本文是 《离散数学-图论》系列文章的第三篇，主要讨论了图的应用，包括最小生成树的生成(Prim算法和Kruskal算法),最短路径的基本实现(Dikstra算法)&lt;/p&gt;
+          &lt;p&gt;&lt;img src=&#34;https://huangbaihua.gitee.io/images/graph/g10.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;本文是 《离散数学-图论》系列文章的第三篇，主要讨论了图的应用，包括最小生成树的生成(Prim算法和Kruskal算法),最短路径的基本实现(Dikstra算法)&lt;/p&gt;
 &lt;h1 id=&#34;离散数学-图论-图的应用&#34;&gt;离散数学-图论-图的应用&lt;/h1&gt;
 &lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
 &lt;p&gt;文章完善中~敬请期待~&lt;/p&gt;
@@ -41,7 +42,8 @@
       <guid>https://huangbaihua.gitee.io/post/graph-theory-02/</guid>
       <description>
         
-          &lt;p&gt;本文是 《离散数学-图论》系列文章的第二篇，主要讨论了树(一种特殊的图)。包括树的基本概念和性质，二叉查找树，平衡查找树，红黑树的基本实现。&lt;/p&gt;
+          &lt;p&gt;&lt;img src=&#34;https://huangbaihua.gitee.io/images/graph/g9.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;本文是 《离散数学-图论》系列文章的第二篇，主要讨论了树(一种特殊的图)。包括树的基本概念和性质，二叉查找树，平衡查找树，红黑树的基本实现。&lt;/p&gt;
 &lt;h1 id=&#34;离散数学-图论-树一种特殊的图&#34;&gt;离散数学-图论-树,一种特殊的图&lt;/h1&gt;
 &lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
 &lt;p&gt;文章完善中~敬请期待~&lt;/p&gt;
