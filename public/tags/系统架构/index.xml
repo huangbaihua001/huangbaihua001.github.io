@@ -127,7 +127,7 @@
       <guid>https://huangbaihua.gitee.io/post/the-clean-architecture/</guid>
       <description>
         
-          &lt;p&gt;&lt;a href=&#34;https://blog.cleancoder.com/&#34;&gt;Bob大叔&lt;/a&gt;(编程界骨灰级人物)的清晰架构。&lt;/p&gt;
+          &lt;p&gt;&lt;a href=&#34;https://blog.cleancoder.com/&#34;&gt;Bob&lt;/a&gt;(编程界骨灰级人物)的清晰架构。&lt;/p&gt;
 &lt;p&gt;源文: &lt;a href=&#34;https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html&#34;&gt;The Clean Architecture&lt;/a&gt; (Robert C. Martin (Uncle Bob)&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://huangbaihua.gitee.io/images/CleanArchitecture.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;在过去的几年里，我们看到了关于系统架构一系列想法。这些想法包括：&lt;/p&gt;
@@ -180,6 +180,7 @@
 &lt;p&gt;所以当我们跨边界传递数据时，总是以对内层最方便的形式传递。&lt;/p&gt;
 &lt;h1 id=&#34;结论&#34;&gt;结论&lt;/h1&gt;
 &lt;p&gt;遵循这些简单的规则并不难，而且会让你在今后的工作中省去很多麻烦。通过将软件分成若干层，并遵守&lt;font color=&#39;red&#39;&gt;依赖规则&lt;/font&gt;，你将创建一个本质上可测试的系统，并带来所有的好处。当系统中的任何外部部分变得过时，比如数据库或网络框架，你可以用最少的代价替换这些过时的元素。&lt;/p&gt;
+&lt;p&gt;(全文完)&lt;/p&gt;
         
       </description>
     </item>
