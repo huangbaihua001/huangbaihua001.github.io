@@ -4,10 +4,9 @@ author = "柏华"
 date = "2021-03-28"
 description = "10倍程序员的秘密"
 categories = [
-"程序设计",
-"经典译文",
+"系统架构",
 ]
-tags = ["程序员","译文"]
+tags = ["系统架构","译文"]
 thumbnail = "images/building.png"
 isCJKLanguage = true
 +++
