@@ -11,14 +11,13 @@ tags = [
 
 isCJKLanguage = true
 +++
+![](/images/CleanArchitecture.jpg)
 
 [Bob](https://blog.cleancoder.com/)(编程界骨灰级人物)的清晰架构。
 
 <!--more-->
 
 源文: [The Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) (Robert C. Martin (Uncle Bob)
-
-![](/images/CleanArchitecture.jpg)
 
 在过去的几年里，我们看到了关于系统架构一系列想法。这些想法包括：
 * Alistair Cockburn提出的[六边形架构](http://alistair.cockburn.us/Hexagonal+architecture)(又称端口和适配器架构),Steve Freeman和Nat Pryce在他们精彩的[《测试驱动的面向对象软件开发》](http://www.amazon.com/Growing-Object-Oriented-Software-Guided-Tests/dp/0321503627)"一书中有应用

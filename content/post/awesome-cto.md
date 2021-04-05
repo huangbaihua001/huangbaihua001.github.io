@@ -1,4 +1,5 @@
-+++ aliases = ["posts", "articles", "blog", "translate"]
++++ 
+aliases = ["posts", "articles", "blog", "translate"]
 title = "优秀的首席技术官"
 author = "柏华"
 date = "2021-03-28"
