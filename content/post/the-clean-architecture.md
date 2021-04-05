@@ -2,7 +2,7 @@
 author = "柏华"
 title = "清晰架构"
 date = "2021-04-03"
-description = "Bob大叔的清晰架构"
+description = "Bob的清晰架构"
 featured = true
 tags = [
 "系统架构",
@@ -12,7 +12,7 @@ tags = [
 
 +++
 
-[Bob大叔](https://blog.cleancoder.com/)(编程界骨灰级人物)的清晰架构。
+[Bob](https://blog.cleancoder.com/)(编程界骨灰级人物)的清晰架构。
 
 <!--more-->
 
@@ -94,3 +94,5 @@ tags = [
 
 # 结论
 遵循这些简单的规则并不难，而且会让你在今后的工作中省去很多麻烦。通过将软件分成若干层，并遵守<font color='red'>依赖规则</font>，你将创建一个本质上可测试的系统，并带来所有的好处。当系统中的任何外部部分变得过时，比如数据库或网络框架，你可以用最少的代价替换这些过时的元素。
+
+(全文完)
