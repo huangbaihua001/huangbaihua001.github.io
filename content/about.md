@@ -5,6 +5,7 @@ description = "作者个人简介"
 tags = [
 "关于"
 ]
+isCJKLanguage = true
 +++
 
 ---

@@ -5,6 +5,7 @@ description = "免责声明"
 tags = [
 "免责声明"
 ]
+isCJKLanguage = true
 +++
 
 

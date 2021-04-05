@@ -2,6 +2,7 @@
   {{- $s := T "share_on" }}
   <div class="post_share">
     {{ $s }}:
+
     <a href="https://twitter.com/intent/tweet?text={{ .Title }}&url={{ .Permalink }}&tw_p=tweetbutton" class="twitter" title="{{ $s }} Twitter" target="_blank" rel="nofollow">
       {{ partial "sprite" (dict "icon" "twitter") }}
     </a>
@@ -11,7 +12,7 @@
     <a href="#linkedinshare" id = "linkedinshare" class="linkedin" title="{{ $s }} LinkedIn" rel="nofollow">
       {{ partial "sprite" (dict "icon" "linkedin") }}
     </a>
-    <a href="{{ .Permalink }}" title="Copy Link" class="link link_yank">
+    <a href="{{ .Permalink }}" title="复制链接" class="link link_yank">
       {{ partial "sprite" (dict "icon" "copy") }}
     </a>
   </div>
