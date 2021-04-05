@@ -120,6 +120,71 @@
     </item>
     
     <item>
+      <title>清晰架构</title>
+      <link>https://huangbaihua.gitee.io/post/the-clean-architecture/</link>
+      <pubDate>Sat, 03 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://huangbaihua.gitee.io/post/the-clean-architecture/</guid>
+      <description>
+        
+          &lt;p&gt;&lt;a href=&#34;https://blog.cleancoder.com/&#34;&gt;Bob大叔&lt;/a&gt;(编程界骨灰级人物)的清晰架构。&lt;/p&gt;
+&lt;p&gt;源文: &lt;a href=&#34;https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html&#34;&gt;The Clean Architecture&lt;/a&gt; (Robert C. Martin (Uncle Bob)&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://huangbaihua.gitee.io/images/CleanArchitecture.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;在过去的几年里，我们看到了关于系统架构一系列想法。这些想法包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Alistair Cockburn提出的&lt;a href=&#34;http://alistair.cockburn.us/Hexagonal+architecture&#34;&gt;六边形架构&lt;/a&gt;(又称端口和适配器架构),Steve Freeman和Nat Pryce在他们精彩的&lt;a href=&#34;http://www.amazon.com/Growing-Object-Oriented-Software-Guided-Tests/dp/0321503627&#34;&gt;《测试驱动的面向对象软件开发》&lt;/a&gt;&amp;quot;一书中有应用&lt;/li&gt;
+&lt;li&gt;Jeffrey Palermo的&lt;a href=&#34;http://jeffreypalermo.com/blog/the-onion-architecture-part-1/&#34;&gt;洋葱架构&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;作者本人去年提出的&lt;a href=&#34;http://blog.cleancoders.com/2011-09-30-Screaming-Architecture&#34;&gt;尖叫的架构&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.amazon.com/Lean-Architecture-Agile-Software-Development/dp/0470684208/&#34;&gt;DCI&lt;/a&gt;,James Coplien和Trygve Reenskaug&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.amazon.com/Object-Oriented-Software-Engineering-Approach/dp/0201544350&#34;&gt;BCE&lt;/a&gt;,Jacobson《面向对象软件工程》：一种用例驱动的方法&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这些架构尽管细节不同，但都非常类似。它们都有相同的目标，即&lt;font color=&#39;red&#39;&gt;关注点分离(separation of concerns)&lt;/font&gt;。它们都通过软件分层的方法来实现这种分离，至少有一层业务规则层，一层接口层。&lt;/p&gt;
+&lt;p&gt;每种架构都会产生如下特点的系统：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;不依赖框架。架构不依赖这些功能丰富的软件库，使得系统仅将框架当工具使用，而不是将你的系统融入到框架的限制之中。&lt;/li&gt;
+&lt;li&gt;可测试的。业务层可以在没有界面，数据库，Web服务器和其它任何外部元素情况下进行测试。&lt;/li&gt;
+&lt;li&gt;不依赖界面。不需要修改系统的其它部分，就能很容易的修改界面。例如，不需要修改业务逻辑，一个Web界面可以替换成控制台界面。&lt;/li&gt;
+&lt;li&gt;不依赖数据库。你可以把Oracle或者SQL Server换成Mongo、BigTable、CouchDB或者其他的东西。业务逻辑不受数据库的约束。&lt;/li&gt;
+&lt;li&gt;不依赖任何外部元素。实际上系统的业务规则不关心外部世界。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;本文最上面的图试图将这些架构的想法综合成一种可操作的想法。&lt;/p&gt;
+&lt;h1 id=&#34;依赖规则&#34;&gt;依赖规则&lt;/h1&gt;
+&lt;p&gt;图中同心圆代表软件的不同领域。一般来说，越往里走，软件的层次越高。外层是机制。内层是策略。&lt;/p&gt;
+&lt;p&gt;使这个架构发挥作用的首要规则是&lt;font color=&#39;red&#39;&gt;依赖规则&lt;/font&gt;。该规则明确源代码依赖只能指向内层依赖。内层不能知道外层，特别是，外层声明的一些命名不能被内层的代码提及，包括函数，类，变量或任何其它命名的软件实体。&lt;/p&gt;
+&lt;p&gt;同样的道理，外层使用的数据格式不能用于内层，尤其是这些格式是由外层的框架生成的时候。我们不希望外层的东西影响到内层。&lt;/p&gt;
+&lt;h1 id=&#34;实体&#34;&gt;实体&lt;/h1&gt;
+&lt;p&gt;实体封装了&lt;font color=&#39;red&#39;&gt;企业范围内(Enterprise Wide)&lt;/font&gt;的业务规则。 一个实体可以是一个带有方法的对象，也可以是一组数据结构和函数。只要实体可以被企业中的许多应用所使用到，其它都不重要。&lt;/p&gt;
+&lt;p&gt;如果没有企业，只是在编写一个单一的应用程序，那么这些实体就是&lt;font color=&#39;red&#39;&gt;应用程序的业务对象&lt;/font&gt;。它们封装了最通用和高级的规则。当外部事物发生变化时，它们是最不可能改变的。例如，你不会期望这些对象会受到页面导航或安全性的变化的影响。任何特定应用程序的操作变化都不应该影响&lt;font color=&#39;red&#39;&gt;实体层&lt;/font&gt;&lt;/p&gt;
+&lt;h1 id=&#34;用例&#34;&gt;用例&lt;/h1&gt;
+&lt;p&gt;该层包含了&lt;font color=&#39;red&#39;&gt;特定应用(application specific)&lt;/font&gt;的业务规则。它封装并实现了系统的所有用例。这些用例协调进出实体的数据流，并指导实体使用&lt;font color=&#39;red&#39;&gt;企业范围内(Enterprise Wide)&lt;/font&gt;业务规则来实现用例的功能。&lt;/p&gt;
+&lt;p&gt;我们不希望这一层的变化会影响实体。我们也不希望这一层的变化会受到外部的影响，如数据库、界面或任何常见框架。这一层与这些关注点是隔离的。&lt;/p&gt;
+&lt;p&gt;但是，应用程序的操作变化会影响到用例，从而影响到这一层。如果一个用例的细节发生变化，那么这一层的一些代码肯定会受到影响。&lt;/p&gt;
+&lt;h1 id=&#34;接口适配&#34;&gt;接口适配&lt;/h1&gt;
+&lt;p&gt;该层是组适配器,它将数据从对用例和实体最方便的格式转换为对一些外部机构（如数据库或Web）最方便的格式。例如，在这一层，包含GUI的整个MVC架构层，表示层，界面层，控制器都在这一层。模型很可能只是数据结构，从控制器传递到用例，再从用例传回给表示层和界面层&lt;/p&gt;
+&lt;p&gt;同样，在这一层中，数据也被从对实体和用例最方便的形式转换为对任何持久化框架最方便的形式，即数据库。在这一层中，任何代码都不应该对数据库有任何了解。如果数据库是一个SQL数据库，那么所有的SQL应该限制在这一层，特别是这一层中与数据库有关的部分。&lt;/p&gt;
+&lt;p&gt;另外，在这一层中还有任何其他必要的适配器，以便将数据从一些外部形式（如外部服务）转换为用例和实体使用的内部形式。&lt;/p&gt;
+&lt;h1 id=&#34;框架和驱动&#34;&gt;框架和驱动&lt;/h1&gt;
+&lt;p&gt;最外层一般由框架和工具组成，如数据库、Web框架等。一般在这一层除了写一些与内层通讯的胶水代码外，你不会写太多代码。&lt;/p&gt;
+&lt;p&gt;这一层是所有的细节所在。Web是一个细节。数据库是一个细节。我们把这些东西放在最外层，在这一层它们不会对内层造成什么影响。&lt;/p&gt;
+&lt;h1 id=&#34;只有四层&#34;&gt;只有四层?&lt;/h1&gt;
+&lt;p&gt;不，这四层仅仅是示意图。你可能会发现你需要的不仅仅是这四层，没有规定说你必须永远只有这四层，然而，&lt;font color=&#39;red&#39;&gt;&amp;quot;依赖性规则 &amp;quot;&lt;/font&gt;总是适用的。源代码的依赖性总是向内指向。
+越向内层，抽象程度也会增加。最外层是低级的具体实现细节。随着向内层移动，软件越来越抽象，并封装了更高层次的策略。最内层是最抽象的(The inner most circle is the most general)。&lt;/p&gt;
+&lt;h1 id=&#34;跨越边界&#34;&gt;跨越边界&lt;/h1&gt;
+&lt;p&gt;在图的右下方是我们如何跨越层边界的一个例子。它显示了控制器和展示层与下一层的用例进行通讯。请注意控制的流程。它从控制器开始，经过用例，然后最终在展示层执行。还请注意源代码的依赖关系。它们中的每一个都向内指向用例。&lt;/p&gt;
+&lt;p&gt;我们通常通过使用&lt;a href=&#34;http://en.wikipedia.org/wiki/Dependency_inversion_principle&#34;&gt;依赖反转原则&lt;/a&gt;来解决这个明显的矛盾。例如，在像Java这样的语言中，我们会安排合理的接口和继承关系，使源代码的依赖关系在恰当的点上不让控制流跨越边界。&lt;/p&gt;
+&lt;p&gt;例如，考虑用例需要调用表示层。但是，这个调用一定不能是直接的，因为那会&lt;font color=&#39;red&#39;&gt;违反依赖规则&lt;/font&gt;。外层的名字不能被内层的名字所提及。所以，我们让用例调用内层中的一个接口（这里显示为用例输出端口），并让外层中的表示层去实现它。&lt;/p&gt;
+&lt;p&gt;同样的技术被用来跨越架构中的所有边界。我们利用动态多态的优势，创建与控制流相反的源代码依赖关系，这样无论控制流向哪个方向，我们都能符合 &lt;font color=&#39;red&#39;&gt;&amp;quot;依赖规则&amp;quot;&lt;/font&gt;。&lt;/p&gt;
+&lt;h1 id=&#34;哪些数据跨越边界&#34;&gt;哪些数据跨越边界&lt;/h1&gt;
+&lt;p&gt;通常情况下，跨越边界的数据是简单的数据结构。如果你喜欢的话，你可以使用基本结构或者简单的数据传输对象。或者数据可以简单地成为函数调用中的参数。或者你可以把它打包成一个哈希图，或者构造成一个对象。重要的是，隔离的、简单的、数据结构是跨边界传递的。我们不希望直接传递&lt;font color=&#39;red&#39;&gt;实体&lt;/font&gt;或数据库行。我们不希望数据结构有任何违反&lt;font color=&#39;red&#39;&gt;依赖规则&lt;/font&gt;的依赖关系。&lt;/p&gt;
+&lt;p&gt;例如，许多数据库框架在响应查询时都会返回一个方便的数据格式。我们可以将其称为RowStructure。我们不希望将这个行结构向内传递到一个边界上。这将违反&lt;font color=&#39;red&#39;&gt;依赖规则&lt;/font&gt;，因为它会迫使内层知道一些关于外层的事情。&lt;/p&gt;
+&lt;p&gt;所以当我们跨边界传递数据时，总是以对内层最方便的形式传递。&lt;/p&gt;
+&lt;h1 id=&#34;结论&#34;&gt;结论&lt;/h1&gt;
+&lt;p&gt;遵循这些简单的规则并不难，而且会让你在今后的工作中省去很多麻烦。通过将软件分成若干层，并遵守&lt;font color=&#39;red&#39;&gt;依赖规则&lt;/font&gt;，你将创建一个本质上可测试的系统，并带来所有的好处。当系统中的任何外部部分变得过时，比如数据库或网络框架，你可以用最少的代价替换这些过时的元素。&lt;/p&gt;
+        
+      </description>
+    </item>
+    
+    <item>
       <title>优秀的首席技术官</title>
       <link>https://huangbaihua.gitee.io/post/awesome-cto/</link>
       <pubDate>Sun, 28 Mar 2021 00:00:00 +0000</pubDate>
