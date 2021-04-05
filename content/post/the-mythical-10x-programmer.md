@@ -9,6 +9,7 @@ categories = [
 ]
 tags = ["程序员","译文"]
 thumbnail = "images/building.png"
+isCJKLanguage = true
 +++
 
 高效的程序员应该具备哪些素质，"10倍程序员"给你答案!。

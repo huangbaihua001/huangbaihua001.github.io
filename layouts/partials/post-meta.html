@@ -5,6 +5,12 @@
       {{ .Date.Format (default "Jan 2, 2006" $.Site.Params.dateFormat) -}}
     </span>
   {{- end }}
+  {{ if (ne .Params.page_view_conter false) }}
+  <span  class="meta">
+    <span class="post-date">共{{ .WordCount  }}字</span>，阅读约<span class="more-meta"> {{ .ReadingTime  }} 分钟</span>
+   </span>
+  {{ end }}
+
   {{- with .Params.tags -}}
     {{- range . }}
       {{- $tag := urlize . }}

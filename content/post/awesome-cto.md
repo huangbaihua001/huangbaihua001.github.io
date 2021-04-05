@@ -9,6 +9,7 @@ categories = [
 ]
 tags = ["技术管理","系统架构", "译文"]
 thumbnail = "images/building.png"
+isCJKLanguage = true
 +++
 
 不想当CTO的工程师不是合格的工程师，那么如何才能成为一名优秀的CTO? 本文从网络上精心挑选了一系列文章，对有志成为一名CTO的工程师提供一些经验和方法。
