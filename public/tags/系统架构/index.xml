@@ -16,7 +16,7 @@
       <description>
         
           &lt;p&gt;&lt;a href=&#34;http://awesome-scalability.com/&#34;&gt;&lt;img src=&#34;https://huangbaihua.gitee.io/images/as-logo.png&#34; alt=&#34;可扩展性&#34;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;更新和整理的阅读清单，用于说明可伸缩，可靠和高性能的大型系统的模式。在这些清理中的知名工程师的文章和可靠的资料里，对相关概念进行了解释说明。案例研究来自服务于数百万至数十亿用户的、经过实战检验的系统。&lt;/p&gt;
+&lt;p&gt;更新和整理的阅读清单，用于说明可伸缩，可靠和高性能的大型系统的模式。阅读清单是知名工程师的文章以及来源可靠的资料，这些内容对可伸缩性等相关概念进行了很好地解释。案例研究也都来自于服务于数百万至数十亿用户的、经过实战检验的系统。&lt;/p&gt;
 &lt;p&gt;源文: &lt;a href=&#34;https://github.com/binhnguyennus/awesome-scalability&#34;&gt;Awesome Scalability&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;内容&#34;&gt;内容&lt;/h2&gt;
 &lt;ul&gt;
