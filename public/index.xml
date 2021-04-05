@@ -74,8 +74,8 @@
 &lt;li&gt;&lt;a href=&#34;http://highscalability.com/blog/2012/5/16/big-list-of-20-common-bottlenecks.html&#34;&gt;常见瓶颈&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://queue.acm.org/detail.cfm?id=3025012&#34;&gt;分布式交易背后的秘密&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.usenix.org/conference/srecon15/program/presentation/taveira&#34;&gt;依靠软件在不同层级可靠地重定向流量&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.usenix.org/conference/srecon17americas/program/presentation/andrus&#34;&gt;有目的的打破固事物&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://medium.com/@rdsubhas/10-modern-software-engineering-mistakes-bc67fbef4fc8&#34;&gt;避免过充工程&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.usenix.org/conference/srecon17americas/program/presentation/andrus&#34;&gt;有目的的打破固有事物&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://medium.com/@rdsubhas/10-modern-software-engineering-mistakes-bc67fbef4fc8&#34;&gt;避免过度工程&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.infoq.com/articles/scalability-worst-practices&#34;&gt;可伸缩性最差实践&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://medium.com/@DataStax/instagram-engineerings-3-rules-to-a-scalable-cloud-application-architecture-c44afed31406&#34;&gt;使用稳定的技术--不要重新发明轮子--保持简单!&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://jobs.zalando.com/tech/blog/simplicity-by-distributing-complexity/&#34;&gt;Simplicity by Distributing Complexity&lt;/a&gt;&lt;/li&gt;
