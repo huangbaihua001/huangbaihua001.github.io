@@ -52,8 +52,8 @@ isCJKLanguage = true
 ![](/images/graph/a4.png)
 
 # 实现
-这里是一个简单的Java实现。为了使一致的散列有效，拥有一个能很好混合的散列函数是很重要的。
-Object的hashCode的大多数实现都不能很好地混合--例如，它们通常会产生数量有限的小整数值--所以我们有一个HashFunction接口来允许使用自定义的哈希函数。这里推荐使用MD5哈希。
+这里是一个简单的Java实现。为了使一致性哈希有效，拥有一个能很好散列的哈希函数是很重要的。
+Object的hashCode的大多数实现都不能很好地散列--例如，它们通常会产生数量有限的小整数值--所以我们有一个<font color='red'>HashFunction</font>接口来允许使用自定义的哈希函数。这里推荐使用MD5哈希。
 
 ```java
 import java.util.Collection;
@@ -115,9 +115,9 @@ public class ConsistentHash<T> {
 所以通过在映射末尾寻找第一个键来找到下一个节点。如果映射末尾是空的，那么我们就通过获取圆的第一个键。
 
 # 使用
-那么如何才能使用一致的哈希呢？使用现成的库，而不是要自己编码。比如上面提到的Memcached，一个分布式内存对象缓存系统，现在已经有支持一致性哈希的客户端。
-ketama算法是第一个，作者是Last.fm公司的Richard Jones；现在还有Dustin Sallings的Java实现（这启发了我上面的简化演示实现）。
-有趣的是，只有客户端需要实现一致性哈希算法--Memcached服务器是不变的。其他采用一致散列的系统包括Chord，它是一个分布式散列表的实现，以及Amazon的Dynamo，它是一个键值存储（在Amazon之外无法使用）。
+那么如何使用一致性哈希算法呢？ 使用现成的库，而不是要自己编码。比如上面提到的Memcached，一个分布式内存对象缓存系统，现在已经有支持一致性哈希的客户端。
+如最初的ketama哈希算法，作者是Last.fm公司的Richard Jones；现在还有Dustin Sallings的Java实现（这启发了我上面的简化演示实现）。
+有趣的是，只有客户端需要实现一致性哈希算法--Memcached服务器是不需要的。其他采用一致性哈希的系统包括Chord，它是一个分布式哈希表的实现，以及Amazon的Dynamo，它是一个键值存储（在Amazon之外无法使用）。
 
 
 (全文完)

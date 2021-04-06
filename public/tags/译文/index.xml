@@ -41,8 +41,8 @@
 随着复制数(虚拟节点)的增加，对象的分布变得更加平衡。这个实验表明，一两百个副本(虚拟节点)的数字可以达到一个可接受的平衡（标准偏差大致在平均值的5%到10%之间）。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://huangbaihua.gitee.io/images/graph/a4.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h1 id=&#34;实现&#34;&gt;实现&lt;/h1&gt;
-&lt;p&gt;这里是一个简单的Java实现。为了使一致的散列有效，拥有一个能很好混合的散列函数是很重要的。
-Object的hashCode的大多数实现都不能很好地混合--例如，它们通常会产生数量有限的小整数值--所以我们有一个HashFunction接口来允许使用自定义的哈希函数。这里推荐使用MD5哈希。&lt;/p&gt;
+&lt;p&gt;这里是一个简单的Java实现。为了使一致性哈希有效，拥有一个能很好散列的哈希函数是很重要的。
+Object的hashCode的大多数实现都不能很好地散列--例如，它们通常会产生数量有限的小整数值--所以我们有一个&lt;font color=&#39;red&#39;&gt;HashFunction&lt;/font&gt;接口来允许使用自定义的哈希函数。这里推荐使用MD5哈希。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;java.util.Collection&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;java.util.SortedMap&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt; 3&lt;/span&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;java.util.TreeMap&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
@@ -98,9 +98,9 @@ Object的hashCode的大多数实现都不能很好地混合--例如，它们通�
 &lt;p&gt;要找到一个对象的节点（get方法），就要用对象的哈希值在圆中寻找。大多数情况下，在这个哈希值处不会存储有节点（因为哈希值空间通常比节点数量大得多，即使是复制点也是如此），
 所以通过在映射末尾寻找第一个键来找到下一个节点。如果映射末尾是空的，那么我们就通过获取圆的第一个键。&lt;/p&gt;
 &lt;h1 id=&#34;使用&#34;&gt;使用&lt;/h1&gt;
-&lt;p&gt;那么如何才能使用一致的哈希呢？使用现成的库，而不是要自己编码。比如上面提到的Memcached，一个分布式内存对象缓存系统，现在已经有支持一致性哈希的客户端。
-ketama算法是第一个，作者是Last.fm公司的Richard Jones；现在还有Dustin Sallings的Java实现（这启发了我上面的简化演示实现）。
-有趣的是，只有客户端需要实现一致性哈希算法--Memcached服务器是不变的。其他采用一致散列的系统包括Chord，它是一个分布式散列表的实现，以及Amazon的Dynamo，它是一个键值存储（在Amazon之外无法使用）。&lt;/p&gt;
+&lt;p&gt;那么如何使用一致性哈希算法呢？ 使用现成的库，而不是要自己编码。比如上面提到的Memcached，一个分布式内存对象缓存系统，现在已经有支持一致性哈希的客户端。
+如最初的ketama哈希算法，作者是Last.fm公司的Richard Jones；现在还有Dustin Sallings的Java实现（这启发了我上面的简化演示实现）。
+有趣的是，只有客户端需要实现一致性哈希算法--Memcached服务器是不需要的。其他采用一致性哈希的系统包括Chord，它是一个分布式哈希表的实现，以及Amazon的Dynamo，它是一个键值存储（在Amazon之外无法使用）。&lt;/p&gt;
 &lt;p&gt;(全文完)&lt;/p&gt;
         
       </description>
