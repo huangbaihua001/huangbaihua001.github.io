@@ -23,9 +23,9 @@
 然而，正如接下来你看到的一样，你的选择并不像你想象的那么多。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://huangbaihua.gitee.io/images/graph/c2.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;一致性 - 对于给定的客户端，保证读取返回最新的写入。&lt;/li&gt;
-&lt;li&gt;可用性 - 非故障节点能在合理的时间范围内返回合理的响应（没有错误或超时）。&lt;/li&gt;
-&lt;li&gt;分区容错性 - 当网络分区发生时，系统能继续运行。&lt;/li&gt;
+&lt;li&gt;一致性(Consistency) - 对于给定的客户端，保证读取返回最新的写入。&lt;/li&gt;
+&lt;li&gt;可用性(Availability) - 非故障节点能在合理的时间范围内返回合理的响应（没有错误或超时）。&lt;/li&gt;
+&lt;li&gt;分区容错性(Partition Tolerance) - 当网络分区发生时，系统能继续运行。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;font color=&#39;red&#39;&gt;[译者注]&lt;/font&gt;&lt;/p&gt;
 &lt;blockquote&gt;
