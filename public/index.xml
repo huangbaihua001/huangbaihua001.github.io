@@ -6,7 +6,68 @@
     <description>Recent content on 柏华</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright © 2008–2021, 柏华; all rights reserved. Powered by Hugo</copyright>
-    <lastBuildDate>Mon, 05 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://huangbaihua.gitee.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 07 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://huangbaihua.gitee.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CAP理论简介</title>
+      <link>https://huangbaihua.gitee.io/post/cap-theorem/</link>
+      <pubDate>Wed, 07 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://huangbaihua.gitee.io/post/cap-theorem/</guid>
+      <description>
+        
+          &lt;p&gt;&lt;img src=&#34;https://huangbaihua.gitee.io/images/graph/c1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;源文: &lt;a href=&#34;https://robertgreiner.com/cap-theorem-revisited/&#34;&gt;CAP Theorem: Revisited&lt;/a&gt; (Robert Greiner)&lt;/p&gt;
+&lt;p&gt;在当今的技术环境中，当需要额外的资源(计算，存储，等)以在合理的时间范围内成功完成工作负载时，我们见证了对系统进行横向扩展强烈且不断增长的需求。
+由于这种扩展策略，在系统中产生了额外的复杂性。 这正是CAP定理要解决的问题。&lt;/p&gt;
+&lt;p&gt;CAP定理指出，在一个分布式系统中(共享数据的互联节点的集合)，在一次读写操作中，你只能获得，一致性，可用性，分区容错性这三个保证中的二个，必须牺牲其中的一个。
+然而，正如接下来你看到的一样，你在这里并没有你想象的那么多选择。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://huangbaihua.gitee.io/images/graph/c2.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;一致性 - 对于给定的客户端，保证读取返回最新的写入。&lt;/li&gt;
+&lt;li&gt;可用性 - 非故障节点能在合理的时间范围内返回合理的响应（没有错误或超时）。&lt;/li&gt;
+&lt;li&gt;分区容错性 - 当网络分区发生时，系统能继续运行。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;font color=&#39;red&#39;&gt;[译者注]&lt;/font&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.zhihu.com/question/54105974&#34;&gt;分区&lt;/a&gt;，来自知乎的定义:
+一个分布式系统里面，节点组成的网络本来应该是连通的。然而可能因为一些故障，使得有些节点之间不连通了，整个网络就分成了几块区域。数据就散布在了这些不连通的区域中。
+这就叫&lt;font color=&#39;red&#39;&gt;分区&lt;/font&gt;。当一个数据项只在一个节点中保存，那么分区出现后，和这个节点不连通的部分就访问不到这个数据了。这时分区就是&lt;font color=&#39;red&#39;&gt;无法容忍&lt;/font&gt;的。
+然而，要把数据复制到多个节点，就会带来一致性的问题，就是多个节点上面的数据可能是不一致的。要保证一致，每次写操作就都要等待全部节点写成功，而这等待又会带来可用性的问题。
+总的来说就是，数据存在的节点越多，分区容忍性越高，但要复制更新的数据就越多，一致性就越难保证。为了保证一致性，更新所有节点数据所需要的时间就越长，可用性就会降低。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;在继续之前，我们需要先明确一件事。面向对象编程不等于网络编程。在构建共享内存的应用程序时，有一些我们认为理所当然的假设，一旦节点被跨空间和时间分割后，这些假设就会被打破。
+网络是可靠的就是这样一个分布式计算的谬论。 网络是不可靠的！ 网络和部分网络会经常发生意外地故障。 网络故障会发生在你的系统中，但是你无法选择故障何时发生。&lt;/p&gt;
+&lt;p&gt;&lt;font color=&#39;red&#39;&gt;[译者注]&lt;/font&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Fallacies_of_distributed_computing&#34;&gt;分布式8大谬论&lt;/a&gt; 来自维基百科&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;网络是可靠的 The network is reliable;&lt;/li&gt;
+&lt;li&gt;没有延迟 Latency is zero;&lt;/li&gt;
+&lt;li&gt;带宽是无线的 Bandwidth is infinite;&lt;/li&gt;
+&lt;li&gt;网络是安全的 The network is secure;&lt;/li&gt;
+&lt;li&gt;网络拓扑不会改变 Topology doesn&#39;t change;&lt;/li&gt;
+&lt;li&gt;系统只有一位管理员 There is one administrator;&lt;/li&gt;
+&lt;li&gt;信息传输成本为零 Transport cost is zero;&lt;/li&gt;
+&lt;li&gt;网络都是同质的 The network is homogeneous.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;鉴于网络不是完全的可靠，在分布式系统中你必须&lt;font color=&#39;red&#39;&gt;容忍分区&lt;/font&gt;。幸运的是当分区分生时，你可以选择如何来做。根据CAP理论，意味着我们还有&lt;font color=&#39;red&#39;&gt;一致性&lt;/font&gt;和&lt;font color=&#39;red&#39;&gt;可用性&lt;/font&gt;两项可选。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;CP - 一致性/分区容错性 - 等待来自分区节点的响应会导致超时发生。 系统可以选择返回一个错误，这取决于你想要的场景。 当业务需求规定原子读写时，选择一致性而不是可用性。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://huangbaihua.gitee.io/images/graph/c3.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;AP - 可用性/分区容错性 - 返回你所拥有数据的最新版本，数据可能是过时的。该系统状态也可以接受在分区问题解决之后再处理写操作。当你的业务需求允许数据在系统间同步时可以有一定的弹性时选择可用性
+而不是一致性。当系统需要在外部错误发生时（购物车等）继续运行时，可用性也是一个令人信服的选择。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://huangbaihua.gitee.io/images/graph/c4.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;在一致性和可用性作出选择是一种软件平衡。在面对网络分区时你可以自己选择如何处理，控制权在你手上。不管是暂时的还是永久的网络故障，都是生活的一部分，不管你愿不愿意，它总会发生，它存在于软件之外。
+构建分布式系统提供了许多优势，但是也增加了复杂性。面对网络错误时,理解可用的平衡，并作出正确的选择对你的应用成功至关重要。 如果不能从一开始就做到这一点，那么在第一次部署应用之前，你的应用程序就会失败。&lt;/p&gt;
+&lt;p&gt;(全文完)&lt;/p&gt;
+        
+      </description>
+    </item>
+    
     <item>
       <title>一致性哈希</title>
       <link>https://huangbaihua.gitee.io/post/consistent-hasing/</link>
