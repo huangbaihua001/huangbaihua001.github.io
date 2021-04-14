@@ -1,0 +1,612 @@
+
+<!DOCTYPE html>
+<html lang="zh" data-figures="" class="page" data-mode="lit">
+  <head>
+<title>微服务简介-来自优步的实践 | 柏华</title>
+<meta charset="utf-8">
+<meta name="generator" content="Hugo 0.82.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?36c89dc767ce47cf446295d1c91558b5";
+    var s = document.getElementsByTagName("script")[0]; 
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+  
+<meta property="og:locale" content="zh" />
+
+<meta property="og:type" content="article">
+<meta name="description" content="微服务简介-来自优步的实践">
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:creator" content="@baihua.huang">
+<meta name="twitter:title" content="微服务简介-来自优步的实践" />
+<meta property="og:url" content="https://huangbaihua.gitee.io/post/microservice-architecture/" />
+<meta property="og:title" content="微服务简介-来自优步的实践" />
+<meta property="og:description" content="微服务简介-来自优步的实践" />
+<meta property="og:image" content="https://huangbaihua.gitee.io/images/thumbnail.png" />
+<link rel="apple-touch-icon" sizes="180x180" href='https://huangbaihua.gitee.io/icons/favicon.png'>
+<link rel="icon" type="image/png" sizes="32x32" href='https://huangbaihua.gitee.io/icons/favicon-32x32.png'>
+<link rel="manifest" href='https://huangbaihua.gitee.io/icons/site.webmanifest'>
+<link rel="mask-icon" href='https://huangbaihua.gitee.io/safari-pinned-tab.svg' color="#002538">
+<meta name="msapplication-TileColor" content="#002538">
+<meta name="theme-color" content="#002538">
+
+<link rel="canonical" href="https://huangbaihua.gitee.io/post/microservice-architecture/">
+
+    
+
+    
+    
+    <link rel="preload" href="https://huangbaihua.gitee.io/css/styles.782bf96a82b3cc5b3cee4c47a42cc81321f16960a6d41fab3277c4abe047bc7ae044ea1bb7ae4d237c12baa0143e02f95969e5e8b6e68d9dcfd14158cfa244ac.css" integrity = "" as="style" crossorigin="anonymous">
+    <link rel="preload" href="https://huangbaihua.gitee.io/js/bundle.min.c7bb60db8c4ab2893e8375f4eb80bdc351420c47f685aef368a8e8a4f0fd9205dd771ee950d99667a3ef33e1244dd566bb88221b238dd6fc01c64134c616fd9d.js" as="script" integrity="" crossorigin="anonymous">
+
+    
+    <link rel="stylesheet" type="text/css" href="https://huangbaihua.gitee.io/css/styles.782bf96a82b3cc5b3cee4c47a42cc81321f16960a6d41fab3277c4abe047bc7ae044ea1bb7ae4d237c12baa0143e02f95969e5e8b6e68d9dcfd14158cfa244ac.css" integrity="" crossorigin="anonymous">
+    
+  </head>
+  
+  
+    
+  
+  <body data-code="7" data-lines="false" id="documentTop">
+
+<header class="nav_header" >
+  <nav class="nav"><a href='https://huangbaihua.gitee.io/' class="nav_brand nav_item" title="柏华">
+  <img src="https://huangbaihua.gitee.io/logos/logo.png" class="logo" alt="柏华">
+  <div class="nav_close">
+    <div><svg class="icon">
+  <use xlink:href="#open-menu"></use>
+</svg><svg class="icon">
+  <use xlink:href="#closeme"></use>
+</svg></div>
+  </div>
+</a>
+
+    <div class='nav_body nav_body_left'>
+      
+      
+      
+        
+
+  <div class="nav_parent">
+    <a href="https://huangbaihua.gitee.io/" class="nav_item" title="首页">首页 </a>
+  </div>
+  <div class="nav_parent">
+    <a href="https://huangbaihua.gitee.io/post/" class="nav_item" title="文章">文章 </a>
+  </div>
+  <div class="nav_parent">
+    <a href="https://huangbaihua.gitee.io/dsclaimer/" class="nav_item" title="免责声明">免责声明 </a>
+  </div>
+  <div class="nav_parent">
+    <a href="https://huangbaihua.gitee.io/about/" class="nav_item" title="关于柏华">关于柏华 </a>
+  </div>
+      
+      <div class="nav_parent">
+        <a href="#" class="nav_item">🌐</a>
+        <div class="nav_sub">
+          <span class="nav_child"></span>
+          
+          <a href="https://huangbaihua.gitee.io/" class="nav_child nav_item">中文</a>
+          
+          <a href="https://huangbaihua.gitee.io/en/" class="nav_child nav_item">English</a>
+          
+        </div>
+      </div>
+<div class='follow'>
+  <a href="https://github.com/#">
+    <svg class="icon">
+  <use xlink:href="#github"></use>
+</svg>
+  </a>
+  <a href="https://twitter.com/#">
+    <svg class="icon">
+  <use xlink:href="#twitter"></use>
+</svg>
+  </a>
+  <a href="https://www.linkedin.com/in/#">
+    <svg class="icon">
+  <use xlink:href="#linkedin"></use>
+</svg>
+  </a>
+    
+  <a href="https://huangbaihua.gitee.io/index.xml">
+    <svg class="icon">
+  <use xlink:href="#rss"></use>
+</svg>
+  </a>
+<div class="color_mode">
+  <input type="checkbox" class="color_choice" id="mode">
+</div>
+
+</div>
+
+    </div>
+  </nav>
+</header>
+
+    <main>
+  
+<div class="grid-inverse wrap content">
+  <article class="post_content">
+    <h1 class="post_title">微服务简介-来自优步的实践</h1><div class="post_meta">
+  
+    <svg class="icon">
+  <use xlink:href="#calendar"></use>
+</svg>
+    <span class="post_date">
+      2021年4月9日</span>
+  
+  <span class="post-date">共<font color="red">5292</font>字</span>，阅读约<span class="more-meta"> <font color="red">11</font>分钟</span>
+  
+      <a href='https://huangbaihua.gitee.io/tags/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84' title="系统架构" class="post_tag button button_translucent">系统架构
+      </a>
+      <a href='https://huangbaihua.gitee.io/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1' title="微服务" class="post_tag button button_translucent">微服务
+      </a>
+      <a href='https://huangbaihua.gitee.io/tags/%E8%AF%91%E6%96%87' title="译文" class="post_tag button button_translucent">译文
+      </a>
+</div>
+
+    
+  <div class="post_share">
+    分享到:
+
+    <a href="https://twitter.com/intent/tweet?text=%e5%be%ae%e6%9c%8d%e5%8a%a1%e7%ae%80%e4%bb%8b-%e6%9d%a5%e8%87%aa%e4%bc%98%e6%ad%a5%e7%9a%84%e5%ae%9e%e8%b7%b5&url=https%3a%2f%2fhuangbaihua.gitee.io%2fpost%2fmicroservice-architecture%2f&tw_p=tweetbutton" class="twitter" title="分享到 Twitter" target="_blank" rel="nofollow">
+      <svg class="icon">
+  <use xlink:href="#twitter"></use>
+</svg>
+    </a>
+    <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fhuangbaihua.gitee.io%2fpost%2fmicroservice-architecture%2f&t=%e5%be%ae%e6%9c%8d%e5%8a%a1%e7%ae%80%e4%bb%8b-%e6%9d%a5%e8%87%aa%e4%bc%98%e6%ad%a5%e7%9a%84%e5%ae%9e%e8%b7%b5" class="facebook" title="分享到 Facebook" target="_blank" rel="nofollow">
+      <svg class="icon">
+  <use xlink:href="#facebook"></use>
+</svg>
+    </a>
+    <a href="#linkedinshare" id = "linkedinshare" class="linkedin" title="分享到 LinkedIn" rel="nofollow">
+      <svg class="icon">
+  <use xlink:href="#linkedin"></use>
+</svg>
+    </a>
+    <a href="https://huangbaihua.gitee.io/post/microservice-architecture/" title="复制链接" class="link link_yank">
+      <svg class="icon">
+  <use xlink:href="#copy"></use>
+</svg>
+    </a>
+  </div>
+
+    
+    <p><img src="/images/graph/u1.png" alt=""></p>
+<p>微服务简介-来自优步的实践。</p>
+<p>源文: <a href="https://eng.uber.com/microservice-architecture/">Introduce Microservice Architecture</a> (Uber)</p>
+<h2 id="目录">目录</h2>
+<ul>
+<li><a href="#%E7%AE%80%E4%BB%8B">简介</a></li>
+<li><a href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%BE%AE%E6%9C%8D%E5%8A%A1">什么是微服务</a></li>
+<li><a href="#%E5%8A%A8%E6%9C%BA">动机</a></li>
+<li><a href="#%E9%9D%A2%E5%90%91%E9%A2%86%E5%9F%9F%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84">面向领域的微服务架构</a></li>
+<li><a href="#%E4%BC%98%E6%AD%A5%E7%9A%84%E5%AE%9E%E7%8E%B0">优步的实现</a></li>
+<li><a href="#%E6%89%A9%E5%B1%95">扩展</a></li>
+<li><a href="#%E6%94%B6%E7%9B%8A">收益</a></li>
+<li><a href="#%E5%AE%9E%E7%94%A8%E5%BB%BA%E8%AE%AE">实用建议</a></li>
+<li><a href="#%E6%9C%80%E5%90%8E%E7%9A%84%E6%84%9F%E6%83%B3">最后的感想</a></li>
+</ul>
+<h1 id="简介">简介</h1>
+<p>最近，人们围绕微服务架构，特别是微服务架构的缺陷展开了大量的讨论。仅仅几年前，由于微服务架构具有独立部署的灵活性，职责清晰，提升系统稳定性，更好的关注点隔离等众多优势，很多人都欣然采用了微服务架构。但近年来，人们开始抨击微服务有大大增加系统复杂性的趋向，有些时候让一个微小的功能都难于构建。</p>
+<p>由于优步发展到约2200个关键微服务，我们亲身经历过这些取舍权衡。在过去的2年里，优步一直试图降低微服务的复杂性，同时保持微服务架构的优势。我们希望通过这篇博文介绍我们对微服务架构的一般方法，我们称之为 &quot;面向领域的微服务架构&quot;(DOMA)。</p>
+<p>虽然近些年由于这些缺陷人们对微服务架构的批评多了起来，但很少有人提倡完全拒绝微服务。运营效益太重要了，似乎还没有或部分可替代的架构。我们使用DOMA的目标是为那些想要降低整个系统复杂性的同时又能维持微服务优势的组织提供一种前进的道路。</p>
+<p>这篇文章解释了DOMA, 是什么导致优步采用这种架构，对平台和产品团队的好处，最后是针对那些想采用这种架构的团队的一些建议。</p>
+<h1 id="什么是微服务">什么是微服务</h1>
+<p>微服务是面向服务架构的延伸。与2000年代相当大的 &quot;服务 &quot;相比，微服务是代表一组更小范围的功能的应用程序。这些应用通过网络托管和提供，并暴露出一个定义良好的接口。其他应用程序通过 &quot;远程过程调用&quot;(RPC)来调用这个接口。</p>
+<p>微服务架构的关键特征是代码托管、调用和部署的方式。如果我们思考大型的单体应用，它们一般会被分割成具有明确定义接口的封装组件。这些接口就会直接在进程中调用，而不是通过网络。通过这种方式，我们也可以将微服务看作一个库，为了调用库中的所有功能有些性能影响（这些影响来自网络I/O和序列化/反序列化的开销）。</p>
+<p>当我们这样思考微服务的时候，可能会质疑自己为什么要采用微服务架构。答案通常是独立部署和扩展。对于一个大型的单体应用，一个组织被迫一次性部署或发布所有的代码。应用程序的每一个新版本都可能涉及许多更改。部署变得风险大、耗时长。任何人都可以使整个系统瘫痪</p>
+<p>换句话，组织采用微服务是为了运营效率而牺牲了性能。组织也必须承担支撑微服务所必需的维护基础设施的费用。事实证明，在多数情况下，这种取舍权衡是很有意义的，但是也强烈反对过早地采用微服务架构。</p>
+<h1 id="动机">动机</h1>
+<p>在优步，我们采用了微服务架构，因为(在大约2012-2013年)主要有两个单体服务，并且遇到了许多微服务解决的运营问题。</p>
+<ul>
+<li>
+<p><span style='font-weight:bold'>可用性风险</span>。 在整个单体代码库中，一次回归就可以让整个系统(本例指优步所有系统)崩溃。</p>
+</li>
+<li>
+<p><span style='font-weight:bold'>风险大，昂贵的部署</span>。 部署是痛苦的，耗时的，而且需要经常回滚。</p>
+</li>
+<li>
+<p><span style='font-weight:bold'>不好的关注点分离</span>。 很难在一个庞大的代码库中保持良好的关注点分离。在指数级增长的环境中，权宜之计有会会导致逻辑和组件之间的边界不清。</p>
+</li>
+<li>
+<p><span style='font-weight:bold'>执行效率低下</span>。 这些问题加在一起，使团队难以自治或独立执行。</p>
+</li>
+</ul>
+<p>换句话说，由于优步从10多个工程师发展到100多个工程师拥有自技术栈的团队时，单体架构将团队的命运捆绑在了一起并使其难以独立运作。
+因此，我们采用了微服务架构。 最终，我们的系统变得更加灵活，这使得团队更加自治。</p>
+<ul>
+<li>
+<p><span style='font-weight:bold'>系统可靠性</span>。总体系统可靠性在微服务体架构中得到提高。单个服务可以关闭(并回滚)，而不需要关闭整个系统。</p>
+</li>
+<li>
+<p><span style='font-weight:bold'>关注点分离</span>。从架构上讲，微服务架构迫使您问这样一个问题:“这个服务为什么存在?”，能更清晰地定义不同组件的角色。</p>
+</li>
+<li>
+<p><span style='font-weight:bold'>明确所有权</span>。 谁拥有什么代码变得更加清晰。 服务通常在个人、团队或组织级别拥有，从而实现更快的增长。</p>
+</li>
+<li>
+<p><span style='font-weight:bold'>自主执行</span>。独立的部署+更清晰的所有权，解锁了不同产品和平台团队的自主执行。</p>
+</li>
+<li>
+<p><span style='font-weight:bold'>开发速度</span>。团队可以独立部署他们的代码，这使他们能够按照自己的节奏执行。</p>
+</li>
+</ul>
+<p>可以毫不夸张地说，如果没有微服务架构，优步不可能实现今天保持的规模和质量。</p>
+<p>然而，随着公司规模的扩大，从100名工程师到1000名工程师，我们开始注意到一系列与大大增加系统复杂性相关的问题。
+在微服务架构中，用一个单体代码库交换了一个可以随时更改功能并容易导致意外行为的黑盒。</p>
+<p>例如，工程师必须通过12个不同团队的约50项服务来调查问题的根本原因。</p>
+<p>理解服务之间的依赖关系会变得相当困难，因为服务之间的调用会深入许多层。第n个依赖关系的延迟峰值可能会导致上游的一连串问题。
+如果没有合适的工具，就不可能看到实际发生的事情，这使得调试变得困难。</p>
+<p>为了构建一个简单的功能，工程师往往需要跨多个服务工作，所有这些服务都由不同的个人和团队拥有。
+这就需要广泛的合作，在会议、设计和代码审查上花费时间。
+由于团队在彼此的服务中构建代码，修改彼此的数据模型，甚至代表服务所有者执行部署，早期对服务所有权的明确界限的承诺受到了影响。
+网络化的单体可能会形成，看似独立的服务都必须部署在一起，才能安全地执行任何变更。</p>
+<p>An example of a complex flow at Uber circa 2018, which required 10 touch points for a simple integration before DOMA.</p>
+<p>The result is a slower developer experience, instability for service owners, more painful migrations, etc. 
+For organizations that have already adopted a microservice architecture there is no turning back.
+It becomes a case of “can’t live with them, can’t live without them.”</p>
+<h1 id="面向领域的微服务架构">面向领域的微服务架构</h1>
+<p>If we can think of microservices as I/O bound libraries and a “microservice architecture” as a large, distributed application then we can use well understood architectures 
+to think about how to organize our code.</p>
+<p>“Domain-Oriented Microservice Architecture” thus draws heavily from established ways to organize code such as Domain-driven Design, Clean Architecture,
+Service-Oriented Architecture, and object- and interface-oriented design patterns.
+We think of DOMA as innovative only insofar as it is a relatively novel way to leverage established design principles in large distributed systems in large organizations.</p>
+<p>The core principles and terminology associated with DOMA are as follows:</p>
+<p>Instead of orienting around single microservices, we oriented around collections of related microservices. We call these domains.
+We further create collections of domains which we call layers. The layer that the domain belongs to establishes what dependencies the microservices within that domain are allowed to take on.
+We call this layer design.
+We provide clean interfaces for domains that we treat as a single point of entry into the collection. We call these gateways.
+Finally, we establish that each domain should be agnostic to other domains, which is to say, a domain shouldn’t have logic related to another domain hard coded inside of its code base or data models.
+Since frequently teams do need to include logic in another team’s domain (for example, custom validation logic or some meta context on a data model),
+we provide an extension architecture to support well defined extension points within the domain.
+In other words, by providing a systematic architecture, domain gateways, and predefined extension points,
+DOMA intends to transform microservice architectures from something complex to something comprehensible: a structured set of flexible, reusable, and layered components.</p>
+<p>The rest of this post digs into Uber’s implementation of DOMA, the benefits we’ve seen, and practical advice for companies which might want to adopt this approach.</p>
+<h1 id="优步的实现">优步的实现</h1>
+<h2 id="领域">领域</h2>
+<p>Uber domains represent a collection of one or more microservices tied to a logical grouping of functionality. A common question in designing a domain is “how big should a domain be?”
+We give no guidance here. Some domains can include tens of services, some domains only a single service. The important task is to think carefully about the logical role of each collection.
+For instance, our map search services constitute a domain, fare services are a domain, matching platform (matching riders and drivers) are a domain. These also don’t always follow company org structure.
+The Uber Maps org itself is split into three domains, with 80 microservices behind 3 different gateways.</p>
+<h2 id="分层设计">分层设计</h2>
+<p>Layer design answers the question of “what service can call what other service?” within Uber’s microservice architecture. As a result, we can think of layer design as “separation of concerns at scale.”
+Alternatively, we can think of layer design as “dependency management at scale.”</p>
+<p>Layer design describes a mechanism for thinking about failure blast radius and product specificity across service dependencies at Uber. As domains move from the bottom layer to the top layer,
+they impact fewer services in the case of an outage and represent more specific product use cases. Conversely,
+functionality at the bottom layers have more dependents and as a result tend to have a larger blast radius and represent a more general set of business functionality. The figure below illustrates this concept.</p>
+<p>One can think of the top layers as specific user experiences (such as mobile features), and the bottom layers as generalized business functionality (such as account management or marketplace trips).
+Layers only depend on the layers under them, which gives us a useful heuristic to think about questions like blast radius and domain integration.</p>
+<p>It’s worth noting that functionality often moves “down” this chart from specific to more general. One can imagine a simple feature that eventually becomes more and more of a platform as requirements evolve.
+In fact, this sort of migration downward is expected, and many of Uber’s core business platforms started as rider or driver specific functionality
+that became more generalized as we developed more lines of business and they took on more dependencies (such as Uber Eats or Uber Freight).</p>
+<p>Within Uber, we established the following five layers.</p>
+<p>Infrastructure layer. Provides functionality that any engineering organization could use. It’s Uber’s answer to the big engineering questions, such as storage or networking.
+Business layer. Provides functionality that Uber as an organization could use, but that is not specific to a particular product category or line of business (LOB) such as Rides, Eats, or Freight.
+Product layer. Provides functionality that relates to a particular product category or LOB, but is agnostic to the mobile application,
+such as the “request a ride” logic which is leveraged by multiple Rides facing applications (Rider, Rider “Lite”, m.uber.com, etc).
+Presentation. Provide functionality that directly relates to features that exist within a consumer-facing application (mobile/web).
+Edge Layer. Safely exposes Uber services to the outside world. This layer is also mobile application aware.
+As you can see, each subsequent layer represents an increasingly specific grouping of functionality, and has a smaller and smaller blast radius
+(or, in other words, less components depend on the functionality within that layer).</p>
+<h2 id="网关">网关</h2>
+<p>The term “Gateway API” is already a broadly established concept within microservice architectures. Our definition does not vary greatly from the established definition,
+except that we tend to think of gateways exclusively as a single entry-point into a collection of underlying services, which we call a domain. The success of a gateway relies on the success of the API design.</p>
+<p>The following figure illustrates the high level diagram of a gateway. It abstracts away the internal details of the domains – multiple services, data tables, ETL pipelines etc. Only the interfaces –
+RPC APIs, messaging events and queries are exposed to other domains.</p>
+<p>Since upstream consumers only operate on a single service, gateways provide numerous benefits in terms of future migrations, discoverability, and overall reduction in system complexity with upstream services only taking a single dependency as opposed to dependencies on several downstream services that might exist within a domain. If we think about gateways in the sense of OO design, they are interface definitions, which enable us to do whatever we want in terms of the underlying “implementation” (in this case the collection of underlying microservices).</p>
+<h1 id="扩展">扩展</h1>
+<p>Extensions represent a mechanism to extend domains. The basic definition of an extension is that it provides a mechanism for extending the functionality of an underlying service without changing the actual implementation of that service and without impacting its overall reliability. At Uber we provide two different extension models: logic extensions and data extensions. The concept of extensions has allowed us to scale our architecture to multiple teams being able to work independently of each other.</p>
+<h2 id="逻辑扩展">逻辑扩展</h2>
+<p>Logic extensions provide a mechanism for extending the underlying logic of a service. For logic extensions we use a variation of a provider or plugin pattern with an interface defined on a service-by-service basis. This makes it so that extending teams can implement extension logic in an interface-driven way without modifying the core code of the underlying platform.</p>
+<p>For example, a driver goes online. Typically, we make various checks to ensure that a driver is allowed to go online (safety checks, compliance, etc.). Each of these is owned by an individual team. One way to implement this would be to have each team write logic in the same endpoint, but this can introduce complexity. Each check would require custom, and entirely unrelated, logic.</p>
+<p>In the case of logic extensions, the “go online” endpoint would define an interface that they expect each extension to conform to with a predefined request type and a response. Each team would register an extension that would be responsible for the execution of this logic. In this case, they might simply take some context about the driver and return a bool, saying if the driver can go online or not. The go online endpoint would simply iterate through these responses, and determine if any of them are false.</p>
+<p>This decouples the core code from each extension, and provides isolation between extensions, which don’t know what other logic is executing. It’s easy to build up more functionality around this, such as observability or feature flagging.</p>
+<h2 id="数据扩展">数据扩展</h2>
+<p>Data extensions provide a mechanism for attaching arbitrary data to an interface to avoid bloat in core platform data models. For data extensions, we leverage Protobuf’s Any functionality so that teams can add arbitrary data to requests. Services will often store this data or pass it to a logic extension so that the core platform is never responsible for deserializing (and thus “knowing about”) this arbitrary context. Protobuf’s Any implementation comes with some infrastructure overhead in exchange for stronger typing. For a simpler implementation, one could just as easily use a JSON string to represent arbitrary data.</p>
+<h2 id="自定义">自定义</h2>
+<p>Outside of logic and data extensions, many teams at Uber have introduced their own extension patterns that are appropriate for their domain. For example, much of the integrations tied to our presentation architecture uses DAG based task execution logic.</p>
+<h1 id="收益">收益</h1>
+<p>Almost every major domain at Uber has been influenced on some level by DOMA. Over the last year, we have focused primarily on Uber’s business layer which provides generalized logic for each of our various lines of business.</p>
+<p>DOMA is still young at Uber, and we are excited to share more data and in-depth examples of our architecture in the future. However, early signs have been extremely positive in terms of a simplified developer experience and a reduction in overall system complexity.</p>
+<h2 id="产品和平台">产品和平台</h2>
+<p>DOMA was the result of a consensus effort across product and platform teams at Uber. Platform support costs often dropped an order of magnitude. Product teams benefited from guard rails and accelerated development.</p>
+<p>For example, an early platform consumer of our extensions architecture was able to drop the time to prioritize and integrate a new feature from three days to three hours by adopting an extension architecture with reduced time for code review, planning, and learning curve for consumers.</p>
+<h2 id="降低复杂度">降低复杂度</h2>
+<p>Previously product teams would have to call numerous downstream services to leverage a domain; they now have to call just one. By reducing the number of touchpoints to onboard a new feature, platforms were able to reduce onboarding time by 25-50%. Furthermore, we were able to classify 2200 microservices into 70 domains. Roughly 50% of which have been implemented, and most of which have some plan for future adoption.</p>
+<h2 id="未来迁移">未来迁移</h2>
+<p>At Uber, we calculated that the half-life of a microservice was 1.5 years, which means that every 1.5 years 50% of our microservices churn. Without gateways it’s easy for a microservice architecture to fall into a “migration hell” as a result of this churn. Ever changing microservices constantly require upstream migrations. Gateways enable teams to avoid dependencies on the underlying domain services, which means those services can change without forcing an upstream migration.</p>
+<p>Two of Uber’s largest platform rewrites in the last year happened behind gateways. These platforms had hundreds of services that depended on them that would have had to migrate existing consumers. The cost of migration in these cases would have been extremely high, making a complete platform rewrite infeasible.</p>
+<h2 id="新业务和产品new-lines-of-business--products">新业务和产品New Lines of Business &amp; Products</h2>
+<p>Platforms designed using DOMA have proven to be much more extensible and easier to maintain. Most teams at Uber who adopted DOMA did so because supporting new lines of business had become too expensive.</p>
+<h1 id="实用建议">实用建议</h1>
+<p>This section provides some practical advice for companies that might want to adopt DOMA. The guiding principle here is that in our experience a mature and thoughtful microservice architecture stems from quiet nudges in the right direction at the right time. The reality is that a true “rewrite” is never possible for one’s entire microservice architecture.</p>
+<p>As a result, we think of evolving a microservice architecture more like “trimming a hedge” so that it eventually grows correctly, rather than a top-down or one-time architecture (or re-architecture) effort. It’s a dynamic and progressive process.</p>
+<h2 id="创业公司">创业公司</h2>
+<p>The driving questions should be “when should we adopt a microservice architecture?” and “does it make sense for our organization?” As we’ve seen above, while microservices provide an operational benefit to organizations with a large number of engineers, this trades off with an increase in complexity that can make features more difficult to build.</p>
+<p>In small organizations, the operational benefit likely does not offset the increase in architectural complexity. Furthermore, microservice architectures often require dedicated engineering resources to support which may be out of budget for an early stage company or else suboptimal from a prioritization perspective.</p>
+<p>With this in mind, it isn’t unreasonable to hold off on microservices altogether for some time. If an organization does choose to adopt microservices, it should think about the “microservice as large distributed application” analogy, and the separation of concerns between microservices it wants to build. Also, recognize that the first microservices will likely be the most important and longest lasting as they truly describe the core of the business.</p>
+<h2 id="中小公司">中小公司</h2>
+<p>Once a company becomes midsized with multiple teams and the clear separation of concerns becomes hazy between different features and platforms, microservice architectures become more obviously useful.</p>
+<p>It’s at this stage that one can begin to think about hierarchies between microservices. Dependency management may become more important, as some services begin to become more obviously critical to business operation, and more and more teams rely on them.</p>
+<p>Early investment in platformization may pay dividends down the road. There is the possibility to avoid tech debt here if one can create completely product agnostic business platforms and avoid arbitrary product logic in core platform services. It might make sense to adopt extensions at this point to accomplish that goal.</p>
+<p>Given that the number of microservices is likely still quite low, it may not make sense to cluster them together. However, it’s worth noting here that a domain in the context of Uber’s DOMA implementation can contain a single service, so it may still be useful to think in a “domain-oriented” way.</p>
+<h2 id="大公司">大公司</h2>
+<p>Larger engineering organizations may have hundreds of engineers and microservices and several dependencies. At this point DOMA reaches its full usefulness. There will likely be obvious clusters of microservices that can be easily grouped together into domains with a gateway in front of them. Legacy services often begin to need to be refactored or rewritten and then migrated, which means that gateways will soon begin to provide value in terms of ease of migration if they are already in place.</p>
+<p>Clear hierarchy will also become increasingly important with some services operating as “product” services for particular features or grouping of features, and other services will increasingly support multiple products and be thought of as “platforms.” It’s critical at this stage to keep arbitrary product logic decoupled from platforms, so as to avoid a heavy operational burden on platform teams as well as system-wide instability.</p>
+<h1 id="最后的感想">最后的感想</h1>
+<p>We are still actively evolving DOMA as more and more teams at Uber come to adopt it. The critical insight of DOMA is that a microservice architecture is really just one, large,
+distributed program and you can apply the same principles to its evolution that you would apply to any piece of software.
+DOMA is simply an approach for thinking about these principles in practice. We hope others find it useful and we look forward to feedback!</p>
+<p>DOMA itself was the result of a cross-functional effort, which involved nearly 60 engineers across every org at Uber.
+Some particular acknowledgements, for people who invested heavily into this effort over the last 2 years…</p>
+<p>Alex Zylman,
+Alexandre Wilhelm, Allen Lu, Ankit Srivastava, Anthony Tran, Anupam Dikshit, Anurag Biyani, Daniel Wolf, Davide D’Agostino,
+Deepti Chedda, Dmitriy Bryndin, Gaurav Tungatkar, Jacob Greenleaf, Jaikumar Ganesh, Jennie Ngyuen, Joe McCabe,
+Joshua Shinavier, Julia Law, Kusha Kapoor, Linda Fu, Madan Thangavelu, Nimish Sheth, Parth Shah, Shawn Burke,
+Simon Newton, Steve Sherwood, Uday Kiran Medisetty, and Waleed Kadous</p>
+<p>Acknowledgements:</p>
+<p>This work brings multiple existing design patterns in the industry to solve problems at Uber while also suggesting new patterns like extensions.
+We are thankful to the industry for the work on them. We are also thankful to the engineers at Linkedin who worked on Superblocks, who spoke to us about their experiences.</p>
+<p>(全文完)</p>
+
+  </article>
+<aside class="sidebar">
+  <section class="sidebar_inner">
+    
+      <h2>柏华(baihua.huang)</h2>
+      <div class="sidebar_description">
+        技术专家，开源爱好者，全栈开发者，永远的学生，梦想者，持续改进者。
+      </div>
+      <a href='https://huangbaihua.gitee.io/about/' class="button mt-1" role="button" title='阅读更多'>阅读更多</a>
+    <h2 class="mt-4">精选文章</h2>
+    <ul>
+      <li>
+        <a href="https://huangbaihua.gitee.io/post/cap-theorem/" class="nav-link" title="CAP理论简介">CAP理论简介</a>
+      </li>
+      <li>
+        <a href="https://huangbaihua.gitee.io/post/consistent-hasing/" class="nav-link" title="一致性哈希">一致性哈希</a>
+      </li>
+      <li>
+        <a href="https://huangbaihua.gitee.io/post/the-clean-architecture/" class="nav-link" title="清晰架构">清晰架构</a>
+      </li>
+      <li>
+        <a href="https://huangbaihua.gitee.io/post/top-10-sdis/" class="nav-link" title="10大系统设计面试题">10大系统设计面试题</a>
+      </li>
+      <li>
+        <a href="https://huangbaihua.gitee.io/post/look-for-forward/" class="nav-link" title="2021年度计划分享预告">2021年度计划分享预告</a>
+      </li>
+      <li>
+        <a href="https://huangbaihua.gitee.io/post/graph-theory-03/" class="nav-link" title="离散数学-图论-图的应用">离散数学-图论-图的应用</a>
+      </li>
+      <li>
+        <a href="https://huangbaihua.gitee.io/post/graph-theory-02/" class="nav-link" title="离散数学-图论-树">离散数学-图论-树</a>
+      </li>
+      <li>
+        <a href="https://huangbaihua.gitee.io/post/graph-theory-01/" class="nav-link" title="离散数学-图论-理解图">离散数学-图论-理解图</a>
+      </li>
+    </ul>
+    <h2 class="mt-4">最新文章</h2>
+    <ul class="flex-column">
+      <li>
+        <a href="https://huangbaihua.gitee.io/post/cap-theorem/" class="nav-link" title="CAP理论简介">CAP理论简介</a>
+      </li>
+      <li>
+        <a href="https://huangbaihua.gitee.io/post/consistent-hasing/" class="nav-link" title="一致性哈希">一致性哈希</a>
+      </li>
+      <li>
+        <a href="https://huangbaihua.gitee.io/post/awesome-scalability/" class="nav-link" title="优秀的可伸缩性">优秀的可伸缩性</a>
+      </li>
+      <li>
+        <a href="https://huangbaihua.gitee.io/post/the-clean-architecture/" class="nav-link" title="清晰架构">清晰架构</a>
+      </li>
+      <li>
+        <a href="https://huangbaihua.gitee.io/post/top-10-sdis/" class="nav-link" title="10大系统设计面试题">10大系统设计面试题</a>
+      </li>
+      <li>
+        <a href="https://huangbaihua.gitee.io/post/look-for-forward/" class="nav-link" title="2021年度计划分享预告">2021年度计划分享预告</a>
+      </li>
+      <li>
+        <a href="https://huangbaihua.gitee.io/post/graph-theory-03/" class="nav-link" title="离散数学-图论-图的应用">离散数学-图论-图的应用</a>
+      </li>
+      <li>
+        <a href="https://huangbaihua.gitee.io/post/graph-theory-02/" class="nav-link" title="离散数学-图论-树">离散数学-图论-树</a>
+      </li>
+    </ul>
+    <div>
+      <h2 class="mt-4 taxonomy" id="categories-section">分类</h2>
+      <nav class="tags_nav">
+        <a href='https://huangbaihua.gitee.io/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/' class="post_tag button button_translucent" title="系统架构">
+          系统架构
+          <span class="button_tally">4</span>
+        </a>
+        
+        <a href='https://huangbaihua.gitee.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/' class="post_tag button button_translucent" title="数据结构与算法">
+          数据结构与算法
+          <span class="button_tally">3</span>
+        </a>
+        
+        <a href='https://huangbaihua.gitee.io/categories/%E6%8A%80%E6%9C%AF%E7%AE%A1%E7%90%86/' class="post_tag button button_translucent" title="技术管理">
+          技术管理
+          <span class="button_tally">2</span>
+        </a>
+        
+        
+      </nav>
+    </div>
+    <div>
+      <h2 class="mt-4 taxonomy" id="series-section">专栏</h2>
+      <nav class="tags_nav">
+        <a href='https://huangbaihua.gitee.io/series/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6-%E5%9B%BE%E8%AE%BA/' class="post_tag button button_translucent" title="离散数学-图论">
+          离散数学-图论
+          <span class="button_tally">3</span>
+        </a>
+        
+        
+      </nav>
+    </div>
+    <div>
+      <h2 class="mt-4 taxonomy" id="tags-section">标签</h2>
+      <nav class="tags_nav">
+        <a href='https://huangbaihua.gitee.io/tags/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/' class="post_tag button button_translucent" title="系统架构">
+          系统架构
+          <span class="button_tally">8</span>
+        </a>
+        
+        <a href='https://huangbaihua.gitee.io/tags/%E8%AF%91%E6%96%87/' class="post_tag button button_translucent" title="译文">
+          译文
+          <span class="button_tally">8</span>
+        </a>
+        
+        <a href='https://huangbaihua.gitee.io/tags/%E5%9B%BE%E8%AE%BA/' class="post_tag button button_translucent" title="图论">
+          图论
+          <span class="button_tally">3</span>
+        </a>
+        
+        <a href='https://huangbaihua.gitee.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/' class="post_tag button button_translucent" title="数据结构">
+          数据结构
+          <span class="button_tally">3</span>
+        </a>
+        
+        <a href='https://huangbaihua.gitee.io/tags/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/' class="post_tag button button_translucent" title="离散数学">
+          离散数学
+          <span class="button_tally">3</span>
+        </a>
+        
+        <a href='https://huangbaihua.gitee.io/tags/%E7%AE%97%E6%B3%95/' class="post_tag button button_translucent" title="算法">
+          算法
+          <span class="button_tally">3</span>
+        </a>
+        
+        <a href='https://huangbaihua.gitee.io/tags/%E6%8A%80%E6%9C%AF%E7%AE%A1%E7%90%86/' class="post_tag button button_translucent" title="技术管理">
+          技术管理
+          <span class="button_tally">2</span>
+        </a>
+        
+        <a href='https://huangbaihua.gitee.io/tags/index/' class="post_tag button button_translucent" title="index">
+          INDEX
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://huangbaihua.gitee.io/tags/%E5%85%8D%E8%B4%A3%E5%A3%B0%E6%98%8E/' class="post_tag button button_translucent" title="免责声明">
+          免责声明
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://huangbaihua.gitee.io/tags/%E5%85%B3%E4%BA%8E/' class="post_tag button button_translucent" title="关于">
+          关于
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://huangbaihua.gitee.io/tags/%E5%88%86%E5%B8%83%E5%BC%8F/' class="post_tag button button_translucent" title="分布式">
+          分布式
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://huangbaihua.gitee.io/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/' class="post_tag button button_translucent" title="微服务">
+          微服务
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://huangbaihua.gitee.io/tags/%E8%AE%A1%E5%88%92%E5%88%86%E4%BA%AB%E9%A2%84%E5%91%8A/' class="post_tag button button_translucent" title="计划分享预告">
+          计划分享预告
+          <span class="button_tally">1</span>
+        </a>
+        
+        
+      </nav>
+    </div>
+  </section>
+</aside>
+
+  
+</div>
+    </main><svg width="0" height="0" class="hidden">
+  <symbol viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" id="facebook">
+    <path d="M437 0H75C33.648 0 0 33.648 0 75v362c0 41.352 33.648 75 75 75h151V331h-60v-90h60v-61c0-49.629 40.371-90 90-90h91v90h-91v61h91l-15 90h-76v181h121c41.352 0 75-33.648 75-75V75c0-41.352-33.648-75-75-75zm0 0"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.001 18.001" id="twitter">
+    <path d="M15.891 4.013c.808-.496 1.343-1.173 1.605-2.034a8.68 8.68 0 0 1-2.351.861c-.703-.756-1.593-1.14-2.66-1.14-1.043 0-1.924.366-2.643 1.078a3.56 3.56 0 0 0-1.076 2.605c0 .309.039.585.117.819-3.076-.105-5.622-1.381-7.628-3.837-.34.601-.51 1.213-.51 1.846 0 1.301.549 2.332 1.645 3.089-.625-.053-1.176-.211-1.645-.47 0 .929.273 1.705.82 2.388a3.623 3.623 0 0 0 2.115 1.291c-.312.08-.641.118-.979.118-.312 0-.533-.026-.664-.083.23.757.664 1.371 1.291 1.841a3.652 3.652 0 0 0 2.152.743C4.148 14.173 2.625 14.69.902 14.69c-.422 0-.721-.006-.902-.038 1.697 1.102 3.586 1.649 5.676 1.649 2.139 0 4.029-.542 5.674-1.626 1.645-1.078 2.859-2.408 3.639-3.974a10.77 10.77 0 0 0 1.172-4.892v-.468a7.788 7.788 0 0 0 1.84-1.921 8.142 8.142 0 0 1-2.11.593z"
+      ></path>
+  </symbol>
+  <symbol aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="mail">
+    <path  d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="calendar">
+    <path d="M452 40h-24V0h-40v40H124V0H84v40H60C26.916 40 0 66.916 0 100v352c0 33.084 26.916 60 60 60h392c33.084 0 60-26.916 60-60V100c0-33.084-26.916-60-60-60zm20 412c0 11.028-8.972 20-20 20H60c-11.028 0-20-8.972-20-20V188h432v264zm0-304H40v-48c0-11.028 8.972-20 20-20h24v40h40V80h264v40h40V80h24c11.028 0 20 8.972 20 20v48z"></path>
+    <path d="M76 230h40v40H76zm80 0h40v40h-40zm80 0h40v40h-40zm80 0h40v40h-40zm80 0h40v40h-40zM76 310h40v40H76zm80 0h40v40h-40zm80 0h40v40h-40zm80 0h40v40h-40zM76 390h40v40H76zm80 0h40v40h-40zm80 0h40v40h-40zm80 0h40v40h-40zm80-80h40v40h-40z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="github">
+    <path d="M255.968 5.329C114.624 5.329 0 120.401 0 262.353c0 113.536 73.344 209.856 175.104 243.872 12.8 2.368 17.472-5.568 17.472-12.384 0-6.112-.224-22.272-.352-43.712-71.2 15.52-86.24-34.464-86.24-34.464-11.616-29.696-28.416-37.6-28.416-37.6-23.264-15.936 1.728-15.616 1.728-15.616 25.696 1.824 39.2 26.496 39.2 26.496 22.848 39.264 59.936 27.936 74.528 21.344 2.304-16.608 8.928-27.936 16.256-34.368-56.832-6.496-116.608-28.544-116.608-127.008 0-28.064 9.984-51.008 26.368-68.992-2.656-6.496-11.424-32.64 2.496-68 0 0 21.504-6.912 70.4 26.336 20.416-5.696 42.304-8.544 64.096-8.64 21.728.128 43.648 2.944 64.096 8.672 48.864-33.248 70.336-26.336 70.336-26.336 13.952 35.392 5.184 61.504 2.56 68 16.416 17.984 26.304 40.928 26.304 68.992 0 98.72-59.84 120.448-116.864 126.816 9.184 7.936 17.376 23.616 17.376 47.584 0 34.368-.32 62.08-.32 70.496 0 6.88 4.608 14.88 17.6 12.352C438.72 472.145 512 375.857 512 262.353 512 120.401 397.376 5.329 255.968 5.329z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 212 212" id="gitlab">
+    <path d="M12.3 74.7h54L43.3 3c-1-3.6-6.4-3.6-7.6 0L12.3 74.8z" />
+    <path d="M12.3 74.7L.5 111c-1 3.2 0 6.8 3 8.8l101.6 74-92.5-119z"/>
+    <path d="M105 193.7l-38.6-119h-54l92.7 119z"/>
+    <path d="M105 193.7l38.7-119H66.4l38.7 119z"/>
+    <path d="M105 193.7l38.7-119H198l-93 119z"/>
+    <path d="M198 74.7l11.6 36.2c1 3 0 6.6-3 8.6l-101.5 74 93-119z"/>
+    <path d="M198 74.7h-54.3L167 3c1.2-3.6 6.4-3.6 7.6 0L198 74.8z"/> 
+  </symbol>
+  <symbol viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="rss">
+    <circle cx="3.429" cy="20.571" r="3.429"></circle>
+    <path d="M11.429 24h4.57C15.999 15.179 8.821 8.001 0 8v4.572c6.302.001 11.429 5.126 11.429 11.428z"></path>
+    <path d="M24 24C24 10.766 13.234 0 0 0v4.571c10.714 0 19.43 8.714 19.43 19.429z"></path>
+  </symbol>
+  <symbol viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" id="linkedin">
+    <path d="M437 0H75C33.648 0 0 33.648 0 75v362c0 41.352 33.648 75 75 75h362c41.352 0 75-33.648 75-75V75c0-41.352-33.648-75-75-75zM181 406h-60V196h60zm0-240h-60v-60h60zm210 240h-60V286c0-16.54-13.46-30-30-30s-30 13.46-30 30v120h-60V196h60v11.309C286.719 202.422 296.93 196 316 196c40.691.043 75 36.547 75 79.688zm0 0"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 612 612" id="arrow">
+    <path d="M604.501 440.509L325.398 134.956c-5.331-5.357-12.423-7.627-19.386-7.27-6.989-.357-14.056 1.913-19.387 7.27L7.499 440.509c-9.999 10.024-9.999 26.298 0 36.323s26.223 10.024 36.222 0l262.293-287.164L568.28 476.832c9.999 10.024 26.222 10.024 36.221 0 9.999-10.023 9.999-26.298 0-36.323z"></path>
+  </symbol>
+  <symbol viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" id="carly">
+    <path d="M504.971 239.029L448 182.059V84c0-46.317-37.682-84-84-84h-44c-13.255 0-24 10.745-24 24s10.745 24 24 24h44c19.851 0 36 16.149 36 36v108c0 6.365 2.529 12.47 7.029 16.971L454.059 256l-47.029 47.029A24.002 24.002 0 0 0 400 320v108c0 19.851-16.149 36-36 36h-44c-13.255 0-24 10.745-24 24s10.745 24 24 24h44c46.318 0 84-37.683 84-84v-98.059l56.971-56.971c9.372-9.372 9.372-24.568 0-33.941zM112 192V84c0-19.851 16.149-36 36-36h44c13.255 0 24-10.745 24-24S205.255 0 192 0h-44c-46.318 0-84 37.683-84 84v98.059l-56.971 56.97c-9.373 9.373-9.373 24.568 0 33.941L64 329.941V428c0 46.317 37.682 84 84 84h44c13.255 0 24-10.745 24-24s-10.745-24-24-24h-44c-19.851 0-36-16.149-36-36V320c0-6.365-2.529-12.47-7.029-16.971L57.941 256l47.029-47.029A24.002 24.002 0 0 0 112 192z"></path>
+  </symbol>
+  <symbol viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="copy">
+    <path d="M23 2.75A2.75 2.75 0 0 0 20.25 0H8.75A2.75 2.75 0 0 0 6 2.75v13.5A2.75 2.75 0 0 0 8.75 19h11.5A2.75 2.75 0 0 0 23 16.25zM18.25 14.5h-7.5a.75.75 0 0 1 0-1.5h7.5a.75.75 0 0 1 0 1.5zm0-3h-7.5a.75.75 0 0 1 0-1.5h7.5a.75.75 0 0 1 0 1.5zm0-3h-7.5a.75.75 0 0 1 0-1.5h7.5a.75.75 0 0 1 0 1.5z"></path>
+    <path d="M8.75 20.5a4.255 4.255 0 0 1-4.25-4.25V2.75c0-.086.02-.166.025-.25H3.75A2.752 2.752 0 0 0 1 5.25v16A2.752 2.752 0 0 0 3.75 24h12a2.752 2.752 0 0 0 2.75-2.75v-.75z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512.001 512.001" id="closeme">
+    <path d="M284.286 256.002L506.143 34.144c7.811-7.811 7.811-20.475 0-28.285-7.811-7.81-20.475-7.811-28.285 0L256 227.717 34.143 5.859c-7.811-7.811-20.475-7.811-28.285 0-7.81 7.811-7.811 20.475 0 28.285l221.857 221.857L5.858 477.859c-7.811 7.811-7.811 20.475 0 28.285a19.938 19.938 0 0 0 14.143 5.857 19.94 19.94 0 0 0 14.143-5.857L256 284.287l221.857 221.857c3.905 3.905 9.024 5.857 14.143 5.857s10.237-1.952 14.143-5.857c7.811-7.811 7.811-20.475 0-28.285L284.286 256.002z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="open-menu">
+    <path d="M492 236H20c-11.046 0-20 8.954-20 20s8.954 20 20 20h472c11.046 0 20-8.954 20-20s-8.954-20-20-20zm0-160H20C8.954 76 0 84.954 0 96s8.954 20 20 20h472c11.046 0 20-8.954 20-20s-8.954-20-20-20zm0 320H20c-11.046 0-20 8.954-20 20s8.954 20 20 20h472c11.046 0 20-8.954 20-20s-8.954-20-20-20z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="instagram">
+    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id=youtube>
+    <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="stackoverflow">
+    <path d="M21 27v-8h3v11H0V19h3v8h18z"></path><path d="M17.1.2L15 1.8l7.9 10.6 2.1-1.6L17.1.2zm3.7 14.7L10.6 6.4l1.7-2 10.2 8.5-1.7 2zM7.2 12.3l12 5.6 1.1-2.4-12-5.6-1.1 2.4zm-1.8 6.8l13.56 1.96.17-2.38-13.26-2.55-.47 2.97zM19 25H5v-3h14v3z"></path>
+  </symbol>
+</svg>
+
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+
+<footer class="footer">
+  <div class="footer_inner wrap pale">
+    <img src='https://huangbaihua.gitee.io/icons/favicon.png' class="icon icon_2 transparent" alt="柏华">
+    <p>Copyright&nbsp;<span class="year"></span>&nbsp;柏华. All Rights Reserved <span>&nbsp;&nbsp;&nbsp;&nbsp;Powered by <a href="https://gohugo.io/" style="color: blue">Hugo</a>,<a href="https://themes.gohugo.io/hugo-clarity/" style="color: blue">Clarity</a></span>
+    </p><a class="to_top" href="#documentTop">
+  <svg class="icon">
+  <use xlink:href="#arrow"></use>
+</svg>
+</a>
+
+  </div>
+</footer>
+
+    <script type="text/javascript" src="https://huangbaihua.gitee.io/js/bundle.min.c7bb60db8c4ab2893e8375f4eb80bdc351420c47f685aef368a8e8a4f0fd9205dd771ee950d99667a3ef33e1244dd566bb88221b238dd6fc01c64134c616fd9d.js" integrity="" crossorigin="anonymous"></script>
+    
+  </body>
+</html>
