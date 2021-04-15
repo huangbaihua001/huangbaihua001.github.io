@@ -51,7 +51,7 @@ isCJKLanguage = true
 
 当我们这样思考微服务的时候，可能会质疑自己为什么要采用微服务架构。答案通常是微服务可以独立部署且易于扩展。对于一个大型的单体应用，一个组织被迫一次性部署或发布所有的代码。应用程序的每一个新版本都可能涉及许多更改。部署变得风险大、耗时长。任何人都可以使整个系统瘫痪
 
-换句话，组织采用微服务是为了运营效率而牺牲了性能。组织也必须承担支撑微服务所必需的维护基础设施的费用。事实证明，在多数情况下，这种取舍权衡是很有意义的，但是也强烈反对过早地采用微服务架构。
+换句话说，组织采用微服务是为了运营效率而牺牲了性能。组织也必须承担支撑微服务所必需的维护基础设施的费用。事实证明，在多数情况下，这种取舍权衡是很有意义的，但是也强烈反对过早地采用微服务架构。
 
 # 动机
 
@@ -297,7 +297,7 @@ Deepti Chedda, Dmitriy Bryndin, Gaurav Tungatkar, Jacob Greenleaf, Jaikumar Gane
 Joshua Shinavier, Julia Law, Kusha Kapoor, Linda Fu, Madan Thangavelu, Nimish Sheth, Parth Shah, Shawn Burke,
 Simon Newton, Steve Sherwood, Uday Kiran Medisetty, and Waleed Kadous
 
-鸣谢:
+#鸣谢:
 
 这项工作将业界现有的多种设计模式用来解决优步的问题，同时也提出了类似扩展的新模式。
 我们感谢业界做出的工作。我们也感谢领英的工程师们在“Superblocks”的工作，他们向我们讲述了他们的相关经验。
