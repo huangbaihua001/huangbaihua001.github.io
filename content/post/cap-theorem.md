@@ -52,7 +52,7 @@ CAP定理指出，在一个分布式系统中(共享数据的互联节点的集�
 > [分布式8大谬论](https://en.wikipedia.org/wiki/Fallacies_of_distributed_computing) 来自维基百科
 > 1. 网络是可靠的 The network is reliable;
 > 2. 没有延迟 Latency is zero;
-> 3. 带宽是无线的 Bandwidth is infinite;
+> 3. 带宽是无限的 Bandwidth is infinite;
 > 4. 网络是安全的 The network is secure;
 > 5. 网络拓扑不会改变 Topology doesn't change;
 > 6. 系统只有一位管理员 There is one administrator;
