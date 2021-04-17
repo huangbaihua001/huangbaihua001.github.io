@@ -1,7 +1,7 @@
 +++
 author = "柏华"
-title = "产品和媒体是新的杠杆"
-date = "2021-04-07"
+title = "产品和媒体是新的财富杠杆"
+date = "2021-04-16"
 description = "纳瓦尔谈零边际成本产品在积累财富中的作用"
 featured = true
 categories = [
@@ -15,9 +15,9 @@ tags = [
 
 isCJKLanguage = true
 +++
-![](/images/graph/c1.png)
+![](/images/graph/f1.png)
 
-
+产品和媒体是新的财富杠杆
 
 <!--more-->
 
