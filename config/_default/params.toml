@@ -85,3 +85,5 @@ websiteDomain = "github.com" # domain name of your website, most cases same as y
 # scritpName = "plausible" # default is set to plausible, only required if using a custome name for script
 
 page_view_conter = true
+
+enableMermaid = true
