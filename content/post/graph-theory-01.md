@@ -66,7 +66,7 @@ isCJKLanguage = true
 
 一个图(Graph)包含两个部分，一部分是顶点(Vertices)，另一部分是边(Edges)。图中顶点与边的映射关系(φ)，记作：
 $$
-\color{blue} G = <V,E,φ>
+\color{red} G = <V,E,φ>
 $$
 其中V是非空有限顶点集合，它的元素称为<font color='red'>结点</font>; E是边的集合(简称边集)，它的元素称为<font color='red'>边</font>。 而φ是从E到V中的有序对或无序对的<font color='red'>映射</font>
 
@@ -78,10 +78,10 @@ $$
 
 如下所示无向图G1 由 5个顶点 和 7条无向边组成。
 $$
-顶点集合： \color{blue} V = \text{\textbraceleft}0,1,2,3,4\text{\textbraceright}
+顶点集合： \color{red} V = \text{\textbraceleft}0,1,2,3,4\text{\textbraceright}
 $$
 $$
-边集： \color{blue} E = \text{\textbraceleft}(0,0),(0,2),(0,3),(2,3),(2,4),(3,4),(1,4)\text{\textbraceright}
+边集： \color{red} E = \text{\textbraceleft}(0,0),(0,2),(0,3),(2,3),(2,4),(3,4),(1,4)\text{\textbraceright}
 $$
 ![无向图G1](/images/graph/g1.png)
 
@@ -89,10 +89,10 @@ $$
 
 如下所示有向图G2 由 3个顶点 和 6条有向边组成。
 $$
-顶点集合： \color{blue} V = \text{\textbraceleft}A,B,C\text{\textbraceright}
+顶点集合： \color{red} V = \text{\textbraceleft}A,B,C\text{\textbraceright}
 $$
 $$
-边集： \color{blue} E = \text{\textbraceleft}<A,B>,<B,A>,<B,C>,<C,B>,<A,C>,<C,A>\text{\textbraceright}
+边集： \color{red} E = \text{\textbraceleft}<A,B>,<B,A>,<B,C>,<C,B>,<A,C>,<C,A>\text{\textbraceright}
 $$
 ![有向图G2](/images/graph/g2.png)
 

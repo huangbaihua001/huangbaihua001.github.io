@@ -185,12 +185,12 @@
 &lt;ul&gt;
 &lt;li&gt;用户A,B相似度计算如下:
 $$
-\color{blue} sim(A,B) = \frac{ 4\times5 }{ { \sqrt{ 4\times4+5\times5+1\times1} } \times {\sqrt{5\times5+5\times5+4\times4}} }
+\color{red} sim(A,B) = \frac{ 4\times5 }{ { \sqrt{ 4\times4+5\times5+1\times1} } \times {\sqrt{5\times5+5\times5+4\times4}} }
 = 0.38
 $$&lt;/li&gt;
 &lt;li&gt;用户A,C相似度计算如下:
 $$
-\color{blue} sim(A,C) = \frac{ 4\times1 + 5\times1 }{ { \sqrt{ 4\times4+5\times5+1\times1} } \times {\sqrt{1\times1+1\times1}} }
+\color{red} sim(A,C) = \frac{ 4\times1 + 5\times1 }{ { \sqrt{ 4\times4+5\times5+1\times1} } \times {\sqrt{1\times1+1\times1}} }
 = 0.98
 $$&lt;/li&gt;
 &lt;/ul&gt;
@@ -405,7 +405,7 @@ $$&lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;用户A,B的相似度
 $$
-\color{blue} sim(A,B) = \frac{ \frac2 3\times\frac1 3 }{ { \sqrt{ (\frac 2 3\times\frac 2 3) + (\frac5 3\times\frac 5 3) + (-\frac7 3\times-\frac7 3)} } \times {\sqrt{(\frac1 3\times\frac1 3)+(\frac1 3\times\frac1 3)+(-\frac2 3\times-\frac2 3)}} }
+\color{red} sim(A,B) = \frac{ \frac2 3\times\frac1 3 }{ { \sqrt{ (\frac 2 3\times\frac 2 3) + (\frac5 3\times\frac 5 3) + (-\frac7 3\times-\frac7 3)} } \times {\sqrt{(\frac1 3\times\frac1 3)+(\frac1 3\times\frac1 3)+(-\frac2 3\times-\frac2 3)}} }
 = 0.09
 $$&lt;/p&gt;
 &lt;/li&gt;
@@ -617,17 +617,17 @@ $$&lt;/p&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;$$
-\color{blue}sim(精益创业,精益创业)=1
+\color{red}sim(精益创业,精益创业)=1
 $$
 $$
-\color{blue}sim(精益创业,会计学)= \frac{ \frac2 3\times\frac2 3 }
+\color{red}sim(精益创业,会计学)= \frac{ \frac2 3\times\frac2 3 }
 { { \sqrt{ (-\frac 7 3\times-\frac 7 3) + (\frac2 3\times\frac2 3) + (\frac5 3\times\frac5 3)} } 
 \times {\sqrt{(\frac2 3\times\frac2 3)+(-\frac1 3\times-\frac1 3)+(-\frac1 3\times-\frac1 3)}}
 }
 = 0.046
 $$
 $$
-\color{blue}sim(精益创业,微积分)= \frac{-\frac7 3\times-\frac1 4 }
+\color{red}sim(精益创业,微积分)= \frac{-\frac7 3\times-\frac1 4 }
 { { \sqrt{ (-\frac 7 3\times-\frac 7 3) + (\frac2 3\times\frac2 3) + (\frac5 3\times\frac5 3)} }
 \times {\sqrt{(-\frac1 4\times-\frac1 4)+(-\frac1 4\times-\frac1 4)+(-\frac1 4\times-\frac1 4)+(-\frac1 4\times-\frac1 4)+(1\times1)}}
 }
@@ -688,7 +688,7 @@ $$&lt;/p&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;$$
-\color{blue}R14=\frac{(0.046\times4+0.048\times1)} {(0.046+0.048)}=1.65
+\color{red}R14=\frac{(0.046\times4+0.048\times1)} {(0.046+0.048)}=1.65
 $$&lt;/p&gt;
 &lt;h3 id=&#34;用户协同过滤&#34;&gt;用户协同过滤&lt;/h3&gt;
 &lt;p&gt;用户协同过滤和物品协同过滤原理是一样的，唯一的区别是计算时切换一下维度即可，这里就不在重复了。&lt;/p&gt;
@@ -2825,7 +2825,7 @@ Object的hashCode的大多数实现都不能很好地散列--例如，它们通�
 &lt;h2 id=&#34;图的基本概念&#34;&gt;图的基本概念&lt;/h2&gt;
 &lt;p&gt;一个图(Graph)包含两个部分，一部分是顶点(Vertices)，另一部分是边(Edges)。图中顶点与边的映射关系(φ)，记作：
 $$
-\color{blue} G = &amp;lt;V,E,φ&amp;gt;
+\color{red} G = &amp;lt;V,E,φ&amp;gt;
 $$
 其中V是非空有限顶点集合，它的元素称为&lt;font color=&#39;red&#39;&gt;结点&lt;/font&gt;; E是边的集合(简称边集)，它的元素称为&lt;font color=&#39;red&#39;&gt;边&lt;/font&gt;。 而φ是从E到V中的有序对或无序对的&lt;font color=&#39;red&#39;&gt;映射&lt;/font&gt;&lt;/p&gt;
 &lt;p&gt;当顶点分别是u,v时，连接两个顶点的边可以表示为一个二元组(u,v),或是 &amp;lt;u,v&amp;gt;。其中(u,v)表示无序二元组(也称无序对)，对应的边是没有方向的,叫无向边，&amp;lt;u,v&amp;gt;表示有序二元组(也称有序对)，对应的的边是有方向的，叫有向边。&lt;/p&gt;
@@ -2835,10 +2835,10 @@ $$
 &lt;/ul&gt;
 &lt;p&gt;如下所示无向图G1 由 5个顶点 和 7条无向边组成。
 $$
-顶点集合： \color{blue} V = \text{\textbraceleft}0,1,2,3,4\text{\textbraceright}
+顶点集合： \color{red} V = \text{\textbraceleft}0,1,2,3,4\text{\textbraceright}
 $$
 $$
-边集： \color{blue} E = \text{\textbraceleft}(0,0),(0,2),(0,3),(2,3),(2,4),(3,4),(1,4)\text{\textbraceright}
+边集： \color{red} E = \text{\textbraceleft}(0,0),(0,2),(0,3),(2,3),(2,4),(3,4),(1,4)\text{\textbraceright}
 $$
 &lt;img src=&#34;https://huangbaihua.gitee.io/images/graph/g1.png&#34; alt=&#34;无向图G1&#34;&gt;&lt;/p&gt;
 &lt;ul&gt;
@@ -2846,10 +2846,10 @@ $$
 &lt;/ul&gt;
 &lt;p&gt;如下所示有向图G2 由 3个顶点 和 6条有向边组成。
 $$
-顶点集合： \color{blue} V = \text{\textbraceleft}A,B,C\text{\textbraceright}
+顶点集合： \color{red} V = \text{\textbraceleft}A,B,C\text{\textbraceright}
 $$
 $$
-边集： \color{blue} E = \text{\textbraceleft}&amp;lt;A,B&amp;gt;,&amp;lt;B,A&amp;gt;,&amp;lt;B,C&amp;gt;,&amp;lt;C,B&amp;gt;,&amp;lt;A,C&amp;gt;,&amp;lt;C,A&amp;gt;\text{\textbraceright}
+边集： \color{red} E = \text{\textbraceleft}&amp;lt;A,B&amp;gt;,&amp;lt;B,A&amp;gt;,&amp;lt;B,C&amp;gt;,&amp;lt;C,B&amp;gt;,&amp;lt;A,C&amp;gt;,&amp;lt;C,A&amp;gt;\text{\textbraceright}
 $$
 &lt;img src=&#34;https://huangbaihua.gitee.io/images/graph/g2.png&#34; alt=&#34;有向图G2&#34;&gt;&lt;/p&gt;
 &lt;ul&gt;

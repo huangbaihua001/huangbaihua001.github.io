@@ -108,12 +108,12 @@ isCJKLanguage = true
 
 - 用户A,B相似度计算如下:
 $$
-\color{blue} sim(A,B) = \frac{ 4\times5 }{ { \sqrt{ 4\times4+5\times5+1\times1} } \times {\sqrt{5\times5+5\times5+4\times4}} }
+\color{red} sim(A,B) = \frac{ 4\times5 }{ { \sqrt{ 4\times4+5\times5+1\times1} } \times {\sqrt{5\times5+5\times5+4\times4}} }
          = 0.38
 $$
 - 用户A,C相似度计算如下:
 $$
-\color{blue} sim(A,C) = \frac{ 4\times1 + 5\times1 }{ { \sqrt{ 4\times4+5\times5+1\times1} } \times {\sqrt{1\times1+1\times1}} }
+\color{red} sim(A,C) = \frac{ 4\times1 + 5\times1 }{ { \sqrt{ 4\times4+5\times5+1\times1} } \times {\sqrt{1\times1+1\times1}} }
          = 0.98
 $$
  
@@ -183,7 +183,7 @@ $$
 
 - 用户A,B的相似度
 $$
-\color{blue} sim(A,B) = \frac{ \frac2 3\times\frac1 3 }{ { \sqrt{ (\frac 2 3\times\frac 2 3) + (\frac5 3\times\frac 5 3) + (-\frac7 3\times-\frac7 3)} } \times {\sqrt{(\frac1 3\times\frac1 3)+(\frac1 3\times\frac1 3)+(-\frac2 3\times-\frac2 3)}} }
+\color{red} sim(A,B) = \frac{ \frac2 3\times\frac1 3 }{ { \sqrt{ (\frac 2 3\times\frac 2 3) + (\frac5 3\times\frac 5 3) + (-\frac7 3\times-\frac7 3)} } \times {\sqrt{(\frac1 3\times\frac1 3)+(\frac1 3\times\frac1 3)+(-\frac2 3\times-\frac2 3)}} }
                       = 0.09
 $$
   
@@ -232,17 +232,17 @@ $$
 微积分| -1/4 | -1/4 | - | -1/4 | -1/4 | - | 1 |<span style='color:red'>0.048</span>|
 
 $$
-\color{blue}sim(精益创业,精益创业)=1
+\color{red}sim(精益创业,精益创业)=1
 $$
 $$
-\color{blue}sim(精益创业,会计学)= \frac{ \frac2 3\times\frac2 3 }
+\color{red}sim(精益创业,会计学)= \frac{ \frac2 3\times\frac2 3 }
 { { \sqrt{ (-\frac 7 3\times-\frac 7 3) + (\frac2 3\times\frac2 3) + (\frac5 3\times\frac5 3)} } 
 \times {\sqrt{(\frac2 3\times\frac2 3)+(-\frac1 3\times-\frac1 3)+(-\frac1 3\times-\frac1 3)}}
 }
 = 0.046
 $$
 $$
-\color{blue}sim(精益创业,微积分)= \frac{-\frac7 3\times-\frac1 4 }
+\color{red}sim(精益创业,微积分)= \frac{-\frac7 3\times-\frac1 4 }
 { { \sqrt{ (-\frac 7 3\times-\frac 7 3) + (\frac2 3\times\frac2 3) + (\frac5 3\times\frac5 3)} }
 \times {\sqrt{(-\frac1 4\times-\frac1 4)+(-\frac1 4\times-\frac1 4)+(-\frac1 4\times-\frac1 4)+(-\frac1 4\times-\frac1 4)+(1\times1)}}
 }
@@ -260,7 +260,7 @@ $$
 微积分| 2 | 4 | - | 1 | 2 | - | 3 |<span style='color:red'>0.048</span>|
 
 $$
-\color{blue}R14=\frac{(0.046\times4+0.048\times1)} {(0.046+0.048)}=1.65
+\color{red}R14=\frac{(0.046\times4+0.048\times1)} {(0.046+0.048)}=1.65
 $$
 
 ### 用户协同过滤
