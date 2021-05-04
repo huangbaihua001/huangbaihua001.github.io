@@ -6,7 +6,972 @@
     <description>Recent content in 所有文章索引 on 柏华</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright © 2008–2021, 柏华; all rights reserved. Powered by Hugo</copyright>
-    <lastBuildDate>Thu, 15 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://huangbaihua.gitee.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 04 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://huangbaihua.gitee.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>机器学习入门-算法-协同过滤简介</title>
+      <link>https://huangbaihua.gitee.io/post/mache-learing-collaborative-filtering/</link>
+      <pubDate>Tue, 04 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://huangbaihua.gitee.io/post/mache-learing-collaborative-filtering/</guid>
+      <description>
+        
+          &lt;p&gt;&lt;img src=&#34;https://huangbaihua.gitee.io/images/graph/ml1.webp&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;本文是机器学习常用算法之协同过滤算法系列篇中的第一篇，主要讲解了协同过滤的基本概念，如何求相似度，以及如何根据基于物品的协同过滤对物品进行评分。&lt;/p&gt;
+&lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%E5%8D%8F%E5%90%8C%E8%BF%87%E6%BB%A4%E5%88%86%E7%B1%BB&#34;&gt;什么是协同过滤&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%E5%8D%8F%E5%90%8C%E8%BF%87%E6%BB%A4%E5%88%86%E7%B1%BB&#34;&gt;协同过滤分类&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%E5%9F%BA%E4%BA%8E%E7%94%A8%E6%88%B7%E7%9A%84%E5%8D%8F%E5%90%8C%E8%BF%87%E6%BB%A4&#34;&gt;基于用户的协同过滤 &lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%E5%9F%BA%E4%BA%8E%E7%89%A9%E5%93%81%E7%9A%84%E5%8D%8F%E5%90%8C%E8%BF%87%E6%BB%A4&#34;&gt;基于物品的协同过滤 &lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%E7%9B%B8%E4%BC%BC%E5%BA%A6&#34;&gt;相似度&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%E4%BD%99%E5%BC%A6%E7%9B%B8%E4%BC%BC%E5%BA%A6&#34;&gt;余弦相似度&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%E7%9A%AE%E5%B0%94%E9%80%8A%E7%9B%B8%E4%BC%BC%E5%BA%A6&#34;&gt;皮尔逊相似度&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%E5%8D%8F%E5%90%8C%E8%BF%87%E6%BB%A4%E9%A2%84%E6%B5%8B%E6%89%93%E5%88%86&#34;&gt;协同过滤预测打分&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%E7%89%A9%E5%93%81%E5%8D%8F%E5%90%8C%E8%BF%87%E6%BB%A4&#34;&gt;物品协同过滤&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99&#34;&gt;参考资料&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;什么是协同过滤collaborative-filtering&#34;&gt;什么是协同过滤(Collaborative Filtering)&lt;/h2&gt;
+&lt;p&gt;维基百科: 协同过滤（collaborative filtering）是一种在推荐系统中广泛使用的技术。
+该技术通过分析用户或者事物之间的相似性（“协同”），来预测用户可能感兴趣的内容并将此内容推荐给用户。&lt;/p&gt;
+&lt;p&gt;协同过滤实际上是一种数学方法，它通过将一个用户与所有其它用户进行比较，预测该用户给某一项目的评分。&lt;/p&gt;
+&lt;p&gt;例如：为了预测用户A对某一特定项目的评分，首先需要计算用户A和其它所有用户的相似度。取出与用户A最相似的用户，
+然后计算出用户A与所有最相似用户对这一项目的预测评分。&lt;/p&gt;
+&lt;h2 id=&#34;协同过滤分类&#34;&gt;协同过滤分类&lt;/h2&gt;
+&lt;h3 id=&#34;基于用户的协同过滤&#34;&gt;基于用户的协同过滤&lt;/h3&gt;
+&lt;p&gt;一般来说，通过用户的&lt;span style=&#39;font-weight:bold; color:red&#39;&gt;喜好特征&lt;/span&gt;找出与他&lt;span style=&#39;font-weight:bold; color:red&#39;&gt;相似的用户&lt;/span&gt;，
+再将&lt;span style=&#39;font-weight:bold; color:red&#39;&gt;相似的用户&lt;/span&gt;对物品有相同行为（比如购买了该物品）推荐给目标客户。&lt;/p&gt;
+&lt;p&gt;如下图所示：
+用户A喜欢物品1和物品3，用户C也喜欢物品1和物品3。所以我们推测用户A和用户C有很大的相似度（喜好可能相同）。
+而A对物品4还没有相关行为，所以把用户C喜欢的物品4推荐给用户A。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://huangbaihua.gitee.io/images/cf/user_cf.png&#34; alt=&#34;基于用户的协同过滤&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;基于物品的协同过滤&#34;&gt;基于物品的协同过滤&lt;/h3&gt;
+&lt;p&gt;一般来说，通过物品的&lt;span style=&#39;font-weight:bold; color:red&#39;&gt;特征X&lt;/span&gt;找出与它&lt;span style=&#39;font-weight:bold; color:red&#39;&gt;相似的物品&lt;/span&gt;，
+再将&lt;span style=&#39;font-weight:bold; color:red&#39;&gt;相似的物品&lt;/span&gt;推荐给目标客户。&lt;/p&gt;
+&lt;p&gt;如下图所示：
+用户A喜欢物品1和物品3，用户C也喜欢物品1和物品3。所以我们推测物品1和物品3有很大的相似度（特征可能相同）。
+而用户B喜欢了物品1，而物品3和物品1相似，所以自动将物品3推荐给用户B。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://huangbaihua.gitee.io/images/cf/item_cf.png&#34; alt=&#34;基于物品的协同过滤&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;相似度&#34;&gt;相似度&lt;/h2&gt;
+&lt;p&gt;正如前面所讲，协同过滤不管是基于用户还是基于物品，首先都要找到相似物品或相似用户。那么如何求得用户或物品的相似度呢？本节将会做详细讲解。&lt;/p&gt;
+&lt;h3 id=&#34;书籍评分数据&#34;&gt;书籍评分数据&lt;/h3&gt;
+&lt;p&gt;我们以推荐书籍来举例，有如下书籍评分数据（分值1-5，分值越高表示越喜欢，分值越低表示不喜欢)，分别用余弦相似度和Pearson（皮尔逊）相似度来计算用户相似度。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;用户/书籍&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;精益创业&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;会计学&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;微积分&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;育儿&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;投资&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;时间管理&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;情绪控制&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;用户A&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;4&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;5&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;用户B&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;5&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;5&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;4&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;用户C&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;用户D&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;3&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;3&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;余弦相似度&#34;&gt;余弦相似度&lt;/h3&gt;
+&lt;p&gt;余弦相似度，也叫做余弦距离，是用向量空间中两个向量夹角的余弦值作为衡量两个个体间差异的大小的度量。根据余弦定理可以得到两个向量夹角的cos值。&lt;/p&gt;
+&lt;p&gt;余弦值越接近1，就表明夹角越接近0度，也就是两个向量越相似，这就叫&amp;quot;余弦相似性&amp;quot;。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://huangbaihua.gitee.io/images/cf/yuxian_sim.png&#34; alt=&#34;余弦相似度&#34;&gt;&lt;/p&gt;
+&lt;p&gt;现在我们依次来求&lt;a href=&#34;#%E4%B9%A6%E7%B1%8D%E8%AF%84%E5%88%86%E6%95%B0%E6%8D%AE&#34;&gt;书籍评分数据&lt;/a&gt;的用户相似度。 根据公式，用户A、用户B的相似度即为 A,B 对书籍《精益创业》的评分之积
+比上A,B对7本书的评分的模。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;用户/书籍&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;精益创业&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;会计学&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;微积分&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;育儿&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;投资&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;时间管理&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;情绪控制&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;用户A&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;4&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;5&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;用户B&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;5&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;5&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;4&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;用户C&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;用户D&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;3&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;3&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;ul&gt;
+&lt;li&gt;用户A,B相似度计算如下:
+$$
+\color{blue} sim(A,B) = \frac{ 4\times5 }{ { \sqrt{ 4\times4+5\times5+1\times1} } \times {\sqrt{5\times5+5\times5+4\times4}} }
+= 0.38
+$$&lt;/li&gt;
+&lt;li&gt;用户A,C相似度计算如下:
+$$
+\color{blue} sim(A,C) = \frac{ 4\times1 + 5\times1 }{ { \sqrt{ 4\times4+5\times5+1\times1} } \times {\sqrt{1\times1+1\times1}} }
+= 0.98
+$$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;通过计算结果来看，sim(A,C) &amp;gt; sim(A,B) 。用户A,C的相似度 远大于 用户A,B的相似度。但通过观察上面的表格看出，用户A,B都喜欢《精益创业》这本书(评分在4分及5分)，但是A,C没有共同喜欢的书籍(C评分为1分表示不喜欢）。
+所以推断A,B比A,C相似度高才对。 但是计算结果却相反，这到底是什么原因？&lt;/p&gt;
+&lt;p&gt;从表格上看，这是因为用户对每一本书的打分在总打分的比重是不一样的。比如，用户A的总分是10分。
+《精益创业》打分占比为4/10。用户B的总分为14分，《精益创业》占比为4/14。用户C的总分为2分，《精益创业》占比为1/2。&lt;/p&gt;
+&lt;p&gt;一般来说，上面的余弦相似度计算没有把缺失的维度值考虑进去(也就是没有把用户未评分项目考虑进来)，进而给相似度计算带来了差异。&lt;/p&gt;
+&lt;h3 id=&#34;皮尔逊相似度&#34;&gt;皮尔逊相似度&lt;/h3&gt;
+&lt;p&gt;为了解决余弦相似度计算带来的相似度差异问题，我们采用皮尔逊算法。皮尔逊算法比余弦距离更加重视数据集的整体性。&lt;/p&gt;
+&lt;p&gt;该算法运用皮尔逊相关性思想计算向量余弦相似度，得到皮尔逊相关系数，它是余弦相似度在维度值缺失下的一种改进。&lt;/p&gt;
+&lt;h4 id=&#34;皮尔逊相关性&#34;&gt;皮尔逊相关性&lt;/h4&gt;
+&lt;p&gt;皮尔逊是一种相关性度量方法，主要依靠计算得出的皮尔逊相关系数度量。
+皮尔逊相关系数输出范围为-1到+1，0代表无相关性，负值为负相关，正值为正相关。&lt;/p&gt;
+&lt;p&gt;几何上来讲，皮尔逊相关系数是余弦相似度在维度值缺失情况下的一种改进。
+皮尔逊系数就是在使用cos计算两个向量（cos&amp;lt;a, b&amp;gt; = a • b / |a|•|b|）时进行中心化。&lt;/p&gt;
+&lt;p&gt;皮尔逊相关系数的一般思路是，对每个向量，先计算出所有元素的平均值，然后向量中每个维度的值减去这个平均值，得到的这个向量被称为
+中心化的向量。这样的操作也叫做中心化。&lt;/p&gt;
+&lt;p&gt;注： 机器学习要计算向量余弦相似度的时候, 由于向量经常在某个维度上有数据的缺失, 预处理阶段都要对所有维度的数值进行中心化处理。&lt;/p&gt;
+&lt;p&gt;注： 皮尔逊相关系数相关分类&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;0.8-1.0 极强相关&lt;/li&gt;
+&lt;li&gt;0.6-0.8 强相关&lt;/li&gt;
+&lt;li&gt;0.4-0.6 中等程度相关&lt;/li&gt;
+&lt;li&gt;0.2-0.4 弱相关&lt;/li&gt;
+&lt;li&gt;0.0-0.2 极弱相关或无相关&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;求解步骤&#34;&gt;求解步骤&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;步骤一：计算平均值&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;用户/书籍&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;精益创业&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;会计学&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;微积分&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;育儿&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;投资&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;时间管理&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;情绪控制&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;Mean(平均值)&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;用户A&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;4&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;5&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;span style=&#34;color:red&#34;&gt;10/3&lt;/span&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;用户B&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;5&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;5&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;4&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;span style=&#34;color:red&#34;&gt;14/3&lt;/span&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;用户C&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;span style=&#34;color:red&#34;&gt;2/2&lt;/span&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;用户D&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;3&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;3&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;span style=&#34;color:red&#34;&gt;6/2&lt;/span&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;ul&gt;
+&lt;li&gt;步骤二: 减去平均值&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;用户/书籍&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;精益创业&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;会计学&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;微积分&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;育儿&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;投资&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;时间管理&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;情绪控制&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;用户A&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;2/3&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;5/3&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-7/3&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;用户B&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1/3&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1/3&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-2/3&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;用户C&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;用户D&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;ul&gt;
+&lt;li&gt;步骤三: 计算余弦相似度&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;用户/书籍&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;精益创业&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;会计学&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;微积分&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;育儿&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;投资&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;时间管理&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;情绪控制&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;用户A&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;2/3&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;5/3&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-7/3&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;用户B&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1/3&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1/3&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-2/3&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;用户C&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;用户D&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;用户A,B的相似度
+$$
+\color{blue} sim(A,B) = \frac{ \frac2 3\times\frac1 3 }{ { \sqrt{ (\frac 2 3\times\frac 2 3) + (\frac5 3\times\frac 5 3) + (-\frac7 3\times-\frac7 3)} } \times {\sqrt{(\frac1 3\times\frac1 3)+(\frac1 3\times\frac1 3)+(-\frac2 3\times-\frac2 3)}} }
+= 0.09
+$$&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;用户A,C的相似度&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;用户C的评分都为0，显然A,C的相似度是0。 sim(A,C) = 0&lt;/p&gt;
+&lt;p&gt;由此可见，这次的计算结果与之前的推断是相符的。用户A,B的相似度比A,C的相似度高。&lt;/p&gt;
+&lt;h2 id=&#34;协同过滤预测打分&#34;&gt;协同过滤预测打分&lt;/h2&gt;
+&lt;p&gt;接下来，我们分别以物品和用户的维度来对物品或用户进行评分预测。&lt;/p&gt;
+&lt;h3 id=&#34;物品协同过滤&#34;&gt;物品协同过滤&lt;/h3&gt;
+&lt;p&gt;以下是用户A-G对三本书的评分数据。 我们怎么推断用户E对《精益创业》这本书的喜欢程度呢？即评分是多少？&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;-&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;A&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;B&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;C&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;D&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;E&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;F&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;G&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;精益创业&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;3&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;span style=&#39;color:red&#39;&gt;?&lt;/span&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;5&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;会计学&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;5&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;4&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;4&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;微积分&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;2&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;4&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;2&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;3&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;步骤一: 求平均值&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;-&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;A&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;B&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;C&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;D&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;E&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;F&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;G&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;mean&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;精益创业&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;4&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;span style=&#39;color:red&#39;&gt;?&lt;/span&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;5&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;span style=&#39;color:red&#39;&gt;10/3&lt;/span&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;会计学&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;5&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;4&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;4&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;span style=&#39;color:red&#39;&gt;13/3&lt;/span&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;微积分&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;2&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;4&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;2&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;3&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;span style=&#39;color:red&#39;&gt;9/4&lt;/span&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;步骤二: 减去平均值&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;-&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;A&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;B&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;C&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;D&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;E&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;F&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;G&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;精益创业&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-7/3&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;2/3&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;span style=&#39;color:red&#39;&gt;?&lt;/span&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;5/3&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;会计学&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;2/3&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-1/3&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-1/3&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;微积分&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-1/4&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-1/4&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-1/4&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-1/4&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;ul&gt;
+&lt;li&gt;步骤三: 分别计算物品《精益创业》(含自己)和其它所有物品的相似度&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;-&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;A&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;B&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;C&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;D&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;E&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;F&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;G&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;相似度&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;精益创业&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-7/3&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;2/3&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;span style=&#39;color:red&#39;&gt;?&lt;/span&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;5/3&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;span style=&#39;color:red&#39;&gt;1.0&lt;/span&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;会计学&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;2/3&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-1/3&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-1/3&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;span style=&#39;color:red&#39;&gt;0.046&lt;/span&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;微积分&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-1/4&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-1/4&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-1/4&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-1/4&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;span style=&#39;color:red&#39;&gt;0.048&lt;/span&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;$$
+\color{blue}sim(精益创业,精益创业)=1
+$$
+$$
+\color{blue}sim(精益创业,会计学)= \frac{ \frac2 3\times\frac2 3 }
+{ { \sqrt{ (-\frac 7 3\times-\frac 7 3) + (\frac2 3\times\frac2 3) + (\frac5 3\times\frac5 3)} } 
+\times {\sqrt{(\frac2 3\times\frac2 3)+(-\frac1 3\times-\frac1 3)+(-\frac1 3\times-\frac1 3)}}
+}
+= 0.046
+$$
+$$
+\color{blue}sim(精益创业,微积分)= \frac{-\frac7 3\times-\frac1 4 }
+{ { \sqrt{ (-\frac 7 3\times-\frac 7 3) + (\frac2 3\times\frac2 3) + (\frac5 3\times\frac5 3)} }
+\times {\sqrt{(-\frac1 4\times-\frac1 4)+(-\frac1 4\times-\frac1 4)+(-\frac1 4\times-\frac1 4)+(-\frac1 4\times-\frac1 4)+(1\times1)}}
+}
+= 0.048
+$$&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;步骤四: 根据以下公司计算评分&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://huangbaihua.gitee.io/images/cf/rs.png&#34; alt=&#34;公式一&#34;&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;-&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;A&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;B&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;C&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;D&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;E&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;F&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;G&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;评分&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;精益创业&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;3&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;span style=&#39;color:red&#39;&gt;1.65&lt;/span&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;5&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;span style=&#39;color:red&#39;&gt;1.0&lt;/span&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;会计学&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;5&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;4&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;4&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;span style=&#39;color:red&#39;&gt;0.046&lt;/span&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;微积分&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;2&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;4&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;2&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;-&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;3&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;span style=&#39;color:red&#39;&gt;0.048&lt;/span&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;$$
+\color{blue}R14=\frac{(0.046\times4+0.048\times1)} {(0.046+0.048)}=1.65
+$$&lt;/p&gt;
+&lt;h3 id=&#34;用户协同过滤&#34;&gt;用户协同过滤&lt;/h3&gt;
+&lt;p&gt;用户协同过滤和物品协同过滤原理是一样的，唯一的区别是计算时切换一下维度即可，这里就不在重复了。&lt;/p&gt;
+&lt;h3 id=&#34;物品和用户协同过滤对比&#34;&gt;物品和用户协同过滤对比&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;基于物品和基于用户的原理是相同的。&lt;/li&gt;
+&lt;li&gt;基于物品很少的数据就可以预测，但是基于用户需要大量数据。&lt;/li&gt;
+&lt;li&gt;一般来讲，基于物品比基于用户更具有实践性，在实际的推荐系统中用得更多。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;参考资料&#34;&gt;参考资料&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;《推荐系统实践》项亮 著&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://zh.wikipedia.org/wiki/%E5%8D%94%E5%90%8C%E9%81%8E%E6%BF%BE&#34;&gt;https://zh.wikipedia.org/wiki/%E5%8D%94%E5%90%8C%E9%81%8E%E6%BF%BE&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=h9gpufJFF-0&#34;&gt;https://www.youtube.com/watch?v=h9gpufJFF-0&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://developers.google.com/machine-learning/recommendation/collaborative/matrix&#34;&gt;https://developers.google.com/machine-learning/recommendation/collaborative/matrix&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/95350982&#34;&gt;https://zhuanlan.zhihu.com/p/95350982&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.linkedkeeper.com/detail/blog.action?bid=1060&#34;&gt;http://www.linkedkeeper.com/detail/blog.action?bid=1060&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://medium.com/@sam.mail2me/recommendation-systems-collaborative-filtering-just-with-numpy-and-pandas-a-z-fa9868a95da2&#34;&gt;https://medium.com/@sam.mail2me/recommendation-systems-collaborative-filtering-just-with-numpy-and-pandas-a-z-fa9868a95da2&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;(全文完)&lt;/p&gt;
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>在Hubo中使用Mermaid</title>
+      <link>https://huangbaihua.gitee.io/post/mermaid-in-hugo/</link>
+      <pubDate>Sat, 01 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://huangbaihua.gitee.io/post/mermaid-in-hugo/</guid>
+      <description>
+        
+          &lt;p&gt;本文章简要描述了在Hugo中如何引入&lt;a href=&#34;https://mermaidjs.github.io/&#34;&gt;Mermaid&lt;/a&gt;支持以及几个简单的图例&lt;/p&gt;
+&lt;h1 id=&#34;hugo中引入mermaid&#34;&gt;Hugo中引入Mermaid&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;在 static 目录下创建 mermaid 目录, 去&lt;a href=&#34;https://mermaidjs.github.io/&#34;&gt;Mermaid&lt;/a&gt;上面下载 mermaid.js 并拷贝至该目录中&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://huangbaihua.gitee.io/images/img.png&#34; alt=&#34;img.png&#34;&gt;&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;在 layouts/shortcodes 目录下新建 mermaid.html 文件，内容如下&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;{{ $_hugo_config := `{ &amp;#34;version&amp;#34;: 1 }` }}
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;div&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;class&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;mermaid&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;align&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;{{ if .Get &amp;#34;&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;align&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;}}{{&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;Get&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;align&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;}}{{&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;else&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;}}&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;center&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;{{&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;end&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;}}&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;{{ safeHTML .Inner }}&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;div&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;在 config/_default/params.toml 文件中添加 enableMermaid 参数&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;enableMermaid = true
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;在 layouts/partials/footer.html 中加入如下代码&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{{&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;ne&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Params&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;enableMermaid&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;false&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}}&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;script&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;src&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;{{&amp;#34;&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;mermaid&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;mermaid&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;js&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34; | relURL}}{{ if not .Site.Params.disableAssetsBusting }}?{{ now.Unix }}{{ end }}&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;/script&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{{&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;end&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;在需要使用的地方使用如下代码块&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;   &lt;span class=&#34;p&#34;&gt;{{&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;mermaid&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}}&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 3&lt;/span&gt;   &lt;span class=&#34;nx&#34;&gt;sequenceDiagram&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 4&lt;/span&gt;   &lt;span class=&#34;nx&#34;&gt;participant&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Alice&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 5&lt;/span&gt;   &lt;span class=&#34;nx&#34;&gt;participant&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Bob&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 6&lt;/span&gt;   &lt;span class=&#34;nx&#34;&gt;Alice&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;John&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Hello&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;John&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;how&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;are&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;you&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;?&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 7&lt;/span&gt;   &lt;span class=&#34;nx&#34;&gt;loop&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Healthcheck&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 8&lt;/span&gt;   &lt;span class=&#34;nx&#34;&gt;John&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;John&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Fight&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;against&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;hypochondria&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 9&lt;/span&gt;   &lt;span class=&#34;nx&#34;&gt;end&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;10&lt;/span&gt;   &lt;span class=&#34;nx&#34;&gt;Note&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;right&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;of&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;John&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Rational&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;thoughts&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;br&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&amp;gt;&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;prevail&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;...&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;11&lt;/span&gt;   &lt;span class=&#34;nx&#34;&gt;John&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;--&amp;gt;&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Alice&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Great&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;!&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;12&lt;/span&gt;   &lt;span class=&#34;nx&#34;&gt;John&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Bob&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;How&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;about&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;you&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;?&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;13&lt;/span&gt;   &lt;span class=&#34;nx&#34;&gt;Bob&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;--&amp;gt;&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;John&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Jolly&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;good&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;!&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;14&lt;/span&gt;   &lt;span class=&#34;p&#34;&gt;{{&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;/mermaid &amp;gt;}}&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;15&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;以上代码渲染如下:&lt;/p&gt;
+
+&lt;div class=&#34;mermaid&#34; align=&#34;center&#34;&gt;
+sequenceDiagram
+participant Alice
+participant Bob
+Alice-&gt;&gt;John: Hello John, how are you?
+loop Healthcheck
+John-&gt;John: Fight against hypochondria
+end
+Note right of John: Rational thoughts &lt;br/&gt;prevail...
+John--&gt;Alice: Great!
+John-&gt;Bob: How about you?
+Bob--&gt;John: Jolly good!
+&lt;/div&gt;
+
+&lt;h1 id=&#34;主要图例&#34;&gt;主要图例&lt;/h1&gt;
+&lt;h2 id=&#34;流程图&#34;&gt;流程图&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;{{&amp;lt;mermaid align=&amp;quot;left&amp;quot;&amp;gt;}}
+graph LR;
+    A[Hard edge] --&amp;gt;|Link text| B(Round edge)
+    B --&amp;gt; C{Decision}
+    C --&amp;gt;|One| D[Result one]
+    C --&amp;gt;|Two| E[Result two]
+{{&amp;lt; /mermaid &amp;gt;}}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;渲染如下:&lt;/p&gt;
+
+&lt;div class=&#34;mermaid&#34; align=&#34;left&#34;&gt;
+graph LR;
+A[Hard edge] --&gt;|Link text| B(Round edge)
+B --&gt; C{Decision}
+C --&gt;|One| D[Result one]
+C --&gt;|Two| E[Result two]
+&lt;/div&gt;
+
+&lt;h2 id=&#34;序列图&#34;&gt;序列图&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;{{&amp;lt; mermaid &amp;gt;}}
+sequenceDiagram
+    participant Alice
+    participant Bob
+    Alice-&amp;gt;&amp;gt;John: Hello John, how are you?
+    loop Healthcheck
+        John-&amp;gt;John: Fight against hypochondria
+    end
+    Note right of John: Rational thoughts &amp;lt;br/&amp;gt;prevail...
+    John--&amp;gt;Alice: Great!
+    John-&amp;gt;Bob: How about you?
+    Bob--&amp;gt;John: Jolly good!
+{{&amp;lt; /mermaid &amp;gt;}}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;渲染如下:&lt;/p&gt;
+
+&lt;div class=&#34;mermaid&#34; align=&#34;center&#34;&gt;
+sequenceDiagram
+participant Alice
+participant Bob
+Alice-&gt;&gt;John: Hello John, how are you?
+loop Healthcheck
+John-&gt;John: Fight against hypochondria
+end
+Note right of John: Rational thoughts &lt;br/&gt;prevail...
+John--&gt;Alice: Great!
+John-&gt;Bob: How about you?
+Bob--&gt;John: Jolly good!
+&lt;/div&gt;
+
+&lt;h2 id=&#34;甘特图&#34;&gt;甘特图&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;{{&amp;lt; mermaid &amp;gt;}}
+gantt
+        dateFormat  YYYY-MM-DD
+        title Adding GANTT diagram functionality to mermaid
+        section A section
+        Completed task            :done,    des1, 2014-01-06,2014-01-08
+        Active task               :active,  des2, 2014-01-09, 3d
+        Future task               :         des3, after des2, 5d
+        Future task2               :         des4, after des3, 5d
+        section Critical tasks
+        Completed task in the critical line :crit, done, 2014-01-06,24h
+        Implement parser and jison          :crit, done, after des1, 2d
+        Create tests for parser             :crit, active, 3d
+        Future task in critical line        :crit, 5d
+        Create tests for renderer           :2d
+        Add to mermaid                      :1d
+{{&amp;lt; /mermaid &amp;gt;}}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;渲染如下:&lt;/p&gt;
+
+&lt;div class=&#34;mermaid&#34; align=&#34;center&#34;&gt;
+gantt
+dateFormat  YYYY-MM-DD
+title Adding GANTT diagram functionality to mermaid
+section A section
+Completed task            :done,    des1, 2014-01-06,2014-01-08
+Active task               :active,  des2, 2014-01-09, 3d
+Future task               :         des3, after des2, 5d
+Future task2               :         des4, after des3, 5d
+section Critical tasks
+Completed task in the critical line :crit, done, 2014-01-06,24h
+Implement parser and jison          :crit, done, after des1, 2d
+Create tests for parser             :crit, active, 3d
+Future task in critical line        :crit, 5d
+Create tests for renderer           :2d
+Add to mermaid                      :1d
+&lt;/div&gt;
+
+&lt;h3 id=&#34;类图&#34;&gt;类图&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;{{&amp;lt; mermaid &amp;gt;}}
+classDiagram
+  Class01 &amp;lt;|-- AveryLongClass : Cool
+  Class03 *-- Class04
+  Class05 o-- Class06
+  Class07 .. Class08
+  Class09 --&amp;gt; C2 : Where am i?
+  Class09 --* C3
+  Class09 --|&amp;gt; Class07
+  Class07 : equals()
+  Class07 : Object[] elementData
+  Class01 : size()
+  Class01 : int chimp
+  Class01 : int gorilla
+  Class08 &amp;lt;--&amp;gt; C2: Cool label
+{{&amp;lt; /mermaid &amp;gt;}}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;渲染如下:&lt;/p&gt;
+
+&lt;div class=&#34;mermaid&#34; align=&#34;center&#34;&gt;
+classDiagram
+Class01 &lt;|-- AveryLongClass : Cool
+Class03 *-- Class04
+Class05 o-- Class06
+Class07 .. Class08
+Class09 --&gt; C2 : Where am i?
+Class09 --* C3
+Class09 --|&gt; Class07
+Class07 : equals()
+Class07 : Object[] elementData
+Class01 : size()
+Class01 : int chimp
+Class01 : int gorilla
+Class08 &lt;--&gt; C2: Cool label
+&lt;/div&gt;
+
+&lt;h3 id=&#34;git&#34;&gt;Git&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;{{&amp;lt; mermaid &amp;gt;}}
+gitGraph:
+options
+{
+  &amp;quot;nodeSpacing&amp;quot;: 150,
+  &amp;quot;nodeRadius&amp;quot;: 10
+}
+end
+  commit
+  branch newbranch
+  checkout newbranch
+  commit
+  commit
+  checkout master
+  commit
+  commit
+  merge newbranch
+{{&amp;lt; /mermaid&amp;gt;}}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;渲染如下:&lt;/p&gt;
+
+&lt;div class=&#34;mermaid&#34; align=&#34;center&#34;&gt;
+gitGraph:
+options
+{
+&#34;nodeSpacing&#34;: 150,
+&#34;nodeRadius&#34;: 10
+}
+end
+commit
+branch newbranch
+checkout newbranch
+commit
+commit
+checkout master
+commit
+commit
+merge newbranch
+&lt;/div&gt;
+
+&lt;h3 id=&#34;参考资料&#34;&gt;参考资料&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://learn.netlify.app/en/shortcodes/mermaid/&#34;&gt;https://learn.netlify.app/en/shortcodes/mermaid/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/matcornic/hugo-theme-learn&#34;&gt;https://github.com/matcornic/hugo-theme-learn&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://mermaid-js.github.io&#34;&gt;https://mermaid-js.github.io&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;(全文完)&lt;/p&gt;
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>机器学习入门-算法-线性回归</title>
+      <link>https://huangbaihua.gitee.io/post/mache-learing-lnear-regression/</link>
+      <pubDate>Sat, 17 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://huangbaihua.gitee.io/post/mache-learing-lnear-regression/</guid>
+      <description>
+        
+          &lt;p&gt;&lt;img src=&#34;https://huangbaihua.gitee.io/images/graph/ml2.webp&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;回归是监督学习的一个重要问题，回归用于预测输入变量和输出变量之间的关系，特别是当输入变量的值发生变化时，输出变量的值也随之发生变化。回归模型正是表示从输入变量到输出变量之间映射的函数。
+这篇博文作者力图以通俗易懂的方式来分享下线性回归。&lt;/p&gt;
+&lt;p&gt;(全文完)&lt;/p&gt;
+        
+      </description>
+    </item>
+    
     <item>
       <title>面向领域的微服务架构-来自优步的实践</title>
       <link>https://huangbaihua.gitee.io/post/microservice-architecture/</link>
