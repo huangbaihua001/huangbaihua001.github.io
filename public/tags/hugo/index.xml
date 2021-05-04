@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hugo on 柏华</title>
+    <link>https://huangbaihua.gitee.io/tags/hugo/</link>
+    <description>Recent content in Hugo on 柏华</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright © 2008–2021, 柏华; all rights reserved. Powered by Hugo</copyright>
+    <lastBuildDate>Sat, 01 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://huangbaihua.gitee.io/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>在Hubo中使用Mermaid</title>
+      <link>https://huangbaihua.gitee.io/post/mermaid-in-hugo/</link>
+      <pubDate>Sat, 01 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://huangbaihua.gitee.io/post/mermaid-in-hugo/</guid>
+      <description>
+        
+          &lt;p&gt;本文章简要描述了在Hugo中如何引入&lt;a href=&#34;https://mermaidjs.github.io/&#34;&gt;Mermaid&lt;/a&gt;支持以及几个简单的图例&lt;/p&gt;
+&lt;h1 id=&#34;hugo中引入mermaid&#34;&gt;Hugo中引入Mermaid&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;在 static 目录下创建 mermaid 目录, 去&lt;a href=&#34;https://mermaidjs.github.io/&#34;&gt;Mermaid&lt;/a&gt;上面下载 mermaid.js 并拷贝至该目录中&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://huangbaihua.gitee.io/images/img.png&#34; alt=&#34;img.png&#34;&gt;&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;在 layouts/shortcodes 目录下新建 mermaid.html 文件，内容如下&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;{{ $_hugo_config := `{ &amp;#34;version&amp;#34;: 1 }` }}
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;div&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;class&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;mermaid&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;align&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;{{ if .Get &amp;#34;&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;align&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;}}{{&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;Get&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;align&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;}}{{&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;else&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;}}&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;center&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;{{&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;end&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;}}&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;{{ safeHTML .Inner }}&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;div&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;在 config/_default/params.toml 文件中添加 enableMermaid 参数&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;enableMermaid = true
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;在 layouts/partials/footer.html 中加入如下代码&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{{&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;ne&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Params&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;enableMermaid&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;false&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}}&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;script&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;src&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;{{&amp;#34;&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;mermaid&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;mermaid&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;js&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34; | relURL}}{{ if not .Site.Params.disableAssetsBusting }}?{{ now.Unix }}{{ end }}&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;/script&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{{&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;end&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;在需要使用的地方使用如下代码块&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;   &lt;span class=&#34;p&#34;&gt;{{&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;mermaid&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}}&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 3&lt;/span&gt;   &lt;span class=&#34;nx&#34;&gt;sequenceDiagram&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 4&lt;/span&gt;   &lt;span class=&#34;nx&#34;&gt;participant&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Alice&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 5&lt;/span&gt;   &lt;span class=&#34;nx&#34;&gt;participant&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Bob&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 6&lt;/span&gt;   &lt;span class=&#34;nx&#34;&gt;Alice&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;John&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Hello&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;John&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;how&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;are&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;you&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;?&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 7&lt;/span&gt;   &lt;span class=&#34;nx&#34;&gt;loop&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Healthcheck&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 8&lt;/span&gt;   &lt;span class=&#34;nx&#34;&gt;John&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;John&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Fight&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;against&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;hypochondria&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 9&lt;/span&gt;   &lt;span class=&#34;nx&#34;&gt;end&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;10&lt;/span&gt;   &lt;span class=&#34;nx&#34;&gt;Note&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;right&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;of&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;John&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Rational&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;thoughts&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;br&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&amp;gt;&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;prevail&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;...&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;11&lt;/span&gt;   &lt;span class=&#34;nx&#34;&gt;John&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;--&amp;gt;&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Alice&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Great&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;!&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;12&lt;/span&gt;   &lt;span class=&#34;nx&#34;&gt;John&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Bob&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;How&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;about&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;you&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;?&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;13&lt;/span&gt;   &lt;span class=&#34;nx&#34;&gt;Bob&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;--&amp;gt;&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;John&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Jolly&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;good&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;!&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;14&lt;/span&gt;   &lt;span class=&#34;p&#34;&gt;{{&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;/mermaid &amp;gt;}}&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;15&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;以上代码渲染如下:&lt;/p&gt;
+
+&lt;div class=&#34;mermaid&#34; align=&#34;center&#34;&gt;
+sequenceDiagram
+participant Alice
+participant Bob
+Alice-&gt;&gt;John: Hello John, how are you?
+loop Healthcheck
+John-&gt;John: Fight against hypochondria
+end
+Note right of John: Rational thoughts &lt;br/&gt;prevail...
+John--&gt;Alice: Great!
+John-&gt;Bob: How about you?
+Bob--&gt;John: Jolly good!
+&lt;/div&gt;
+
+&lt;h1 id=&#34;主要图例&#34;&gt;主要图例&lt;/h1&gt;
+&lt;h2 id=&#34;流程图&#34;&gt;流程图&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;{{&amp;lt;mermaid align=&amp;quot;left&amp;quot;&amp;gt;}}
+graph LR;
+    A[Hard edge] --&amp;gt;|Link text| B(Round edge)
+    B --&amp;gt; C{Decision}
+    C --&amp;gt;|One| D[Result one]
+    C --&amp;gt;|Two| E[Result two]
+{{&amp;lt; /mermaid &amp;gt;}}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;渲染如下:&lt;/p&gt;
+
+&lt;div class=&#34;mermaid&#34; align=&#34;left&#34;&gt;
+graph LR;
+A[Hard edge] --&gt;|Link text| B(Round edge)
+B --&gt; C{Decision}
+C --&gt;|One| D[Result one]
+C --&gt;|Two| E[Result two]
+&lt;/div&gt;
+
+&lt;h2 id=&#34;序列图&#34;&gt;序列图&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;{{&amp;lt; mermaid &amp;gt;}}
+sequenceDiagram
+    participant Alice
+    participant Bob
+    Alice-&amp;gt;&amp;gt;John: Hello John, how are you?
+    loop Healthcheck
+        John-&amp;gt;John: Fight against hypochondria
+    end
+    Note right of John: Rational thoughts &amp;lt;br/&amp;gt;prevail...
+    John--&amp;gt;Alice: Great!
+    John-&amp;gt;Bob: How about you?
+    Bob--&amp;gt;John: Jolly good!
+{{&amp;lt; /mermaid &amp;gt;}}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;渲染如下:&lt;/p&gt;
+
+&lt;div class=&#34;mermaid&#34; align=&#34;center&#34;&gt;
+sequenceDiagram
+participant Alice
+participant Bob
+Alice-&gt;&gt;John: Hello John, how are you?
+loop Healthcheck
+John-&gt;John: Fight against hypochondria
+end
+Note right of John: Rational thoughts &lt;br/&gt;prevail...
+John--&gt;Alice: Great!
+John-&gt;Bob: How about you?
+Bob--&gt;John: Jolly good!
+&lt;/div&gt;
+
+&lt;h2 id=&#34;甘特图&#34;&gt;甘特图&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;{{&amp;lt; mermaid &amp;gt;}}
+gantt
+        dateFormat  YYYY-MM-DD
+        title Adding GANTT diagram functionality to mermaid
+        section A section
+        Completed task            :done,    des1, 2014-01-06,2014-01-08
+        Active task               :active,  des2, 2014-01-09, 3d
+        Future task               :         des3, after des2, 5d
+        Future task2               :         des4, after des3, 5d
+        section Critical tasks
+        Completed task in the critical line :crit, done, 2014-01-06,24h
+        Implement parser and jison          :crit, done, after des1, 2d
+        Create tests for parser             :crit, active, 3d
+        Future task in critical line        :crit, 5d
+        Create tests for renderer           :2d
+        Add to mermaid                      :1d
+{{&amp;lt; /mermaid &amp;gt;}}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;渲染如下:&lt;/p&gt;
+
+&lt;div class=&#34;mermaid&#34; align=&#34;center&#34;&gt;
+gantt
+dateFormat  YYYY-MM-DD
+title Adding GANTT diagram functionality to mermaid
+section A section
+Completed task            :done,    des1, 2014-01-06,2014-01-08
+Active task               :active,  des2, 2014-01-09, 3d
+Future task               :         des3, after des2, 5d
+Future task2               :         des4, after des3, 5d
+section Critical tasks
+Completed task in the critical line :crit, done, 2014-01-06,24h
+Implement parser and jison          :crit, done, after des1, 2d
+Create tests for parser             :crit, active, 3d
+Future task in critical line        :crit, 5d
+Create tests for renderer           :2d
+Add to mermaid                      :1d
+&lt;/div&gt;
+
+&lt;h3 id=&#34;类图&#34;&gt;类图&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;{{&amp;lt; mermaid &amp;gt;}}
+classDiagram
+  Class01 &amp;lt;|-- AveryLongClass : Cool
+  Class03 *-- Class04
+  Class05 o-- Class06
+  Class07 .. Class08
+  Class09 --&amp;gt; C2 : Where am i?
+  Class09 --* C3
+  Class09 --|&amp;gt; Class07
+  Class07 : equals()
+  Class07 : Object[] elementData
+  Class01 : size()
+  Class01 : int chimp
+  Class01 : int gorilla
+  Class08 &amp;lt;--&amp;gt; C2: Cool label
+{{&amp;lt; /mermaid &amp;gt;}}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;渲染如下:&lt;/p&gt;
+
+&lt;div class=&#34;mermaid&#34; align=&#34;center&#34;&gt;
+classDiagram
+Class01 &lt;|-- AveryLongClass : Cool
+Class03 *-- Class04
+Class05 o-- Class06
+Class07 .. Class08
+Class09 --&gt; C2 : Where am i?
+Class09 --* C3
+Class09 --|&gt; Class07
+Class07 : equals()
+Class07 : Object[] elementData
+Class01 : size()
+Class01 : int chimp
+Class01 : int gorilla
+Class08 &lt;--&gt; C2: Cool label
+&lt;/div&gt;
+
+&lt;h3 id=&#34;git&#34;&gt;Git&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;{{&amp;lt; mermaid &amp;gt;}}
+gitGraph:
+options
+{
+  &amp;quot;nodeSpacing&amp;quot;: 150,
+  &amp;quot;nodeRadius&amp;quot;: 10
+}
+end
+  commit
+  branch newbranch
+  checkout newbranch
+  commit
+  commit
+  checkout master
+  commit
+  commit
+  merge newbranch
+{{&amp;lt; /mermaid&amp;gt;}}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;渲染如下:&lt;/p&gt;
+
+&lt;div class=&#34;mermaid&#34; align=&#34;center&#34;&gt;
+gitGraph:
+options
+{
+&#34;nodeSpacing&#34;: 150,
+&#34;nodeRadius&#34;: 10
+}
+end
+commit
+branch newbranch
+checkout newbranch
+commit
+commit
+checkout master
+commit
+commit
+merge newbranch
+&lt;/div&gt;
+
+&lt;h3 id=&#34;参考资料&#34;&gt;参考资料&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://learn.netlify.app/en/shortcodes/mermaid/&#34;&gt;https://learn.netlify.app/en/shortcodes/mermaid/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/matcornic/hugo-theme-learn&#34;&gt;https://github.com/matcornic/hugo-theme-learn&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://mermaid-js.github.io&#34;&gt;https://mermaid-js.github.io&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;(全文完)&lt;/p&gt;
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>
