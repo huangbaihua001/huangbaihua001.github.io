@@ -180,11 +180,12 @@
     <p>本文章简要描述了在Hugo中如何引入<a href="https://mermaidjs.github.io/">Mermaid</a>支持以及几个简单的图例</p>
 <h1 id="hugo中引入mermaid">Hugo中引入Mermaid</h1>
 <ol>
-<li>在 static 目录下创建 mermaid 目录, 去<a href="https://mermaidjs.github.io/">Mermaid</a>上面下载 mermaid.js 并拷贝至该目录中</li>
-</ol>
-<p><img src="/images/img.png" alt="img.png"></p>
-<ol start="2">
-<li>在 layouts/shortcodes 目录下新建 mermaid.html 文件，内容如下</li>
+<li>
+<p>在 static 目录下创建 mermaid 目录, 去<a href="https://mermaidjs.github.io/">Mermaid</a>上面下载 mermaid.js 并拷贝至该目录中</p>
+</li>
+<li>
+<p>在 layouts/shortcodes 目录下新建 mermaid.html 文件，内容如下</p>
+</li>
 </ol>
 <div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="ln">1</span>{{ $_hugo_config := `{ &#34;version&#34;: 1 }` }}
 <span class="ln">2</span><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;mermaid&#34;</span> <span class="na">align</span><span class="o">=</span><span class="s">&#34;{{ if .Get &#34;</span><span class="na">align</span><span class="err">&#34;</span> <span class="err">}}{{</span> <span class="err">.</span><span class="na">Get</span> <span class="err">&#34;</span><span class="na">align</span><span class="err">&#34;</span> <span class="err">}}{{</span> <span class="na">else</span> <span class="err">}}</span><span class="na">center</span><span class="err">{{</span> <span class="na">end</span> <span class="err">}}&#34;</span><span class="p">&gt;</span>{{ safeHTML .Inner }}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
@@ -765,7 +766,7 @@ merge newbranch
 </footer>
 
 
-<script src="/mermaid/mermaid.js?1620122265"></script>
+<script src="/mermaid/mermaid.js?1620122466"></script>
 
 
 

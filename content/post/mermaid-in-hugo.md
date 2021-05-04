@@ -26,7 +26,6 @@ isCJKLanguage = true
 
 1. 在 static 目录下创建 mermaid 目录, 去[Mermaid](https://mermaidjs.github.io/)上面下载 mermaid.js 并拷贝至该目录中
 
-![img.png](/images/img.png)
 
 2. 在 layouts/shortcodes 目录下新建 mermaid.html 文件，内容如下
 
