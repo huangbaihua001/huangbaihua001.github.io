@@ -5,12 +5,14 @@ date = "2021-11-20"
 description = "5分钟 IDEA 插件开发快速入门 Demo"
 featured = true
 categories = [
+"原创",
 "Intellij IDEA",
 "插件开发",
 "5分钟入门系列",
 ]
 
 tags = [
+"原创",
 "5分钟入门系列",
 "插件开发",
 "Intellij IDEA",
