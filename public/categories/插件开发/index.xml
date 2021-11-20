@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>插件开发 on 柏华</title>
+    <link>https://huangbaihua.gitee.io/categories/%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/</link>
+    <description>Recent content in 插件开发 on 柏华</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright © 2008–2021, 柏华; all rights reserved. Powered by Hugo</copyright>
+    <lastBuildDate>Sat, 20 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://huangbaihua.gitee.io/categories/%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>5分钟 IDEA 插件开发快速入门 Demo</title>
+      <link>https://huangbaihua.gitee.io/post/idea/five_minute_quick_demo/</link>
+      <pubDate>Sat, 20 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://huangbaihua.gitee.io/post/idea/five_minute_quick_demo/</guid>
+      <description>
+        
+          &lt;p&gt;&lt;img src=&#34;https://huangbaihua.gitee.io/images/idea/import-maven-intellij-thumbnail.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;基于 Gradle 开发 IntelliJ 插件是官方推荐的方式。本 Demo
+使用 &lt;a href=&#34;https://github.com/JetBrains/intellij-platform-plugin-template&#34;&gt;IntelliJ Platform Plugin Template&lt;/a&gt; 快速构建一个插件项目 。
+利用 &lt;a href=&#34;https://plugins.jetbrains.com/docs/intellij/intellij-platform.html&#34;&gt;IntelliJ Platform&lt;/a&gt; 平台开发自己的第一个插件！&lt;/p&gt;
+&lt;h1 id=&#34;5分钟-idea-插件开发快速入门-demo&#34;&gt;5分钟 IDEA 插件开发快速入门 Demo&lt;/h1&gt;
+&lt;p&gt;基于 Gradle 开发 IntelliJ 插件是官方推荐的方式。本 Demo
+使用 &lt;a href=&#34;https://github.com/JetBrains/intellij-platform-plugin-template&#34;&gt;IntelliJ Platform Plugin Template&lt;/a&gt; 快速构建一个插件项目 。
+利用 &lt;a href=&#34;https://plugins.jetbrains.com/docs/intellij/intellij-platform.html&#34;&gt;IntelliJ Platform&lt;/a&gt; 平台开发自己的第一个插件！&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://img.shields.io/badge/JDK-8+-green.svg&#34; alt=&#34;Requirement&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;demo简介&#34;&gt;Demo简介&lt;/h2&gt;
+&lt;p&gt;本Demo主要演示如何快速构建一个插件项目，实现一个Action，对IDEA插件开发有个最基本的了解。&lt;/p&gt;
+&lt;p&gt;本Demo目标：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;快速搭建一个插件项目&lt;/li&gt;
+&lt;li&gt;完成一个Menu Action：选中Java代码并替换成固定字符串&lt;/li&gt;
+&lt;li&gt;了解PSI概念:  编写一个Action,弹出框显示Java类文件中光标所在位置的方法相关的PSI信息&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;项目结构预览&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;  1&lt;/span&gt;~5-Minutes-Demo~\QUICK-PLUGIN-DEMO
+&lt;span class=&#34;ln&#34;&gt;  2&lt;/span&gt;|   .gitignore
+&lt;span class=&#34;ln&#34;&gt;  3&lt;/span&gt;|   build.gradle.kts
+&lt;span class=&#34;ln&#34;&gt;  4&lt;/span&gt;|   CHANGELOG.md
+&lt;span class=&#34;ln&#34;&gt;  5&lt;/span&gt;|   CODE_OF_CONDUCT.md
+&lt;span class=&#34;ln&#34;&gt;  6&lt;/span&gt;|   gradle.properties
+&lt;span class=&#34;ln&#34;&gt;  7&lt;/span&gt;|   gradlew
+&lt;span class=&#34;ln&#34;&gt;  8&lt;/span&gt;|   gradlew.bat
+&lt;span class=&#34;ln&#34;&gt;  9&lt;/span&gt;|   LICENSE
+&lt;span class=&#34;ln&#34;&gt; 10&lt;/span&gt;|   qodana.yml
+&lt;span class=&#34;ln&#34;&gt; 11&lt;/span&gt;|   README.md
+&lt;span class=&#34;ln&#34;&gt; 12&lt;/span&gt;|   settings.gradle.kts
+&lt;span class=&#34;ln&#34;&gt; 13&lt;/span&gt;|   
+&lt;span class=&#34;ln&#34;&gt; 14&lt;/span&gt;+---.github
+&lt;span class=&#34;ln&#34;&gt; 15&lt;/span&gt;|   |   dependabot.yml
+&lt;span class=&#34;ln&#34;&gt; 16&lt;/span&gt;|   |   
+&lt;span class=&#34;ln&#34;&gt; 17&lt;/span&gt;|   +---ISSUE_TEMPLATE
+&lt;span class=&#34;ln&#34;&gt; 18&lt;/span&gt;|   |       bug_report.md
+&lt;span class=&#34;ln&#34;&gt; 19&lt;/span&gt;|   |       
+&lt;span class=&#34;ln&#34;&gt; 20&lt;/span&gt;|   +---readme
+&lt;span class=&#34;ln&#34;&gt; 21&lt;/span&gt;|   |       draft-release.png
+&lt;span class=&#34;ln&#34;&gt; 22&lt;/span&gt;|   |       intellij-platform-plugin-template.png
+&lt;span class=&#34;ln&#34;&gt; 23&lt;/span&gt;|   |       qodana.png
+&lt;span class=&#34;ln&#34;&gt; 24&lt;/span&gt;|   |       run-debug-configurations.png
+&lt;span class=&#34;ln&#34;&gt; 25&lt;/span&gt;|   |       run-logs.png
+&lt;span class=&#34;ln&#34;&gt; 26&lt;/span&gt;|   |       settings-secrets.png
+&lt;span class=&#34;ln&#34;&gt; 27&lt;/span&gt;|   |       ui-testing.png
+&lt;span class=&#34;ln&#34;&gt; 28&lt;/span&gt;|   |       use-this-template.png
+&lt;span class=&#34;ln&#34;&gt; 29&lt;/span&gt;|   |       
+&lt;span class=&#34;ln&#34;&gt; 30&lt;/span&gt;|   +---template-cleanup
+&lt;span class=&#34;ln&#34;&gt; 31&lt;/span&gt;|   |   |   CHANGELOG.md
+&lt;span class=&#34;ln&#34;&gt; 32&lt;/span&gt;|   |   |   gradle.properties
+&lt;span class=&#34;ln&#34;&gt; 33&lt;/span&gt;|   |   |   README.md
+&lt;span class=&#34;ln&#34;&gt; 34&lt;/span&gt;|   |   |   settings.gradle.kts
+&lt;span class=&#34;ln&#34;&gt; 35&lt;/span&gt;|   |   |   
+&lt;span class=&#34;ln&#34;&gt; 36&lt;/span&gt;|   |   \---.github
+&lt;span class=&#34;ln&#34;&gt; 37&lt;/span&gt;|   |           dependabot.yml
+&lt;span class=&#34;ln&#34;&gt; 38&lt;/span&gt;|   |           
+&lt;span class=&#34;ln&#34;&gt; 39&lt;/span&gt;|   \---workflows
+&lt;span class=&#34;ln&#34;&gt; 40&lt;/span&gt;|           build.yml
+&lt;span class=&#34;ln&#34;&gt; 41&lt;/span&gt;|           release.yml
+&lt;span class=&#34;ln&#34;&gt; 42&lt;/span&gt;|           run-ui-tests.yml
+&lt;span class=&#34;ln&#34;&gt; 43&lt;/span&gt;|           template-cleanup.yml
+&lt;span class=&#34;ln&#34;&gt; 44&lt;/span&gt;|           
+&lt;span class=&#34;ln&#34;&gt; 45&lt;/span&gt;+---.idea
+&lt;span class=&#34;ln&#34;&gt; 46&lt;/span&gt;|       icon.png
+&lt;span class=&#34;ln&#34;&gt; 47&lt;/span&gt;|       
+&lt;span class=&#34;ln&#34;&gt; 48&lt;/span&gt;+---.run
+&lt;span class=&#34;ln&#34;&gt; 49&lt;/span&gt;|       Run IDE for UI Tests.run.xml
+&lt;span class=&#34;ln&#34;&gt; 50&lt;/span&gt;|       Run IDE with Plugin.run.xml
+&lt;span class=&#34;ln&#34;&gt; 51&lt;/span&gt;|       Run Plugin Tests.run.xml
+&lt;span class=&#34;ln&#34;&gt; 52&lt;/span&gt;|       Run Plugin Verification.run.xml
+&lt;span class=&#34;ln&#34;&gt; 53&lt;/span&gt;|       Run Qodana.run.xml
+&lt;span class=&#34;ln&#34;&gt; 54&lt;/span&gt;|       
+&lt;span class=&#34;ln&#34;&gt; 55&lt;/span&gt;+---gradle
+&lt;span class=&#34;ln&#34;&gt; 56&lt;/span&gt;|   \---wrapper
+&lt;span class=&#34;ln&#34;&gt; 57&lt;/span&gt;|           gradle-wrapper.jar
+&lt;span class=&#34;ln&#34;&gt; 58&lt;/span&gt;|           gradle-wrapper.properties
+&lt;span class=&#34;ln&#34;&gt; 59&lt;/span&gt;|           
+&lt;span class=&#34;ln&#34;&gt; 60&lt;/span&gt;\---src
+&lt;span class=&#34;ln&#34;&gt; 61&lt;/span&gt;    +---main
+&lt;span class=&#34;ln&#34;&gt; 62&lt;/span&gt;    |   +---java
+&lt;span class=&#34;ln&#34;&gt; 63&lt;/span&gt;    |   |   \---jiux
+&lt;span class=&#34;ln&#34;&gt; 64&lt;/span&gt;    |   |       \---net
+&lt;span class=&#34;ln&#34;&gt; 65&lt;/span&gt;    |   |           \---idea
+&lt;span class=&#34;ln&#34;&gt; 66&lt;/span&gt;    |   |               \---plugin
+&lt;span class=&#34;ln&#34;&gt; 67&lt;/span&gt;    |   |                   \---demo
+&lt;span class=&#34;ln&#34;&gt; 68&lt;/span&gt;    |   |                       \---action
+&lt;span class=&#34;ln&#34;&gt; 69&lt;/span&gt;    |   |                               EditorReplaceAction.java
+&lt;span class=&#34;ln&#34;&gt; 70&lt;/span&gt;    |   |                               PsiDemoAction.java
+&lt;span class=&#34;ln&#34;&gt; 71&lt;/span&gt;    |   |                               
+&lt;span class=&#34;ln&#34;&gt; 72&lt;/span&gt;    |   +---kotlin
+&lt;span class=&#34;ln&#34;&gt; 73&lt;/span&gt;    |   |   \---org
+&lt;span class=&#34;ln&#34;&gt; 74&lt;/span&gt;    |   |       \---jetbrains
+&lt;span class=&#34;ln&#34;&gt; 75&lt;/span&gt;    |   |           \---plugins
+&lt;span class=&#34;ln&#34;&gt; 76&lt;/span&gt;    |   |               \---template
+&lt;span class=&#34;ln&#34;&gt; 77&lt;/span&gt;    |   |                   |   MyBundle.kt
+&lt;span class=&#34;ln&#34;&gt; 78&lt;/span&gt;    |   |                   |   
+&lt;span class=&#34;ln&#34;&gt; 79&lt;/span&gt;    |   |                   +---listeners
+&lt;span class=&#34;ln&#34;&gt; 80&lt;/span&gt;    |   |                   |       MyProjectManagerListener.kt
+&lt;span class=&#34;ln&#34;&gt; 81&lt;/span&gt;    |   |                   |       
+&lt;span class=&#34;ln&#34;&gt; 82&lt;/span&gt;    |   |                   \---services
+&lt;span class=&#34;ln&#34;&gt; 83&lt;/span&gt;    |   |                           MyApplicationService.kt
+&lt;span class=&#34;ln&#34;&gt; 84&lt;/span&gt;    |   |                           MyProjectService.kt
+&lt;span class=&#34;ln&#34;&gt; 85&lt;/span&gt;    |   |                           
+&lt;span class=&#34;ln&#34;&gt; 86&lt;/span&gt;    |   \---resources
+&lt;span class=&#34;ln&#34;&gt; 87&lt;/span&gt;    |       +---messages
+&lt;span class=&#34;ln&#34;&gt; 88&lt;/span&gt;    |       |       MyBundle.properties
+&lt;span class=&#34;ln&#34;&gt; 89&lt;/span&gt;    |       |       
+&lt;span class=&#34;ln&#34;&gt; 90&lt;/span&gt;    |       \---META-INF
+&lt;span class=&#34;ln&#34;&gt; 91&lt;/span&gt;    |               plugin.xml
+&lt;span class=&#34;ln&#34;&gt; 92&lt;/span&gt;    |               pluginIcon.svg
+&lt;span class=&#34;ln&#34;&gt; 93&lt;/span&gt;    |               
+&lt;span class=&#34;ln&#34;&gt; 94&lt;/span&gt;    \---test
+&lt;span class=&#34;ln&#34;&gt; 95&lt;/span&gt;        +---kotlin
+&lt;span class=&#34;ln&#34;&gt; 96&lt;/span&gt;        |   \---org
+&lt;span class=&#34;ln&#34;&gt; 97&lt;/span&gt;        |       \---jetbrains
+&lt;span class=&#34;ln&#34;&gt; 98&lt;/span&gt;        |           \---plugins
+&lt;span class=&#34;ln&#34;&gt; 99&lt;/span&gt;        |               \---template
+&lt;span class=&#34;ln&#34;&gt;100&lt;/span&gt;        |                       MyPluginTest.kt
+&lt;span class=&#34;ln&#34;&gt;101&lt;/span&gt;        |                       
+&lt;span class=&#34;ln&#34;&gt;102&lt;/span&gt;        \---testData
+&lt;span class=&#34;ln&#34;&gt;103&lt;/span&gt;            \---rename
+&lt;span class=&#34;ln&#34;&gt;104&lt;/span&gt;                    foo.xml
+&lt;span class=&#34;ln&#34;&gt;105&lt;/span&gt;                    foo_after.xml
+&lt;span class=&#34;ln&#34;&gt;106&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;第一步利用-intellij-platform-plugin-template-创建项目&#34;&gt;第一步：利用 IntelliJ Platform Plugin Template 创建项目&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;# clone 项目到本地 &lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 3&lt;/span&gt;git clone git@github.com:JetBrains/intellij-platform-plugin-template.git quick-plugin-demo
+&lt;span class=&#34;ln&#34;&gt; 4&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 5&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;# 删除 github 的远程仓库地址， 切换成自己的&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 6&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 7&lt;/span&gt;git remote rm origin
+&lt;span class=&#34;ln&#34;&gt; 8&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 9&lt;/span&gt;git remote add origin 自己的远程仓库地址
+&lt;span class=&#34;ln&#34;&gt;10&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;该步骤有可能因为墙的原因网络被中断，多试几次。&lt;/p&gt;
+&lt;h2 id=&#34;第二步导入项目进行相关配置&#34;&gt;第二步：导入项目，进行相关配置&lt;/h2&gt;
+&lt;h3 id=&#34;修改配置支持java8&#34;&gt;修改配置支持Java8&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;gradle.properties&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;# 插件支持的最小版本改为 202
+&lt;span class=&#34;ln&#34;&gt; 3&lt;/span&gt;pluginSinceBuild=202
+&lt;span class=&#34;ln&#34;&gt; 4&lt;/span&gt;#增加 2020.2版本
+&lt;span class=&#34;ln&#34;&gt; 5&lt;/span&gt;pluginVerifierIdeVersions=2020.2, 2020.3.4, 2021.1.3, 2021.2.1
+&lt;span class=&#34;ln&#34;&gt; 6&lt;/span&gt;# IC是社区版，这里用IU企业版
+&lt;span class=&#34;ln&#34;&gt; 7&lt;/span&gt;platformType=IU
+&lt;span class=&#34;ln&#34;&gt; 8&lt;/span&gt;#该版本为要求Java8的最高版本,在此之后的版本最低要求Java11
+&lt;span class=&#34;ln&#34;&gt; 9&lt;/span&gt;platformVersion=2020.2
+&lt;span class=&#34;ln&#34;&gt;10&lt;/span&gt;#JDK1.8
+&lt;span class=&#34;ln&#34;&gt;11&lt;/span&gt;javaVersion=1.8
+&lt;span class=&#34;ln&#34;&gt;12&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;13&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;IDEA更多版本号，参见 &lt;a href=&#34;https://plugins.jetbrains.com/docs/intellij/build-number-ranges.html#intellij-platform-based-products-of-recent-ide-versions&#34;&gt;最新IDEA版本&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;build.gradle.kts&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;// 将 Gradle IntelliJ Plugin 的版本修改为 1.0
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;id&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;org.jetbrains.intellij&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; version &lt;span class=&#34;s2&#34;&gt;&amp;#34;1.0&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;完成以上修改后， 重新加载项目，点击运行 Run Plugin 启动插件。
+&lt;img src=&#34;https://huangbaihua.gitee.io/images/idea/first-run.png&#34; alt=&#34;first-run.png&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;支持java平台&#34;&gt;支持Java平台&lt;/h3&gt;
+&lt;p&gt;默认只引入了基础平台相关的Jar包，要支持Java语言，需要自己添加。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;gradle.properties&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;# 引入Java支持&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;platformPlugins&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;com.intellij.java
+&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;src/main/resources/META-INF/plugin.xml&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;idea-plugin&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;    &lt;span class=&#34;c&#34;&gt;&amp;lt;!-- 引入Java依赖 --&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;    &lt;span class=&#34;nt&#34;&gt;&amp;lt;depends&amp;gt;&lt;/span&gt;com.intellij.java&lt;span class=&#34;nt&#34;&gt;&amp;lt;/depends&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;6&lt;/span&gt;    &lt;span class=&#34;nt&#34;&gt;&amp;lt;depends&amp;gt;&lt;/span&gt;com.intellij.modules.lang&lt;span class=&#34;nt&#34;&gt;&amp;lt;/depends&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;7&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;8&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;/idea-plugin&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;9&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;创建Java源代码目录&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;IDEA插件既支持Kotlin,Java语言独立开发，也支持两者混合开发，写的类可以互相调用。 默认只有 kotlin 源代码目录。 Java源代码目录需要手动创建。 创建 src/main/java 即可开始写 Java 代码了。&lt;/p&gt;
+&lt;p&gt;默认的 kotlin 目录可以删除，但个人建议保留。 因为 kotlin 下的代码可以直接拿来做国际化，有些开源库是 kotlin 写的，可以直接 拿来用，混合开发还是比较有优势的。&lt;/p&gt;
+&lt;p&gt;完成以上步骤后，刷新下项目，相关的依赖就加入到工程中了, 可以正式开始写代码了。&lt;/p&gt;
+&lt;h2 id=&#34;第三步-创建一个-action&#34;&gt;第三步 创建一个 Action&lt;/h2&gt;
+&lt;p&gt;Action 是一个具有状态，展示和行为的实体。 通过继承 AnAction 重写 actionPerformed 方法实现 Action 的行为控制。
+通过可选择地重写 update 方法实现 Action 的展示控制。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;com.dmall.rdp.plugin.demo.action.EditorReplaceAction&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;/**
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;&lt;span class=&#34;cm&#34;&gt; * Menu Action 将代码中选中的字符替换成固定的字符
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt; 3&lt;/span&gt;&lt;span class=&#34;cm&#34;&gt; */&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 4&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;EditorReplaceAction&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;extends&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;AnAction&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 5&lt;/span&gt;    &lt;span class=&#34;cm&#34;&gt;/**
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt; 6&lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;     * Action 事件处理
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt; 7&lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;     *
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt; 8&lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;     * @param e 事件对象
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt; 9&lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;     */&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;10&lt;/span&gt;    &lt;span class=&#34;nd&#34;&gt;@Override&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;11&lt;/span&gt;    &lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;actionPerformed&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nd&#34;&gt;@NotNull&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;AnActionEvent&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;12&lt;/span&gt;        &lt;span class=&#34;c1&#34;&gt;// 获取当前工程，当前编辑器，当前文档
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;13&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;kd&#34;&gt;final&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Editor&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;editor&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getRequiredData&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;CommonDataKeys&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;EDITOR&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;14&lt;/span&gt;        &lt;span class=&#34;kd&#34;&gt;final&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Project&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;project&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getRequiredData&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;CommonDataKeys&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;PROJECT&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;15&lt;/span&gt;        &lt;span class=&#34;kd&#34;&gt;final&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Document&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;document&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;editor&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getDocument&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;();&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;16&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;17&lt;/span&gt;        &lt;span class=&#34;c1&#34;&gt;// 获取编辑器当前光标
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;18&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;n&#34;&gt;Caret&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;primaryCaret&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;editor&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getCaretModel&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getPrimaryCaret&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;();&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;19&lt;/span&gt;        &lt;span class=&#34;c1&#34;&gt;// 光标选中的开始位置和结束位置
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;20&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;start&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;primaryCaret&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getSelectionStart&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;();&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;21&lt;/span&gt;        &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;end&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;primaryCaret&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getSelectionEnd&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;();&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;22&lt;/span&gt;        &lt;span class=&#34;c1&#34;&gt;// 将选中的字符替换成固定字符
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;23&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;c1&#34;&gt;// 注意不能直接使用  document.replaceString() 方法
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;24&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;c1&#34;&gt;// document.replace相关操作文档的方法，不能在直接在事件处理上下文线程中执行。
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;25&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;c1&#34;&gt;// 而是 必须 在 写操作的上下文线程中执行，即使用 WriteCommandAction.runWriteCommandAction 方法
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;26&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;c1&#34;&gt;// 因为 这类文档操作 被认为是耗时的操作，不能阻塞UI事件主线程。
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;27&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;n&#34;&gt;WriteCommandAction&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;runWriteCommandAction&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;project&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;28&lt;/span&gt;                &lt;span class=&#34;n&#34;&gt;document&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;replaceString&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;start&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;end&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;~这是替换的~&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;29&lt;/span&gt;        &lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;30&lt;/span&gt;        &lt;span class=&#34;c1&#34;&gt;// 刚才替换的字符串取消选中
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;31&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;n&#34;&gt;primaryCaret&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;removeSelection&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;();&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;32&lt;/span&gt;    &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;33&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;34&lt;/span&gt;    &lt;span class=&#34;cm&#34;&gt;/**
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;35&lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;     * 控制在菜单中的展示，满足以下条件时可见且可用:
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;36&lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;     * &amp;lt;ul&amp;gt;
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;37&lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;     *   &amp;lt;li&amp;gt;工程打开&amp;lt;/li&amp;gt;
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;38&lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;     *   &amp;lt;li&amp;gt;编辑器打开&amp;lt;/li&amp;gt;
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;39&lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;     *   &amp;lt;li&amp;gt;字符串被选中&amp;lt;/li&amp;gt;
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;40&lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;     * &amp;lt;/ul&amp;gt;
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;41&lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;     *
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;42&lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;     * @param e Event related to this action
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;43&lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;     */&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;44&lt;/span&gt;    &lt;span class=&#34;nd&#34;&gt;@Override&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;45&lt;/span&gt;    &lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;update&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nd&#34;&gt;@NotNull&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;AnActionEvent&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;46&lt;/span&gt;        &lt;span class=&#34;c1&#34;&gt;// 获取当前工程
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;47&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;kd&#34;&gt;final&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Project&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;project&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getProject&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;();&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;48&lt;/span&gt;        &lt;span class=&#34;c1&#34;&gt;// 获取编辑器
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;49&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;kd&#34;&gt;final&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Editor&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;editor&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getData&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;CommonDataKeys&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;EDITOR&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;50&lt;/span&gt;        &lt;span class=&#34;c1&#34;&gt;// 仅在 当前工程和编辑器不为空时(它们都处于打开的状态)，且存在选中的字符时，设置该 Menu Action 可见且可用
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;51&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;n&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getPresentation&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;setEnabledAndVisible&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;52&lt;/span&gt;                &lt;span class=&#34;n&#34;&gt;project&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;null&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;editor&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;null&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;editor&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getSelectionModel&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;hasSelection&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;());&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;53&lt;/span&gt;    &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;54&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;55&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;56&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;57&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;src/main/resources/META-INF/plugin.xml&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;actions&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 3&lt;/span&gt;    &lt;span class=&#34;c&#34;&gt;&amp;lt;!-- 将此 Action 放到弹出菜单的第一个位置; 如果项目和编辑器是打开的，有字符被选中时，它总是可用的 --&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 4&lt;/span&gt;    &lt;span class=&#34;nt&#34;&gt;&amp;lt;action&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;id=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;com.dmall.rdp.plugin.demo.action.EditorReplaceAction&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 5&lt;/span&gt;            &lt;span class=&#34;na&#34;&gt;class=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;com.dmall.rdp.plugin.demo.action.EditorReplaceAction&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 6&lt;/span&gt;            &lt;span class=&#34;na&#34;&gt;text=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;选中替换&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 7&lt;/span&gt;            &lt;span class=&#34;na&#34;&gt;description=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;选中替换&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 8&lt;/span&gt;        &lt;span class=&#34;c&#34;&gt;&amp;lt;!-- 设置快捷键 Ctrl+Alt+G --&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 9&lt;/span&gt;        &lt;span class=&#34;nt&#34;&gt;&amp;lt;keyboard-shortcut&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;keymap=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;$default&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;first-keystroke=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;control alt G&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;10&lt;/span&gt;        &lt;span class=&#34;c&#34;&gt;&amp;lt;!-- 放到编辑器弹出菜单第一个位置 --&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;11&lt;/span&gt;        &lt;span class=&#34;nt&#34;&gt;&amp;lt;add-to-group&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;group-id=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;EditorPopupMenu&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;anchor=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;first&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;12&lt;/span&gt;    &lt;span class=&#34;nt&#34;&gt;&amp;lt;/action&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;13&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;/actions&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;14&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;第四步-创建一个-action-展示-psi-信息&#34;&gt;第四步 创建一个 Action 展示 PSI 信息&lt;/h2&gt;
+&lt;h3 id=&#34;psi-简介&#34;&gt;PSI 简介&lt;/h3&gt;
+&lt;p&gt;程序结构接口(Program Structure Interface)，通常简称为PSI。
+是IntelliJ平台中负责解析文件和创建语法和语义代码模型的层。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;PSI 文件&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;PSI 文件是一个程序逻辑结构的根，该结构将文件的内容表示为一种特定编程语言中的元素的层次结构。
+&lt;strong&gt;PsiFile&lt;/strong&gt; 类是所有 PSI 文件的通用基类，而特定语言的文件通常由其子类表示。
+例如，&lt;strong&gt;PsiJavaFile&lt;/strong&gt; 类表示一个Java文件，而 &lt;strong&gt;XmlFile&lt;/strong&gt; 类表示一个XML文件&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;PSI 元素&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;一个 PSI 文件代表了 PSI 元素（也叫 PSI 树）的层次结构。
+PSI 元素表示源代码的内部结构，是由 IntelliJ 平台解析的。
+在 PSI 元素上的操作一般用于代码分析，代码检查等。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;PsiElement&lt;/strong&gt; 类是 PSI 元素的通用基类。&lt;/p&gt;
+&lt;p&gt;有关 PSI 的更多介绍，参见 &lt;a href=&#34;https://plugins.jetbrains.com/docs/intellij/psi.html&#34;&gt;PSI&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;展示-psi-信息&#34;&gt;展示 PSI 信息&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;com.dmall.rdp.plugin.demo.action.PsiDemoAction&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;/**
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;&lt;span class=&#34;cm&#34;&gt; * PSI 演示 Action，展示光标所处位置上的 PSI 元素信息。
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt; 3&lt;/span&gt;&lt;span class=&#34;cm&#34;&gt; *
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt; 4&lt;/span&gt;&lt;span class=&#34;cm&#34;&gt; */&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 5&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;PsiDemoAction&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;extends&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;AnAction&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 6&lt;/span&gt;    &lt;span class=&#34;nd&#34;&gt;@Override&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 7&lt;/span&gt;    &lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;actionPerformed&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;AnActionEvent&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;anActionEvent&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 8&lt;/span&gt;        &lt;span class=&#34;c1&#34;&gt;//获取当前编辑器和 PSIFile 对象
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt; 9&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;n&#34;&gt;Editor&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;editor&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;anActionEvent&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getData&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;CommonDataKeys&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;EDITOR&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;10&lt;/span&gt;        &lt;span class=&#34;n&#34;&gt;PsiFile&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;psiFile&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;anActionEvent&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getData&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;CommonDataKeys&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;PSI_FILE&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;11&lt;/span&gt;        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;editor&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;null&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;||&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;psiFile&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;null&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;12&lt;/span&gt;            &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;13&lt;/span&gt;        &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;14&lt;/span&gt;        &lt;span class=&#34;c1&#34;&gt;//获取光标在文档中的偏移量
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;15&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;offset&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;editor&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getCaretModel&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getOffset&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;();&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;16&lt;/span&gt;        &lt;span class=&#34;kd&#34;&gt;final&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;StringBuilder&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;infoBuilder&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;StringBuilder&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;();&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;17&lt;/span&gt;        &lt;span class=&#34;c1&#34;&gt;//获取光标所在位置的 PSI 树中的元素
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;18&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;n&#34;&gt;PsiElement&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;element&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;psiFile&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;findElementAt&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;offset&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;19&lt;/span&gt;        &lt;span class=&#34;n&#34;&gt;infoBuilder&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;append&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;当前光标所指元素: &amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;).&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;append&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;element&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;).&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;append&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;\n&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;20&lt;/span&gt;        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;element&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;null&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;21&lt;/span&gt;            &lt;span class=&#34;c1&#34;&gt;//查找 方法
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;22&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;            &lt;span class=&#34;n&#34;&gt;PsiMethod&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;containingMethod&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;PsiTreeUtil&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getParentOfType&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;element&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;PsiMethod&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;class&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;23&lt;/span&gt;            &lt;span class=&#34;n&#34;&gt;infoBuilder&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;24&lt;/span&gt;                    &lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;append&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;方法: &amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;25&lt;/span&gt;                    &lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;append&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;containingMethod&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;null&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;?&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;containingMethod&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getName&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;none&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;26&lt;/span&gt;                    &lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;append&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;\n&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;27&lt;/span&gt;            &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;containingMethod&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;null&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;28&lt;/span&gt;                &lt;span class=&#34;c1&#34;&gt;//查找方法所属的类
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;29&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;                &lt;span class=&#34;n&#34;&gt;PsiClass&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;containingClass&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;containingMethod&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getContainingClass&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;();&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;30&lt;/span&gt;                &lt;span class=&#34;n&#34;&gt;infoBuilder&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;31&lt;/span&gt;                        &lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;append&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;类: &amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;32&lt;/span&gt;                        &lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;append&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;containingClass&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;null&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;?&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;containingClass&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getName&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;none&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;33&lt;/span&gt;                        &lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;append&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;\n&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;34&lt;/span&gt;                &lt;span class=&#34;c1&#34;&gt;//查找方法中的本地变量
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;35&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;                &lt;span class=&#34;n&#34;&gt;infoBuilder&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;append&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;本地变量:\n&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;36&lt;/span&gt;                &lt;span class=&#34;n&#34;&gt;containingMethod&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;accept&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;JavaRecursiveElementVisitor&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;37&lt;/span&gt;                    &lt;span class=&#34;nd&#34;&gt;@Override&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;38&lt;/span&gt;                    &lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;visitLocalVariable&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;PsiLocalVariable&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;variable&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;39&lt;/span&gt;                        &lt;span class=&#34;kd&#34;&gt;super&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;visitLocalVariable&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;variable&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;40&lt;/span&gt;                        &lt;span class=&#34;n&#34;&gt;infoBuilder&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;append&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;variable&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getName&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;()).&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;append&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;\n&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;41&lt;/span&gt;                    &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;42&lt;/span&gt;                &lt;span class=&#34;o&#34;&gt;});&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;43&lt;/span&gt;            &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;44&lt;/span&gt;        &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;45&lt;/span&gt;        &lt;span class=&#34;n&#34;&gt;Messages&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;showMessageDialog&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;anActionEvent&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getProject&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;infoBuilder&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;toString&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(),&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;PSI信息&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;null&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;46&lt;/span&gt;    &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;47&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;48&lt;/span&gt;    &lt;span class=&#34;nd&#34;&gt;@Override&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;49&lt;/span&gt;    &lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;update&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;AnActionEvent&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;50&lt;/span&gt;        &lt;span class=&#34;n&#34;&gt;Editor&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;editor&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getData&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;CommonDataKeys&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;EDITOR&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;51&lt;/span&gt;        &lt;span class=&#34;n&#34;&gt;PsiFile&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;psiFile&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getData&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;CommonDataKeys&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;PSI_FILE&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;52&lt;/span&gt;        &lt;span class=&#34;n&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getPresentation&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;setEnabled&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;editor&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;null&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;psiFile&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;null&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;53&lt;/span&gt;    &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;54&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;src/main/resources/META-INF/plugin.xml&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;    &lt;span class=&#34;c&#34;&gt;&amp;lt;!-- 将此 Action 放在工具菜单的最后一个位置; 如果项目和编辑器是打开的，它总是可用的 --&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 3&lt;/span&gt;    &lt;span class=&#34;nt&#34;&gt;&amp;lt;action&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 4&lt;/span&gt;            &lt;span class=&#34;na&#34;&gt;id=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;com.dmall.rdp.plugin.demo.action.PsiDemoAction&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 5&lt;/span&gt;            &lt;span class=&#34;na&#34;&gt;class=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;com.dmall.rdp.plugin.demo.action.PsiDemoAction&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 6&lt;/span&gt;            &lt;span class=&#34;na&#34;&gt;text=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;查看PSI信息 &amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 7&lt;/span&gt;        &lt;span class=&#34;c&#34;&gt;&amp;lt;!-- 放到工具菜单第后一个位置 --&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 8&lt;/span&gt;        &lt;span class=&#34;nt&#34;&gt;&amp;lt;add-to-group&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;group-id=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;ToolsMenu&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;anchor=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;last&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 9&lt;/span&gt;    &lt;span class=&#34;nt&#34;&gt;&amp;lt;/action&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;10&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;第五步运行插件查看效果&#34;&gt;第五步运行插件，查看效果&lt;/h2&gt;
+&lt;p&gt;点击 Run Plugin 或 Debug Plugin 运行插件，试着操作，查看效果。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://huangbaihua.gitee.io/images/idea/img.png&#34; alt=&#34;img.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://huangbaihua.gitee.io/images/idea/psi_review.png&#34; alt=&#34;psi_review.png&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;一些特别有用的参考&#34;&gt;一些特别有用的参考&lt;/h2&gt;
+&lt;p&gt;下面收集的文档对开发插件是非常有帮助的，建议深入熟悉。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;开发及API文档参考 &lt;a href=&#34;https://plugins.jetbrains.com/docs/intellij/intellij-platform.html&#34;&gt;Intellij 平台官方文档&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;入门参考 &lt;a href=&#34;https://github.com/JetBrains/intellij-sdk-code-samples&#34;&gt;Intellij SDK代码示例&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;插件高级应用参考 &lt;a href=&#34;https://github.com/JetBrains/intellij-community&#34;&gt;Intellij IDEA 社区版源码&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;插件高级应用参考 &lt;a href=&#34;https://github.com/JetBrains/intellij-plugins&#34;&gt;IntelliJ IDEA Ultimate和其它基于IntelliJ平台的IDE发行版中包含的开源插件源码&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;代码质量检查类插件参考 &lt;a href=&#34;https://github.com/alibaba/p3c&#34;&gt;阿里代码规范检查插件源码&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;插件开发必备 &lt;a href=&#34;https://plugins.jetbrains.com/plugin/227-psiviewer&#34;&gt;PSIViewer 查看PSI结构的插件&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;代码辅助生成类插件参考 &lt;a href=&#34;https://github.com/mplushnikov/lombok-intellij-plugin&#34;&gt;Lombok插件源码&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;搜索扩展 Intellij IDEA 平台功能扩展点的开源实现代码，相当有用，能给你灵感 &lt;a href=&#34;https://plugins.jetbrains.com/intellij-platform-explorer&#34;&gt;Intellij Platform Explorer&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>
