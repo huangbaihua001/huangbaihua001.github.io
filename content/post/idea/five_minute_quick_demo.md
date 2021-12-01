@@ -38,13 +38,13 @@ isCJKLanguage = true
 
 ## Demo简介
 
-本Demo主要演示如何快速构建一个插件项目，实现一个Action，对IDEA插件开发有个最基本的了解。
+本Demo主要演示如何快速构建一个插件项目，实现一个 Action，对 IDEA 插件开发有个最基本的了解。
 
 本Demo目标：
 
 - 快速搭建一个插件项目
 - 完成一个Menu Action：选中Java代码并替换成固定字符串
-- 了解PSI概念:  编写一个Action,弹出框显示Java类文件中光标所在位置的方法相关的PSI信息
+- 了解PSI概念:  编写一个 Action,弹出窗口，显示光标所在位置上的 Java 方法相关的 PSI 信息
 
 ---
 项目结构预览
@@ -196,7 +196,7 @@ javaVersion=1.8
 
 ```
 
-IDEA更多版本号，参见 [最新IDEA版本](https://plugins.jetbrains.com/docs/intellij/build-number-ranges.html#intellij-platform-based-products-of-recent-ide-versions)
+IDEA 更多版本号，参见 [最新IDEA版本](https://plugins.jetbrains.com/docs/intellij/build-number-ranges.html#intellij-platform-based-products-of-recent-ide-versions)
 
 - build.gradle.kts
 
@@ -211,7 +211,7 @@ id("org.jetbrains.intellij") version "1.0"
 
 ### 支持Java平台
 
-默认只引入了基础平台相关的Jar包，要支持Java语言，需要自己添加。
+默认只引入了基础平台相关的Jar包，要支持 Java 语言，需要自己添加。
 
 - gradle.properties
 
@@ -238,7 +238,8 @@ platformPlugins=com.intellij.java
 
 - 创建Java源代码目录
 
-IDEA插件既支持Kotlin,Java语言独立开发，也支持两者混合开发，写的类可以互相调用。 默认只有 kotlin 源代码目录。 Java源代码目录需要手动创建。 创建 src/main/java 即可开始写 Java 代码了。
+IDEA 插件既支持 Kotlin,Java 语言独立开发，也支持两者混合开发，写的类可以互相调用。 默认只有 kotlin 源代码目录。 
+Java 源代码目录需要手动创建。 创建 src/main/java 即可开始写 Java 代码了。
 
 默认的 kotlin 目录可以删除，但个人建议保留。 因为 kotlin 下的代码可以直接拿来做国际化，有些开源库是 kotlin 写的，可以直接 拿来用，混合开发还是比较有优势的。
 

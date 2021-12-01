@@ -31,11 +31,12 @@
     {{- $bundle := slice $highlight $functions $code $main $custom | resources.Concat "js/bundle.js" | resources.Minify | resources.Fingerprint "sha512" -}}
 
     <!-- preload assets declaration -->
-    <link rel="preload" href="{{ $styles.Permalink }}" integrity = "" as="style" crossorigin="anonymous">
-    <link rel="preload" href="{{ $bundle.Permalink }}" as="script" integrity="" crossorigin="anonymous">
+    <link rel="preload" href="{{ $styles.Permalink }}" integrity = "{{ $styles.Data.Integrity }}" as="style" crossorigin="anonymous">
+    <link rel="preload" href="{{ $bundle.Permalink }}" as="script" integrity=
+    "{{ $bundle.Data.Integrity }}" crossorigin="anonymous">
 
     <!-- styles file -->
-    <link rel="stylesheet" type="text/css" href="{{ $styles.Permalink }}" integrity="" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ $styles.Permalink }}" integrity="{{ $styles.Data.Integrity }}" crossorigin="anonymous">
     {{- with $s.customCSS }}
     {{- range . -}}
 	  <link rel="stylesheet" href="{{ relURL . }}">
@@ -68,7 +69,7 @@
     </main>
     {{- partialCached "icons" . }}
     {{- partialCached "footer" . }}
-    <script type="text/javascript" src="{{ $bundle.Permalink }}" integrity="" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{{ $bundle.Permalink }}" integrity="{{ $bundle.Data.Integrity }}" crossorigin="anonymous"></script>
     {{- with $s.customJS }}
     {{- range . -}}
     <script type="text/javascript" src="{{ relURL . }}" ></script>

@@ -191,6 +191,11 @@
 .post
   &_link, &_title
     margin-bottom: 0
+  &_link
+    line-height: 1
+    > a
+      display: block
+      line-height: 1.35
   &s
     margin-top: 2rem
   &_header
@@ -240,14 +245,27 @@
   &_share
     display: inline-flex
   &_meta
-    display: inline-flex
-    flex-flow: row wrap
-    align-items: center
+    align-items: stretch
+    &, span 
+      display: inline-flex
+      flex-flow: row wrap
+    span
+      align-items: center
+      margin-bottom: 0.5rem
+      &:last-of-type
+        @media screen and (max-width: 667px)
+          margin-top: -0.5rem
+        
     .button
-      margin-bottom: 0
+      @media screen and (min-width: 667px)
+        margin: 0 0.5rem
+
   &_date
     margin-right: 0.5rem
     margin-left: 0.25rem
+  &_featured
+    display: block
+    margin: 1rem auto
   &_content
     a
       color: $theme
@@ -413,12 +431,12 @@
     min-height: 10rem
     display: none
     @media screen and (min-width: $mobile-menu-breakpoint)
-      display: block 
+      display: block
       border-radius: 0.5rem
   &_footer
     &.partition
       display: grid
-      @media screen and (min-width: $mobile-menu-breakpoint) 
+      @media screen and (min-width: $mobile-menu-breakpoint)
         grid-template-columns: 2fr 7fr
         grid-gap: 1rem
 .sidebar
@@ -434,7 +452,13 @@
       position: absolute
       left: -2rem
         // display: none
-  &_description
+
+.author
+  &_header
+    display: grid
+    grid-template-columns: 3rem 1fr
+    grid-gap: 1rem
+  &_bio
     a
       color: $theme
 
@@ -455,6 +479,10 @@
     background-color: $theme
     color: $light
     border-radius: 1rem
+  &_only
+    display: none !important
+  & &_only
+    display: initial !important
 
 .round
   border-radius: 50%
@@ -467,7 +495,7 @@
   &_left
     float: left
     margin-right: 1rem
-    + p 
+    + p
       padding-top: 0
   &_right
     float: right
@@ -485,12 +513,10 @@
     fill: $haze
     margin-left: 0.75rem
 
-.img
-  &_alt
-    font-style: italic
-    padding-top: 0rem
-    opacity: 0.67
-    font-size: 0.9rem
+figcaption
+  font-style: italic
+  opacity: 0.67
+  font-size: 0.9rem
 
 .to
   &_top
@@ -519,8 +545,8 @@
     &:hover svg
       opacity: 1
 
-.color 
-  &_mode 
+.color
+  &_mode
     // width: 3rem
     height: 1.5rem
     display: grid
@@ -586,3 +612,56 @@
     display: block
     margin-left: auto !important
     margin-right: auto !important
+  &_thumbnail
+    margin: 0
+
+.video
+  overflow: hidden
+  padding-bottom: 56.25%
+  position: relative
+  height: 0
+  margin: 1.5rem 0
+  border-radius: 0.6rem
+  background-color: var(--bg)
+  box-shadow: 0 1rem 2rem rgba(0,0,0,0.17)
+  iframe
+    left: 0
+    top: 0
+    height: 100%
+    width: 100%
+    border: none
+    position: absolute
+    transform: scale(1.02)
+
+.notices
+  border-top-width: 2rem
+  border-top-style: solid
+  color: #666
+  margin: 2rem 0
+  padding-bottom: .1px
+  padding-left: 1rem
+  padding-right: 1rem
+  .label
+    color: #fff
+    margin-top: -1.75rem
+    font-weight: bold
+    &::first-child::before
+      font-weight: 900
+      margin-left: -.35rem
+      margin-right: .35rem
+  &.info
+    border-color: var(--notice-info-border-color)
+    background: var(--notice-info-background)
+  &.warning
+    border-color: var(--notice-warning-border-color)
+    background: var(--notice-warning-background)
+  &.image-warning
+    margin: 0
+  &.note
+    border-color: var(--notice-note-border-color)
+    background: var(--notice-note-background)
+  &.tip
+    border-color: var(--notice-tip-border-color)
+    background: var(--notice-tip-background)
+  .highlight_wrap
+    background: var(--notice-code-bg) !important

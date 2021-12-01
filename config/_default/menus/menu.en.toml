@@ -26,15 +26,15 @@ url = "dsclaimer/"
   name = "github"
   type = "social"
   weight = 1
-  url = "https://github.com/#"
-[[social]]
-  name = "twitter"
-  weight = 2
-  url = "https://twitter.com/#"
-[[social]]
-  name = "linkedin"
-  weight = 3
-  url = "https://www.linkedin.com/in/#"
+  url = "https://github.com/huangbaihua001"
+#[[social]]
+#  name = "twitter"
+#  weight = 2
+#  url = "https://twitter.com/#"
+#[[social]]
+#  name = "linkedin"
+#  weight = 3
+#  url = "https://www.linkedin.com/in/#"
 [[social]]
   name = "rss"
   weight = 4
