@@ -128,7 +128,7 @@
 </svg></span>
     <span class="post_date">
       2021年4月5日</span>
-    <span class="post_time"> · 6 min read</span><span>&nbsp;· <a href='https://huangbaihua.gitee.io/tags/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84' title="系统架构" class="post_tag button button_translucent">系统架构
+    <span class="post_time"> · 6 分钟阅读</span><span>&nbsp;· <a href='https://huangbaihua.gitee.io/tags/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84' title="系统架构" class="post_tag button button_translucent">系统架构
         </a><a href='https://huangbaihua.gitee.io/tags/%E8%AF%91%E6%96%87' title="译文" class="post_tag button button_translucent">译文
         </a>
     </span>
@@ -166,41 +166,44 @@
     <div class="post_body"><p><img src="/images/CleanArchitecture.jpg" alt=""></p>
 <p><a href="https://blog.cleancoder.com/">Bob</a>(编程界骨灰级人物)的清晰架构。</p>
 <p>源文: <a href="https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html">The Clean Architecture</a> (Robert C. Martin (Uncle Bob)</p>
-<p>在过去的几年里，我们看到了关于系统架构一系列想法。这些想法包括：</p>
+<p>在过去的几年里，我们看到了一系列关于系统架构的想法。这些包括：</p>
 <ul>
-<li>Alistair Cockburn提出的<a href="http://alistair.cockburn.us/Hexagonal+architecture">六边形架构</a>(又称端口和适配器架构),Steve Freeman和Nat Pryce在他们精彩的<a href="http://www.amazon.com/Growing-Object-Oriented-Software-Guided-Tests/dp/0321503627">《测试驱动的面向对象软件开发》</a>&quot;一书中有应用</li>
-<li>Jeffrey Palermo的<a href="http://jeffreypalermo.com/blog/the-onion-architecture-part-1/">洋葱架构</a></li>
-<li>作者本人去年提出的<a href="http://blog.cleancoders.com/2011-09-30-Screaming-Architecture">尖叫的架构</a></li>
+<li>Alistair Cockburn 提出的<a href="http://alistair.cockburn.us/Hexagonal+architecture">六边形架构</a>(又称端口和适配器架构),Steve Freeman和Nat Pryce在他们精彩的<a href="http://www.amazon.com/Growing-Object-Oriented-Software-Guided-Tests/dp/0321503627">《测试驱动的面向对象软件开发》</a>&quot;一书中有应用</li>
+<li>Jeffrey Palermo 的<a href="http://jeffreypalermo.com/blog/the-onion-architecture-part-1/">洋葱架构</a></li>
+<li>作者本人去年提出的<a href="http://blog.cleancoders.com/2011-09-30-Screaming-Architecture">Screaming Architecture</a></li>
 <li><a href="http://www.amazon.com/Lean-Architecture-Agile-Software-Development/dp/0470684208/">DCI</a>,James Coplien和Trygve Reenskaug</li>
 <li><a href="http://www.amazon.com/Object-Oriented-Software-Engineering-Approach/dp/0201544350">BCE</a>,Jacobson《面向对象软件工程》：一种用例驱动的方法</li>
 </ul>
-<p>这些架构尽管细节不同，但都非常类似。它们都有相同的目标，即<font color='red'>关注点分离(separation of concerns)</font>。它们都通过软件分层的方法来实现这种分离，至少有一层业务规则层，一层接口层。</p>
-<p>每种架构都会产生如下特点的系统：</p>
+<p>这些架构尽管细节不同，但都大同小异。它们都有着相同的目标，即<font color='red'>关注点分离(separation of concerns)</font>。它们都通过一种软件分层的方法来实现这种分离，至少有一层业务规则层，一层接口层。</p>
+<p>每种架构都会产生具有如下特点的系统：</p>
 <ol>
 <li>不依赖框架。架构不依赖这些功能丰富的软件库，使得系统仅将框架当工具使用，而不是将你的系统融入到框架的限制之中。</li>
-<li>可测试的。业务层可以在没有界面，数据库，Web服务器和其它任何外部元素情况下进行测试。</li>
-<li>不依赖界面。不需要修改系统的其它部分，就能很容易的修改界面。例如，不需要修改业务逻辑，一个Web界面可以替换成控制台界面。</li>
-<li>不依赖数据库。你可以把Oracle或者SQL Server换成Mongo、BigTable、CouchDB或者其他的东西。业务逻辑不受数据库的约束。</li>
+<li>可测试的。业务层可以在没有界面，数据库，Web 服务器和其它任何外部元素情况下进行测试。</li>
+<li>不依赖界面。不需要修改系统的其它部分，就能很容易的修改界面。例如，不需要修改业务逻辑，一个 Web 界面可以替换成控制台界面。</li>
+<li>不依赖数据库。你可以把 Oracle 或者 SQL Server 换成 Mongo、BigTable、CouchDB 或者其他。业务逻辑不受数据库的约束。</li>
 <li>不依赖任何外部元素。实际上系统的业务规则不关心外部世界。</li>
 </ol>
-<p>本文最上面的图试图将这些架构的想法综合成一种可操作的想法。</p>
+<p>本文最上面的图试图将这些架构的想法综合总结成一种可操作的规则。</p>
 <h1 id="依赖规则">依赖规则</h1>
 <p>图中同心圆代表软件的不同领域。一般来说，越往里走，软件的层次越高。外层是机制。内层是策略。</p>
 <p>使这个架构发挥作用的首要规则是<font color='red'>依赖规则</font>。该规则明确源代码依赖只能指向内层依赖。内层不能知道外层，特别是，外层声明的一些命名不能被内层的代码提及，包括函数，类，变量或任何其它命名的软件实体。</p>
 <p>同样的道理，外层使用的数据格式不能用于内层，尤其是这些格式是由外层的框架生成的时候。我们不希望外层的东西影响到内层。</p>
 <h1 id="实体">实体</h1>
-<p>实体封装了<font color='red'>企业范围内(Enterprise Wide)</font>的业务规则。 一个实体可以是一个带有方法的对象，也可以是一组数据结构和函数。只要实体可以被企业中的许多应用所使用到，其它都不重要。</p>
-<p>如果没有企业，只是在编写一个单一的应用程序，那么这些实体就是<font color='red'>应用程序的业务对象</font>。它们封装了最通用和高级的规则。当外部事物发生变化时，它们是最不可能改变的。例如，你不会期望这些对象会受到页面导航或安全性的变化的影响。任何特定应用程序的操作变化都不应该影响<font color='red'>实体层</font>。</p>
+<p>实体封装了<font color='red'>企业范围内 (Enterprise Wide) </font>的业务规则。 一个实体可以是一个带有方法的对象，也可以是一组数据结构和函数。只要实体可以被企业中的许多应用所使用到，其它都不重要。</p>
+<p>如果没有企业，只是在编写一个单一的应用程序，那么这些实体就是<font color='red'>应用程序的业务对象</font>。它们封装了最通用和高级的规则。当外部事物发生变化时，它们是最不可能改变的。</p>
+<p>例如，你不会期望这些对象会受到页面导航或安全性的变化的影响。任何特定应用程序的操作变化都不应该影响<font color='red'>实体层</font>。</p>
 <h1 id="用例">用例</h1>
-<p>该层包含了<font color='red'>特定应用(application specific)</font>的业务规则。它封装并实现了系统的所有用例。这些用例协调进出实体的数据流，并指导实体使用<font color='red'>企业范围内(Enterprise Wide)</font>业务规则来实现用例的功能。</p>
+<p>该层包含了<font color='red'>特定应用 (application specific) </font>的业务规则。它封装并实现了系统的所有用例。这些用例协调进出实体的数据流，并指导实体使用<font color='red'>企业范围内 (Enterprise Wide) </font>业务规则来实现用例的功能。</p>
 <p>我们不希望这一层的变化会影响实体。我们也不希望这一层的变化会受到外部的影响，如数据库、界面或任何常见框架。这一层与这些关注点是隔离的。</p>
 <p>但是，应用程序的操作变化会影响到用例，从而影响到这一层。如果一个用例的细节发生变化，那么这一层的一些代码肯定会受到影响。</p>
 <h1 id="接口适配">接口适配</h1>
-<p>该层是组适配器,它将数据从对用例和实体最方便的格式转换为对一些外部机构（如数据库或Web）最方便的格式。例如，在这一层，包含GUI的整个MVC架构层，表示层，界面层，控制器都在这一层。模型很可能只是数据结构，从控制器传递到用例，再从用例传回给表示层和界面层。</p>
-<p>同样，在这一层中，数据也被从对实体和用例最方便的形式转换为对任何持久化框架最方便的形式，即数据库。在这一层中，任何代码都不应该对数据库有任何了解。如果数据库是一个SQL数据库，那么所有的SQL应该限制在这一层，特别是这一层中与数据库有关的部分。</p>
+<p>该层是组适配器,它将数据从对用例和实体最方便的格式转换为对一些外部机构（如数据库或 Web ）最方便的格式。</p>
+<p>例如，在这一层，包含 GUI 的整个 MVC 架构层，表示层，界面层，控制器都在这一层。模型很可能只是数据结构，从控制器传递到用例，再从用例传回给表示层和界面层。</p>
+<p>同样，在这一层中，数据也被从对实体和用例最方便的形式转换为对任何持久化框架最方便的形式，即数据库。在这一层中，任何代码都不应该对数据库有任何了解。</p>
+<p>如果数据库是一个 SQL 数据库，那么所有的 SQL 应该限制在这一层，特别是这一层中与数据库有关的部分。</p>
 <p>另外，在这一层中还有任何其他必要的适配器，以便将数据从一些外部形式（如外部服务）转换为用例和实体使用的内部形式。</p>
 <h1 id="框架和驱动">框架和驱动</h1>
-<p>最外层一般由框架和工具组成，如数据库、Web框架等。一般在这一层除了写一些与内层通讯的胶水代码外，你不会写太多代码。</p>
+<p>最外层一般由框架和工具组成，如数据库、Web 框架等。一般在这一层除了写一些与内层通讯的胶水代码外，你不会写太多代码。</p>
 <p>这一层是所有的细节所在。Web是一个细节。数据库是一个细节。我们把这些东西放在最外层，在这一层它们不会对内层造成什么影响。</p>
 <h1 id="只有四层">只有四层?</h1>
 <p>不，这四层仅仅是示意图。你可能会发现你需要的不仅仅是这四层，没有规定说你必须永远只有这四层，然而，<font color='red'>&quot;依赖性规则 &quot;</font>总是适用的。源代码的依赖性总是向内指向。
@@ -215,7 +218,8 @@
 <p>例如，许多数据库框架在响应查询时都会返回一个方便的数据格式。我们可以将其称为行结构(RowStructure)。我们不希望将这个行结构向内传递到一个边界上。这将违反<font color='red'>依赖规则</font>，因为它会迫使内层知道一些关于外层的事情。</p>
 <p>所以当我们跨边界传递数据时，总是以对内层最方便的形式传递。</p>
 <h1 id="结论">结论</h1>
-<p>遵循这些简单的规则并不难，而且会让你在今后的工作中省去很多麻烦。通过将软件分成若干层，并遵守<font color='red'>依赖规则</font>，你将创建一个本质上可测试的系统，并带来所有的好处。当系统中的任何外部部分变得过时，比如数据库或网络框架，你可以用最少的代价替换这些过时的元素。</p>
+<p>遵循这些简单的规则并不难，而且会让你在今后的工作中省去很多麻烦。通过将软件分成若干层，并遵守<font color='red'>依赖规则</font>，你可以创建一个本质上可测试的系统，并带来所有的好处。
+当系统中的任何外部依赖部分过时时，比如数据库或网络框架，你可以用最少的代价替换这些过时的依赖。</p>
 <p>(全文完)</p>
     </div><div class="post_comments">
   

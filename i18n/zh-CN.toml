@@ -50,7 +50,7 @@ other = "所有专栏"
 other = "文章目录"
 
 [reading_time]
-other = "{{ .ReadingTime }} min read"
+other = "{{ .ReadingTime }} 分钟阅读"
 
 [img_web_path]
 other = "网站链接"
@@ -62,7 +62,7 @@ other = "在新选项卡中打开此网站链接"
 other = "链接到文件"
 
 [img_pb]
-other = "Page Bundles"
+other = "页面绑定"
 
 [img_pb_using]
 other = "使用"
