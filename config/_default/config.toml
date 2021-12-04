@@ -21,3 +21,9 @@ DefaultContentLanguage = "zh"
 category = "categories"
 tag = "tags"
 series = "series"
+
+[markup]
+  [markup.tableOfContents]
+    startLevel = 1
+    endLevel = 5
+    ordered = false

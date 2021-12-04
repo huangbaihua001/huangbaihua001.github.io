@@ -6,7 +6,358 @@
     <description>Recent content in 译文 on 柏华</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright © 2008–2021, 柏华; all rights reserved. Powered by Hugo</copyright>
-    <lastBuildDate>Tue, 18 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://huangbaihua.gitee.io/tags/%E8%AF%91%E6%96%87/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 04 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://huangbaihua.gitee.io/tags/%E8%AF%91%E6%96%87/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PSI(程序结构接口)-Intellij Platform 的一等公民</title>
+      <link>https://huangbaihua.gitee.io/post/idea/psi_intro/</link>
+      <pubDate>Sat, 04 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://huangbaihua.gitee.io/post/idea/psi_intro/</guid>
+      <description>
+        
+          &lt;p&gt;&lt;img src=&#34;https://huangbaihua.gitee.io/images/idea/import-maven-intellij-thumbnail.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;PSI&lt;/strong&gt; 是程序结构接口 &lt;strong&gt;(Program Structure Interface)&lt;/strong&gt; 的简称，在 Intellij 平台中负责解析文件、创建语法和语义代码模型。
+它是平台的一等公民，支持平台的许多功能。&lt;/p&gt;
+&lt;div&gt;
+    &lt;h2&gt;文章目录&lt;/h2&gt;
+    &lt;nav id=&#34;TableOfContents&#34;&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&#34;#1-psi-文件&#34;&gt;1. PSI 文件&lt;/a&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&#34;#11-获取获取-psi-文件&#34;&gt;1.1 获取获取 PSI 文件？&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#12-可以用-psi-文件做什么&#34;&gt;1.2 可以用 PSI 文件做什么？&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#13-psi-文件来自哪里&#34;&gt;1.3 PSI 文件来自哪里？&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#14-psi-文件能保存多久&#34;&gt;1.4 PSI 文件能保存多久？&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#15-如何创建psi文件&#34;&gt;1.5 如何创建PSI文件？&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#16-当-psi-文件改变时如何得到通知&#34;&gt;1.6 当 PSI 文件改变时，如何得到通知？&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#17-如何扩展-psi-&#34;&gt;1.7 如何扩展 PSI ?&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#18-使用-psi-有什么规则-&#34;&gt;1.8 使用 PSI 有什么规则 ?&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#2-文件视图提供者file-view-providers&#34;&gt;2. 文件视图提供者(File View Providers)&lt;/a&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&#34;#21-如何获得-fileviewprovider&#34;&gt;2.1 如何获得 FileViewProvider？&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#22-可以用-fileviewprovider-做什么&#34;&gt;2.2 可以用 FileViewProvider 做什么？&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#23-如何扩展-fileviewprovider&#34;&gt;2.3 如何扩展 FileViewProvider?&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#3-psi-元素&#34;&gt;3 PSI 元素&lt;/a&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&#34;#31-怎么获取-psi-元素&#34;&gt;3.1 怎么获取 PSI 元素&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#32-可以用-psi-元素做什么&#34;&gt;3.2 可以用 PSI 元素做什么？&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#4-检索-psi&#34;&gt;4. 检索 PSI&lt;/a&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&#34;#41-自上而下检索&#34;&gt;4.1 自上而下检索&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#42-自下而上检索&#34;&gt;4.2 自下而上检索&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#5-psi-引用&#34;&gt;5. PSI 引用&lt;/a&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&#34;#51-提供的引用&#34;&gt;5.1 提供的引用&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#52-具有可选或多个解析结果的引用&#34;&gt;5.2 具有可选或多个解析结果的引用&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#53-查找引用&#34;&gt;5.3 查找引用&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#54-实现引用&#34;&gt;5.4 实现引用&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#6-修改-psi&#34;&gt;6. 修改 PSI&lt;/a&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&#34;#61-创建-psi&#34;&gt;6.1 创建 PSI&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#62-保持树结构的一致性&#34;&gt;6.2 保持树结构的一致性&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#63-空格和包导入&#34;&gt;6.3 空格和包导入&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#64-结合-psi-和文件的修改&#34;&gt;6.4 结合 PSI 和文件的修改&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#7-psi-cookbook&#34;&gt;7 PSI Cookbook&lt;/a&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&#34;#71-通用&#34;&gt;7.1 通用&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#72-java&#34;&gt;7.2 Java&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+&lt;/div&gt;
+&lt;p&gt;译自: &lt;a href=&#34;https://plugins.jetbrains.com/docs/intellij/psi.html&#34;&gt;PSI&lt;/a&gt; (intellij)&lt;/p&gt;
+&lt;h1 id=&#34;1-psi-文件&#34;&gt;1. PSI 文件&lt;/h1&gt;
+&lt;p&gt;PSI 文件是一个结构的根，在特定的编程语言中将文件内容表示为一种具有层次结构的元素集合。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;PsiFile&lt;/strong&gt; 类是所有 PSI 文件的共同基类，而特定语言的文件通常由其子类表示。例如，&lt;strong&gt;PsiJavaFile&lt;/strong&gt; 类代表一个Java文件，而 &lt;strong&gt;XmlFile&lt;/strong&gt; 类代表一个 XML 文件。&lt;/p&gt;
+&lt;p&gt;与 &lt;strong&gt;VirtualFile&lt;/strong&gt; 和 &lt;strong&gt;Document&lt;/strong&gt; 不同，&lt;strong&gt;VirtualFile&lt;/strong&gt; 和 &lt;strong&gt;Document&lt;/strong&gt; 有其应用范围（即使打开了多个项目，每个文件都由同一个 &lt;strong&gt;VirtualFile&lt;/strong&gt; 实例表示），
+PSI 有其项目范围：如果文件属于同时打开的多个项目，同一个文件由多个 &lt;strong&gt;PsiFile&lt;/strong&gt; 实例表示。&lt;/p&gt;
+&lt;h2 id=&#34;11-获取获取-psi-文件&#34;&gt;1.1 获取获取 PSI 文件？&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;从一个 Action：     &lt;strong&gt;e.getData(CommonDataKeys.PSI_FILE).&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;从一个 VirtualFile:  &lt;strong&gt;PsiManager.getInstance(project).findFile()&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;从一个 Document: &lt;strong&gt;PsiDocumentManager.getInstance(project).getPsiFile()&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;从一个文件中的元素: &lt;strong&gt;PsiElement.getContainingFile()&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;在项目任意地方获取具有特定名称的文件，使用 &lt;strong&gt;FilenameIndex.getFilesByName(project, name, scope)&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;12-可以用-psi-文件做什么&#34;&gt;1.2 可以用 PSI 文件做什么？&lt;/h2&gt;
+&lt;p&gt;大多数有趣的修改操作是在单个 PSI 元素的层面上进行的，而不是整个文件。&lt;/p&gt;
+&lt;p&gt;要遍历一个文件中的元素，可以使用&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;psiFile&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;accept&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;PsiRecursiveElementWalkingVisitor&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;      &lt;span class=&#34;c1&#34;&gt;// visitor implementation ...
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;o&#34;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;13-psi-文件来自哪里&#34;&gt;1.3 PSI 文件来自哪里？&lt;/h2&gt;
+&lt;p&gt;因为 PSI 是依赖于语言的，因此 PSI 文件使用 &lt;strong&gt;Language&lt;/strong&gt; 实例创建:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;LanguageParserDefinitions&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;INSTANCE&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;      &lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;forLanguage&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;MyLanguage&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;INSTANCE&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;      &lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;createFile&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fileViewProvider&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;与文件一样，PSI 文件是在访问特定文件的 PSI 时按需创建的。&lt;/p&gt;
+&lt;h2 id=&#34;14-psi-文件能保存多久&#34;&gt;1.4 PSI 文件能保存多久？&lt;/h2&gt;
+&lt;p&gt;像文档一样，PSI 文件从相应的 &lt;strong&gt;VirtualFile&lt;/strong&gt; 实例中被弱引用，如果不被任何实例引用，可以被垃圾收集器收集。&lt;/p&gt;
+&lt;h2 id=&#34;15-如何创建psi文件&#34;&gt;1.5 如何创建PSI文件？&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;PsiFileFactory createFileFromText()&lt;/strong&gt; 方法以指定的内容在内存中创建一个 PSI 文件。&lt;/p&gt;
+&lt;p&gt;要将 PSI 文件保存到磁盘，请使用 &lt;strong&gt;PsiDirectory add()&lt;/strong&gt; 方法。&lt;/p&gt;
+&lt;h2 id=&#34;16-当-psi-文件改变时如何得到通知&#34;&gt;1.6 当 PSI 文件改变时，如何得到通知？&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;PsiManager.getInstance(project).addPsiTreeChangeListener()&lt;/strong&gt; 允许你接收有关项目中的 PSI 树的所有变化的通知。
+或者，在 &lt;strong&gt;com.intellij.psi.treeChangeListener&lt;/strong&gt; 扩展点中注册 &lt;strong&gt;PsiTreeChangeListener&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;请参见 &lt;a href=&#34;https://upsource.jetbrains.com/idea-ce/file/idea-ce-2020312d547dd0b755241d10a1a3eec025f8efe7/platform/core-api/src/com/intellij/psi/PsiTreeChangeEvent.java?_ga=2.194139565.1831407401.1638449592-1206068809.1622726639&#34;&gt;PsiTreeChangeEvent&lt;/a&gt; ,了解处理 PSI 事件时的常见问题.&lt;/p&gt;
+&lt;h2 id=&#34;17-如何扩展-psi-&#34;&gt;1.7 如何扩展 PSI ?&lt;/h2&gt;
+&lt;p&gt;PSI 可以通过自定义语言插件扩展支持更多的语言。关于开发自定义语言插件的更多细节，
+请参见 &lt;a href=&#34;https://plugins.jetbrains.com/docs/intellij/custom-language-support.html&#34;&gt;自定义语言支持&lt;/a&gt; 参考指南。&lt;/p&gt;
+&lt;h2 id=&#34;18-使用-psi-有什么规则-&#34;&gt;1.8 使用 PSI 有什么规则 ?&lt;/h2&gt;
+&lt;p&gt;对 PSI 文件内容所做的任何改变都会反映在文档中，因此所有 
+&lt;a href=&#34;https://plugins.jetbrains.com/docs/intellij/documents.html#what-are-the-rules-of-working-with-documents&#34;&gt;处理文档的规则&lt;/a&gt; （读/写操作、命令、只读状态处理）都是有效的。&lt;/p&gt;
+&lt;h1 id=&#34;2-文件视图提供者file-view-providers&#34;&gt;2. 文件视图提供者(File View Providers)&lt;/h1&gt;
+&lt;p&gt;一个文件视图提供者（&lt;strong&gt;FileViewProvider&lt;/strong&gt;）管理对单个文件中多个 PSI 树的访问。&lt;/p&gt;
+&lt;p&gt;例如，一个 JSP 页面中的 Java 代码有一个单独的 PSI 树（&lt;strong&gt;PsiJavaFile&lt;/strong&gt;），
+XML 代码有一个单独的树（&lt;strong&gt;XmlFile&lt;/strong&gt;），整个 JSP 有一个单独的树（&lt;strong&gt;JspFile&lt;/strong&gt;）。&lt;/p&gt;
+&lt;p&gt;每个 PSI 树都涵盖了文件的全部内容，并在可以找到不同语言内容的地方包含了特殊的 &amp;quot;外部语言元素&amp;quot;。&lt;/p&gt;
+&lt;p&gt;一个 &lt;strong&gt;FileViewProvider&lt;/strong&gt; 实例对应于一个 VirtualFile，一个 Document，并且可以检索到多个 PsiFile 实例。&lt;/p&gt;
+&lt;h2 id=&#34;21-如何获得-fileviewprovider&#34;&gt;2.1 如何获得 FileViewProvider？&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;从一个 VirtualFile：&lt;strong&gt;PsiManager.getInstance(project).findViewProvider()&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;从一个 PsiFile: &lt;strong&gt;psiFile.getViewProvider()&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;22-可以用-fileviewprovider-做什么&#34;&gt;2.2 可以用 FileViewProvider 做什么？&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;获取文件中存在 PSI 树的所有语言集：&lt;strong&gt;fileViewProvider.getLanguages()&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;获取某一特定语言的 PSI 树：&lt;strong&gt;fileViewProvider.getPsi(language)&lt;/strong&gt;。例如，要获得 XML的 PSI 树，使用 &lt;strong&gt;fileViewProvider.getPsi(XMLLanguage.INSTANCE)。&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;要在文件的指定偏移处找到一个特定语言的元素：&lt;strong&gt;fileViewProvider.findElementAt(offset, language)&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;23-如何扩展-fileviewprovider&#34;&gt;2.3 如何扩展 FileViewProvider?&lt;/h2&gt;
+&lt;p&gt;要创建一个新的文件类型，该插件必须包含一个 &lt;strong&gt;com.intellij.fileType.fileViewProviderFactory&lt;/strong&gt; 扩展点的扩展。&lt;/p&gt;
+&lt;p&gt;实现 &lt;strong&gt;FileViewProviderFactory&lt;/strong&gt; 并从 &lt;strong&gt;createFileViewProvider()&lt;/strong&gt; 方法返回你的 &lt;strong&gt;FileViewProvider&lt;/strong&gt; 实现。&lt;/p&gt;
+&lt;p&gt;在 &lt;strong&gt;plugin.xml&lt;/strong&gt; 中注册如下:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;extensions&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;defaultExtensionNs=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;com.intellij&amp;#34;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;lt;fileType.fileViewProviderFactory&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;          &lt;span class=&#34;na&#34;&gt;filetype=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;$file_type$&amp;#34;&lt;/span&gt; 
+&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;          &lt;span class=&#34;na&#34;&gt;implementationClass=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;com.plugin.MyFileViewProviderFactory&amp;#34;&lt;/span&gt; &lt;span class=&#34;nt&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;/extensions&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;其中 $file_type$ 指的是正在创建的文件类型(例如，“JFS”)。&lt;/p&gt;
+&lt;h1 id=&#34;3-psi-元素&#34;&gt;3 PSI 元素&lt;/h1&gt;
+&lt;p&gt;一个 PS I(程序结构接口)文件表示一个 PSI 元素的层次结构(所谓的 PSI 树)。 
+一个 PSI 文件(本身就是一个 PSI 元素)可能包含几个特定编程语言的 PSI 树。 
+反过来，一个 PSI 元素也可以有子 PSI 元素。&lt;/p&gt;
+&lt;p&gt;PSI 元素和单个 PSI 元素层面的操作被用来探索源代码的内部结构，因为它是由 IntelliJ 平台解释的。
+例如，你可以使用 PSI 元素来进行代码分析，如 &lt;a href=&#34;https://www.jetbrains.com/help/idea/code-inspection.html?_ga=2.176256293.1831407401.1638449592-1206068809.1622726639&#34;&gt;代码检查&lt;/a&gt; 或 &lt;a href=&#34;https://www.jetbrains.com/idea/help/intention-actions.html?_ga=2.176256293.1831407401.1638449592-1206068809.1622726639&#34;&gt;意图操作&lt;/a&gt; 。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;PsiElement&lt;/strong&gt; 类是 PSI 元素的通用基类。&lt;/p&gt;
+&lt;h2 id=&#34;31-怎么获取-psi-元素&#34;&gt;3.1 怎么获取 PSI 元素&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;从一个 Action： &lt;strong&gt;e.getData（LangDataKeys.PSI_ELEMENT）&lt;/strong&gt;。注意：如果当前打开了一个编辑器，并且被关注的元素是一个引用，这将返回解析该引用的结果。这可能是你需要的，也可能不是。&lt;/li&gt;
+&lt;li&gt;从一个文件中的偏移量： &lt;strong&gt;PsiFile.findElementAt()&lt;/strong&gt;。注意：这将返回指定偏移量的最低级别元素（&amp;quot;叶子元素&amp;quot;），通常是一个词法标记。 最有可能的是，你应该使用 &lt;strong&gt;PsiTreeUtil.getParentOfType()&lt;/strong&gt; 来找到你真正需要的元素。&lt;/li&gt;
+&lt;li&gt;通过迭代 PSI 文件：使用 &lt;strong&gt;PsiRecursiveElementWalkingVisitor&lt;/strong&gt; 。&lt;/li&gt;
+&lt;li&gt;通过解析一个引用: &lt;strong&gt;PsiReference.resolve()&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;32-可以用-psi-元素做什么&#34;&gt;3.2 可以用 PSI 元素做什么？&lt;/h2&gt;
+&lt;p&gt;请参见 &lt;a href=&#34;#7-psi-cookbook&#34;&gt;PSI Cookbook&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;4-检索-psi&#34;&gt;4. 检索 PSI&lt;/h1&gt;
+&lt;p&gt;有三种主要方式来检索 PSI：自上而下法，自下而上法，以及引用法。&lt;/p&gt;
+&lt;p&gt;第一种场景，你有一个 PSI 文件或另一个更高层次的元素（例如，一个方法）。
+需要找到所有符合指定条件的元素（例如，所有变量声明）。&lt;/p&gt;
+&lt;p&gt;第二种场景，你在 PSI 树中有一个特定的点（例如，位于光标所在位置的元素），
+需要找出关于它的上下文（例如，它被声明的元素）。&lt;/p&gt;
+&lt;p&gt;最后，引用允许你从一个元素的使用（例如，一个方法的调用）导航到声明（被调用的方法），再返回。
+引用将在一个单独的 &lt;a href=&#34;#5-psi-&#34;&gt;章节&lt;/a&gt; 中讲述。&lt;/p&gt;
+&lt;h2 id=&#34;41-自上而下检索&#34;&gt;4.1 自上而下检索&lt;/h2&gt;
+&lt;p&gt;执行自上而下检索的最常见的方法是使用 &lt;a href=&#34;https://en.wikipedia.org/wiki/Visitor_pattern&#34;&gt;&lt;strong&gt;Visitor&lt;/strong&gt;&lt;/a&gt; 模式 。
+要使用一个 Visitor ，你要创建一个类（通常是一个匿名的内部类），它扩展了 Visitor 类，
+重写了处理元素的方法，并将 Visitor 实例传递给 PsiElement.accept() 方法。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Visitor&lt;/strong&gt; 的基类是特定于语言的。例如，如果需要处理 Java 文件中的元素，可以扩展 &lt;strong&gt;JavaRecursiveElementVisitor&lt;/strong&gt; 并重写相关方法。&lt;/p&gt;
+&lt;p&gt;下面的代码显示了使用 &lt;strong&gt;Visitor&lt;/strong&gt; 查找所有 Java 局部变量声明的情况。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;file&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;accept&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;JavaRecursiveElementVisitor&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;  &lt;span class=&#34;nd&#34;&gt;@Override&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;  &lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;visitLocalVariable&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;PsiLocalVariable&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;variable&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;    &lt;span class=&#34;kd&#34;&gt;super&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;visitLocalVariable&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;variable&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Found a variable at offset &amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;variable&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getTextRange&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getStartOffset&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;());&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;6&lt;/span&gt;  &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;7&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;在大多数情况下，你也可以使用更具体的 API 进行自上而下的检索。例如，如果你需要获得一个 Java 类中所有方法的列表，
+你可以使用一个 Visitor ，但更简单的方法是调用 &lt;strong&gt;PsiClass.getMethods()&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;PsiTreeUtil&lt;/strong&gt; 包含一些通用的、独立于语言的 PSI 树状检索函数，其中一些函数（例如 &lt;strong&gt;findChildrenOfType()&lt;/strong&gt; ）执行自顶向下的检索。&lt;/p&gt;
+&lt;h2 id=&#34;42-自下而上检索&#34;&gt;4.2 自下而上检索&lt;/h2&gt;
+&lt;p&gt;自下而上检索的起点是 PSI 树中的一个特定元素（例如，解析一个引用的结果）或一个偏移量。
+如果已知一个偏移量，你可以通过调用 &lt;strong&gt;PsiFile.findElementAt()&lt;/strong&gt; 找到相应的 PSI 元素。
+这个方法返回树中最低层的元素（例如，一个标识符），如果你想确定更广泛的上下文，你需要向上检索这颗树。&lt;/p&gt;
+&lt;p&gt;在大多数情况下，自下而上的检索航是通过调用 &lt;strong&gt;PsiTreeUtil.getParentOfType()&lt;/strong&gt; 进行的。这个方法在树中往上查找，直到找到你指定的类型的元素。
+例如，为了找到包含的方法，你调用 &lt;strong&gt;PsiTreeUtil.getParentOfType(element, PsiMethod.class)&lt;/strong&gt; 方法。&lt;/p&gt;
+&lt;p&gt;在某些情况下，你也可以使用特定的检索方法。例如，要找到一个方法所在的类，你可以调用 &lt;strong&gt;PsiMethod.getContainingClass()&lt;/strong&gt; 方法。&lt;/p&gt;
+&lt;p&gt;下面的代码片段显示了这些调用如何一起使用。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;PsiFile&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;psiFile&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;anActionEvent&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getData&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;CommonDataKeys&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;PSI_FILE&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;PsiElement&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;element&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;psiFile&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;findElementAt&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;offset&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;PsiMethod&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;containingMethod&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;PsiTreeUtil&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getParentOfType&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;element&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;PsiMethod&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;class&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;PsiClass&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;containingClass&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;containingMethod&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getContainingClass&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;();&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;要了解检索的实际运行，请参考 &lt;a href=&#34;https://github.com/JetBrains/intellij-sdk-code-samples/blob/main/psi_demo/src/main/java/org/intellij/sdk/psi/PsiNavigationDemoAction.java&#34;&gt;代码实例&lt;/a&gt; 。&lt;/p&gt;
+&lt;h1 id=&#34;5-psi-引用&#34;&gt;5. PSI 引用&lt;/h1&gt;
+&lt;p&gt;PSI 树中的引用是一个对象，它代表了从代码中某一特定元素的使用到相应声明的链接。解析一个引用意味着找到一个特定使用所指向的声明。&lt;/p&gt;
+&lt;p&gt;最常见的引用类型是由语言语义定义的。例如，考虑一个简单的 Java 方法。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;hello&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;String&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;message&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;println&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;message&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这个简单的代码片段包含五个引用。由标识符 String、System、out 和 println 创建的引用可以被解析为 JDK 中的相应声明：
+String 和 System 类、out 字段和 println 方法； println(message) 中第二次出现的 &lt;strong&gt;message&lt;/strong&gt; 标识符所创建的引用可以被解析为方法参数，
+在方法头中由 String message 声明。&lt;/p&gt;
+&lt;p&gt;请注意，String message 不是一个引用，不能被解析。相反，它是一个声明。它没有引用在其他地方定义的任何名称; 相反，它自己定义一个名称。&lt;/p&gt;
+&lt;p&gt;要解析引用--找到被引用的声明--请调用 &lt;strong&gt;PsiReference.resolve()&lt;/strong&gt; 。理解 &lt;strong&gt;PsiReference.getElement()&lt;/strong&gt; 和 &lt;strong&gt;PsiReference.resolve()&lt;/strong&gt; 之间的区别非常重要。
+前一个方法返回引用的来源，而后一个方法返回其目标。在上面的例子中，对于 &lt;strong&gt;message&lt;/strong&gt; 引用，getElement() 将返回片段第二行的 &lt;strong&gt;message&lt;/strong&gt; 标识符，
+而 resolve() 将返回第一行（参数列表内）的 &lt;strong&gt;message&lt;/strong&gt; 标识符。&lt;/p&gt;
+&lt;p&gt;解析引用的过程与解析不同，不是同时进行的。此外，它并不总是成功的。如果当前在 IDE 中打开的代码不能编译，或者在其他情况下，
+PsiReference.resolve() 返回 null 是正常的，所有处理引用的代码都必须准备好处理这个问题。&lt;/p&gt;
+&lt;h2 id=&#34;51-提供的引用&#34;&gt;5.1 提供的引用&lt;/h2&gt;
+&lt;p&gt;除了由编程语言的语义定义的引用外，IDE 还能识别由代码中使用的 API 和框架的语义决定的许多引用。请看下面的例子。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;File&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;f&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;File&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;foo.txt&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;在这里，&amp;quot;foo.txt &amp;quot;从 Java 语法的角度来看没有什么特殊的含义--它只是一个字符串。
+然而，在 IntelliJ IDEA 中打开这个例子，并在同一目录下有一个名为 &amp;quot;foo.txt &amp;quot;的文件，可以按 Ctrl/Cmd+ 点击 &amp;quot;foo.txt &amp;quot;并导航到该文件。
+这是因为 ID E识别了 new File(...) 的语义，并在作为参数传递给该方法的字符串提供了一个引用。&lt;/p&gt;
+&lt;p&gt;通常情况下，引用可以被提供给那些没有自己的引用的元素，如字符串和注释。引用也经常被提供给非代码文件，如 XML 或 JSON。&lt;/p&gt;
+&lt;p&gt;提供引用是扩展现有语言的最常见方式之一。例如，你的插件可以提供对 Java 代码的引用，尽管 Java PSI 是平台的一部分，并不需要在你的插件中定义。&lt;/p&gt;
+&lt;p&gt;实现 &lt;strong&gt;PsiReferenceContributor&lt;/strong&gt;, 在扩展点 &lt;strong&gt;com.intellij.psi.referenceContributor&lt;/strong&gt; 中注册。
+然后在调用 &lt;strong&gt;PsiReferenceRegistrar.registerReferenceProvider()&lt;/strong&gt; 时使用 &lt;a href=&#34;https://plugins.jetbrains.com/docs/intellij/element-patterns.html&#34;&gt;Element Patterns&lt;/a&gt; 指定要引用的地方。&lt;/p&gt;
+&lt;p&gt;另请参见 &lt;a href=&#34;https://plugins.jetbrains.com/docs/intellij/reference-contributor.html&#34;&gt;引用提供指南&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;52-具有可选或多个解析结果的引用&#34;&gt;5.2 具有可选或多个解析结果的引用&lt;/h2&gt;
+&lt;p&gt;在最简单的情况下，一个引用会解析到一个元素，如果解析失败，代码就不正确，IDE 需要将其作为一个错误突出显示。然而，在有些情况下，情况会有所不同。&lt;/p&gt;
+&lt;p&gt;第一种情况是软引用。考虑一下上面的 new File(&amp;quot;foo.txt&amp;quot;) 例子。如果 IDE 找不到 &amp;quot;foo.txt &amp;quot;这个文件，这并不意味着需要突出显示一个错误--也许这个文件只在运行时可用。
+这样的引用从 &lt;strong&gt;PsiReference.isSoft()&lt;/strong&gt; 方法返回真。&lt;/p&gt;
+&lt;p&gt;第二种情况是多变体引用。考虑一下 JavaScript 程序的情况。JavaScript 是一种动态类型的语言，所以 IDE 不能总是精确地确定在某一特定位置正在调用哪个方法。
+为了处理这个问题，它提供了一个可以被解析为多种可能元素的引用。这种引用实现了 &lt;strong&gt;PsiPolyVariantReference&lt;/strong&gt; 接口。&lt;/p&gt;
+&lt;p&gt;为了解析一个 &lt;strong&gt;PsiPolyVariantReference&lt;/strong&gt;，你调用它的 &lt;strong&gt;multiResolve()&lt;/strong&gt; 方法。该调用返回一个 &lt;strong&gt;ResolveResult&lt;/strong&gt; 对象的数组。
+每一个对象都标识了一个 PSI 元素，并且还指定了结果是否有效。例如，假设你有多个 Java 方法的重载，以及一个参数不匹配任何重载的调用。
+在这种情况下，你将得到所有重载的 ResolveResult 对象，并且 isValidResult() 对所有这些对象都返回 false。&lt;/p&gt;
+&lt;h2 id=&#34;53-查找引用&#34;&gt;5.3 查找引用&lt;/h2&gt;
+&lt;p&gt;正如你所知，解析一个引用意味着从使用到相应的声明。要进行相反方向的导航--从声明到其使用--执行引用搜索。&lt;/p&gt;
+&lt;p&gt;要使用 &lt;strong&gt;ReferencesSearch&lt;/strong&gt; 进行搜索，需要指定要搜索的元素，以及可选择的其他参数，如需要搜索的引用的范围。
+创建的 &lt;strong&gt;Query&lt;/strong&gt; 允许一次获得所有的结果，或者一个一个地遍历结果。后者允许在找到第一个（匹配）结果后立即停止处理。&lt;/p&gt;
+&lt;h2 id=&#34;54-实现引用&#34;&gt;5.4 实现引用&lt;/h2&gt;
+&lt;p&gt;更多信息请参考 &lt;a href=&#34;https://plugins.jetbrains.com/docs/intellij/references-and-resolve.html&#34;&gt;指南&lt;/a&gt; 和相应的 &lt;a href=&#34;https://plugins.jetbrains.com/docs/intellij/reference-contributor.html&#34;&gt;教程&lt;/a&gt; 。&lt;/p&gt;
+&lt;h1 id=&#34;6-修改-psi&#34;&gt;6. 修改 PSI&lt;/h1&gt;
+&lt;p&gt;PSI 是对源代码的一种读写表示，是对应于源文件结构的元素树。你可以通过添加、替换和删除 PSI 元素来修改 PSI。&lt;/p&gt;
+&lt;p&gt;为了执行这些操作，你可以使用 &lt;strong&gt;PsiElement.add()&lt;/strong&gt;、&lt;strong&gt;PsiElement.delete()&lt;/strong&gt; 和 &lt;strong&gt;PsiElement.replace()&lt;/strong&gt; 等方法，
+以及 &lt;strong&gt;PsiElement&lt;/strong&gt; 接口中定义的其他方法，这些方法可以让你在一次操作中处理多个元素，或者指定树中需要添加元素的确切位置。&lt;/p&gt;
+&lt;p&gt;和文档操作一样，PSI 的修改需要用写操作和命令来包装（只能在事件调度线程中执行）。更多关于命令和写操作的信息，请参见 &lt;a href=&#34;https://plugins.jetbrains.com/docs/intellij/documents.html#what-are-the-rules-of-working-with-documents&#34;&gt;文档&lt;/a&gt; 。&lt;/p&gt;
+&lt;h2 id=&#34;61-创建-psi&#34;&gt;6.1 创建 PSI&lt;/h2&gt;
+&lt;p&gt;要添加到树中或替换现有 PSI 元素的 PSI 元素通常是由文本创建的。在一般的情况下，
+使用 &lt;strong&gt;PsiFileFactory&lt;/strong&gt; 的 &lt;strong&gt;createFileFromText()&lt;/strong&gt; 方法来创建一个新的文件，该文件包含了你需要添加到树中的代码结构，
+或者作为现有元素的替换，遍历树定位你需要的位置，然后将该元素传递给 &lt;strong&gt;add()&lt;/strong&gt; 或 &lt;strong&gt;replace()&lt;/strong&gt; 方法。&lt;/p&gt;
+&lt;p&gt;大多数语言都提供了工厂方法，让你更容易创建特定的代码结构。
+例如，&lt;strong&gt;PsiJavaParserFacade&lt;/strong&gt; 类包含诸如 &lt;strong&gt;createMethodFromText()&lt;/strong&gt; 的方法，它从给定的文本中创建一个 Java 方法。&lt;/p&gt;
+&lt;p&gt;当你实现重构、意图或检查快速修复，与现有的代码一起工作时，传递给各种 &lt;strong&gt;createFromText()&lt;/strong&gt; 方法的文本会结合&lt;strong&gt;硬编码片段&lt;/strong&gt;和从现有文件中&lt;strong&gt;提取的代码片段&lt;/strong&gt;。
+对于小的代码片段（单个标识符），你可以简单地将现有代码中的文本附加到你要构建的代码片段的文本中。
+在这种情况下，你需要确保产生的文本在语法上是正确的。否则，createFromText() 方法将抛出一个异常。&lt;/p&gt;
+&lt;p&gt;对于较大的代码片段，最好分几步进行修改。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;从文本中创建一个替换树形片段，为用户代码片段预留占位符。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;用用户代码片段替换占位符。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;用替换树替换原始源文件中的元素。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;这确保了用户代码的格式被保留下来，并且修改不会引入任何不需要的空格变化。&lt;/p&gt;
+&lt;p&gt;参照该方法，请看 ComparingReferencesInspection 快速修复示例。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;// binaryExpression 持有形式为 &amp;#34;x == y &amp;#34;的 PSI 表达式，需要用 &amp;#34;x.equals(y) &amp;#34;替换。
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;PsiBinaryExpression&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;binaryExpression&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;PsiBinaryExpression&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;descriptor&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getPsiElement&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;();&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 3&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;IElementType&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;opSign&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;binaryExpression&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getOperationTokenType&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;();&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 4&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;PsiExpression&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;lExpr&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;binaryExpression&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getLOperand&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;();&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 5&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;PsiExpression&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rExpr&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;binaryExpression&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getROperand&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;();&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 6&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 7&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;// 第1步：从文本中创建一个替换片段，以 &amp;#34;a &amp;#34;和 &amp;#34;b &amp;#34;作为占位符
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt; 8&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;PsiElementFactory&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;factory&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;JavaPsiFacade&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getInstance&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;project&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;).&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getElementFactory&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;();&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 9&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;PsiMethodCallExpression&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;equalsCall&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;10&lt;/span&gt;    &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;PsiMethodCallExpression&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;factory&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;createExpressionFromText&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;a.equals(b)&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;null&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;11&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;12&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;// 第2步：用原文件中的元素替换 &amp;#34;a &amp;#34;和 &amp;#34;b&amp;#34;。
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;13&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;equalsCall&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getMethodExpression&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getQualifierExpression&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;replace&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;lExpr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;14&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;equalsCall&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getArgumentList&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getExpressions&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;()[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;].&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;replace&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;rExpr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;15&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;16&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;// 第3步：用替换树替换原始文件中的一个较大的元素
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;17&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;PsiExpression&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;result&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;PsiExpression&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;binaryExpression&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;replace&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;equalsCall&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;就像 IntelliJ 平台 API 中的其他地方一样，传递给 createFileFromText()和其他 createFromText() 方法的文本必须只使用 /n 作为换行符。&lt;/p&gt;
+&lt;h2 id=&#34;62-保持树结构的一致性&#34;&gt;6.2 保持树结构的一致性&lt;/h2&gt;
+&lt;p&gt;PSI 的修改方法并不会限制你构建结果树结构的方式。例如，在处理一个 Java 类时，你可以添加一个 for 语句作为 PsiMethod 元素的直接子元素，
+尽管 Java 解析器永远不会产生这样的结构（for语句永远是 PsiCodeBlock 的子元素）代表方法体。
+产生不正确的树状结构的修改可能看起来是有效的，但它们将导致后续的问题和异常。
+因此，你总是需要确保你用 PSI 修改操作建立的结构与解析器在解析你所创建的代码时产生的结构相同。&lt;/p&gt;
+&lt;p&gt;为了确保你没有引入不一致，你可以在你修改 PSI 的操作的测试中调用 PsiTestUtil.checkFileStructure（）。
+这个方法可以确保你建立的结构与解析器产生的结构是一致的。&lt;/p&gt;
+&lt;h2 id=&#34;63-空格和包导入&#34;&gt;6.3 空格和包导入&lt;/h2&gt;
+&lt;p&gt;当使用 PSI 修改函数时，你不应该从文本中创建单独的空白节点（空格或换行符）。相反，所有的空白修改都由格式化处理器执行，它遵循用户选择的代码风格设置。
+格式化是在每个命令的末尾自动执行的，如果需要，也可以使用 &lt;strong&gt;CodeStyleManager&lt;/strong&gt; 类中的 &lt;strong&gt;reformat(PsiElement)&lt;/strong&gt; 方法手动执行。&lt;/p&gt;
+&lt;p&gt;另外，在处理 Java 代码时（或处理其他具有类似导入机制的语言的代码，如 Groovy 或 Python），你不应该手动创建导入。
+相反，你应该在你生成的代码中插入完全限定的名称，然后调用 &lt;strong&gt;JavaCodeStyleManager&lt;/strong&gt; 中的 &lt;strong&gt;shortenClassReferences()&lt;/strong&gt; 方法（或者你正在使用的语言的同等API）。
+这可以确保导入是根据用户的代码风格设置创建的，并插入到文件的正确位置。&lt;/p&gt;
+&lt;h2 id=&#34;64-结合-psi-和文件的修改&#34;&gt;6.4 结合 PSI 和文件的修改&lt;/h2&gt;
+&lt;p&gt;在某些情况下，你需要进行 PSI 修改，然后通过 PSI 对你刚刚修改的文档进行操作（例如，启动一个实时模板）。
+在这种情况下，你需要调用一个特殊的方法来完成基于 PSI 的后期处理（如格式化），并将修改提交给文档。
+你需要调用的方法叫做 &lt;strong&gt;doPostponedOperationsAndUnblockDocument()&lt;/strong&gt;，它被定义在 &lt;strong&gt;PsiDocumentManager&lt;/strong&gt; 类中。&lt;/p&gt;
+&lt;h1 id=&#34;7-psi-cookbook&#34;&gt;7 PSI Cookbook&lt;/h1&gt;
+&lt;p&gt;本章节给出了使用 PSI（程序结构接口）的最常用操作。与开发自定义语言插件不同的是，它讲述了与现有语言（如Java）的 PSI 有关的操作。&lt;/p&gt;
+&lt;p&gt;另请参见 &lt;a href=&#34;https://plugins.jetbrains.com/docs/intellij/performance.html#working-with-psi-efficiently&#34;&gt;《PSI 高效操作》&lt;/a&gt; 。&lt;/p&gt;
+&lt;h2 id=&#34;71-通用&#34;&gt;7.1 通用&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;已知一个文件的名字，但不知道它的路径，如何找到它？&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;https://upsource.jetbrains.com/idea-ce/file/idea-ce-2020312d547dd0b755241d10a1a3eec025f8efe7/platform/indexing-api/src/com/intellij/psi/search/FilenameIndex.java?_ga=2.126964109.1831407401.1638449592-1206068809.1622726639&#34;&gt;FilenameIndex.getFilesByName()&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;如何找到一个特定的 PSI 元素在哪些地方使用？&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href=&#34;https://upsource.jetbrains.com/idea-ce/file/idea-ce-2020312d547dd0b755241d10a1a3eec025f8efe7/platform/indexing-api/src/com/intellij/psi/search/searches/ReferencesSearch.java?_ga=2.206747795.1831407401.1638449592-1206068809.1622726639&#34;&gt;&lt;strong&gt;ReferencesSearch.search()&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;如何重命名一个 PSI 元素？&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href=&#34;https://upsource.jetbrains.com/idea-ce/file/idea-ce-2020312d547dd0b755241d10a1a3eec025f8efe7/platform/lang-api/src/com/intellij/refactoring/RefactoringFactory.java?_ga=2.127103373.1831407401.1638449592-1206068809.1622726639&#34;&gt;&lt;strong&gt;RefactoringFactory.createRename()&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;如何重建一个虚拟文件的 PSI？&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href=&#34;https://upsource.jetbrains.com/idea-ce/file/idea-ce-2020312d547dd0b755241d10a1a3eec025f8efe7/platform/analysis-api/src/com/intellij/util/FileContentUtil.java?_ga=2.143291573.1831407401.1638449592-1206068809.1622726639&#34;&gt;&lt;strong&gt;FileContentUtil.reparseFiles()&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;72-java&#34;&gt;7.2 Java&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;如何找到一个类的所有子类？&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href=&#34;https://upsource.jetbrains.com/idea-ce/file/idea-ce-2020312d547dd0b755241d10a1a3eec025f8efe7/java/java-indexing-api/src/com/intellij/psi/search/searches/ClassInheritorsSearch.java?_ga=2.163165372.1831407401.1638449592-1206068809.1622726639&#34;&gt;ClassInheritorsSearch.search()&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;如何通过限定名称找到一个类？&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href=&#34;https://upsource.jetbrains.com/idea-ce/file/idea-ce-2020312d547dd0b755241d10a1a3eec025f8efe7/java/java-psi-api/src/com/intellij/psi/JavaPsiFacade.java?_ga=2.230717855.1831407401.1638449592-1206068809.1622726639&#34;&gt;JavaPsiFacade.findClass()&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;如何通过类名找到一个类？&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;PsiShortNamesCache.getClassesByName()&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;如何找到一个 Java 类的超类？&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href=&#34;https://upsource.jetbrains.com/idea-ce/file/idea-ce-2020312d547dd0b755241d10a1a3eec025f8efe7/java/java-indexing-api/src/com/intellij/psi/search/PsiShortNamesCache.java?_ga=2.230717855.1831407401.1638449592-1206068809.1622726639&#34;&gt;PsiClass.getSuperClass()&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;如何获得一个 Java 类所在包的引用？&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;PsiJavaFile&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;javaFile&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;PsiJavaFile&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;psiClass&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getContainingFile&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;()&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;PsiPackage&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;psiPackage&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;JavaPsiFacade&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getInstance&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;project&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;                       &lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;findPackage&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;javaFile&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getPackageName&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;())&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;或&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://upsource.jetbrains.com/idea-ce/file/idea-ce-2020312d547dd0b755241d10a1a3eec025f8efe7/java/java-psi-api/src/com/intellij/psi/util/PsiUtil.java?_ga=2.230717855.1831407401.1638449592-1206068809.1622726639&#34;&gt;PsiUtil.getPackageName()&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;如何找到指定方法的重写方法？&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href=&#34;https://upsource.jetbrains.com/idea-ce/file/idea-ce-2020312d547dd0b755241d10a1a3eec025f8efe7/java/java-indexing-api/src/com/intellij/psi/search/searches/OverridingMethodsSearch.java?_ga=2.230717855.1831407401.1638449592-1206068809.1622726639&#34;&gt;OverridingMethodsSearch.search()&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;全文完&lt;/p&gt;
+        
+      </description>
+    </item>
+    
     <item>
       <title>现代软件过度工程中的十大错误</title>
       <link>https://huangbaihua.gitee.io/post/arch/consistent-hasing/</link>

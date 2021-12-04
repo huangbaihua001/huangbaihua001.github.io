@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://huangbaihua.gitee.io/</loc>
-    <lastmod>2021-11-20T00:00:00+00:00</lastmod>
+    <lastmod>2021-12-04T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -15,17 +15,8 @@
                 href="https://huangbaihua.gitee.io/"
                 />
   </url><url>
-    <loc>https://huangbaihua.gitee.io/post/idea/five_minute_quick_demo/</loc>
-    <lastmod>2021-11-20T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://huangbaihua.gitee.io/tags/5%E5%88%86%E9%92%9F%E5%85%A5%E9%97%A8%E7%B3%BB%E5%88%97/</loc>
-    <lastmod>2021-11-20T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://huangbaihua.gitee.io/categories/5%E5%88%86%E9%92%9F%E5%85%A5%E9%97%A8%E7%B3%BB%E5%88%97/</loc>
-    <lastmod>2021-11-20T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://huangbaihua.gitee.io/categories/</loc>
-    <lastmod>2021-11-20T00:00:00+00:00</lastmod>
+    <lastmod>2021-12-04T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -37,14 +28,17 @@
                 href="https://huangbaihua.gitee.io/categories/"
                 />
   </url><url>
-    <loc>https://huangbaihua.gitee.io/tags/intellij-idea/</loc>
-    <lastmod>2021-11-20T00:00:00+00:00</lastmod>
+    <loc>https://huangbaihua.gitee.io/tags/intellij-%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/</loc>
+    <lastmod>2021-12-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://huangbaihua.gitee.io/categories/intellij-idea/</loc>
-    <lastmod>2021-11-20T00:00:00+00:00</lastmod>
+    <loc>https://huangbaihua.gitee.io/categories/intellij-%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/</loc>
+    <lastmod>2021-12-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://huangbaihua.gitee.io/post/idea/psi_intro/</loc>
+    <lastmod>2021-12-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://huangbaihua.gitee.io/tags/</loc>
-    <lastmod>2021-11-20T00:00:00+00:00</lastmod>
+    <lastmod>2021-12-04T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -56,13 +50,34 @@
                 href="https://huangbaihua.gitee.io/tags/"
                 />
   </url><url>
+    <loc>https://huangbaihua.gitee.io/post/</loc>
+    <lastmod>2021-12-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://huangbaihua.gitee.io/tags/%E8%AF%91%E6%96%87/</loc>
+    <lastmod>2021-12-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://huangbaihua.gitee.io/categories/%E8%AF%91%E6%96%87/</loc>
+    <lastmod>2021-12-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://huangbaihua.gitee.io/post/idea/five_minute_quick_demo/</loc>
+    <lastmod>2021-11-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://huangbaihua.gitee.io/tags/5%E5%88%86%E9%92%9F%E5%85%A5%E9%97%A8%E7%B3%BB%E5%88%97/</loc>
+    <lastmod>2021-11-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://huangbaihua.gitee.io/categories/5%E5%88%86%E9%92%9F%E5%85%A5%E9%97%A8%E7%B3%BB%E5%88%97/</loc>
+    <lastmod>2021-11-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://huangbaihua.gitee.io/tags/intellij-idea/</loc>
+    <lastmod>2021-11-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://huangbaihua.gitee.io/categories/intellij-idea/</loc>
+    <lastmod>2021-11-20T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://huangbaihua.gitee.io/tags/%E5%8E%9F%E5%88%9B/</loc>
     <lastmod>2021-11-20T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://huangbaihua.gitee.io/categories/%E5%8E%9F%E5%88%9B/</loc>
-    <lastmod>2021-11-20T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://huangbaihua.gitee.io/post/</loc>
     <lastmod>2021-11-20T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://huangbaihua.gitee.io/tags/%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/</loc>
@@ -75,9 +90,6 @@
     <lastmod>2021-05-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://huangbaihua.gitee.io/tags/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/</loc>
-    <lastmod>2021-05-18T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://huangbaihua.gitee.io/tags/%E8%AF%91%E6%96%87/</loc>
     <lastmod>2021-05-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://huangbaihua.gitee.io/tags/%E5%8D%8F%E5%90%8C%E8%BF%87%E6%BB%A4/</loc>
