@@ -16,7 +16,7 @@
   url = "dsclaimer/"
 
 [[main]]
-  name = "关于柏华"
+  name = "关于我"
   url = "about/"
   weight = -107
 

@@ -15,7 +15,7 @@ About baihua.huang
 
 - Email: huangbaihua@vip.qq.com
 - GitHub: [https://github.com/huangbaihua001](https://github.com/huangbaihua001)
-- Motto:  The knowledge change your fate, and the technology accomplish your feature
+- Motto:  You just work hard and leave everything else to God's will.
 
 
 

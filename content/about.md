@@ -16,7 +16,7 @@ isCJKLanguage = true
 
 - Email: huangbaihua@vip.qq.com
 - GitHub: [https://github.com/huangbaihua001](https://github.com/huangbaihua001)
-- 座右铭:  知识改变命运，技术成就梦想
+- 座右铭:  你只管努力,剩下的都交给天意。
 
 
 
