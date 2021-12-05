@@ -6,16 +6,14 @@ description = "5分钟 IDEA 插件开发快速入门 Demo"
 featured = true
 categories = [
 "原创",
-"Intellij IDEA",
-"插件开发",
+"IDEA插件开发",
 "5分钟入门系列",
 ]
 
 tags = [
 "原创",
 "5分钟入门系列",
-"插件开发",
-"Intellij IDEA",
+"IDEA插件开发",
 ]
 
 isCJKLanguage = true

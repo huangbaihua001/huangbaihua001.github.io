@@ -1,12 +1,12 @@
 [zh]
-title = "柏华"
+title = "Keepwalking"
 LanguageName = "中文"
 weight = 1
 introDescription = "技术专家，开源爱好者，全栈开发者，永远的学生，梦想者，持续改进者。"
 #introDescription = "技术专家，全栈开发者，永远的学生，梦想者，持续改进者。"
 
 [en]
-title = "Baihua"
+title = "baihua.huang"
 LanguageName = "English"
 weight = 2
 

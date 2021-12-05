@@ -2,8 +2,8 @@
 # if you set it to "/" share icons won't work properly on production
 baseurl = "https://huangbaihua.gitee.io/"  # Include trailing slash
 title = "baihua.huang"
-author = "柏华(baihua.huang)"
-copyright = "Copyright © 2008–2021, 柏华; all rights reserved. Powered by Hugo"
+author = "Keepwalking(baihua.huang)"
+copyright = "Copyright © 2008–2021, Keepwalking; all rights reserved. Powered by Hugo"
 # canonifyurls = true
 paginate = 10
 theme = "github.com/chipzoller/hugo-clarity"

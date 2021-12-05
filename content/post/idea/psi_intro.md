@@ -1,29 +1,31 @@
 +++
 author = "柏华"
-title = "PSI(程序结构接口)-Intellij Platform 的一等公民"
+title = "PSI(程序结构接口)-Intellij 平台的核心抽象"
 date = "2021-12-04"
-description = "PSI-Intellij Platform 的一等公民"
+description = "PSI-Intellij Platform 平台的核心抽象"
 featured = true
 categories = [
 "译文",
-"Intellij 插件开发",
+"IDEA插件开发",
 ]
 
 tags = [
 "译文",
-"Intellij 插件开发",
+"IDEA插件开发",
 ]
 
 isCJKLanguage = true
 +++
 ![](/images/idea/import-maven-intellij-thumbnail.png)
 
-**PSI** 是程序结构接口 **(Program Structure Interface)** 的简称，在 Intellij 平台中负责解析文件、创建语法和语义代码模型。
-它是平台的一等公民，支持平台的许多功能。
+Intellij IDEA 是业界公认最智能，最强大的 Java IDE。个人认为 Intellij 平台底层的抽象能力是非常强的。 PSI 就是其中之一。
 
-{{< toc >}}
+**PSI** 是程序结构接口 **(Program Structure Interface)** 的简称，在 Intellij 平台中负责解析文件、创建语法和语义代码模型。
+它是平台的核心抽象层，支持平台的许多功能。
 
 <!--more-->
+
+{{< toc >}}
 
 译自: [PSI](https://plugins.jetbrains.com/docs/intellij/psi.html) (intellij)
 
@@ -153,22 +155,22 @@ PSI 元素和单个 PSI 元素层面的操作被用来探索源代码的内部�
 请参见 [PSI Cookbook](#7-psi-cookbook)
 
 
-# 4. 检索 PSI
+# 4. PSI 导航
 
-有三种主要方式来检索 PSI：自上而下法，自下而上法，以及引用法。
+有三种主要方式来进行 PSI 导航：自上而下法，自下而上法，以及引用法。
 
-第一种场景，你有一个 PSI 文件或另一个更高层次的元素（例如，一个方法）。
+第一种方法适用场景，你有一个 PSI 文件或另一个更高层次的元素（例如，一个方法）。
 需要找到所有符合指定条件的元素（例如，所有变量声明）。
 
-第二种场景，你在 PSI 树中有一个特定的点（例如，位于光标所在位置的元素），
-需要找出关于它的上下文（例如，它被声明的元素）。
+第二种方法适用场景，你在 PSI 树中有一个特定的点（例如，位于光标所在位置的元素），
+需要找出关于它的上下文信息（例如，它被声明的元素）。
 
 最后，引用允许你从一个元素的使用（例如，一个方法的调用）导航到声明（被调用的方法），再返回。
 引用将在一个单独的 [章节](#5-psi-) 中讲述。
 
-## 4.1 自上而下检索
+## 4.1 自上而下导航
 
-执行自上而下检索的最常见的方法是使用 [**Visitor**](https://en.wikipedia.org/wiki/Visitor_pattern) 模式 。
+执行自上而下导航的最常见的方法是使用 [**Visitor**](https://en.wikipedia.org/wiki/Visitor_pattern) 模式 。
 要使用一个 Visitor ，你要创建一个类（通常是一个匿名的内部类），它扩展了 Visitor 类，
 重写了处理元素的方法，并将 Visitor 实例传递给 PsiElement.accept() 方法。
 
@@ -186,21 +188,21 @@ file.accept(new JavaRecursiveElementVisitor() {
 });
 ```
 
-在大多数情况下，你也可以使用更具体的 API 进行自上而下的检索。例如，如果你需要获得一个 Java 类中所有方法的列表，
+在大多数情况下，你也可以使用更具体的 API 进行自上而下的导航。例如，如果你需要获得一个 Java 类中所有方法的列表，
 你可以使用一个 Visitor ，但更简单的方法是调用 **PsiClass.getMethods()**。
 
-**PsiTreeUtil** 包含一些通用的、独立于语言的 PSI 树状检索函数，其中一些函数（例如 **findChildrenOfType()** ）执行自顶向下的检索。
+**PsiTreeUtil** 包含一些通用的、独立于语言的 PSI 树状检索函数，其中一些函数（例如 **findChildrenOfType()** ）执行自顶向下的导航。
 
-## 4.2 自下而上检索
+## 4.2 自下而上导航
 
-自下而上检索的起点是 PSI 树中的一个特定元素（例如，解析一个引用的结果）或一个偏移量。
+自下而上导航的起点是 PSI 树中的一个特定元素（例如，解析一个引用的结果）或一个偏移量。
 如果已知一个偏移量，你可以通过调用 **PsiFile.findElementAt()** 找到相应的 PSI 元素。
-这个方法返回树中最低层的元素（例如，一个标识符），如果你想确定更广泛的上下文，你需要向上检索这颗树。
+这个方法返回树中最低层的元素（例如，一个标识符），如果你想确定更广泛的上下文，你需要向上导航这颗树。
 
-在大多数情况下，自下而上的检索航是通过调用 **PsiTreeUtil.getParentOfType()** 进行的。这个方法在树中往上查找，直到找到你指定的类型的元素。
+在大多数情况下，自下而上的导航是通过调用 **PsiTreeUtil.getParentOfType()** 进行的。这个方法在树中往上查找，直到找到你指定的类型的元素。
 例如，为了找到包含的方法，你调用 **PsiTreeUtil.getParentOfType(element, PsiMethod.class)** 方法。
 
-在某些情况下，你也可以使用特定的检索方法。例如，要找到一个方法所在的类，你可以调用 **PsiMethod.getContainingClass()** 方法。
+在某些情况下，你也可以使用特定的导航方法。例如，要找到一个方法所在的类，你可以调用 **PsiMethod.getContainingClass()** 方法。
 
 下面的代码片段显示了这些调用如何一起使用。
 
@@ -211,7 +213,7 @@ PsiMethod containingMethod = PsiTreeUtil.getParentOfType(element, PsiMethod.clas
 PsiClass containingClass = containingMethod.getContainingClass();
 ```
 
-要了解检索的实际运行，请参考 [代码实例](https://github.com/JetBrains/intellij-sdk-code-samples/blob/main/psi_demo/src/main/java/org/intellij/sdk/psi/PsiNavigationDemoAction.java) 。
+要了解导航的实际运行，请参考 [代码实例](https://github.com/JetBrains/intellij-sdk-code-samples/blob/main/psi_demo/src/main/java/org/intellij/sdk/psi/PsiNavigationDemoAction.java) 。
 
 # 5. PSI 引用
 
@@ -315,7 +317,7 @@ PSI 是对源代码的一种读写表示，是对应于源文件结构的元素�
 
 这确保了用户代码的格式被保留下来，并且修改不会引入任何不需要的空格变化。
 
-参照该方法，请看 ComparingReferencesInspection 快速修复示例。
+参照该方法，请看 **ComparingReferencesInspection** 快速修复示例。
 
 ```java
 // binaryExpression 持有形式为 "x == y "的 PSI 表达式，需要用 "x.equals(y) "替换。

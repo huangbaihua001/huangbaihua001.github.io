@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>分布式 on 柏华</title>
+    <title>分布式 on Keepwalking</title>
     <link>https://huangbaihua.gitee.io/tags/%E5%88%86%E5%B8%83%E5%BC%8F/</link>
-    <description>Recent content in 分布式 on 柏华</description>
+    <description>Recent content in 分布式 on Keepwalking</description>
     <generator>Hugo -- gohugo.io</generator>
-    <copyright>Copyright © 2008–2021, 柏华; all rights reserved. Powered by Hugo</copyright>
+    <copyright>Copyright © 2008–2021, Keepwalking; all rights reserved. Powered by Hugo</copyright>
     <lastBuildDate>Wed, 07 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://huangbaihua.gitee.io/tags/%E5%88%86%E5%B8%83%E5%BC%8F/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>CAP理论简介</title>

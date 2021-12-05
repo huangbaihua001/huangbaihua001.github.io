@@ -9,7 +9,7 @@ isCJKLanguage = true
 +++
 
 ---
-关于柏华
+关于baihua.huang
 ---
 
 # 网络信息

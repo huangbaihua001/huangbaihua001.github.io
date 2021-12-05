@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Baihua</title>
+    <title>baihua.huang</title>
     <link>https://huangbaihua.gitee.io/en/</link>
-    <description>Recent content on Baihua</description>
+    <description>Recent content on baihua.huang</description>
     <generator>Hugo -- gohugo.io</generator>
-    <copyright>Copyright © 2008–2021, 柏华; all rights reserved. Powered by Hugo</copyright>
+    <copyright>Copyright © 2008–2021, Keepwalking; all rights reserved. Powered by Hugo</copyright>
     <lastBuildDate>Wed, 24 Mar 2021 00:00:00 +0800</lastBuildDate><atom:link href="https://huangbaihua.gitee.io/en/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

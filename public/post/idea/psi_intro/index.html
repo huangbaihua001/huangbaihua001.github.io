@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="zh" data-figures="" class="page" data-mode="lit">
   <head>
-<title>PSI(程序结构接口)-Intellij Platform 的一等公民 | 柏华</title>
+<title>PSI(程序结构接口)-Intellij 平台的核心抽象 | Keepwalking</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,13 +20,13 @@
 <meta property="og:locale" content="zh" />
 
 <meta property="og:type" content="article">
-<meta name="description" content="PSI-Intellij Platform 的一等公民">
+<meta name="description" content="PSI-Intellij Platform 平台的核心抽象">
 <meta name="twitter:card" content="summary" />
-<meta name="twitter:creator" content="@baihua.huang">
-<meta name="twitter:title" content="PSI(程序结构接口)-Intellij Platform 的一等公民" />
+<meta name="twitter:creator" content="baihua.huang@twitter.com">
+<meta name="twitter:title" content="PSI(程序结构接口)-Intellij 平台的核心抽象" />
 <meta property="og:url" content="https://huangbaihua.gitee.io/post/idea/psi_intro/" />
-<meta property="og:title" content="PSI(程序结构接口)-Intellij Platform 的一等公民" />
-<meta property="og:description" content="PSI-Intellij Platform 的一等公民" />
+<meta property="og:title" content="PSI(程序结构接口)-Intellij 平台的核心抽象" />
+<meta property="og:description" content="PSI-Intellij Platform 平台的核心抽象" />
 <meta property="og:image" content="https://huangbaihua.gitee.io/images/thumbnail.png" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="https://huangbaihua.gitee.io/icons/apple-touch-icon.png">
@@ -54,8 +54,8 @@
   <body data-code="7" data-lines="false" id="documentTop">
 
 <header class="nav_header" >
-  <nav class="nav"><a href='https://huangbaihua.gitee.io/' class="nav_brand nav_item" title="柏华">
-  <img src="https://huangbaihua.gitee.io/logos/logo.png" class="logo" alt="柏华">
+  <nav class="nav"><a href='https://huangbaihua.gitee.io/' class="nav_brand nav_item" title="Keepwalking">
+  <img src="https://huangbaihua.gitee.io/logos/logo.png" class="logo" alt="Keepwalking">
   <div class="nav_close">
     <div><svg class="icon">
   <use xlink:href="#open-menu"></use>
@@ -121,26 +121,26 @@
   
 <div class="grid-inverse wrap content">
   <article class="post_content">
-    <h1 class="post_title">PSI(程序结构接口)-Intellij Platform 的一等公民</h1>
+    <h1 class="post_title">PSI(程序结构接口)-Intellij 平台的核心抽象</h1>
   <div class="post_meta">
     <span><svg class="icon">
   <use xlink:href="#calendar"></use>
 </svg></span>
     <span class="post_date">
       2021年12月4日</span>
-    <span class="post_time"> · 13 分钟阅读</span><span>&nbsp;· <a href='https://huangbaihua.gitee.io/tags/%E8%AF%91%E6%96%87' title="译文" class="post_tag button button_translucent">译文
-        </a><a href='https://huangbaihua.gitee.io/tags/intellij-%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91' title="Intellij 插件开发" class="post_tag button button_translucent">Intellij 插件开发
+    <span class="post_time"><span class="post-date">约&nbsp;<font color="red">6419</font>&nbsp;字</span> · 13 分钟阅读</span><span>&nbsp;· <a href='https://huangbaihua.gitee.io/tags/%E8%AF%91%E6%96%87' title="译文" class="post_tag button button_translucent">译文
+        </a><a href='https://huangbaihua.gitee.io/tags/idea%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91' title="IDEA插件开发" class="post_tag button button_translucent">IDEA插件开发
         </a>
     </span>
     <span class="page_only">&nbsp;·
   <div class="post_share">
     分享到:
-    <a href="https://twitter.com/intent/tweet?text=PSI%28%e7%a8%8b%e5%ba%8f%e7%bb%93%e6%9e%84%e6%8e%a5%e5%8f%a3%29-Intellij%20Platform%20%e7%9a%84%e4%b8%80%e7%ad%89%e5%85%ac%e6%b0%91&url=https%3a%2f%2fhuangbaihua.gitee.io%2fpost%2fidea%2fpsi_intro%2f&tw_p=tweetbutton" class="twitter" title="分享到 Twitter" target="_blank" rel="nofollow">
+    <a href="https://twitter.com/intent/tweet?text=PSI%28%e7%a8%8b%e5%ba%8f%e7%bb%93%e6%9e%84%e6%8e%a5%e5%8f%a3%29-Intellij%20%e5%b9%b3%e5%8f%b0%e7%9a%84%e6%a0%b8%e5%bf%83%e6%8a%bd%e8%b1%a1&url=https%3a%2f%2fhuangbaihua.gitee.io%2fpost%2fidea%2fpsi_intro%2f&tw_p=tweetbutton" class="twitter" title="分享到 Twitter" target="_blank" rel="nofollow">
       <svg class="icon">
   <use xlink:href="#twitter"></use>
 </svg>
     </a>
-    <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fhuangbaihua.gitee.io%2fpost%2fidea%2fpsi_intro%2f&t=PSI%28%e7%a8%8b%e5%ba%8f%e7%bb%93%e6%9e%84%e6%8e%a5%e5%8f%a3%29-Intellij%20Platform%20%e7%9a%84%e4%b8%80%e7%ad%89%e5%85%ac%e6%b0%91" class="facebook" title="分享到 Facebook" target="_blank" rel="nofollow">
+    <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fhuangbaihua.gitee.io%2fpost%2fidea%2fpsi_intro%2f&t=PSI%28%e7%a8%8b%e5%ba%8f%e7%bb%93%e6%9e%84%e6%8e%a5%e5%8f%a3%29-Intellij%20%e5%b9%b3%e5%8f%b0%e7%9a%84%e6%a0%b8%e5%bf%83%e6%8a%bd%e8%b1%a1" class="facebook" title="分享到 Facebook" target="_blank" rel="nofollow">
       <svg class="icon">
   <use xlink:href="#facebook"></use>
 </svg>
@@ -164,8 +164,9 @@
 
     
     <div class="post_body"><p><img src="/images/idea/import-maven-intellij-thumbnail.png" alt=""></p>
+<p>Intellij IDEA 是业界公认最智能，最强大的 Java IDE。个人认为 Intellij 平台底层的抽象能力是非常强的。 PSI 就是其中之一。</p>
 <p><strong>PSI</strong> 是程序结构接口 <strong>(Program Structure Interface)</strong> 的简称，在 Intellij 平台中负责解析文件、创建语法和语义代码模型。
-它是平台的一等公民，支持平台的许多功能。</p>
+它是平台的核心抽象层，支持平台的许多功能。</p>
 <div>
     <h2>文章目录</h2>
     <nav id="TableOfContents">
@@ -195,10 +196,10 @@
         <li><a href="#32-可以用-psi-元素做什么">3.2 可以用 PSI 元素做什么？</a></li>
       </ul>
     </li>
-    <li><a href="#4-检索-psi">4. 检索 PSI</a>
+    <li><a href="#4-psi-导航">4. PSI 导航</a>
       <ul>
-        <li><a href="#41-自上而下检索">4.1 自上而下检索</a></li>
-        <li><a href="#42-自下而上检索">4.2 自下而上检索</a></li>
+        <li><a href="#41-自上而下导航">4.1 自上而下导航</a></li>
+        <li><a href="#42-自下而上导航">4.2 自下而上导航</a></li>
       </ul>
     </li>
     <li><a href="#5-psi-引用">5. PSI 引用</a>
@@ -310,16 +311,16 @@ XML 代码有一个单独的树（<strong>XmlFile</strong>），整个 JSP 有�
 </ul>
 <h2 id="32-可以用-psi-元素做什么">3.2 可以用 PSI 元素做什么？</h2>
 <p>请参见 <a href="#7-psi-cookbook">PSI Cookbook</a></p>
-<h1 id="4-检索-psi">4. 检索 PSI</h1>
-<p>有三种主要方式来检索 PSI：自上而下法，自下而上法，以及引用法。</p>
-<p>第一种场景，你有一个 PSI 文件或另一个更高层次的元素（例如，一个方法）。
+<h1 id="4-psi-导航">4. PSI 导航</h1>
+<p>有三种主要方式来进行 PSI 导航：自上而下法，自下而上法，以及引用法。</p>
+<p>第一种方法适用场景，你有一个 PSI 文件或另一个更高层次的元素（例如，一个方法）。
 需要找到所有符合指定条件的元素（例如，所有变量声明）。</p>
-<p>第二种场景，你在 PSI 树中有一个特定的点（例如，位于光标所在位置的元素），
-需要找出关于它的上下文（例如，它被声明的元素）。</p>
+<p>第二种方法适用场景，你在 PSI 树中有一个特定的点（例如，位于光标所在位置的元素），
+需要找出关于它的上下文信息（例如，它被声明的元素）。</p>
 <p>最后，引用允许你从一个元素的使用（例如，一个方法的调用）导航到声明（被调用的方法），再返回。
 引用将在一个单独的 <a href="#5-psi-">章节</a> 中讲述。</p>
-<h2 id="41-自上而下检索">4.1 自上而下检索</h2>
-<p>执行自上而下检索的最常见的方法是使用 <a href="https://en.wikipedia.org/wiki/Visitor_pattern"><strong>Visitor</strong></a> 模式 。
+<h2 id="41-自上而下导航">4.1 自上而下导航</h2>
+<p>执行自上而下导航的最常见的方法是使用 <a href="https://en.wikipedia.org/wiki/Visitor_pattern"><strong>Visitor</strong></a> 模式 。
 要使用一个 Visitor ，你要创建一个类（通常是一个匿名的内部类），它扩展了 Visitor 类，
 重写了处理元素的方法，并将 Visitor 实例传递给 PsiElement.accept() 方法。</p>
 <p><strong>Visitor</strong> 的基类是特定于语言的。例如，如果需要处理 Java 文件中的元素，可以扩展 <strong>JavaRecursiveElementVisitor</strong> 并重写相关方法。</p>
@@ -331,22 +332,22 @@ XML 代码有一个单独的树（<strong>XmlFile</strong>），整个 JSP 有�
 <span class="ln">5</span>    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Found a variable at offset &#34;</span> <span class="o">+</span> <span class="n">variable</span><span class="o">.</span><span class="na">getTextRange</span><span class="o">().</span><span class="na">getStartOffset</span><span class="o">());</span>
 <span class="ln">6</span>  <span class="o">}</span>
 <span class="ln">7</span><span class="o">});</span>
-</code></pre></div><p>在大多数情况下，你也可以使用更具体的 API 进行自上而下的检索。例如，如果你需要获得一个 Java 类中所有方法的列表，
+</code></pre></div><p>在大多数情况下，你也可以使用更具体的 API 进行自上而下的导航。例如，如果你需要获得一个 Java 类中所有方法的列表，
 你可以使用一个 Visitor ，但更简单的方法是调用 <strong>PsiClass.getMethods()</strong>。</p>
-<p><strong>PsiTreeUtil</strong> 包含一些通用的、独立于语言的 PSI 树状检索函数，其中一些函数（例如 <strong>findChildrenOfType()</strong> ）执行自顶向下的检索。</p>
-<h2 id="42-自下而上检索">4.2 自下而上检索</h2>
-<p>自下而上检索的起点是 PSI 树中的一个特定元素（例如，解析一个引用的结果）或一个偏移量。
+<p><strong>PsiTreeUtil</strong> 包含一些通用的、独立于语言的 PSI 树状检索函数，其中一些函数（例如 <strong>findChildrenOfType()</strong> ）执行自顶向下的导航。</p>
+<h2 id="42-自下而上导航">4.2 自下而上导航</h2>
+<p>自下而上导航的起点是 PSI 树中的一个特定元素（例如，解析一个引用的结果）或一个偏移量。
 如果已知一个偏移量，你可以通过调用 <strong>PsiFile.findElementAt()</strong> 找到相应的 PSI 元素。
-这个方法返回树中最低层的元素（例如，一个标识符），如果你想确定更广泛的上下文，你需要向上检索这颗树。</p>
-<p>在大多数情况下，自下而上的检索航是通过调用 <strong>PsiTreeUtil.getParentOfType()</strong> 进行的。这个方法在树中往上查找，直到找到你指定的类型的元素。
+这个方法返回树中最低层的元素（例如，一个标识符），如果你想确定更广泛的上下文，你需要向上导航这颗树。</p>
+<p>在大多数情况下，自下而上的导航是通过调用 <strong>PsiTreeUtil.getParentOfType()</strong> 进行的。这个方法在树中往上查找，直到找到你指定的类型的元素。
 例如，为了找到包含的方法，你调用 <strong>PsiTreeUtil.getParentOfType(element, PsiMethod.class)</strong> 方法。</p>
-<p>在某些情况下，你也可以使用特定的检索方法。例如，要找到一个方法所在的类，你可以调用 <strong>PsiMethod.getContainingClass()</strong> 方法。</p>
+<p>在某些情况下，你也可以使用特定的导航方法。例如，要找到一个方法所在的类，你可以调用 <strong>PsiMethod.getContainingClass()</strong> 方法。</p>
 <p>下面的代码片段显示了这些调用如何一起使用。</p>
 <div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="ln">1</span><span class="n">PsiFile</span> <span class="n">psiFile</span> <span class="o">=</span> <span class="n">anActionEvent</span><span class="o">.</span><span class="na">getData</span><span class="o">(</span><span class="n">CommonDataKeys</span><span class="o">.</span><span class="na">PSI_FILE</span><span class="o">);</span>
 <span class="ln">2</span><span class="n">PsiElement</span> <span class="n">element</span> <span class="o">=</span> <span class="n">psiFile</span><span class="o">.</span><span class="na">findElementAt</span><span class="o">(</span><span class="n">offset</span><span class="o">);</span>
 <span class="ln">3</span><span class="n">PsiMethod</span> <span class="n">containingMethod</span> <span class="o">=</span> <span class="n">PsiTreeUtil</span><span class="o">.</span><span class="na">getParentOfType</span><span class="o">(</span><span class="n">element</span><span class="o">,</span> <span class="n">PsiMethod</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
 <span class="ln">4</span><span class="n">PsiClass</span> <span class="n">containingClass</span> <span class="o">=</span> <span class="n">containingMethod</span><span class="o">.</span><span class="na">getContainingClass</span><span class="o">();</span>
-</code></pre></div><p>要了解检索的实际运行，请参考 <a href="https://github.com/JetBrains/intellij-sdk-code-samples/blob/main/psi_demo/src/main/java/org/intellij/sdk/psi/PsiNavigationDemoAction.java">代码实例</a> 。</p>
+</code></pre></div><p>要了解导航的实际运行，请参考 <a href="https://github.com/JetBrains/intellij-sdk-code-samples/blob/main/psi_demo/src/main/java/org/intellij/sdk/psi/PsiNavigationDemoAction.java">代码实例</a> 。</p>
 <h1 id="5-psi-引用">5. PSI 引用</h1>
 <p>PSI 树中的引用是一个对象，它代表了从代码中某一特定元素的使用到相应声明的链接。解析一个引用意味着找到一个特定使用所指向的声明。</p>
 <p>最常见的引用类型是由语言语义定义的。例如，考虑一个简单的 Java 方法。</p>
@@ -415,7 +416,7 @@ PsiReference.resolve() 返回 null 是正常的，所有处理引用的代码都
 </li>
 </ol>
 <p>这确保了用户代码的格式被保留下来，并且修改不会引入任何不需要的空格变化。</p>
-<p>参照该方法，请看 ComparingReferencesInspection 快速修复示例。</p>
+<p>参照该方法，请看 <strong>ComparingReferencesInspection</strong> 快速修复示例。</p>
 <div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="c1">// binaryExpression 持有形式为 &#34;x == y &#34;的 PSI 表达式，需要用 &#34;x.equals(y) &#34;替换。
 </span><span class="ln"> 2</span><span class="c1"></span><span class="n">PsiBinaryExpression</span> <span class="n">binaryExpression</span> <span class="o">=</span> <span class="o">(</span><span class="n">PsiBinaryExpression</span><span class="o">)</span> <span class="n">descriptor</span><span class="o">.</span><span class="na">getPsiElement</span><span class="o">();</span>
 <span class="ln"> 3</span><span class="n">IElementType</span> <span class="n">opSign</span> <span class="o">=</span> <span class="n">binaryExpression</span><span class="o">.</span><span class="na">getOperationTokenType</span><span class="o">();</span>
@@ -511,7 +512,7 @@ PsiReference.resolve() 返回 null 是正常的，所有处理引用的代码都
   </article>
 <aside class="sidebar">
   <section class="sidebar_inner">
-        <h2>柏华(baihua.huang)</h2>
+        <h2>baihua.huang</h2>
       <div class="author_bio">
         技术专家，开源爱好者，全栈开发者，永远的学生，梦想者，持续改进者。
       </div>
@@ -583,6 +584,11 @@ PsiReference.resolve() 返回 null 是正常的，所有处理引用的代码都
           <span class="button_tally">3</span>
         </a>
         
+        <a href='https://huangbaihua.gitee.io/categories/idea%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/' class="post_tag button button_translucent" title="idea插件开发">
+          IDEA插件开发
+          <span class="button_tally">2</span>
+        </a>
+        
         <a href='https://huangbaihua.gitee.io/categories/%E6%8A%80%E6%9C%AF%E7%AE%A1%E7%90%86/' class="post_tag button button_translucent" title="技术管理">
           技术管理
           <span class="button_tally">2</span>
@@ -603,23 +609,8 @@ PsiReference.resolve() 返回 null 是正常的，所有处理引用的代码都
           <span class="button_tally">1</span>
         </a>
         
-        <a href='https://huangbaihua.gitee.io/categories/intellij-idea/' class="post_tag button button_translucent" title="intellij-idea">
-          INTELLIJ-IDEA
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://huangbaihua.gitee.io/categories/intellij-%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/' class="post_tag button button_translucent" title="intellij-插件开发">
-          INTELLIJ-插件开发
-          <span class="button_tally">1</span>
-        </a>
-        
         <a href='https://huangbaihua.gitee.io/categories/%E5%8E%9F%E5%88%9B/' class="post_tag button button_translucent" title="原创">
           原创
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://huangbaihua.gitee.io/categories/%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/' class="post_tag button button_translucent" title="插件开发">
-          插件开发
           <span class="button_tally">1</span>
         </a>
         
@@ -680,6 +671,11 @@ PsiReference.resolve() 返回 null 是正常的，所有处理引用的代码都
           <span class="button_tally">3</span>
         </a>
         
+        <a href='https://huangbaihua.gitee.io/tags/idea%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/' class="post_tag button button_translucent" title="idea插件开发">
+          IDEA插件开发
+          <span class="button_tally">2</span>
+        </a>
+        
         <a href='https://huangbaihua.gitee.io/tags/%E6%8A%80%E6%9C%AF%E7%AE%A1%E7%90%86/' class="post_tag button button_translucent" title="技术管理">
           技术管理
           <span class="button_tally">2</span>
@@ -705,13 +701,8 @@ PsiReference.resolve() 返回 null 是正常的，所有处理引用的代码都
           <span class="button_tally">1</span>
         </a>
         
-        <a href='https://huangbaihua.gitee.io/tags/intellij-idea/' class="post_tag button button_translucent" title="intellij-idea">
-          INTELLIJ-IDEA
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://huangbaihua.gitee.io/tags/intellij-%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/' class="post_tag button button_translucent" title="intellij-插件开发">
-          INTELLIJ-插件开发
+        <a href='https://huangbaihua.gitee.io/tags/mermaid/' class="post_tag button button_translucent" title="mermaid">
+          MERMAID
           <span class="button_tally">1</span>
         </a>
         
@@ -729,15 +720,11 @@ PsiReference.resolve() 返回 null 是正常的，所有处理引用的代码都
             </a>
             
             
+            <a href='https://huangbaihua.gitee.io/tags/idea%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/' class=" post_tag button button_translucent" data-position=2 title="idea插件开发">IDEA插件开发<span class="button_tally">2</span>
+            </a>
+            
+            
             <a href='https://huangbaihua.gitee.io/tags/index/' class=" post_tag button button_translucent" data-position=1 title="index">INDEX<span class="button_tally">1</span>
-            </a>
-            
-            
-            <a href='https://huangbaihua.gitee.io/tags/intellij-idea/' class=" post_tag button button_translucent" data-position=1 title="intellij-idea">INTELLIJ-IDEA<span class="button_tally">1</span>
-            </a>
-            
-            
-            <a href='https://huangbaihua.gitee.io/tags/intellij-%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/' class=" post_tag button button_translucent" data-position=1 title="intellij-插件开发">INTELLIJ-插件开发<span class="button_tally">1</span>
             </a>
             
             
@@ -774,10 +761,6 @@ PsiReference.resolve() 返回 null 是正常的，所有处理引用的代码都
             
             
             <a href='https://huangbaihua.gitee.io/tags/%E6%8A%80%E6%9C%AF%E7%AE%A1%E7%90%86/' class=" post_tag button button_translucent" data-position=2 title="技术管理">技术管理<span class="button_tally">2</span>
-            </a>
-            
-            
-            <a href='https://huangbaihua.gitee.io/tags/%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/' class=" post_tag button button_translucent" data-position=1 title="插件开发">插件开发<span class="button_tally">1</span>
             </a>
             
             
@@ -894,8 +877,8 @@ PsiReference.resolve() 返回 null 是正常的，所有处理引用的代码都
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
 <footer class="footer">
   <div class="footer_inner wrap pale">
-    <img src='https://huangbaihua.gitee.io/icons/apple-touch-icon.png' class="icon icon_2 transparent" alt="柏华">
-    <p>Copyright&nbsp;<span class="year"></span>&nbsp;柏华. All Rights Reserved</p><a class="to_top" href="#documentTop">
+    <img src='https://huangbaihua.gitee.io/icons/apple-touch-icon.png' class="icon icon_2 transparent" alt="Keepwalking">
+    <p>Copyright&nbsp;<span class="year"></span>&nbsp;KEEPWALKING. All Rights Reserved</p><a class="to_top" href="#documentTop">
   <svg class="icon">
   <use xlink:href="#arrow"></use>
 </svg>

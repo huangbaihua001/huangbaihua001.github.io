@@ -15,7 +15,7 @@
     {{- $scratch.Set "writeSeparator" true }}
   {{- end }}
   {{- if $showReadTime }}
-    <span class="post_time">{{ if ($scratch.Get "writeSeparator") }} · {{ end }}{{ T "reading_time" . }}</span>
+    <span class="post_time"><span class="post-date">约&nbsp;<font color="red">{{ .WordCount  }}</font>&nbsp;字</span>{{ if ($scratch.Get "writeSeparator") }} · {{ end }}{{ T "reading_time" . }}</span>
     {{- $scratch.Set "writeSeparator" true }}
   {{- end }}
   {{- with .Params.tags -}}

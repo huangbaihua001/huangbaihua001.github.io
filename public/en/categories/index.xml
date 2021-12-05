@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Categories on Baihua</title>
+    <title>Categories on baihua.huang</title>
     <link>https://huangbaihua.gitee.io/en/categories/</link>
-    <description>Recent content in Categories on Baihua</description>
+    <description>Recent content in Categories on baihua.huang</description>
     <generator>Hugo -- gohugo.io</generator>
-    <copyright>Copyright © 2008–2021, 柏华; all rights reserved. Powered by Hugo</copyright><atom:link href="https://huangbaihua.gitee.io/en/categories/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>Copyright © 2008–2021, Keepwalking; all rights reserved. Powered by Hugo</copyright><atom:link href="https://huangbaihua.gitee.io/en/categories/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

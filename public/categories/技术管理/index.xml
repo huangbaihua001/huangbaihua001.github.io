@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>技术管理 on 柏华</title>
+    <title>技术管理 on Keepwalking</title>
     <link>https://huangbaihua.gitee.io/categories/%E6%8A%80%E6%9C%AF%E7%AE%A1%E7%90%86/</link>
-    <description>Recent content in 技术管理 on 柏华</description>
+    <description>Recent content in 技术管理 on Keepwalking</description>
     <generator>Hugo -- gohugo.io</generator>
-    <copyright>Copyright © 2008–2021, 柏华; all rights reserved. Powered by Hugo</copyright>
+    <copyright>Copyright © 2008–2021, Keepwalking; all rights reserved. Powered by Hugo</copyright>
     <lastBuildDate>Mon, 05 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://huangbaihua.gitee.io/categories/%E6%8A%80%E6%9C%AF%E7%AE%A1%E7%90%86/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>优秀的可伸缩性</title>
