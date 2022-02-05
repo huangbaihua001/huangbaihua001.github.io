@@ -52,6 +52,13 @@ other = "Overview"
 [reading_time]
 other = "{{ .ReadingTime }} min read"
 
+[reading_about]
+other = "about"
+
+[reading_words]
+other = "words"
+
+
 [img_web_path]
 other = "Web path"
 

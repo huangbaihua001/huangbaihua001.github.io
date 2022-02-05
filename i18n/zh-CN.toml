@@ -50,7 +50,13 @@ other = "所有专栏"
 other = "文章目录"
 
 [reading_time]
-other = "{{ .ReadingTime }} 分钟阅读"
+other = "阅读 {{ .ReadingTime }} 分钟"
+
+[reading_about]
+other = "约"
+
+[reading_words]
+other = "字"
 
 [img_web_path]
 other = "网站链接"
