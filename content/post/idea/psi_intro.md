@@ -38,7 +38,7 @@ PSI 文件是一个结构的根，在特定的编程语言中将文件内容表�
 与 **VirtualFile** 和 **Document** 不同，**VirtualFile** 和 **Document** 有其应用范围（即使打开了多个项目，每个文件都由同一个 **VirtualFile** 实例表示），
 PSI 有其项目范围：如果文件属于同时打开的多个项目，同一个文件由多个 **PsiFile** 实例表示。
 
-## 1.1 获取获取 PSI 文件？
+## 1.1 如何获取 PSI 文件？
 
 - 从一个 Action：     **e.getData(CommonDataKeys.PSI_FILE).** 
 - 从一个 VirtualFile:  **PsiManager.getInstance(project).findFile()**

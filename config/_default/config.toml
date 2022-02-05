@@ -3,7 +3,7 @@
 baseurl = "https://huangbaihua.gitee.io/"  # Include trailing slash
 title = "baihua.huang"
 author = "Keepwalking(baihua.huang)"
-copyright = "Copyright © 2008–2021, Keepwalking; all rights reserved. Powered by Hugo"
+copyright = "Copyright © 2008–2022, Keepwalking; all rights reserved. Powered by Hugo"
 # canonifyurls = true
 paginate = 10
 theme = "github.com/chipzoller/hugo-clarity"

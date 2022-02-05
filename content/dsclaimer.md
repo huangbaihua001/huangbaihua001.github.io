@@ -10,7 +10,7 @@ isCJKLanguage = true
 
 
 
-<h1 style="text-align: center">柏华的个人技术博客免责声明</h1>
+<h1 style="text-align: center"> baihua.huang 的个人技术博客免责声明</h1>
 
 本站为个人技术博客门户，作为个人的网络空间，分享提供的所有内容仅供学习、分享与交流，我们不保证内容的正确性。通过使用本站内容随之而来的风险与本站无关。
 
@@ -49,6 +49,6 @@ isCJKLanguage = true
 
 2、本声明未涉及的问题参见国家有关法律法规，当本声明与国家 法律法规冲突时，以国家法律法规为准。
 
-<h5 style="color:red;">以上声明内容的最终解释权归柏华个人技术博客huangbaihua.cn所有</h5>
+<h5 style="color:red;">以上声明内容的最终解释权归 baihua.huang 个人技术博客 huangbaihua.cn 所有</h5>
 
 <h5 style="color:red;">请联系邮箱:huangbaihua#viq.qq.com(将#换成@)，作者会及时进行处理</h5>

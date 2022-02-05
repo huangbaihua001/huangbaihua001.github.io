@@ -23,6 +23,7 @@ isCJKLanguage = true
 
 <!--more-->
 
+文章完善中~敬请期待~
 
 (全文完)
 

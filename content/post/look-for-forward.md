@@ -1,8 +1,8 @@
 +++
 author = "柏华"
-title = "2021年度计划分享预告"
+title = "计划分享预告"
 date = "2021-04-03"
-description = "2021年度计划分享预告"
+description = "计划分享预告"
 featured = true
 tags = [
     "计划分享预告",
@@ -12,7 +12,7 @@ isCJKLanguage = true
 +++
 ![](/images/graph/g7.jpg)
 
-2021年度计划分享预告，敬请期待!
+计划分享预告，敬请期待!
 
 <!--more-->
 

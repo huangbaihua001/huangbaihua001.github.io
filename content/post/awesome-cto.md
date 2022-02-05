@@ -13,7 +13,7 @@ isCJKLanguage = true
 +++
 ![](/images/graph/g6.png)
 
-不想当CTO的工程师不是合格的工程师，那么如何才能成为一名优秀的CTO? 本文从网络上精心挑选了一系列文章，对有志成为一名CTO的工程师提供一些经验和方法。
+不想当 CTO 的工程师不是合格的工程师，那么如何才能成为一名优秀的CTO? 本文从网络上精心挑选了一系列文章，对有志成为一名 CTO 的工程师提供一些经验和方法。
 <!--more-->
 
 源文: [Awesome CTO](https://github.com/kuchin/awesome-cto) (kuchin)

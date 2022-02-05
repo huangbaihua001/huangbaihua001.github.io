@@ -24,9 +24,5 @@ About baihua.huang
 
 <pre>
 
-Specialized in system analysis, technical architecture,software engineering,and soft development consulting.
-Practical experience in developing large-scale distributed systems.
-I have some experience and insights in high performance, high availability,distributed,high concurrency,and
-large scale data processing systems.
-Full-stack developer.
+Passionate about the software career, i have never dared to slacken off and work hard for my dream.... 🚀🚀🚀🚀🚀🚀🚀
 </pre>
