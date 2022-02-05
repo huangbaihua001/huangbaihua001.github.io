@@ -5,7 +5,7 @@
     <link>https://huangbaihua.gitee.io/tags/%E8%AF%91%E6%96%87/</link>
     <description>Recent content in 译文 on Keepwalking</description>
     <generator>Hugo -- gohugo.io</generator>
-    <copyright>Copyright © 2008–2021, Keepwalking; all rights reserved. Powered by Hugo</copyright>
+    <copyright>Copyright © 2008–2022, Keepwalking; all rights reserved. Powered by Hugo</copyright>
     <lastBuildDate>Sat, 04 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://huangbaihua.gitee.io/tags/%E8%AF%91%E6%96%87/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>PSI(程序结构接口)-Intellij 平台的核心抽象</title>
@@ -25,7 +25,7 @@
   &lt;ul&gt;
     &lt;li&gt;&lt;a href=&#34;#1-psi-文件&#34;&gt;1. PSI 文件&lt;/a&gt;
       &lt;ul&gt;
-        &lt;li&gt;&lt;a href=&#34;#11-获取获取-psi-文件&#34;&gt;1.1 获取获取 PSI 文件？&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#11-如何获取-psi-文件&#34;&gt;1.1 如何获取 PSI 文件？&lt;/a&gt;&lt;/li&gt;
         &lt;li&gt;&lt;a href=&#34;#12-可以用-psi-文件做什么&#34;&gt;1.2 可以用 PSI 文件做什么？&lt;/a&gt;&lt;/li&gt;
         &lt;li&gt;&lt;a href=&#34;#13-psi-文件来自哪里&#34;&gt;1.3 PSI 文件来自哪里？&lt;/a&gt;&lt;/li&gt;
         &lt;li&gt;&lt;a href=&#34;#14-psi-文件能保存多久&#34;&gt;1.4 PSI 文件能保存多久？&lt;/a&gt;&lt;/li&gt;
@@ -85,7 +85,7 @@
 &lt;p&gt;&lt;strong&gt;PsiFile&lt;/strong&gt; 类是所有 PSI 文件的共同基类，而特定语言的文件通常由其子类表示。例如，&lt;strong&gt;PsiJavaFile&lt;/strong&gt; 类代表一个Java文件，而 &lt;strong&gt;XmlFile&lt;/strong&gt; 类代表一个 XML 文件。&lt;/p&gt;
 &lt;p&gt;与 &lt;strong&gt;VirtualFile&lt;/strong&gt; 和 &lt;strong&gt;Document&lt;/strong&gt; 不同，&lt;strong&gt;VirtualFile&lt;/strong&gt; 和 &lt;strong&gt;Document&lt;/strong&gt; 有其应用范围（即使打开了多个项目，每个文件都由同一个 &lt;strong&gt;VirtualFile&lt;/strong&gt; 实例表示），
 PSI 有其项目范围：如果文件属于同时打开的多个项目，同一个文件由多个 &lt;strong&gt;PsiFile&lt;/strong&gt; 实例表示。&lt;/p&gt;
-&lt;h2 id=&#34;11-获取获取-psi-文件&#34;&gt;1.1 获取获取 PSI 文件？&lt;/h2&gt;
+&lt;h2 id=&#34;11-如何获取-psi-文件&#34;&gt;1.1 如何获取 PSI 文件？&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;从一个 Action：     &lt;strong&gt;e.getData(CommonDataKeys.PSI_FILE).&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;从一个 VirtualFile:  &lt;strong&gt;PsiManager.getInstance(project).findFile()&lt;/strong&gt;&lt;/li&gt;
@@ -434,7 +434,7 @@ PsiReference.resolve() 返回 null 是正常的，所有处理引用的代码都
 &lt;p&gt;由于优步发展到约2200个核心微服务，我们采用微服务架构也经历了这些优点和缺陷之间的取舍平衡(trade off)。在过去的2年里，优步一直试图降低微服务的复杂性，同时保持微服务架构的优势。
 我们希望通过这篇博文介绍我们对微服务架构的一般方法，我们称之为 &amp;quot;面向领域的微服务架构&amp;quot;(DOMA)的方法。&lt;/p&gt;
 &lt;p&gt;虽然近些年由于这些缺陷人们对微服务架构的批评日益增多，但还是很少有人提倡完全拒绝微服务。它给运营上带来的效益太重要了，在这方面似乎还没有或部分可替代的架构。我们使用DOMA的目的是为那些想要降低整个系统复杂性的同时又能维持微服务优势的组织提供一种前进的道路。&lt;/p&gt;
-&lt;p&gt;这篇文章解释了DOMA的概念, 是哪些因素导致优步会采用这种架构，它对平台和产品团队带来了哪些好处，最后是针对那些想采用这种架构的团队的一些实用建议。&lt;/p&gt;
+&lt;p&gt;这篇文章解释了 DOMA 的概念, 是哪些因素导致优步会采用这种架构，它对平台和产品团队带来了哪些好处，最后是针对那些想采用这种架构的团队的一些实用建议。&lt;/p&gt;
 &lt;h1 id=&#34;什么是微服务&#34;&gt;什么是微服务&lt;/h1&gt;
 &lt;p&gt;微服务是面向服务架构的延伸。与2000年代规模较大的 &amp;quot;服务 &amp;quot;相比，微服务是代表一组更小范围的功能的应用程序。这些应用程序通过网络托管和提供，并暴露出一个定义良好的接口。其他应用程序通过 &amp;quot;远程过程调用&amp;quot;(RPC)来调用这个接口。&lt;/p&gt;
 &lt;p&gt;微服务架构的关键特征是代码托管、调用和部署的方式。如果我们思考大型的单体应用，它们一般会被分割成具有明确定义接口的封装组件。这些接口就会直接在进程中调用，而不是通过网络。通过这种方式，我们也可以将微服务看作一个库，为了调用库中的所有功能有些性能影响（这些影响来自网络I/O和序列化/反序列化的开销）。&lt;/p&gt;
@@ -646,10 +646,10 @@ Simon Newton, Steve Sherwood, Uday Kiran Medisetty, and Waleed Kadous&lt;/p&gt;
         
           &lt;p&gt;&lt;img src=&#34;https://huangbaihua.gitee.io/images/graph/c1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;源文: &lt;a href=&#34;https://robertgreiner.com/cap-theorem-revisited/&#34;&gt;CAP Theorem: Revisited&lt;/a&gt; (Robert Greiner)&lt;/p&gt;
-&lt;p&gt;在当今的技术环境中，当需要额外的资源(计算，存储，等)以在合理的时间范围内成功完成工作负载时，我们见证了对系统进行横向扩展强烈且不断增长的需求。
-由于这种扩展策略，在系统中产生了额外的复杂性。 这正是CAP定理要解决的问题。&lt;/p&gt;
-&lt;p&gt;CAP定理指出，在一个分布式系统中(共享数据的互联节点的集合)，在一次读写操作中，你只能获得，一致性，可用性，分区容错性这三个保证中的二个，必须牺牲其中的一个。
-然而，正如接下来你看到的一样，你的选择并不像你想象的那么多。&lt;/p&gt;
+&lt;p&gt;在当今的技术环境中，当需要更多的资源(计算，存储等)以在合理的时间范围内成功完成工作负载时，对系统进行横向扩展变得尤为迫切,我们正目睹这类需求不断地增长。
+正是由于这种扩展策略，在系统中引入了额外的复杂性。 这正是 CAP 定理要解决的问题。&lt;/p&gt;
+&lt;p&gt;CAP 定理指出，在一个分布式系统中(共享数据的互联节点的集合)，在一次读写操作中，你只能获得，&lt;strong&gt;一致性&lt;/strong&gt;，&lt;strong&gt;可用性&lt;/strong&gt;，&lt;strong&gt;分区容错性&lt;/strong&gt;这三个保证中的二个，必须牺牲其中的一个。
+然而，正如接下来你看到的那样，你能选择的并不像你想象的那么多。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://huangbaihua.gitee.io/images/graph/c2.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;一致性(Consistency) - 对于给定的客户端，保证读取返回最新的写入。&lt;/li&gt;
@@ -665,7 +665,7 @@ Simon Newton, Steve Sherwood, Uday Kiran Medisetty, and Waleed Kadous&lt;/p&gt;
 总的来说就是，数据存在的节点越多，分区容忍性越高，但要复制更新的数据就越多，一致性就越难保证。为了保证一致性，更新所有节点数据所需要的时间就越长，可用性就会降低。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;在继续之前，我们需要先明确一件事。面向对象编程不等于网络编程。在构建共享内存的应用程序时，有一些我们认为理所当然的假设，一旦节点被跨空间和时间分割后，这些假设就会被打破。&lt;/p&gt;
-&lt;p&gt;网络是可靠的就是这样一个分布式计算的谬论。 网络是不可靠的！ 网络和部分网络会经常发生意外地故障。 网络故障总会发生在你的系统中，但是故障何时发生是由不得你选择的。&lt;/p&gt;
+&lt;p&gt;网络是可靠的就是这样一个分布式计算的谬论。 网络是不可靠的！ 网络和部分网络会经常意外发生故障。 网络故障在你的系统中迟早会发生，但是故障何时发生是由不得你选择的。&lt;/p&gt;
 &lt;p&gt;&lt;font color=&#39;red&#39;&gt;[译者注]&lt;/font&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Fallacies_of_distributed_computing&#34;&gt;分布式8大谬论&lt;/a&gt; 来自维基百科&lt;/p&gt;
@@ -805,7 +805,9 @@ Object的hashCode的大多数实现都不能很好地散列--例如，它们通�
       <description>
         
           &lt;p&gt;&lt;a href=&#34;http://awesome-scalability.com/&#34;&gt;&lt;img src=&#34;https://huangbaihua.gitee.io/images/as-logo.png&#34; alt=&#34;可扩展性&#34;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;更新和整理的阅读清单，用于说明可伸缩，可靠和高性能的大型系统的模式。阅读清单是知名工程师的文章以及来源可靠的资料，这些内容对可伸缩性等相关概念进行了很好地解释。案例研究也都来自于服务于数百万至数十亿用户的、经过实战检验的系统。&lt;/p&gt;
+&lt;p&gt;这是一份经过精心整理的阅读清单，它详细说明了在大型系统中如何保障系统的可伸缩性，可靠性以及高性能的常见模式。
+该阅读清单由知名工程文章及来源可靠的资源组成。 这些内容对可伸缩性等相关概念均有很好的阐述。清单中研究的案例也
+都来自于服务于数百万，乃至数十亿用户且经过实战检验过的系统。&lt;/p&gt;
 &lt;p&gt;源文: &lt;a href=&#34;https://github.com/binhnguyennus/awesome-scalability&#34;&gt;Awesome Scalability&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;内容&#34;&gt;内容&lt;/h2&gt;
 &lt;ul&gt;
@@ -2153,7 +2155,7 @@ Object的hashCode的大多数实现都不能很好地散列--例如，它们通�
       <description>
         
           &lt;p&gt;&lt;img src=&#34;https://huangbaihua.gitee.io/images/graph/g6.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;p&gt;不想当CTO的工程师不是合格的工程师，那么如何才能成为一名优秀的CTO? 本文从网络上精心挑选了一系列文章，对有志成为一名CTO的工程师提供一些经验和方法。&lt;/p&gt;
+&lt;p&gt;不想当 CTO 的工程师不是合格的工程师，那么如何才能成为一名优秀的CTO? 本文从网络上精心挑选了一系列文章，对有志成为一名 CTO 的工程师提供一些经验和方法。&lt;/p&gt;
 &lt;p&gt;源文: &lt;a href=&#34;https://github.com/kuchin/awesome-cto&#34;&gt;Awesome CTO&lt;/a&gt; (kuchin)&lt;/p&gt;
 &lt;h1 id=&#34;优秀的首席技术官&#34;&gt;优秀的首席技术官&lt;/h1&gt;
 &lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;

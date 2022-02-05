@@ -5,7 +5,7 @@
     <link>https://huangbaihua.gitee.io/categories/%E6%8A%80%E6%9C%AF%E7%AE%A1%E7%90%86/</link>
     <description>Recent content in 技术管理 on Keepwalking</description>
     <generator>Hugo -- gohugo.io</generator>
-    <copyright>Copyright © 2008–2021, Keepwalking; all rights reserved. Powered by Hugo</copyright>
+    <copyright>Copyright © 2008–2022, Keepwalking; all rights reserved. Powered by Hugo</copyright>
     <lastBuildDate>Mon, 05 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://huangbaihua.gitee.io/categories/%E6%8A%80%E6%9C%AF%E7%AE%A1%E7%90%86/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>优秀的可伸缩性</title>
@@ -16,7 +16,9 @@
       <description>
         
           &lt;p&gt;&lt;a href=&#34;http://awesome-scalability.com/&#34;&gt;&lt;img src=&#34;https://huangbaihua.gitee.io/images/as-logo.png&#34; alt=&#34;可扩展性&#34;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;更新和整理的阅读清单，用于说明可伸缩，可靠和高性能的大型系统的模式。阅读清单是知名工程师的文章以及来源可靠的资料，这些内容对可伸缩性等相关概念进行了很好地解释。案例研究也都来自于服务于数百万至数十亿用户的、经过实战检验的系统。&lt;/p&gt;
+&lt;p&gt;这是一份经过精心整理的阅读清单，它详细说明了在大型系统中如何保障系统的可伸缩性，可靠性以及高性能的常见模式。
+该阅读清单由知名工程文章及来源可靠的资源组成。 这些内容对可伸缩性等相关概念均有很好的阐述。清单中研究的案例也
+都来自于服务于数百万，乃至数十亿用户且经过实战检验过的系统。&lt;/p&gt;
 &lt;p&gt;源文: &lt;a href=&#34;https://github.com/binhnguyennus/awesome-scalability&#34;&gt;Awesome Scalability&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;内容&#34;&gt;内容&lt;/h2&gt;
 &lt;ul&gt;
@@ -1103,7 +1105,7 @@
       <description>
         
           &lt;p&gt;&lt;img src=&#34;https://huangbaihua.gitee.io/images/graph/g6.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;p&gt;不想当CTO的工程师不是合格的工程师，那么如何才能成为一名优秀的CTO? 本文从网络上精心挑选了一系列文章，对有志成为一名CTO的工程师提供一些经验和方法。&lt;/p&gt;
+&lt;p&gt;不想当 CTO 的工程师不是合格的工程师，那么如何才能成为一名优秀的CTO? 本文从网络上精心挑选了一系列文章，对有志成为一名 CTO 的工程师提供一些经验和方法。&lt;/p&gt;
 &lt;p&gt;源文: &lt;a href=&#34;https://github.com/kuchin/awesome-cto&#34;&gt;Awesome CTO&lt;/a&gt; (kuchin)&lt;/p&gt;
 &lt;h1 id=&#34;优秀的首席技术官&#34;&gt;优秀的首席技术官&lt;/h1&gt;
 &lt;h2 id=&#34;目录&#34;&gt;目录&lt;/h2&gt;
