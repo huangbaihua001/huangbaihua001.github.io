@@ -6,7 +6,54 @@
     <description>Recent content in 所有文章索引 on Keepwalking</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright © 2008–2022, Keepwalking; all rights reserved. Powered by Hugo</copyright>
-    <lastBuildDate>Sat, 04 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://huangbaihua.gitee.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 01 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://huangbaihua.gitee.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>计划分享预告</title>
+      <link>https://huangbaihua.gitee.io/post/look-for-forward/</link>
+      <pubDate>Tue, 01 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://huangbaihua.gitee.io/post/look-for-forward/</guid>
+      <description>
+        
+          &lt;p&gt;&lt;img src=&#34;https://huangbaihua.gitee.io/images/graph/g7.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;计划分享预告，敬请期待!&lt;/p&gt;
+&lt;h1 id=&#34;编程系列&#34;&gt;编程系列&lt;/h1&gt;
+&lt;p&gt;Talk is cheap. Show me the code.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;手写RPC框架-微服务必备，基于Netty实现的一个简易框架&lt;/li&gt;
+&lt;li&gt;手写红黑树-实现红黑树,深刻理解它查询怎么这么快&lt;/li&gt;
+&lt;li&gt;手写B树-实现B树,数据库索引的基础&lt;/li&gt;
+&lt;li&gt;DDD实践-DDD落地业务功能开发实践&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;领域建模&#34;&gt;领域建模&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;设计模式在领域建模中的实践&lt;/li&gt;
+&lt;li&gt;通用数据模型-基于OFBiz的实践心得&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;分布式&#34;&gt;分布式&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;我所理解的分布式CAP理论&lt;/li&gt;
+&lt;li&gt;数据密集型系统设计读书笔记&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;源代码研读&#34;&gt;源代码研读&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Spring IOC源代码研读笔记&lt;/li&gt;
+&lt;li&gt;JDK集合源代码研读笔记&lt;/li&gt;
+&lt;li&gt;JDK并发框架源代码研读笔记&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;持续学习&#34;&gt;持续学习&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;英语长难句-阅读英语文章的绊脚石，突破考研英语长难句，轻松读懂技术文章&lt;/li&gt;
+&lt;li&gt;如何提高英语翻译水准-以考促学,CATT13的突破之路&lt;/li&gt;
+&lt;li&gt;微积分上岸指南-我的高等数学之微积分学习之路&lt;/li&gt;
+&lt;li&gt;概率论上岸指南-我的概率论学习之路&lt;/li&gt;
+&lt;li&gt;会计基础-高级管理人员必须具备的基础会计能力&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;(全文完)&lt;/p&gt;
+        
+      </description>
+    </item>
+    
     <item>
       <title>PSI(程序结构接口)-Intellij 平台的核心抽象</title>
       <link>https://huangbaihua.gitee.io/post/idea/psi_intro/</link>
@@ -3618,60 +3665,6 @@ $$
 &lt;li&gt;[5] &lt;a href=&#34;https://zh.wikiredia.com&#34;&gt;维基百科&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
-        
-      </description>
-    </item>
-    
-    <item>
-      <title>计划分享预告</title>
-      <link>https://huangbaihua.gitee.io/post/look-for-forward/</link>
-      <pubDate>Sat, 03 Apr 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://huangbaihua.gitee.io/post/look-for-forward/</guid>
-      <description>
-        
-          &lt;p&gt;&lt;img src=&#34;https://huangbaihua.gitee.io/images/graph/g7.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;p&gt;计划分享预告，敬请期待!&lt;/p&gt;
-&lt;h1 id=&#34;职业生涯&#34;&gt;职业生涯&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;我的第一份开发工作(入行)&lt;/li&gt;
-&lt;li&gt;我第一次做架构师(突破与瓶颈)&lt;/li&gt;
-&lt;li&gt;我第一次成为CTO(管理复盘，角色转变，经验教训)&lt;/li&gt;
-&lt;li&gt;我第一次进独角兽企业(“大厂”工作心得)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&#34;编程系列&#34;&gt;编程系列&lt;/h1&gt;
-&lt;p&gt;Talk is cheap. Show me the code.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;手写RPC框架-微服务必备，基于Netty实现的一个简易框架&lt;/li&gt;
-&lt;li&gt;手写红黑树-实现红黑树,深刻理解它查询怎么这么快&lt;/li&gt;
-&lt;li&gt;手写B树-实现B树,数据库索引的基础&lt;/li&gt;
-&lt;li&gt;DDD实践-DDD落地业务功能开发实践&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&#34;领域建模&#34;&gt;领域建模&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;设计模式在领域建模中的实践&lt;/li&gt;
-&lt;li&gt;通用数据模型-基于OFBiz的实践心得&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&#34;分布式&#34;&gt;分布式&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;我所理解的分布式CAP理论&lt;/li&gt;
-&lt;li&gt;数据密集型系统设计读书笔记&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&#34;源代码研读&#34;&gt;源代码研读&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;Spring IOC源代码研读笔记&lt;/li&gt;
-&lt;li&gt;JDK集合源代码研读笔记&lt;/li&gt;
-&lt;li&gt;JDK并发框架源代码研读笔记&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&#34;持续学习&#34;&gt;持续学习&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;英语长难句-阅读英语文章的绊脚石，突破考研英语长难句，轻松读懂技术文章&lt;/li&gt;
-&lt;li&gt;如何提高英语翻译水准-以考促学,CATT13的突破之路&lt;/li&gt;
-&lt;li&gt;微积分上岸指南-我的高等数学之微积分学习之路&lt;/li&gt;
-&lt;li&gt;概率论上岸指南-我的概率论学习之路&lt;/li&gt;
-&lt;li&gt;会计基础-高级管理人员必须具备的基础会计能力&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;(全文完)&lt;/p&gt;
         
       </description>
     </item>

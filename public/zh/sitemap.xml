@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://huangbaihua.gitee.io/</loc>
-    <lastmod>2021-12-04T00:00:00+00:00</lastmod>
+    <lastmod>2022-02-01T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -14,6 +14,28 @@
                 hreflang="zh"
                 href="https://huangbaihua.gitee.io/"
                 />
+  </url><url>
+    <loc>https://huangbaihua.gitee.io/tags/</loc>
+    <lastmod>2022-02-01T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://huangbaihua.gitee.io/en/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://huangbaihua.gitee.io/tags/"
+                />
+  </url><url>
+    <loc>https://huangbaihua.gitee.io/post/</loc>
+    <lastmod>2022-02-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://huangbaihua.gitee.io/tags/%E8%AE%A1%E5%88%92%E5%88%86%E4%BA%AB%E9%A2%84%E5%91%8A/</loc>
+    <lastmod>2022-02-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://huangbaihua.gitee.io/post/look-for-forward/</loc>
+    <lastmod>2022-02-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://huangbaihua.gitee.io/categories/</loc>
     <lastmod>2021-12-04T00:00:00+00:00</lastmod>
@@ -35,22 +57,6 @@
     <lastmod>2021-12-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://huangbaihua.gitee.io/post/idea/psi_intro/</loc>
-    <lastmod>2021-12-04T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://huangbaihua.gitee.io/tags/</loc>
-    <lastmod>2021-12-04T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://huangbaihua.gitee.io/en/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="https://huangbaihua.gitee.io/tags/"
-                />
-  </url><url>
-    <loc>https://huangbaihua.gitee.io/post/</loc>
     <lastmod>2021-12-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://huangbaihua.gitee.io/tags/%E8%AF%91%E6%96%87/</loc>
@@ -181,12 +187,6 @@
     <lastmod>2021-04-03T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://huangbaihua.gitee.io/tags/%E7%AE%97%E6%B3%95/</loc>
-    <lastmod>2021-04-03T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://huangbaihua.gitee.io/tags/%E8%AE%A1%E5%88%92%E5%88%86%E4%BA%AB%E9%A2%84%E5%91%8A/</loc>
-    <lastmod>2021-04-03T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://huangbaihua.gitee.io/post/look-for-forward/</loc>
     <lastmod>2021-04-03T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://huangbaihua.gitee.io/post/the-mythical-10x-programmer/</loc>

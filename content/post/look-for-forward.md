@@ -1,7 +1,7 @@
 +++
 author = "柏华"
 title = "计划分享预告"
-date = "2021-04-03"
+date = "2022-02-01"
 description = "计划分享预告"
 featured = true
 tags = [
@@ -16,11 +16,6 @@ isCJKLanguage = true
 
 <!--more-->
 
-# 职业生涯
-* 我的第一份开发工作(入行)
-* 我第一次做架构师(突破与瓶颈)
-* 我第一次成为CTO(管理复盘，角色转变，经验教训)
-* 我第一次进独角兽企业(“大厂”工作心得)
 
 # 编程系列
 Talk is cheap. Show me the code.
