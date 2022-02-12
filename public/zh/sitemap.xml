@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://huangbaihua.gitee.io/</loc>
-    <lastmod>2022-02-01T00:00:00+00:00</lastmod>
+    <lastmod>2022-02-12T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -15,8 +15,21 @@
                 href="https://huangbaihua.gitee.io/"
                 />
   </url><url>
+    <loc>https://huangbaihua.gitee.io/categories/</loc>
+    <lastmod>2022-02-12T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://huangbaihua.gitee.io/en/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://huangbaihua.gitee.io/categories/"
+                />
+  </url><url>
     <loc>https://huangbaihua.gitee.io/tags/</loc>
-    <lastmod>2022-02-01T00:00:00+00:00</lastmod>
+    <lastmod>2022-02-12T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -28,27 +41,26 @@
                 href="https://huangbaihua.gitee.io/tags/"
                 />
   </url><url>
+    <loc>https://huangbaihua.gitee.io/post/english/grammer-verb-outline/</loc>
+    <lastmod>2022-02-12T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://huangbaihua.gitee.io/post/</loc>
-    <lastmod>2022-02-01T00:00:00+00:00</lastmod>
+    <lastmod>2022-02-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://huangbaihua.gitee.io/tags/%E8%8B%B1%E8%AF%AD/</loc>
+    <lastmod>2022-02-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://huangbaihua.gitee.io/categories/%E8%8B%B1%E8%AF%AD/</loc>
+    <lastmod>2022-02-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://huangbaihua.gitee.io/tags/%E8%8B%B1%E8%AF%AD%E8%AF%AD%E6%B3%95/</loc>
+    <lastmod>2022-02-12T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://huangbaihua.gitee.io/tags/%E8%AE%A1%E5%88%92%E5%88%86%E4%BA%AB%E9%A2%84%E5%91%8A/</loc>
     <lastmod>2022-02-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://huangbaihua.gitee.io/post/look-for-forward/</loc>
     <lastmod>2022-02-01T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://huangbaihua.gitee.io/categories/</loc>
-    <lastmod>2021-12-04T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://huangbaihua.gitee.io/en/categories/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="https://huangbaihua.gitee.io/categories/"
-                />
   </url><url>
     <loc>https://huangbaihua.gitee.io/tags/idea%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/</loc>
     <lastmod>2021-12-04T00:00:00+00:00</lastmod>
