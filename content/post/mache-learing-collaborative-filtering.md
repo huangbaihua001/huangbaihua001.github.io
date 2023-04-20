@@ -16,8 +16,10 @@ tags = [
 ]
 
 isCJKLanguage = true
+thumbnail = "/images/graph/ml1.webp"
+featureImage = "/images/graph/ml1.webp"
 +++
-![](/images/graph/ml1.webp)
+
 
 本文是机器学习常用算法之协同过滤算法系列篇中的第一篇，主要讲解了协同过滤的基本概念，如何求相似度，以及如何根据基于物品的协同过滤对物品进行评分。
 

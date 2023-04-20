@@ -1,25 +1,34 @@
-+++
-author = "柏华"
-title = "以动词概括的英语语法体系"
-date = "2022-02-12"
-description = "以动词概括的英语语法体系"
-featured = true
-categories = [
+---
+author : "柏华"
+title : "以动词概括的英语语法体系"
+date : "2022-02-12"
+description : "以动词概括的英语语法体系"
+featured : true
+categories : [
 "英语",
 ]
 
-tags = [
+tags : [
     "英语",
     "英语语法",
 ]
 
-isCJKLanguage = true
-+++
-![](/images/eng/grammer.jpg)
+isCJKLanguage : true
+thumbnail : "/images/eng/grammer.jpg"
+toc: true
+image_featured : true
+featureImage : "/images/eng/grammer.jpg"
+shareImage : "/images/eng/grammer.jpg"
+---
+
+
+
 
 英语语法之所以难学，一般是没有在脑海里建立清晰的语法体系。如何在脑海里构建自己的语法体系呢？该文章以英语语法中最重要的动词为主线，概括了一套英语语法体系。
 
 <!--more-->
+
+
 
 # 以动词概括的英语语法体系
 

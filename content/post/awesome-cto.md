@@ -1,4 +1,4 @@
-+++ 
++++
 aliases = ["posts", "articles", "blog", "translate"]
 title = "优秀的首席技术官"
 author = "柏华"
@@ -10,8 +10,11 @@ categories = [
 ]
 tags = ["技术管理","系统架构", "译文"]
 isCJKLanguage = true
+thumbnail = "/images/graph/g6.png"
+image_featured = true
+featureImage = "/images/graph/g6.png"
 +++
-![](/images/graph/g6.png)
+
 
 不想当 CTO 的工程师不是合格的工程师，那么如何才能成为一名优秀的CTO? 本文从网络上精心挑选了一系列文章，对有志成为一名 CTO 的工程师提供一些经验和方法。
 <!--more-->

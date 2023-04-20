@@ -22,6 +22,9 @@ category = "categories"
 tag = "tags"
 series = "series"
 
+[outputs]
+home = ["HTML", "RSS", "JSON"]
+
 [markup]
   [markup.tableOfContents]
     startLevel = 1

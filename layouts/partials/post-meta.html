@@ -15,7 +15,7 @@
     {{- $scratch.Set "writeSeparator" true }}
   {{- end }}
   {{- if $showReadTime }}
-    <span class="post_time"><span class="post-date">{{ T "reading_about"}} &nbsp;<font color="red">{{ .WordCount  }}</font>&nbsp;{{ T "reading_words"}} </span>{{ if ($scratch.Get "writeSeparator") }} · {{ end }}{{ T "reading_time" . }}</span>
+    <span class="post_time">{{ if ($scratch.Get "writeSeparator") }} · {{ end }}{{ T "reading_time" . }}</span>
     {{- $scratch.Set "writeSeparator" true }}
   {{- end }}
   {{- with .Params.tags -}}
@@ -23,7 +23,7 @@
       {{- if ($scratch.Get "writeSeparator") }}&nbsp;· {{ end }}
       {{- range . }}
         {{- $tag := urlize . -}}
-        <a href='{{ absLangURL (printf "tags/%s" $tag) }}' title="{{ . }}" class="post_tag button button_translucent">
+        <a href='{{ absLangURL (printf "tags/%s/" $tag) }}' title="{{ . }}" class="post_tag button button_translucent">
           {{- . }}
         </a>
       {{- end }}

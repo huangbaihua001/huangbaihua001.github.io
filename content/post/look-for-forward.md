@@ -9,8 +9,10 @@ tags = [
 ]
 
 isCJKLanguage = true
+thumbnail = "/images/graph/g7.jpg"
+featureImage = "/images/graph/g7.jpg"
 +++
-![](/images/graph/g7.jpg)
+
 
 计划分享预告，敬请期待!
 

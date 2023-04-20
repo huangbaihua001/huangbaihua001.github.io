@@ -1,4 +1,3 @@
-const pageHasLoaded = 'DOMContentLoaded';
 (function toggleColorModes(){
   const light = 'lit';
   const dark = 'dim';
@@ -74,7 +73,7 @@ function fileClosure(){
       Array.from(links).forEach(function(link){
         let target, rel, blank, noopener, attr1, attr2, url, isExternal;
         url = elemAttribute(link, 'href');
-        isExternal = (url && typeof url == 'string' && url.startsWith('http')) && !url.startsWith(parentURL) ? true : false;
+        isExternal = (url && typeof url == 'string' && url.startsWith('http')) && !url.startsWith(baseURL) ? true : false;
         if(isExternal) {
           target = 'target';
           rel = 'rel';
@@ -105,7 +104,6 @@ function fileClosure(){
 
   headingNodes.forEach(function(node){
     link = createEl('a');
-    loadSvg('link', link);
     link.className = 'link icon';
     id = node.getAttribute('id');
     if(id) {
@@ -227,7 +225,7 @@ function fileClosure(){
   }
 
   function populateAlt(images) {
-    let imagePosition = -1;
+    let imagePosition = 0;
 
     images.forEach((image) => {
       let alt = image.alt;
@@ -259,25 +257,52 @@ function fileClosure(){
         modifyClass(figure, 'inline');
       }
 
-      // Figure numbering
-      if (image.alt.trim().length > 0 && !containsClass(image, 'alt' && !isInline)) {
+      // Image captions
+      let addCaption = true
+      let captionText = ''
+
+      if(image.title.trim().length) {
+        captionText = image.title.trim()
+      } else {
+        if(image.title === " ") {
+          addCaption = false
+        } else {
+          captionText = alt
+        }
+      }
+
+      // Don't add a caption for featured images, inline images, or empty text
+      if(
+        image.matches(`.${featuredImageClass}`) ||
+        containsClass(image, 'alt' && !isInline) ||
+        !captionText.length
+      ) {
+        addCaption = false
+      }
+
+      if (addCaption) {
+        let desc = document.createElement('figcaption');
+        desc.classList.add(imageAltClass);
+
+        // Add figure numbering
         imagePosition += 1;
         image.dataset.pos = imagePosition;
         const showImagePosition = showingImagePosition();
-
-        let desc = document.createElement('figcaption');
-        desc.classList.add('img_alt');
-        let imageAlt = alt;
-
         const thisImgPos = image.dataset.pos;
-        // modify image caption is necessary
-        imageAlt = showImagePosition ? `${showImagePositionLabel} ${thisImgPos}: ${imageAlt}` : imageAlt;
-        desc.textContent = imageAlt;
-        if(!image.matches(".image_featured")) {
-          // add a caption below image only if the image isn't a featured image
-          image.insertAdjacentHTML('afterend', desc.outerHTML);
+        captionText = showImagePosition ? `${showImagePositionLabel} ${thisImgPos}: ${captionText}` : captionText;
+        desc.textContent = captionText;
+
+        // If a caption exists, remove it
+        if(image.nextElementSibling) {
+          image.nextElementSibling.remove();
         }
+
+        // Insert caption
+        image.insertAdjacentHTML('afterend', desc.outerHTML);
       }
+
+      // Persist modified alt to image element
+      image.alt = alt
     });
 
     hljs.initHighlightingOnLoad();
@@ -292,7 +317,7 @@ function fileClosure(){
           let actionableRatio = actualWidth / parentWidth;
 
           if (actionableRatio > 1) {
-            pushClass(image.parentNode.parentNode, "image-scalable");
+            pushClass(image.parentNode.parentNode, imageScalableClass);
             image.parentNode.parentNode.dataset.scale = actionableRatio;
           }
         }, 100)
@@ -309,19 +334,21 @@ function fileClosure(){
 
   doc.addEventListener('click', function(event) {
     let target = event.target;
-    isClickableImage = target.matches('.image-scalable') || target.closest('.image-scalable') ;
+    isClickableImage = target.matches(`.${imageScalableClass}`) || target.closest(`.${imageScalableClass}`) ;
 
     if(isClickableImage) {
-      let hasClickableImage = containsClass(target.children[0], 'image-scalable');
+      let hasClickableImage = containsClass(target.children[0], imageScalableClass);
       if(hasClickableImage) {
-        modifyClass(target, 'image-scale');
+        modifyClass(target, scaleImageClass);
       }
     }
 
     if(isClickableImage) {
       let figure = target.closest('figure');
-      modifyClass(figure, 'image-scale');
+      modifyClass(figure, scaleImageClass);
     }
+
+    goBack(target);
   });
 
   const tables = elems('table');

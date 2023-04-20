@@ -11,8 +11,10 @@ tags = [
 ]
 
 isCJKLanguage = true
+thumbnail = "/images/graph/u1.png"
+featureImage = "/images/graph/u1.png"
 +++
-![](/images/graph/u1.png)
+
 
 面向领域的微服务架构-来自优步的实践。
 

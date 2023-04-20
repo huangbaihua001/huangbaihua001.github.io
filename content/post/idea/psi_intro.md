@@ -15,8 +15,9 @@ tags = [
 ]
 
 isCJKLanguage = true
+#thumbnail = "/images/idea/import-maven-intellij-thumbnail.png"
 +++
-![](/images/idea/import-maven-intellij-thumbnail.png)
+
 
 Intellij IDEA 是业界公认最智能，最强大的 Java IDE。个人认为 Intellij 平台底层的抽象能力是非常强的。 PSI 就是其中之一。
 

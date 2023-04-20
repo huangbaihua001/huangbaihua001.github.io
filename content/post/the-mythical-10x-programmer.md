@@ -1,4 +1,5 @@
-+++ aliases = ["posts", "articles", "blog", "translate"]
++++
+aliases = ["posts", "articles", "blog", "translate"]
 title = "10倍程序员的秘密"
 author = "柏华"
 date = "2021-03-28"
@@ -8,8 +9,10 @@ categories = [
 ]
 tags = ["系统架构","译文"]
 isCJKLanguage = true
+thumbnail = "/images/graph/g5.jpg"
+featureImage = "/images/graph/g5.jpg"
 +++
-![](/images/graph/g5.jpg)
+
 
 高效的程序员应该具备哪些素质，"10倍程序员"给你答案!。
 

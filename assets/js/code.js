@@ -1,6 +1,6 @@
 const codeActionButtons = [
   {
-    icon: 'copy', 
+    icon: 'copy',
     id: 'copy',
     title: 'Copy Code',
     show: true
@@ -9,7 +9,7 @@ const codeActionButtons = [
     icon: 'order',
     id: 'lines',
     title: 'Toggle Line Numbers',
-    show: true 
+    show: true
   },
   {
     icon: 'carly',
@@ -21,7 +21,7 @@ const codeActionButtons = [
     icon: 'expand',
     id: 'expand',
     title: 'Toggle code block expand',
-    show: false 
+    show: false
   }
 ];
 
@@ -103,7 +103,7 @@ function restrainCodeBlockHeight(lines) {
 const blocks = codeBlocks();
 
 function collapseCodeBlock(block) {
-  const lines = elems('.ln', block);
+  const lines = elems(lineClass, block);
   const codeLines = lines.length;
   if (codeLines > maxLines) {
     const expandDot = createEl()
@@ -139,7 +139,7 @@ function actionPanel() {
     btn.className = `icon panel_icon panel_${button.id}`;
     button.show ? false : pushClass(btn, panelHide);
     // load icon inside button
-    loadSvg(button.icon, btn);
+    btn.style.backgroundImage = `url(${baseURL}${iconsPath}${button.icon}.svg)`;
     // append button on panel
     panel.appendChild(btn);
   });
@@ -158,7 +158,7 @@ function toggleLineNumbers(elems) {
 function toggleLineWrap(elem) {
   modifyClass(elem, 'pre_wrap');
   // retain max number of code lines on line wrap
-  const lines = elems('.ln', elem);
+  const lines = elems(lineClass, elem);
   restrainCodeBlockHeight(lines);
 }
 
@@ -177,7 +177,7 @@ function copyCode(codeElement) {
 }
 
 function disableCodeLineNumbers(block){
-  const lines = elems('.ln', block)
+  const lines = elems(lineClass, block)
   toggleLineNumbers(lines);
 }
 
@@ -201,7 +201,7 @@ function disableCodeLineNumbers(block){
     const wrapIcon = elem(`.${wrapId}`, panel);
     codeBlockFits(block) ? false : deleteClass(wrapIcon, panelHide);
 
-    // append buttons 
+    // append buttons
     highlightWrapper.appendChild(panel);
   });
 
@@ -233,7 +233,7 @@ function disableCodeLineNumbers(block){
       event.preventDefault();
       showActive(target, 'icon');
       const codeElement = target.closest(`.${highlightWrapId}`).firstElementChild.firstElementChild;
-      let lineNumbers = elems('.ln', codeElement);
+      let lineNumbers = elems(lineClass, codeElement);
 
       isWrapIcon ? toggleLineWrap(codeElement) : false;
 

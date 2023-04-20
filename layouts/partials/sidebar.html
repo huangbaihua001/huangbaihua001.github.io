@@ -1,7 +1,13 @@
-{{ $s := .Site.Params }}
+{{ $s := site.Params }}
 <aside class="sidebar">
   <section class="sidebar_inner">
-    {{- if $s.IntroDescription }}
+    <br>
+    {{ partial "search/widget" . }}
+    {{- $introDescription := $s.introDescription }}
+    {{- with .Params.introDescription }}
+      {{- $introDescription = . }}
+    {{- end }}
+    {{- if $introDescription }}
       {{- $author := $s.Author  }}
       {{- $showAuthorPhoto := false }}
       {{- $fullAuthor := reflect.IsMap $author }}
@@ -19,21 +25,46 @@
         <h2>{{  if $fullAuthor }}{{ $author.name }}{{ else }}{{ $author }}{{ end }}</h2>
       {{- end }}
       <div class="author_bio">
-        {{ markdownify $s.IntroDescription }}
+        {{ markdownify $introDescription }}
       </div>
       {{- if ( ne $s.introURL false ) }}
       {{- $r := T "read_more" }}
       <a href='{{ absLangURL (default "about/" $s.introURL) }}' class="button mt-1" role="button" title='{{ $r }}'>{{ $r }}</a>
       {{- end }}
     {{- end }}
-    {{- $posts := where (where .Site.RegularPages "Permalink" "!=" .Permalink) "Type" "in" $s.mainSections }}
+
+    {{ if .Site.Params.sidebardisclaimer }}
+      <div class="sidebardisclaimer">
+        <h2 class="mt-4">Disclaimer</h2>
+        {{ .Site.Params.disclaimerText }}
+      </div>
+    {{ end }}
+
+    {{- $relatedInSidebar := true }}
+    {{- if eq $s.showRelatedInSidebar false }}
+      {{ $relatedInSidebar = false }}
+    {{- end }}
+    {{ if (and ($relatedInSidebar) (isset .Params "series") ) }}
+      {{$related := where .Site.RegularPages ".Params.series" "eq" .Params.series }}
+	    <h2 class="mt-4">{{ T "series_posts" }}</h2>
+      <ul>
+        {{ range $related }}
+        <li>
+          <a href="{{ .Permalink }}" class="nav-link" title="{{ .Title }}">{{ .Title | markdownify }}</a>
+        </li>
+        {{ end }}
+      </ul>
+    {{ end }}
+
+    {{- $posts := where .Site.RegularPages "Type" "in" $s.mainSections }}
     {{- $featured := default 8 $s.numberOfFeaturedPosts }}
-    {{- with first $featured (where $posts "Params.featured" true)}}
+    {{- $featuredPosts := first $featured (where $posts "Params.featured" true)}}
+    {{- with $featuredPosts }}
     <h2 class="mt-4">{{ T "featured_posts" }}</h2>
     <ul>
       {{- range . }}
       <li>
-        <a href="{{ .Permalink }}" class="nav-link" title="{{ .Title }}">{{ .Title }}</a>
+        <a href="{{ .Permalink }}" class="nav-link" title="{{ .Title }}">{{ .Title | markdownify }}</a>
       </li>
       {{- end }}
     </ul>
@@ -41,9 +72,9 @@
     <h2 class="mt-4">{{ T "recent_posts" }}</h2>
     <ul class="flex-column">
       {{- $recent := default 8 $s.numberOfRecentPosts }}
-      {{- range first $recent $posts }}
+      {{- range first $recent $posts | symdiff $featuredPosts }}
       <li>
-        <a href="{{ .Permalink }}" class="nav-link" title="{{ .Title }}">{{ .Title }}</a>
+        <a href="{{ .Permalink }}" class="nav-link" title="{{ .Title }}">{{ .Title | markdownify }}</a>
       </li>
       {{- end }}
     </ul>

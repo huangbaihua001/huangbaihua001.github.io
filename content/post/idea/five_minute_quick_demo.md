@@ -17,8 +17,10 @@ tags = [
 ]
 
 isCJKLanguage = true
+#thumbnail = "/images/idea/import-maven-intellij-thumbnail.png"
+image_featured = false
+# featureImage = "/images/idea/import-maven-intellij-thumbnail.png"
 +++
-![](/images/idea/import-maven-intellij-thumbnail.png)
 
 基于 Gradle 开发 IntelliJ 插件是官方推荐的方式。本 Demo
 使用 [IntelliJ Platform Plugin Template](https://github.com/JetBrains/intellij-platform-plugin-template) 快速构建一个插件项目 。

@@ -17,8 +17,10 @@ categories = [
 
 series = ["离散数学-图论"]
 isCJKLanguage = true
+thumbnail = "/images/graph/g9.jpg"
+featureImage = "/images/graph/g9.jpg"
 +++
-![](/images/graph/g9.png)
+
 
 本文是 《离散数学-图论》系列文章的第二篇，主要讨论了树(一种特殊的图)。包括树的基本概念和性质，二叉查找树，平衡查找树，红黑树的基本实现。
 

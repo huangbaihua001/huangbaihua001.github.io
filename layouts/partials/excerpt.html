@@ -2,55 +2,31 @@
   <div class="excerpt">
     <div class="excerpt_header">
       <h3 class="post_link">
-        <a href="{{ .Permalink }}" title="{{ .Title }}">{{ .Title  }}</a>
+        <a href="{{ .Permalink }}" title="{{ .Title }}">{{ .Title | markdownify  }}</a>
       </h3>
       {{ partial "post-meta" . }}
     </div>
     {{- with .Params.thumbnail }}
     <div class="excerpt_footer partition">
-
-      {{- $file := . | safeURL }}{{/* filename of image */}}
-
-      {{/* Check if page bundles are set. */}}
-      {{- $bundle := $.Site.Params.usePageBundles }}
-      {{ if eq $.Params.usePageBundles false }}
-        {{- $bundle = false }}
-      {{ end }}
-      {{ if eq $.Params.usePageBundles true }}
-        {{- $bundle = true }}
-      {{ end }}
-
-      {{- $fileWeb := "" -}}{{/* full path to image, relative to the web root */}}
-      {{- $fileDisk := "" -}}{{/* full path to image, relative to the file root */}}
-      {{ if eq $bundle true }}
-        {{- $fileWeb = (add $.Page.RelPermalink $file) -}}
-        {{- $fileDisk = (add "/content/" (add $.Page.File.Dir $file)) }}
-      {{ else }}
-        {{- $fileWeb = absURL . -}}
-        {{- $fileDisk = (add "/static/" $file) }}
-      {{ end }}
-
-      {{- if fileExists $fileDisk }}
-        {{- $img := imageConfig $fileDisk -}}{{/* image element (passed through imageConfig) */}}
-
-        {{- partial "image-thumbnail" (dict "file" $file "fileWeb" $fileWeb "fileDisk" $fileDisk "img" $img "alt" $.Title) }}
-
-      {{- else }}
-        {{ partial "image-error" (dict "fileWeb" $fileWeb "fileDisk" $fileDisk "bundle" $bundle) }}
-      {{- end }}
+      <div class="excerpt_thumbnail">
+        {{- partial "image" (dict "file" . "alt" $.Title "type" "thumbnail" "Page" $.Page ) }}
+      </div>
       {{ else }}
       <div class="excerpt_footer">
         {{- end }}
-        <div>
-          <p class="pale">
-            {{ if .Params.summary }}
-              {{ .Params.summary }}
-            {{ else if .Params.abstract }}
-              {{ .Params.abstract }}
-            {{ else if .Summary }}
-              {{ truncate 320 .Summary }}
-            {{ end }}
-          </p>
+        <div class="pale">
+          {{- $summary := truncate 320 .Summary }}
+          {{- if .Params.summary }}
+            {{- $summary = .Params.summary }}
+          {{- else if .Params.abstract }}
+            {{ $summary = .Params.abstract }}
+          {{- end }}
+          {{ if not ( strings.Contains $summary "<p>" ) }}
+            <p>{{ $summary | markdownify }}</p>
+          {{ else }}
+            {{ $summary | markdownify }}
+          {{ end }}
+          <br>
           {{- $r := T "read_more" }}
           <a href="{{ .Permalink }}" title="{{ $r }}" class="excerpt_more button">{{ $r }}</a>
         </div>

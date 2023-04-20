@@ -10,8 +10,9 @@ tags = [
 ]
 
 isCJKLanguage = true
+thumbnail = "/images/graph/a1.webp"
+featureImage = "/images/graph/a1.webp"
 +++
-![](/images/graph/a1.webp)
 
 最近我碰到过几次使用一致性哈希的情况。介绍这个概念的论文[《一致性哈希和随机树：分布式缓存协议，用于解决互联网应用中的热点问题。David Karger等人著》](http://citeseer.ist.psu.edu/karger97consistent.html)
 出现在十年前，不过最近似乎这个概念已经悄悄地应用到从亚马逊的"Dynamo"到Last.fm提供的"Memcached"等越来越多的服务当中。那么，什么是一致性哈希，为什么要关心它？

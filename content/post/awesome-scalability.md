@@ -10,9 +10,11 @@ categories = [
 ]
 tags = ["技术管理","系统架构", "译文"]
 isCJKLanguage = true
+thumbnail = "/images/arch/scalability.jpg"
+featureImage = "/images/as-logo.png"
 +++
 
-[![可扩展性](/images/as-logo.png)](http://awesome-scalability.com/)
+
 
 这是一份经过精心整理的阅读清单，它详细说明了在大型系统中如何保障系统的可伸缩性，可靠性以及高性能的常见模式。
 该阅读清单由知名工程文章及来源可靠的资源组成。 这些内容对可伸缩性等相关概念均有很好的阐述。清单中研究的案例也

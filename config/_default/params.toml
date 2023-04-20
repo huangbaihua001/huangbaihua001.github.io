@@ -31,8 +31,28 @@ enableMathNotation = true
 # directory(s) where your articles are located
 mainSections = ["post"] # see config details here https://gohugo.io/functions/where/#mainsections
 
+
+# Path variables
+#
+# By default, each of these directories are children of the `static` directory.
+#
+# In some Apache server installs, these directory names could conflict and you
+# may want to change them. See:
+# https://github.com/chipzoller/hugo-clarity/issues/74
+#
+# If you change the names of these directories, be sure to copy the contents of
+# the originals to get the files included with Hugo Clarity.
+#
+# Images:
+imagesDir = "images/" # without a leading forward slash
+# Icons:
+iconsDir = "icons/" # without a leading forward slash
+# Fonts:
+fontsDir = "fonts/" # without a leading forward slash
+
 # center logo on navbar
 centerLogo = false # Set to "true" for centering or "false" for left aligned.
+
 
 logo = "logos/logo.png"
 

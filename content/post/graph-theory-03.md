@@ -17,8 +17,10 @@ categories = [
 
 series = ["离散数学-图论"]
 isCJKLanguage = true
+thumbnail = "/images/graph/g10.jpg"
+featureImage = "/images/graph/g10.jpg"
 +++
-![](/images/graph/g10.jpg)
+
 
 本文是 《离散数学-图论》系列文章的第三篇，主要讨论了图的应用，包括最小生成树的生成(Prim算法和Kruskal算法),最短路径的基本实现(Dikstra算法)
 

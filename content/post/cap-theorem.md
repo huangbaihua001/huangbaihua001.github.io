@@ -15,8 +15,9 @@ tags = [
 ]
 
 isCJKLanguage = true
+thumbnail = "/images/graph/c1.png"
+featureImage = "/images/graph/c1.png"
 +++
-![](/images/graph/c1.png)
 
 
 

@@ -10,8 +10,10 @@ tags = [
 ]
 
 isCJKLanguage = true
+thumbnail = "/images/CleanArchitecture.jpg"
+featureImage = "/images/CleanArchitecture.jpg"
 +++
-![](/images/CleanArchitecture.jpg)
+
 
 [Bob](https://blog.cleancoder.com/)(编程界骨灰级人物)的清晰架构。
 

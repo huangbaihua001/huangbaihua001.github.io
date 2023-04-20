@@ -10,8 +10,11 @@ tags = [
 ]
 
 isCJKLanguage = true
+thumbnail = "/images/graph/a1.webp"
+image_featured = true
+featureImage = "/images/graph/a1.webp"
 +++
-![](/images/graph/a1.webp)
+
 
 现代软件过度工程中的十大错误
 
