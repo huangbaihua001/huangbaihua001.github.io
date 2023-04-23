@@ -2,70 +2,70 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://huangbaihua.gitee.io/en/about/</loc>
+    <loc>https://huangbaihua-blog-6fodlgn2bee81bf-1301217831.tcloudbaseapp.com/en/about/</loc>
     <lastmod>2021-03-24T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="https://huangbaihua.gitee.io/about/"
+                href="https://huangbaihua-blog-6fodlgn2bee81bf-1301217831.tcloudbaseapp.com/about/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://huangbaihua.gitee.io/en/about/"
+                href="https://huangbaihua-blog-6fodlgn2bee81bf-1301217831.tcloudbaseapp.com/en/about/"
                 />
   </url><url>
-    <loc>https://huangbaihua.gitee.io/en/tags/about/</loc>
+    <loc>https://huangbaihua-blog-6fodlgn2bee81bf-1301217831.tcloudbaseapp.com/en/tags/about/</loc>
     <lastmod>2021-03-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://huangbaihua.gitee.io/en/</loc>
-    <lastmod>2021-03-24T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="https://huangbaihua.gitee.io/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://huangbaihua.gitee.io/en/"
-                />
-  </url><url>
-    <loc>https://huangbaihua.gitee.io/en/tags/</loc>
+    <loc>https://huangbaihua-blog-6fodlgn2bee81bf-1301217831.tcloudbaseapp.com/en/</loc>
     <lastmod>2021-03-24T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="https://huangbaihua.gitee.io/tags/"
+                href="https://huangbaihua-blog-6fodlgn2bee81bf-1301217831.tcloudbaseapp.com/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://huangbaihua.gitee.io/en/tags/"
+                href="https://huangbaihua-blog-6fodlgn2bee81bf-1301217831.tcloudbaseapp.com/en/"
                 />
   </url><url>
-    <loc>https://huangbaihua.gitee.io/en/categories/</loc>
+    <loc>https://huangbaihua-blog-6fodlgn2bee81bf-1301217831.tcloudbaseapp.com/en/tags/</loc>
+    <lastmod>2021-03-24T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="https://huangbaihua.gitee.io/categories/"
+                href="https://huangbaihua-blog-6fodlgn2bee81bf-1301217831.tcloudbaseapp.com/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://huangbaihua.gitee.io/en/categories/"
+                href="https://huangbaihua-blog-6fodlgn2bee81bf-1301217831.tcloudbaseapp.com/en/tags/"
                 />
   </url><url>
-    <loc>https://huangbaihua.gitee.io/en/series/</loc>
+    <loc>https://huangbaihua-blog-6fodlgn2bee81bf-1301217831.tcloudbaseapp.com/en/categories/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="https://huangbaihua.gitee.io/series/"
+                href="https://huangbaihua-blog-6fodlgn2bee81bf-1301217831.tcloudbaseapp.com/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://huangbaihua.gitee.io/en/series/"
+                href="https://huangbaihua-blog-6fodlgn2bee81bf-1301217831.tcloudbaseapp.com/en/categories/"
+                />
+  </url><url>
+    <loc>https://huangbaihua-blog-6fodlgn2bee81bf-1301217831.tcloudbaseapp.com/en/series/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://huangbaihua-blog-6fodlgn2bee81bf-1301217831.tcloudbaseapp.com/series/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://huangbaihua-blog-6fodlgn2bee81bf-1301217831.tcloudbaseapp.com/en/series/"
                 />
   </url>
 </urlset>

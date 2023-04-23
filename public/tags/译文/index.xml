@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>译文 on Keepwalking</title>
-    <link>https://huangbaihua.gitee.io/tags/%E8%AF%91%E6%96%87/</link>
+    <link>https://huangbaihua-blog-6fodlgn2bee81bf-1301217831.tcloudbaseapp.com/tags/%E8%AF%91%E6%96%87/</link>
     <description>Recent content in 译文 on Keepwalking</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright © 2008–2022, Keepwalking; all rights reserved. Powered by Hugo</copyright>
-    <lastBuildDate>Sat, 04 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://huangbaihua.gitee.io/tags/%E8%AF%91%E6%96%87/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 04 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://huangbaihua-blog-6fodlgn2bee81bf-1301217831.tcloudbaseapp.com/tags/%E8%AF%91%E6%96%87/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>PSI(程序结构接口)-Intellij 平台的核心抽象</title>
-      <link>https://huangbaihua.gitee.io/post/idea/psi_intro/</link>
+      <link>https://huangbaihua-blog-6fodlgn2bee81bf-1301217831.tcloudbaseapp.com/post/idea/psi_intro/</link>
       <pubDate>Sat, 04 Dec 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://huangbaihua.gitee.io/post/idea/psi_intro/</guid>
+      <guid>https://huangbaihua-blog-6fodlgn2bee81bf-1301217831.tcloudbaseapp.com/post/idea/psi_intro/</guid>
       <description>
         
           
@@ -27,10 +27,10 @@
     
     <item>
       <title>现代软件过度工程中的十大错误</title>
-      <link>https://huangbaihua.gitee.io/post/arch/consistent-hasing/</link>
+      <link>https://huangbaihua-blog-6fodlgn2bee81bf-1301217831.tcloudbaseapp.com/post/arch/consistent-hasing/</link>
       <pubDate>Tue, 18 May 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://huangbaihua.gitee.io/post/arch/consistent-hasing/</guid>
+      <guid>https://huangbaihua-blog-6fodlgn2bee81bf-1301217831.tcloudbaseapp.com/post/arch/consistent-hasing/</guid>
       <description>
         
           
@@ -43,10 +43,10 @@
     
     <item>
       <title>面向领域的微服务架构-来自优步的实践</title>
-      <link>https://huangbaihua.gitee.io/post/microservice-architecture/</link>
+      <link>https://huangbaihua-blog-6fodlgn2bee81bf-1301217831.tcloudbaseapp.com/post/microservice-architecture/</link>
       <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://huangbaihua.gitee.io/post/microservice-architecture/</guid>
+      <guid>https://huangbaihua-blog-6fodlgn2bee81bf-1301217831.tcloudbaseapp.com/post/microservice-architecture/</guid>
       <description>
         
           
@@ -59,10 +59,10 @@
     
     <item>
       <title>CAP理论简介</title>
-      <link>https://huangbaihua.gitee.io/post/cap-theorem/</link>
+      <link>https://huangbaihua-blog-6fodlgn2bee81bf-1301217831.tcloudbaseapp.com/post/cap-theorem/</link>
       <pubDate>Wed, 07 Apr 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://huangbaihua.gitee.io/post/cap-theorem/</guid>
+      <guid>https://huangbaihua-blog-6fodlgn2bee81bf-1301217831.tcloudbaseapp.com/post/cap-theorem/</guid>
       <description>
         
           
@@ -73,10 +73,10 @@
     
     <item>
       <title>清晰架构</title>
-      <link>https://huangbaihua.gitee.io/post/the-clean-architecture/</link>
+      <link>https://huangbaihua-blog-6fodlgn2bee81bf-1301217831.tcloudbaseapp.com/post/the-clean-architecture/</link>
       <pubDate>Mon, 05 Apr 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://huangbaihua.gitee.io/post/the-clean-architecture/</guid>
+      <guid>https://huangbaihua-blog-6fodlgn2bee81bf-1301217831.tcloudbaseapp.com/post/the-clean-architecture/</guid>
       <description>
         
           
@@ -89,10 +89,10 @@
     
     <item>
       <title>一致性哈希</title>
-      <link>https://huangbaihua.gitee.io/post/consistent-hasing/</link>
+      <link>https://huangbaihua-blog-6fodlgn2bee81bf-1301217831.tcloudbaseapp.com/post/consistent-hasing/</link>
       <pubDate>Mon, 05 Apr 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://huangbaihua.gitee.io/post/consistent-hasing/</guid>
+      <guid>https://huangbaihua-blog-6fodlgn2bee81bf-1301217831.tcloudbaseapp.com/post/consistent-hasing/</guid>
       <description>
         
           
@@ -106,10 +106,10 @@
     
     <item>
       <title>优秀的可伸缩性</title>
-      <link>https://huangbaihua.gitee.io/post/awesome-scalability/</link>
+      <link>https://huangbaihua-blog-6fodlgn2bee81bf-1301217831.tcloudbaseapp.com/post/awesome-scalability/</link>
       <pubDate>Mon, 05 Apr 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://huangbaihua.gitee.io/post/awesome-scalability/</guid>
+      <guid>https://huangbaihua-blog-6fodlgn2bee81bf-1301217831.tcloudbaseapp.com/post/awesome-scalability/</guid>
       <description>
         
           
@@ -124,10 +124,10 @@
     
     <item>
       <title>10大系统设计面试题</title>
-      <link>https://huangbaihua.gitee.io/post/top-10-sdis/</link>
+      <link>https://huangbaihua-blog-6fodlgn2bee81bf-1301217831.tcloudbaseapp.com/post/top-10-sdis/</link>
       <pubDate>Sat, 03 Apr 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://huangbaihua.gitee.io/post/top-10-sdis/</guid>
+      <guid>https://huangbaihua-blog-6fodlgn2bee81bf-1301217831.tcloudbaseapp.com/post/top-10-sdis/</guid>
       <description>
         
           
@@ -142,10 +142,10 @@
     
     <item>
       <title>10倍程序员的秘密</title>
-      <link>https://huangbaihua.gitee.io/post/the-mythical-10x-programmer/</link>
+      <link>https://huangbaihua-blog-6fodlgn2bee81bf-1301217831.tcloudbaseapp.com/post/the-mythical-10x-programmer/</link>
       <pubDate>Sun, 28 Mar 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://huangbaihua.gitee.io/post/the-mythical-10x-programmer/</guid>
+      <guid>https://huangbaihua-blog-6fodlgn2bee81bf-1301217831.tcloudbaseapp.com/post/the-mythical-10x-programmer/</guid>
       <description>
         
           
@@ -158,10 +158,10 @@
     
     <item>
       <title>优秀的首席技术官</title>
-      <link>https://huangbaihua.gitee.io/post/awesome-cto/</link>
+      <link>https://huangbaihua-blog-6fodlgn2bee81bf-1301217831.tcloudbaseapp.com/post/awesome-cto/</link>
       <pubDate>Sun, 28 Mar 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://huangbaihua.gitee.io/post/awesome-cto/</guid>
+      <guid>https://huangbaihua-blog-6fodlgn2bee81bf-1301217831.tcloudbaseapp.com/post/awesome-cto/</guid>
       <description>
         
           

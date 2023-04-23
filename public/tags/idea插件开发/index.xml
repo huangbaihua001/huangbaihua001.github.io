@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>IDEA插件开发 on Keepwalking</title>
-    <link>https://huangbaihua.gitee.io/tags/idea%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/</link>
+    <link>https://huangbaihua-blog-6fodlgn2bee81bf-1301217831.tcloudbaseapp.com/tags/idea%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/</link>
     <description>Recent content in IDEA插件开发 on Keepwalking</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright © 2008–2022, Keepwalking; all rights reserved. Powered by Hugo</copyright>
-    <lastBuildDate>Sat, 04 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://huangbaihua.gitee.io/tags/idea%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 04 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://huangbaihua-blog-6fodlgn2bee81bf-1301217831.tcloudbaseapp.com/tags/idea%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>PSI(程序结构接口)-Intellij 平台的核心抽象</title>
-      <link>https://huangbaihua.gitee.io/post/idea/psi_intro/</link>
+      <link>https://huangbaihua-blog-6fodlgn2bee81bf-1301217831.tcloudbaseapp.com/post/idea/psi_intro/</link>
       <pubDate>Sat, 04 Dec 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://huangbaihua.gitee.io/post/idea/psi_intro/</guid>
+      <guid>https://huangbaihua-blog-6fodlgn2bee81bf-1301217831.tcloudbaseapp.com/post/idea/psi_intro/</guid>
       <description>
         
           
@@ -27,10 +27,10 @@
     
     <item>
       <title>5分钟 IDEA 插件开发快速入门 Demo</title>
-      <link>https://huangbaihua.gitee.io/post/idea/five_minute_quick_demo/</link>
+      <link>https://huangbaihua-blog-6fodlgn2bee81bf-1301217831.tcloudbaseapp.com/post/idea/five_minute_quick_demo/</link>
       <pubDate>Sat, 20 Nov 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://huangbaihua.gitee.io/post/idea/five_minute_quick_demo/</guid>
+      <guid>https://huangbaihua-blog-6fodlgn2bee81bf-1301217831.tcloudbaseapp.com/post/idea/five_minute_quick_demo/</guid>
       <description>
         
           
