@@ -1,7 +1,7 @@
 # set `baseurl` to your root domain
 # if you set it to "/" share icons won't work properly on production
 #baseurl = "https://huangbaihua-blog-6fodlgn2bee81bf-1301217831.tcloudbaseapp.com/"  # Include trailing slash
-baseurl = "https://huangbaihua001.github.io/me/"
+baseurl = "https://huangbaihua001.github.io/"
 title = "baihua.huang"
 author = "Keepwalking(baihua.huang)"
 copyright = "Copyright © 2008–2022, Keepwalking; all rights reserved. Powered by Hugo"
