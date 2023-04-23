@@ -1,6 +1,15 @@
 
 <!DOCTYPE html>
-<html lang="zh" data-figures="" class="page" data-mode="lit">
+<html
+  lang="zh"
+  data-figures=""
+  
+    class="page"
+  
+  
+    data-mode="lit"
+  
+  >
   <head>
 <title>5分钟 IDEA 插件开发快速入门 Demo | Keepwalking</title>
 <meta charset="utf-8">
@@ -11,19 +20,24 @@
   (function() {
     var hm = document.createElement("script");
     hm.src = "https://hm.baidu.com/hm.js?36c89dc767ce47cf446295d1c91558b5";
-    var s = document.getElementsByTagName("script")[0]; 
+    var s = document.getElementsByTagName("script")[0];
     s.parentNode.insertBefore(hm, s);
   })();
 </script>
+
+
+
+
 
   
 <meta property="og:locale" content="zh" />
 
 <meta property="og:type" content="article">
-<meta name="description" content="5分钟 IDEA 插件开发快速入门 Demo">
+<meta name="description" content="5分钟 IDEA 插件开发快速入门 Demo" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="baihua.huang@twitter.com">
 <meta name="twitter:title" content="5分钟 IDEA 插件开发快速入门 Demo" />
+<meta name="twitter:image" content="https://huangbaihua.gitee.io/images/thumbnail.png"/>
 <meta property="og:url" content="https://huangbaihua.gitee.io/post/idea/five_minute_quick_demo/" />
 <meta property="og:title" content="5分钟 IDEA 插件开发快速入门 Demo" />
 <meta property="og:description" content="5分钟 IDEA 插件开发快速入门 Demo" />
@@ -35,33 +49,39 @@
 
 <link rel="canonical" href="https://huangbaihua.gitee.io/post/idea/five_minute_quick_demo/">
 
-    
 
-    
-    
-    <link rel="preload" href="https://huangbaihua.gitee.io/css/styles.782bf96a82b3cc5b3cee4c47a42cc81321f16960a6d41fab3277c4abe047bc7ae044ea1bb7ae4d237c12baa0143e02f95969e5e8b6e68d9dcfd14158cfa244ac.css" integrity = "sha512-eCv5aoKzzFs87kxHpCzIEyHxaWCm1B&#43;rMnfEq&#43;BHvHrgROobt65NI3wSuqAUPgL5WWnl6LbmjZ3P0UFYz6JErA==" as="style" crossorigin="anonymous">
-    <link rel="preload" href="https://huangbaihua.gitee.io/js/bundle.min.f2a388484c9a163666327c8d1d4c4a29c5893327ee7ddd02f8719aa4a90f7e850d78cf077da45b11f359a5afe11ffa49e744d9ef835e4465f73c4b99209316a4.js" as="script" integrity=
-    "sha512-8qOISEyaFjZmMnyNHUxKKcWJMyfufd0C&#43;HGapKkPfoUNeM8HfaRbEfNZpa/hH/pJ50TZ74NeRGX3PEuZIJMWpA==" crossorigin="anonymous">
 
-    
-    <link rel="stylesheet" type="text/css" href="https://huangbaihua.gitee.io/css/styles.782bf96a82b3cc5b3cee4c47a42cc81321f16960a6d41fab3277c4abe047bc7ae044ea1bb7ae4d237c12baa0143e02f95969e5e8b6e68d9dcfd14158cfa244ac.css" integrity="sha512-eCv5aoKzzFs87kxHpCzIEyHxaWCm1B&#43;rMnfEq&#43;BHvHrgROobt65NI3wSuqAUPgL5WWnl6LbmjZ3P0UFYz6JErA==" crossorigin="anonymous">
-    
+<link rel="preload" href="https://huangbaihua.gitee.io/css/styles.42e2c5f6d8cf9c52872666f8d8b2678ad0c426978b9d78aff3c33b7a1e7f6f97f54bcdaf0518a25fb0fe26367d04f8b07c683b3b38b331cb098daadee06b1f3e.css" integrity = "sha512-QuLF9tjPnFKHJmb42LJnitDEJpeLnXiv88M7eh5/b5f1S82vBRiiX7D&#43;JjZ9BPiwfGg7OzizMcsJjare4GsfPg==" as="style" crossorigin="anonymous">
+
+
+
+<link rel="preload" href="https://huangbaihua.gitee.io/zh/js/bundle.6253736a7a30f8dce4497a637233c790a6fab8efee82daa096a1c3a07f3cfdb4695ba1f6731ef325235a1a88e64d05098c1b13ed72dafea23d7120ee865961c3.js" as="script" integrity=
+"sha512-YlNzanow&#43;NzkSXpjcjPHkKb6uO/ugtqglqHDoH88/bRpW6H2cx7zJSNaGojmTQUJjBsT7XLa/qI9cSDuhllhww==" crossorigin="anonymous">
+
+
+<link rel="stylesheet" type="text/css" href="https://huangbaihua.gitee.io/css/styles.42e2c5f6d8cf9c52872666f8d8b2678ad0c426978b9d78aff3c33b7a1e7f6f97f54bcdaf0518a25fb0fe26367d04f8b07c683b3b38b331cb098daadee06b1f3e.css" integrity="sha512-QuLF9tjPnFKHJmb42LJnitDEJpeLnXiv88M7eh5/b5f1S82vBRiiX7D&#43;JjZ9BPiwfGg7OzizMcsJjare4GsfPg==" crossorigin="anonymous">
+
   </head>
-  
-  
-    
-  
-  <body data-code="7" data-lines="false" id="documentTop">
+  <body
+    data-code="7"
+    data-lines="false"
+    id="documentTop"
+    data-lang="zh"
+  >
 
 <header class="nav_header" >
   <nav class="nav"><a href='https://huangbaihua.gitee.io/' class="nav_brand nav_item" title="Keepwalking">
   <img src="https://huangbaihua.gitee.io/logos/logo.png" class="logo" alt="Keepwalking">
   <div class="nav_close">
     <div><svg class="icon">
+  <title>open-menu</title>
   <use xlink:href="#open-menu"></use>
-</svg><svg class="icon">
+</svg>
+<svg class="icon">
+  <title>closeme</title>
   <use xlink:href="#closeme"></use>
-</svg></div>
+</svg>
+</div>
   </div>
 </a>
 
@@ -98,14 +118,18 @@
 <div class='follow'>
   <a href="https://github.com/huangbaihua001">
     <svg class="icon">
+  <title>github</title>
   <use xlink:href="#github"></use>
 </svg>
+
   </a>
     
   <a href="https://huangbaihua.gitee.io/index.xml">
     <svg class="icon">
+  <title>rss</title>
   <use xlink:href="#rss"></use>
 </svg>
+
   </a>
 <div class="color_mode">
   <input type="checkbox" class="color_choice" id="mode">
@@ -124,13 +148,15 @@
     <h1 class="post_title">5分钟 IDEA 插件开发快速入门 Demo</h1>
   <div class="post_meta">
     <span><svg class="icon">
+  <title>calendar</title>
   <use xlink:href="#calendar"></use>
-</svg></span>
+</svg>
+</span>
     <span class="post_date">
       2021年11月20日</span>
-    <span class="post_time"><span class="post-date">约 &nbsp;<font color="red">2885</font>&nbsp;字 </span> · 阅读 6 分钟</span><span>&nbsp;· <a href='https://huangbaihua.gitee.io/tags/%E5%8E%9F%E5%88%9B' title="原创" class="post_tag button button_translucent">原创
-        </a><a href='https://huangbaihua.gitee.io/tags/5%E5%88%86%E9%92%9F%E5%85%A5%E9%97%A8%E7%B3%BB%E5%88%97' title="5分钟入门系列" class="post_tag button button_translucent">5分钟入门系列
-        </a><a href='https://huangbaihua.gitee.io/tags/idea%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91' title="IDEA插件开发" class="post_tag button button_translucent">IDEA插件开发
+    <span class="post_time"> · 阅读 6 分钟</span><span>&nbsp;· <a href='https://huangbaihua.gitee.io/tags/%E5%8E%9F%E5%88%9B/' title="原创" class="post_tag button button_translucent">原创
+        </a><a href='https://huangbaihua.gitee.io/tags/5%E5%88%86%E9%92%9F%E5%85%A5%E9%97%A8%E7%B3%BB%E5%88%97/' title="5分钟入门系列" class="post_tag button button_translucent">5分钟入门系列
+        </a><a href='https://huangbaihua.gitee.io/tags/idea%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/' title="IDEA插件开发" class="post_tag button button_translucent">IDEA插件开发
         </a>
     </span>
     <span class="page_only">&nbsp;·
@@ -138,41 +164,68 @@
     分享到:
     <a href="https://twitter.com/intent/tweet?text=5%e5%88%86%e9%92%9f%20IDEA%20%e6%8f%92%e4%bb%b6%e5%bc%80%e5%8f%91%e5%bf%ab%e9%80%9f%e5%85%a5%e9%97%a8%20Demo&url=https%3a%2f%2fhuangbaihua.gitee.io%2fpost%2fidea%2ffive_minute_quick_demo%2f&tw_p=tweetbutton" class="twitter" title="分享到 Twitter" target="_blank" rel="nofollow">
       <svg class="icon">
+  <title>twitter</title>
   <use xlink:href="#twitter"></use>
 </svg>
+
     </a>
     <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fhuangbaihua.gitee.io%2fpost%2fidea%2ffive_minute_quick_demo%2f&t=5%e5%88%86%e9%92%9f%20IDEA%20%e6%8f%92%e4%bb%b6%e5%bc%80%e5%8f%91%e5%bf%ab%e9%80%9f%e5%85%a5%e9%97%a8%20Demo" class="facebook" title="分享到 Facebook" target="_blank" rel="nofollow">
       <svg class="icon">
+  <title>facebook</title>
   <use xlink:href="#facebook"></use>
 </svg>
+
     </a>
     <a href="#linkedinshare" id = "linkedinshare" class="linkedin" title="分享到 LinkedIn" rel="nofollow">
       <svg class="icon">
+  <title>linkedin</title>
   <use xlink:href="#linkedin"></use>
 </svg>
+
     </a>
     <a href="https://huangbaihua.gitee.io/post/idea/five_minute_quick_demo/" title="Copy Link" class="link link_yank">
       <svg class="icon">
+  <title>copy</title>
   <use xlink:href="#copy"></use>
 </svg>
+
     </a>
   </div>
   </span>
   </div>
 
-
-
-
-    
-    <div class="post_body"><p><img src="/images/idea/import-maven-intellij-thumbnail.png" alt=""></p>
-<p>基于 Gradle 开发 IntelliJ 插件是官方推荐的方式。本 Demo
+    <div class="post_body"><p>基于 Gradle 开发 IntelliJ 插件是官方推荐的方式。本 Demo
 使用 <a href="https://github.com/JetBrains/intellij-platform-plugin-template">IntelliJ Platform Plugin Template</a> 快速构建一个插件项目 。
 利用 <a href="https://plugins.jetbrains.com/docs/intellij/intellij-platform.html">IntelliJ Platform</a> 平台开发自己的第一个插件！</p>
 <h1 id="5分钟-idea-插件开发快速入门-demo">5分钟 IDEA 插件开发快速入门 Demo</h1>
 <p>基于 Gradle 开发 IntelliJ 插件是官方推荐的方式。本 Demo
 使用 <a href="https://github.com/JetBrains/intellij-platform-plugin-template">IntelliJ Platform Plugin Template</a> 快速构建一个插件项目 。
 利用 <a href="https://plugins.jetbrains.com/docs/intellij/intellij-platform.html">IntelliJ Platform</a> 平台开发自己的第一个插件！</p>
-<p><img src="https://img.shields.io/badge/JDK-8+-green.svg" alt="Requirement"></p>
+<p><figure>
+  <picture>
+
+    
+      
+        
+        
+        
+        
+        
+        
+    <img
+      loading="lazy"
+      decoding="async"
+      alt="Requirement"
+      
+        class="image_figure image_external image_svg image_unprocessed"
+        src="https://img.shields.io/badge/JDK-8&#43;-green.svg"
+      
+      
+    />
+
+    </picture>
+</figure>
+</p>
 <h2 id="demo简介">Demo简介</h2>
 <p>本Demo主要演示如何快速构建一个插件项目，实现一个 Action，对 IDEA 插件开发有个最基本的了解。</p>
 <p>本Demo目标：</p>
@@ -183,176 +236,193 @@
 </ul>
 <hr>
 <p>项目结构预览</p>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">  1</span>~5-Minutes-Demo~\QUICK-PLUGIN-DEMO
-<span class="ln">  2</span>|   .gitignore
-<span class="ln">  3</span>|   build.gradle.kts
-<span class="ln">  4</span>|   CHANGELOG.md
-<span class="ln">  5</span>|   CODE_OF_CONDUCT.md
-<span class="ln">  6</span>|   gradle.properties
-<span class="ln">  7</span>|   gradlew
-<span class="ln">  8</span>|   gradlew.bat
-<span class="ln">  9</span>|   LICENSE
-<span class="ln"> 10</span>|   qodana.yml
-<span class="ln"> 11</span>|   README.md
-<span class="ln"> 12</span>|   settings.gradle.kts
-<span class="ln"> 13</span>|   
-<span class="ln"> 14</span>+---.github
-<span class="ln"> 15</span>|   |   dependabot.yml
-<span class="ln"> 16</span>|   |   
-<span class="ln"> 17</span>|   +---ISSUE_TEMPLATE
-<span class="ln"> 18</span>|   |       bug_report.md
-<span class="ln"> 19</span>|   |       
-<span class="ln"> 20</span>|   +---readme
-<span class="ln"> 21</span>|   |       draft-release.png
-<span class="ln"> 22</span>|   |       intellij-platform-plugin-template.png
-<span class="ln"> 23</span>|   |       qodana.png
-<span class="ln"> 24</span>|   |       run-debug-configurations.png
-<span class="ln"> 25</span>|   |       run-logs.png
-<span class="ln"> 26</span>|   |       settings-secrets.png
-<span class="ln"> 27</span>|   |       ui-testing.png
-<span class="ln"> 28</span>|   |       use-this-template.png
-<span class="ln"> 29</span>|   |       
-<span class="ln"> 30</span>|   +---template-cleanup
-<span class="ln"> 31</span>|   |   |   CHANGELOG.md
-<span class="ln"> 32</span>|   |   |   gradle.properties
-<span class="ln"> 33</span>|   |   |   README.md
-<span class="ln"> 34</span>|   |   |   settings.gradle.kts
-<span class="ln"> 35</span>|   |   |   
-<span class="ln"> 36</span>|   |   \---.github
-<span class="ln"> 37</span>|   |           dependabot.yml
-<span class="ln"> 38</span>|   |           
-<span class="ln"> 39</span>|   \---workflows
-<span class="ln"> 40</span>|           build.yml
-<span class="ln"> 41</span>|           release.yml
-<span class="ln"> 42</span>|           run-ui-tests.yml
-<span class="ln"> 43</span>|           template-cleanup.yml
-<span class="ln"> 44</span>|           
-<span class="ln"> 45</span>+---.idea
-<span class="ln"> 46</span>|       icon.png
-<span class="ln"> 47</span>|       
-<span class="ln"> 48</span>+---.run
-<span class="ln"> 49</span>|       Run IDE for UI Tests.run.xml
-<span class="ln"> 50</span>|       Run IDE with Plugin.run.xml
-<span class="ln"> 51</span>|       Run Plugin Tests.run.xml
-<span class="ln"> 52</span>|       Run Plugin Verification.run.xml
-<span class="ln"> 53</span>|       Run Qodana.run.xml
-<span class="ln"> 54</span>|       
-<span class="ln"> 55</span>+---gradle
-<span class="ln"> 56</span>|   \---wrapper
-<span class="ln"> 57</span>|           gradle-wrapper.jar
-<span class="ln"> 58</span>|           gradle-wrapper.properties
-<span class="ln"> 59</span>|           
-<span class="ln"> 60</span>\---src
-<span class="ln"> 61</span>    +---main
-<span class="ln"> 62</span>    |   +---java
-<span class="ln"> 63</span>    |   |   \---jiux
-<span class="ln"> 64</span>    |   |       \---net
-<span class="ln"> 65</span>    |   |           \---idea
-<span class="ln"> 66</span>    |   |               \---plugin
-<span class="ln"> 67</span>    |   |                   \---demo
-<span class="ln"> 68</span>    |   |                       \---action
-<span class="ln"> 69</span>    |   |                               EditorReplaceAction.java
-<span class="ln"> 70</span>    |   |                               PsiDemoAction.java
-<span class="ln"> 71</span>    |   |                               
-<span class="ln"> 72</span>    |   +---kotlin
-<span class="ln"> 73</span>    |   |   \---org
-<span class="ln"> 74</span>    |   |       \---jetbrains
-<span class="ln"> 75</span>    |   |           \---plugins
-<span class="ln"> 76</span>    |   |               \---template
-<span class="ln"> 77</span>    |   |                   |   MyBundle.kt
-<span class="ln"> 78</span>    |   |                   |   
-<span class="ln"> 79</span>    |   |                   +---listeners
-<span class="ln"> 80</span>    |   |                   |       MyProjectManagerListener.kt
-<span class="ln"> 81</span>    |   |                   |       
-<span class="ln"> 82</span>    |   |                   \---services
-<span class="ln"> 83</span>    |   |                           MyApplicationService.kt
-<span class="ln"> 84</span>    |   |                           MyProjectService.kt
-<span class="ln"> 85</span>    |   |                           
-<span class="ln"> 86</span>    |   \---resources
-<span class="ln"> 87</span>    |       +---messages
-<span class="ln"> 88</span>    |       |       MyBundle.properties
-<span class="ln"> 89</span>    |       |       
-<span class="ln"> 90</span>    |       \---META-INF
-<span class="ln"> 91</span>    |               plugin.xml
-<span class="ln"> 92</span>    |               pluginIcon.svg
-<span class="ln"> 93</span>    |               
-<span class="ln"> 94</span>    \---test
-<span class="ln"> 95</span>        +---kotlin
-<span class="ln"> 96</span>        |   \---org
-<span class="ln"> 97</span>        |       \---jetbrains
-<span class="ln"> 98</span>        |           \---plugins
-<span class="ln"> 99</span>        |               \---template
-<span class="ln">100</span>        |                       MyPluginTest.kt
-<span class="ln">101</span>        |                       
-<span class="ln">102</span>        \---testData
-<span class="ln">103</span>            \---rename
-<span class="ln">104</span>                    foo.xml
-<span class="ln">105</span>                    foo_after.xml
-<span class="ln">106</span>
-</code></pre></div><h2 id="第一步利用-intellij-platform-plugin-template-创建项目">第一步：利用 IntelliJ Platform Plugin Template 创建项目</h2>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="ln"> 1</span><span class="c1"># clone 项目到本地 </span>
-<span class="ln"> 2</span>
-<span class="ln"> 3</span>git clone git@github.com:JetBrains/intellij-platform-plugin-template.git quick-plugin-demo
-<span class="ln"> 4</span>
-<span class="ln"> 5</span><span class="c1"># 删除 github 的远程仓库地址， 切换成自己的</span>
-<span class="ln"> 6</span>
-<span class="ln"> 7</span>git remote rm origin
-<span class="ln"> 8</span>
-<span class="ln"> 9</span>git remote add origin 自己的远程仓库地址
-<span class="ln">10</span>
-</code></pre></div><p>该步骤有可能因为墙的原因网络被中断，多试几次。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="ln">  1</span><span class="cl">~5-Minutes-Demo~\QUICK-PLUGIN-DEMO
+</span></span><span class="line"><span class="ln">  2</span><span class="cl">|   .gitignore
+</span></span><span class="line"><span class="ln">  3</span><span class="cl">|   build.gradle.kts
+</span></span><span class="line"><span class="ln">  4</span><span class="cl">|   CHANGELOG.md
+</span></span><span class="line"><span class="ln">  5</span><span class="cl">|   CODE_OF_CONDUCT.md
+</span></span><span class="line"><span class="ln">  6</span><span class="cl">|   gradle.properties
+</span></span><span class="line"><span class="ln">  7</span><span class="cl">|   gradlew
+</span></span><span class="line"><span class="ln">  8</span><span class="cl">|   gradlew.bat
+</span></span><span class="line"><span class="ln">  9</span><span class="cl">|   LICENSE
+</span></span><span class="line"><span class="ln"> 10</span><span class="cl">|   qodana.yml
+</span></span><span class="line"><span class="ln"> 11</span><span class="cl">|   README.md
+</span></span><span class="line"><span class="ln"> 12</span><span class="cl">|   settings.gradle.kts
+</span></span><span class="line"><span class="ln"> 13</span><span class="cl">|   
+</span></span><span class="line"><span class="ln"> 14</span><span class="cl">+---.github
+</span></span><span class="line"><span class="ln"> 15</span><span class="cl">|   |   dependabot.yml
+</span></span><span class="line"><span class="ln"> 16</span><span class="cl">|   |   
+</span></span><span class="line"><span class="ln"> 17</span><span class="cl">|   +---ISSUE_TEMPLATE
+</span></span><span class="line"><span class="ln"> 18</span><span class="cl">|   |       bug_report.md
+</span></span><span class="line"><span class="ln"> 19</span><span class="cl">|   |       
+</span></span><span class="line"><span class="ln"> 20</span><span class="cl">|   +---readme
+</span></span><span class="line"><span class="ln"> 21</span><span class="cl">|   |       draft-release.png
+</span></span><span class="line"><span class="ln"> 22</span><span class="cl">|   |       intellij-platform-plugin-template.png
+</span></span><span class="line"><span class="ln"> 23</span><span class="cl">|   |       qodana.png
+</span></span><span class="line"><span class="ln"> 24</span><span class="cl">|   |       run-debug-configurations.png
+</span></span><span class="line"><span class="ln"> 25</span><span class="cl">|   |       run-logs.png
+</span></span><span class="line"><span class="ln"> 26</span><span class="cl">|   |       settings-secrets.png
+</span></span><span class="line"><span class="ln"> 27</span><span class="cl">|   |       ui-testing.png
+</span></span><span class="line"><span class="ln"> 28</span><span class="cl">|   |       use-this-template.png
+</span></span><span class="line"><span class="ln"> 29</span><span class="cl">|   |       
+</span></span><span class="line"><span class="ln"> 30</span><span class="cl">|   +---template-cleanup
+</span></span><span class="line"><span class="ln"> 31</span><span class="cl">|   |   |   CHANGELOG.md
+</span></span><span class="line"><span class="ln"> 32</span><span class="cl">|   |   |   gradle.properties
+</span></span><span class="line"><span class="ln"> 33</span><span class="cl">|   |   |   README.md
+</span></span><span class="line"><span class="ln"> 34</span><span class="cl">|   |   |   settings.gradle.kts
+</span></span><span class="line"><span class="ln"> 35</span><span class="cl">|   |   |   
+</span></span><span class="line"><span class="ln"> 36</span><span class="cl">|   |   \---.github
+</span></span><span class="line"><span class="ln"> 37</span><span class="cl">|   |           dependabot.yml
+</span></span><span class="line"><span class="ln"> 38</span><span class="cl">|   |           
+</span></span><span class="line"><span class="ln"> 39</span><span class="cl">|   \---workflows
+</span></span><span class="line"><span class="ln"> 40</span><span class="cl">|           build.yml
+</span></span><span class="line"><span class="ln"> 41</span><span class="cl">|           release.yml
+</span></span><span class="line"><span class="ln"> 42</span><span class="cl">|           run-ui-tests.yml
+</span></span><span class="line"><span class="ln"> 43</span><span class="cl">|           template-cleanup.yml
+</span></span><span class="line"><span class="ln"> 44</span><span class="cl">|           
+</span></span><span class="line"><span class="ln"> 45</span><span class="cl">+---.idea
+</span></span><span class="line"><span class="ln"> 46</span><span class="cl">|       icon.png
+</span></span><span class="line"><span class="ln"> 47</span><span class="cl">|       
+</span></span><span class="line"><span class="ln"> 48</span><span class="cl">+---.run
+</span></span><span class="line"><span class="ln"> 49</span><span class="cl">|       Run IDE for UI Tests.run.xml
+</span></span><span class="line"><span class="ln"> 50</span><span class="cl">|       Run IDE with Plugin.run.xml
+</span></span><span class="line"><span class="ln"> 51</span><span class="cl">|       Run Plugin Tests.run.xml
+</span></span><span class="line"><span class="ln"> 52</span><span class="cl">|       Run Plugin Verification.run.xml
+</span></span><span class="line"><span class="ln"> 53</span><span class="cl">|       Run Qodana.run.xml
+</span></span><span class="line"><span class="ln"> 54</span><span class="cl">|       
+</span></span><span class="line"><span class="ln"> 55</span><span class="cl">+---gradle
+</span></span><span class="line"><span class="ln"> 56</span><span class="cl">|   \---wrapper
+</span></span><span class="line"><span class="ln"> 57</span><span class="cl">|           gradle-wrapper.jar
+</span></span><span class="line"><span class="ln"> 58</span><span class="cl">|           gradle-wrapper.properties
+</span></span><span class="line"><span class="ln"> 59</span><span class="cl">|           
+</span></span><span class="line"><span class="ln"> 60</span><span class="cl">\---src
+</span></span><span class="line"><span class="ln"> 61</span><span class="cl">    +---main
+</span></span><span class="line"><span class="ln"> 62</span><span class="cl">    |   +---java
+</span></span><span class="line"><span class="ln"> 63</span><span class="cl">    |   |   \---jiux
+</span></span><span class="line"><span class="ln"> 64</span><span class="cl">    |   |       \---net
+</span></span><span class="line"><span class="ln"> 65</span><span class="cl">    |   |           \---idea
+</span></span><span class="line"><span class="ln"> 66</span><span class="cl">    |   |               \---plugin
+</span></span><span class="line"><span class="ln"> 67</span><span class="cl">    |   |                   \---demo
+</span></span><span class="line"><span class="ln"> 68</span><span class="cl">    |   |                       \---action
+</span></span><span class="line"><span class="ln"> 69</span><span class="cl">    |   |                               EditorReplaceAction.java
+</span></span><span class="line"><span class="ln"> 70</span><span class="cl">    |   |                               PsiDemoAction.java
+</span></span><span class="line"><span class="ln"> 71</span><span class="cl">    |   |                               
+</span></span><span class="line"><span class="ln"> 72</span><span class="cl">    |   +---kotlin
+</span></span><span class="line"><span class="ln"> 73</span><span class="cl">    |   |   \---org
+</span></span><span class="line"><span class="ln"> 74</span><span class="cl">    |   |       \---jetbrains
+</span></span><span class="line"><span class="ln"> 75</span><span class="cl">    |   |           \---plugins
+</span></span><span class="line"><span class="ln"> 76</span><span class="cl">    |   |               \---template
+</span></span><span class="line"><span class="ln"> 77</span><span class="cl">    |   |                   |   MyBundle.kt
+</span></span><span class="line"><span class="ln"> 78</span><span class="cl">    |   |                   |   
+</span></span><span class="line"><span class="ln"> 79</span><span class="cl">    |   |                   +---listeners
+</span></span><span class="line"><span class="ln"> 80</span><span class="cl">    |   |                   |       MyProjectManagerListener.kt
+</span></span><span class="line"><span class="ln"> 81</span><span class="cl">    |   |                   |       
+</span></span><span class="line"><span class="ln"> 82</span><span class="cl">    |   |                   \---services
+</span></span><span class="line"><span class="ln"> 83</span><span class="cl">    |   |                           MyApplicationService.kt
+</span></span><span class="line"><span class="ln"> 84</span><span class="cl">    |   |                           MyProjectService.kt
+</span></span><span class="line"><span class="ln"> 85</span><span class="cl">    |   |                           
+</span></span><span class="line"><span class="ln"> 86</span><span class="cl">    |   \---resources
+</span></span><span class="line"><span class="ln"> 87</span><span class="cl">    |       +---messages
+</span></span><span class="line"><span class="ln"> 88</span><span class="cl">    |       |       MyBundle.properties
+</span></span><span class="line"><span class="ln"> 89</span><span class="cl">    |       |       
+</span></span><span class="line"><span class="ln"> 90</span><span class="cl">    |       \---META-INF
+</span></span><span class="line"><span class="ln"> 91</span><span class="cl">    |               plugin.xml
+</span></span><span class="line"><span class="ln"> 92</span><span class="cl">    |               pluginIcon.svg
+</span></span><span class="line"><span class="ln"> 93</span><span class="cl">    |               
+</span></span><span class="line"><span class="ln"> 94</span><span class="cl">    \---test
+</span></span><span class="line"><span class="ln"> 95</span><span class="cl">        +---kotlin
+</span></span><span class="line"><span class="ln"> 96</span><span class="cl">        |   \---org
+</span></span><span class="line"><span class="ln"> 97</span><span class="cl">        |       \---jetbrains
+</span></span><span class="line"><span class="ln"> 98</span><span class="cl">        |           \---plugins
+</span></span><span class="line"><span class="ln"> 99</span><span class="cl">        |               \---template
+</span></span><span class="line"><span class="ln">100</span><span class="cl">        |                       MyPluginTest.kt
+</span></span><span class="line"><span class="ln">101</span><span class="cl">        |                       
+</span></span><span class="line"><span class="ln">102</span><span class="cl">        \---testData
+</span></span><span class="line"><span class="ln">103</span><span class="cl">            \---rename
+</span></span><span class="line"><span class="ln">104</span><span class="cl">                    foo.xml
+</span></span><span class="line"><span class="ln">105</span><span class="cl">                    foo_after.xml
+</span></span></code></pre></div><h2 id="第一步利用-intellij-platform-plugin-template-创建项目">第一步：利用 IntelliJ Platform Plugin Template 创建项目</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln">1</span><span class="cl"><span class="c1"># clone 项目到本地 </span>
+</span></span><span class="line"><span class="ln">2</span><span class="cl">
+</span></span><span class="line"><span class="ln">3</span><span class="cl">git clone git@github.com:JetBrains/intellij-platform-plugin-template.git quick-plugin-demo
+</span></span><span class="line"><span class="ln">4</span><span class="cl">
+</span></span><span class="line"><span class="ln">5</span><span class="cl"><span class="c1"># 删除 github 的远程仓库地址， 切换成自己的</span>
+</span></span><span class="line"><span class="ln">6</span><span class="cl">
+</span></span><span class="line"><span class="ln">7</span><span class="cl">git remote rm origin
+</span></span><span class="line"><span class="ln">8</span><span class="cl">
+</span></span><span class="line"><span class="ln">9</span><span class="cl">git remote add origin 自己的远程仓库地址
+</span></span></code></pre></div><p>该步骤有可能因为墙的原因网络被中断，多试几次。</p>
 <h2 id="第二步导入项目进行相关配置">第二步：导入项目，进行相关配置</h2>
 <h3 id="修改配置支持java8">修改配置支持Java8</h3>
 <ul>
 <li>gradle.properties</li>
 </ul>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln"> 1</span>
-<span class="ln"> 2</span># 插件支持的最小版本改为 202
-<span class="ln"> 3</span>pluginSinceBuild=202
-<span class="ln"> 4</span>#增加 2020.2版本
-<span class="ln"> 5</span>pluginVerifierIdeVersions=2020.2, 2020.3.4, 2021.1.3, 2021.2.1
-<span class="ln"> 6</span># IC是社区版，这里用IU企业版
-<span class="ln"> 7</span>platformType=IU
-<span class="ln"> 8</span>#该版本为要求Java8的最高版本,在此之后的版本最低要求Java11
-<span class="ln"> 9</span>platformVersion=2020.2
-<span class="ln">10</span>#JDK1.8
-<span class="ln">11</span>javaVersion=1.8
-<span class="ln">12</span>
-<span class="ln">13</span>
-</code></pre></div><p>IDEA 更多版本号，参见 <a href="https://plugins.jetbrains.com/docs/intellij/build-number-ranges.html#intellij-platform-based-products-of-recent-ide-versions">最新IDEA版本</a></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-properties" data-lang="properties"><span class="line"><span class="ln"> 1</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="c1"># 插件支持的最小版本改为 202</span>
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="na">pluginSinceBuild</span><span class="o">=</span><span class="s">202</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="c1">#增加 2020.2版本</span>
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="na">pluginVerifierIdeVersions</span><span class="o">=</span><span class="s">2020.2, 2020.3.4, 2021.1.3, 2021.2.1</span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="c1"># IC是社区版，这里用IU企业版</span>
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl"><span class="na">platformType</span><span class="o">=</span><span class="s">IU</span>
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="c1">#该版本为要求Java8的最高版本,在此之后的版本最低要求Java11</span>
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="na">platformVersion</span><span class="o">=</span><span class="s">2020.2</span>
+</span></span><span class="line"><span class="ln">10</span><span class="cl"><span class="c1">#JDK1.8</span>
+</span></span><span class="line"><span class="ln">11</span><span class="cl"><span class="na">javaVersion</span><span class="o">=</span><span class="s">1.8</span>
+</span></span></code></pre></div><p>IDEA 更多版本号，参见 <a href="https://plugins.jetbrains.com/docs/intellij/build-number-ranges.html#intellij-platform-based-products-of-recent-ide-versions">最新IDEA版本</a></p>
 <ul>
 <li>build.gradle.kts</li>
 </ul>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="ln">1</span>// 将 Gradle IntelliJ Plugin 的版本修改为 1.0
-<span class="ln">2</span>id<span class="o">(</span><span class="s2">&#34;org.jetbrains.intellij&#34;</span><span class="o">)</span> version <span class="s2">&#34;1.0&#34;</span>
-<span class="ln">3</span>
-</code></pre></div><p>完成以上修改后， 重新加载项目，点击运行 Run Plugin 启动插件。
-<img src="/images/idea/first-run.png" alt="first-run.png"></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln">1</span><span class="cl">// 将 Gradle IntelliJ Plugin 的版本修改为 1.0
+</span></span><span class="line"><span class="ln">2</span><span class="cl">id<span class="o">(</span><span class="s2">&#34;org.jetbrains.intellij&#34;</span><span class="o">)</span> version <span class="s2">&#34;1.0&#34;</span>
+</span></span></code></pre></div><p>完成以上修改后， 重新加载项目，点击运行 Run Plugin 启动插件。
+<figure>
+  <picture>
+
+    
+      
+        
+        
+        
+        
+        
+        
+    <img
+      loading="lazy"
+      decoding="async"
+      alt="first-run.png"
+      
+        class="image_figure image_internal image_unprocessed"
+        src="/images/idea/first-run.png"
+      
+      
+    />
+
+    </picture>
+</figure>
+</p>
 <h3 id="支持java平台">支持Java平台</h3>
 <p>默认只引入了基础平台相关的Jar包，要支持 Java 语言，需要自己添加。</p>
 <ul>
 <li>gradle.properties</li>
 </ul>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="ln">1</span>
-<span class="ln">2</span><span class="c1"># 引入Java支持</span>
-<span class="ln">3</span><span class="nv">platformPlugins</span><span class="o">=</span>com.intellij.java
-<span class="ln">4</span>
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="ln">1</span><span class="cl">
+</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="c1"># 引入Java支持</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl"><span class="nv">platformPlugins</span><span class="o">=</span>com.intellij.java
+</span></span></code></pre></div><ul>
 <li>src/main/resources/META-INF/plugin.xml</li>
 </ul>
-<div class="highlight"><pre class="chroma"><code class="language-xml" data-lang="xml"><span class="ln">1</span>
-<span class="ln">2</span><span class="nt">&lt;idea-plugin&gt;</span>
-<span class="ln">3</span>
-<span class="ln">4</span>    <span class="c">&lt;!-- 引入Java依赖 --&gt;</span>
-<span class="ln">5</span>    <span class="nt">&lt;depends&gt;</span>com.intellij.java<span class="nt">&lt;/depends&gt;</span>
-<span class="ln">6</span>    <span class="nt">&lt;depends&gt;</span>com.intellij.modules.lang<span class="nt">&lt;/depends&gt;</span>
-<span class="ln">7</span>
-<span class="ln">8</span><span class="nt">&lt;/idea-plugin&gt;</span>
-<span class="ln">9</span>
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="ln">1</span><span class="cl">
+</span></span><span class="line"><span class="ln">2</span><span class="cl"><span class="nt">&lt;idea-plugin&gt;</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl">
+</span></span><span class="line"><span class="ln">4</span><span class="cl">    <span class="c">&lt;!-- 引入Java依赖 --&gt;</span>
+</span></span><span class="line"><span class="ln">5</span><span class="cl">    <span class="nt">&lt;depends&gt;</span>com.intellij.java<span class="nt">&lt;/depends&gt;</span>
+</span></span><span class="line"><span class="ln">6</span><span class="cl">    <span class="nt">&lt;depends&gt;</span>com.intellij.modules.lang<span class="nt">&lt;/depends&gt;</span>
+</span></span><span class="line"><span class="ln">7</span><span class="cl">
+</span></span><span class="line"><span class="ln">8</span><span class="cl"><span class="nt">&lt;/idea-plugin&gt;</span>
+</span></span></code></pre></div><ul>
 <li>创建Java源代码目录</li>
 </ul>
-<p>IDEA 插件既支持 Kotlin,Java 语言独立开发，也支持两者混合开发，写的类可以互相调用。 默认只有 kotlin 源代码目录。 
+<p>IDEA 插件既支持 Kotlin,Java 语言独立开发，也支持两者混合开发，写的类可以互相调用。 默认只有 kotlin 源代码目录。
 Java 源代码目录需要手动创建。 创建 src/main/java 即可开始写 Java 代码了。</p>
 <p>默认的 kotlin 目录可以删除，但个人建议保留。 因为 kotlin 下的代码可以直接拿来做国际化，有些开源库是 kotlin 写的，可以直接 拿来用，混合开发还是比较有优势的。</p>
 <p>完成以上步骤后，刷新下项目，相关的依赖就加入到工程中了, 可以正式开始写代码了。</p>
@@ -362,81 +432,77 @@ Java 源代码目录需要手动创建。 创建 src/main/java 即可开始写 J
 <ul>
 <li>com.dmall.rdp.plugin.demo.action.EditorReplaceAction</li>
 </ul>
-<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="cm">/**
-</span><span class="ln"> 2</span><span class="cm"> * Menu Action 将代码中选中的字符替换成固定的字符
-</span><span class="ln"> 3</span><span class="cm"> */</span>
-<span class="ln"> 4</span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">EditorReplaceAction</span> <span class="kd">extends</span> <span class="n">AnAction</span> <span class="o">{</span>
-<span class="ln"> 5</span>    <span class="cm">/**
-</span><span class="ln"> 6</span><span class="cm">     * Action 事件处理
-</span><span class="ln"> 7</span><span class="cm">     *
-</span><span class="ln"> 8</span><span class="cm">     * @param e 事件对象
-</span><span class="ln"> 9</span><span class="cm">     */</span>
-<span class="ln">10</span>    <span class="nd">@Override</span>
-<span class="ln">11</span>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">actionPerformed</span><span class="o">(</span><span class="nd">@NotNull</span> <span class="n">AnActionEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-<span class="ln">12</span>        <span class="c1">// 获取当前工程，当前编辑器，当前文档
-</span><span class="ln">13</span><span class="c1"></span>        <span class="kd">final</span> <span class="n">Editor</span> <span class="n">editor</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="na">getRequiredData</span><span class="o">(</span><span class="n">CommonDataKeys</span><span class="o">.</span><span class="na">EDITOR</span><span class="o">);</span>
-<span class="ln">14</span>        <span class="kd">final</span> <span class="n">Project</span> <span class="n">project</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="na">getRequiredData</span><span class="o">(</span><span class="n">CommonDataKeys</span><span class="o">.</span><span class="na">PROJECT</span><span class="o">);</span>
-<span class="ln">15</span>        <span class="kd">final</span> <span class="n">Document</span> <span class="n">document</span> <span class="o">=</span> <span class="n">editor</span><span class="o">.</span><span class="na">getDocument</span><span class="o">();</span>
-<span class="ln">16</span>
-<span class="ln">17</span>        <span class="c1">// 获取编辑器当前光标
-</span><span class="ln">18</span><span class="c1"></span>        <span class="n">Caret</span> <span class="n">primaryCaret</span> <span class="o">=</span> <span class="n">editor</span><span class="o">.</span><span class="na">getCaretModel</span><span class="o">().</span><span class="na">getPrimaryCaret</span><span class="o">();</span>
-<span class="ln">19</span>        <span class="c1">// 光标选中的开始位置和结束位置
-</span><span class="ln">20</span><span class="c1"></span>        <span class="kt">int</span> <span class="n">start</span> <span class="o">=</span> <span class="n">primaryCaret</span><span class="o">.</span><span class="na">getSelectionStart</span><span class="o">();</span>
-<span class="ln">21</span>        <span class="kt">int</span> <span class="n">end</span> <span class="o">=</span> <span class="n">primaryCaret</span><span class="o">.</span><span class="na">getSelectionEnd</span><span class="o">();</span>
-<span class="ln">22</span>        <span class="c1">// 将选中的字符替换成固定字符
-</span><span class="ln">23</span><span class="c1"></span>        <span class="c1">// 注意不能直接使用  document.replaceString() 方法
-</span><span class="ln">24</span><span class="c1"></span>        <span class="c1">// document.replace相关操作文档的方法，不能在直接在事件处理上下文线程中执行。
-</span><span class="ln">25</span><span class="c1"></span>        <span class="c1">// 而是 必须 在 写操作的上下文线程中执行，即使用 WriteCommandAction.runWriteCommandAction 方法
-</span><span class="ln">26</span><span class="c1"></span>        <span class="c1">// 因为 这类文档操作 被认为是耗时的操作，不能阻塞UI事件主线程。
-</span><span class="ln">27</span><span class="c1"></span>        <span class="n">WriteCommandAction</span><span class="o">.</span><span class="na">runWriteCommandAction</span><span class="o">(</span><span class="n">project</span><span class="o">,</span> <span class="o">()</span> <span class="o">-&gt;</span>
-<span class="ln">28</span>                <span class="n">document</span><span class="o">.</span><span class="na">replaceString</span><span class="o">(</span><span class="n">start</span><span class="o">,</span> <span class="n">end</span><span class="o">,</span> <span class="s">&#34;~这是替换的~&#34;</span><span class="o">)</span>
-<span class="ln">29</span>        <span class="o">);</span>
-<span class="ln">30</span>        <span class="c1">// 刚才替换的字符串取消选中
-</span><span class="ln">31</span><span class="c1"></span>        <span class="n">primaryCaret</span><span class="o">.</span><span class="na">removeSelection</span><span class="o">();</span>
-<span class="ln">32</span>    <span class="o">}</span>
-<span class="ln">33</span>
-<span class="ln">34</span>    <span class="cm">/**
-</span><span class="ln">35</span><span class="cm">     * 控制在菜单中的展示，满足以下条件时可见且可用:
-</span><span class="ln">36</span><span class="cm">     * &lt;ul&gt;
-</span><span class="ln">37</span><span class="cm">     *   &lt;li&gt;工程打开&lt;/li&gt;
-</span><span class="ln">38</span><span class="cm">     *   &lt;li&gt;编辑器打开&lt;/li&gt;
-</span><span class="ln">39</span><span class="cm">     *   &lt;li&gt;字符串被选中&lt;/li&gt;
-</span><span class="ln">40</span><span class="cm">     * &lt;/ul&gt;
-</span><span class="ln">41</span><span class="cm">     *
-</span><span class="ln">42</span><span class="cm">     * @param e Event related to this action
-</span><span class="ln">43</span><span class="cm">     */</span>
-<span class="ln">44</span>    <span class="nd">@Override</span>
-<span class="ln">45</span>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">update</span><span class="o">(</span><span class="nd">@NotNull</span> <span class="n">AnActionEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-<span class="ln">46</span>        <span class="c1">// 获取当前工程
-</span><span class="ln">47</span><span class="c1"></span>        <span class="kd">final</span> <span class="n">Project</span> <span class="n">project</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="na">getProject</span><span class="o">();</span>
-<span class="ln">48</span>        <span class="c1">// 获取编辑器
-</span><span class="ln">49</span><span class="c1"></span>        <span class="kd">final</span> <span class="n">Editor</span> <span class="n">editor</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="na">getData</span><span class="o">(</span><span class="n">CommonDataKeys</span><span class="o">.</span><span class="na">EDITOR</span><span class="o">);</span>
-<span class="ln">50</span>        <span class="c1">// 仅在 当前工程和编辑器不为空时(它们都处于打开的状态)，且存在选中的字符时，设置该 Menu Action 可见且可用
-</span><span class="ln">51</span><span class="c1"></span>        <span class="n">e</span><span class="o">.</span><span class="na">getPresentation</span><span class="o">().</span><span class="na">setEnabledAndVisible</span><span class="o">(</span>
-<span class="ln">52</span>                <span class="n">project</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">editor</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">editor</span><span class="o">.</span><span class="na">getSelectionModel</span><span class="o">().</span><span class="na">hasSelection</span><span class="o">());</span>
-<span class="ln">53</span>    <span class="o">}</span>
-<span class="ln">54</span><span class="o">}</span>
-<span class="ln">55</span>
-<span class="ln">56</span>
-<span class="ln">57</span>
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="cm"> * Menu Action 将代码中选中的字符替换成固定的字符
+</span></span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="cm"> */</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">EditorReplaceAction</span> <span class="kd">extends</span> <span class="n">AnAction</span> <span class="o">{</span>
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="ln"> 6</span><span class="cl"><span class="cm">     * Action 事件处理
+</span></span></span><span class="line"><span class="ln"> 7</span><span class="cl"><span class="cm">     *
+</span></span></span><span class="line"><span class="ln"> 8</span><span class="cl"><span class="cm">     * @param e 事件对象
+</span></span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="ln">10</span><span class="cl">    <span class="nd">@Override</span>
+</span></span><span class="line"><span class="ln">11</span><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">actionPerformed</span><span class="o">(</span><span class="nd">@NotNull</span> <span class="n">AnActionEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="ln">12</span><span class="cl">        <span class="c1">// 获取当前工程，当前编辑器，当前文档
+</span></span></span><span class="line"><span class="ln">13</span><span class="cl"><span class="c1"></span>        <span class="kd">final</span> <span class="n">Editor</span> <span class="n">editor</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="na">getRequiredData</span><span class="o">(</span><span class="n">CommonDataKeys</span><span class="o">.</span><span class="na">EDITOR</span><span class="o">);</span>
+</span></span><span class="line"><span class="ln">14</span><span class="cl">        <span class="kd">final</span> <span class="n">Project</span> <span class="n">project</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="na">getRequiredData</span><span class="o">(</span><span class="n">CommonDataKeys</span><span class="o">.</span><span class="na">PROJECT</span><span class="o">);</span>
+</span></span><span class="line"><span class="ln">15</span><span class="cl">        <span class="kd">final</span> <span class="n">Document</span> <span class="n">document</span> <span class="o">=</span> <span class="n">editor</span><span class="o">.</span><span class="na">getDocument</span><span class="o">();</span>
+</span></span><span class="line"><span class="ln">16</span><span class="cl">
+</span></span><span class="line"><span class="ln">17</span><span class="cl">        <span class="c1">// 获取编辑器当前光标
+</span></span></span><span class="line"><span class="ln">18</span><span class="cl"><span class="c1"></span>        <span class="n">Caret</span> <span class="n">primaryCaret</span> <span class="o">=</span> <span class="n">editor</span><span class="o">.</span><span class="na">getCaretModel</span><span class="o">().</span><span class="na">getPrimaryCaret</span><span class="o">();</span>
+</span></span><span class="line"><span class="ln">19</span><span class="cl">        <span class="c1">// 光标选中的开始位置和结束位置
+</span></span></span><span class="line"><span class="ln">20</span><span class="cl"><span class="c1"></span>        <span class="kt">int</span> <span class="n">start</span> <span class="o">=</span> <span class="n">primaryCaret</span><span class="o">.</span><span class="na">getSelectionStart</span><span class="o">();</span>
+</span></span><span class="line"><span class="ln">21</span><span class="cl">        <span class="kt">int</span> <span class="n">end</span> <span class="o">=</span> <span class="n">primaryCaret</span><span class="o">.</span><span class="na">getSelectionEnd</span><span class="o">();</span>
+</span></span><span class="line"><span class="ln">22</span><span class="cl">        <span class="c1">// 将选中的字符替换成固定字符
+</span></span></span><span class="line"><span class="ln">23</span><span class="cl"><span class="c1"></span>        <span class="c1">// 注意不能直接使用  document.replaceString() 方法
+</span></span></span><span class="line"><span class="ln">24</span><span class="cl"><span class="c1"></span>        <span class="c1">// document.replace相关操作文档的方法，不能在直接在事件处理上下文线程中执行。
+</span></span></span><span class="line"><span class="ln">25</span><span class="cl"><span class="c1"></span>        <span class="c1">// 而是 必须 在 写操作的上下文线程中执行，即使用 WriteCommandAction.runWriteCommandAction 方法
+</span></span></span><span class="line"><span class="ln">26</span><span class="cl"><span class="c1"></span>        <span class="c1">// 因为 这类文档操作 被认为是耗时的操作，不能阻塞UI事件主线程。
+</span></span></span><span class="line"><span class="ln">27</span><span class="cl"><span class="c1"></span>        <span class="n">WriteCommandAction</span><span class="o">.</span><span class="na">runWriteCommandAction</span><span class="o">(</span><span class="n">project</span><span class="o">,</span> <span class="o">()</span> <span class="o">-&gt;</span>
+</span></span><span class="line"><span class="ln">28</span><span class="cl">                <span class="n">document</span><span class="o">.</span><span class="na">replaceString</span><span class="o">(</span><span class="n">start</span><span class="o">,</span> <span class="n">end</span><span class="o">,</span> <span class="s">&#34;~这是替换的~&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="ln">29</span><span class="cl">        <span class="o">);</span>
+</span></span><span class="line"><span class="ln">30</span><span class="cl">        <span class="c1">// 刚才替换的字符串取消选中
+</span></span></span><span class="line"><span class="ln">31</span><span class="cl"><span class="c1"></span>        <span class="n">primaryCaret</span><span class="o">.</span><span class="na">removeSelection</span><span class="o">();</span>
+</span></span><span class="line"><span class="ln">32</span><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="ln">33</span><span class="cl">
+</span></span><span class="line"><span class="ln">34</span><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="ln">35</span><span class="cl"><span class="cm">     * 控制在菜单中的展示，满足以下条件时可见且可用:
+</span></span></span><span class="line"><span class="ln">36</span><span class="cl"><span class="cm">     * &lt;ul&gt;
+</span></span></span><span class="line"><span class="ln">37</span><span class="cl"><span class="cm">     *   &lt;li&gt;工程打开&lt;/li&gt;
+</span></span></span><span class="line"><span class="ln">38</span><span class="cl"><span class="cm">     *   &lt;li&gt;编辑器打开&lt;/li&gt;
+</span></span></span><span class="line"><span class="ln">39</span><span class="cl"><span class="cm">     *   &lt;li&gt;字符串被选中&lt;/li&gt;
+</span></span></span><span class="line"><span class="ln">40</span><span class="cl"><span class="cm">     * &lt;/ul&gt;
+</span></span></span><span class="line"><span class="ln">41</span><span class="cl"><span class="cm">     *
+</span></span></span><span class="line"><span class="ln">42</span><span class="cl"><span class="cm">     * @param e Event related to this action
+</span></span></span><span class="line"><span class="ln">43</span><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="ln">44</span><span class="cl">    <span class="nd">@Override</span>
+</span></span><span class="line"><span class="ln">45</span><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">update</span><span class="o">(</span><span class="nd">@NotNull</span> <span class="n">AnActionEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="ln">46</span><span class="cl">        <span class="c1">// 获取当前工程
+</span></span></span><span class="line"><span class="ln">47</span><span class="cl"><span class="c1"></span>        <span class="kd">final</span> <span class="n">Project</span> <span class="n">project</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="na">getProject</span><span class="o">();</span>
+</span></span><span class="line"><span class="ln">48</span><span class="cl">        <span class="c1">// 获取编辑器
+</span></span></span><span class="line"><span class="ln">49</span><span class="cl"><span class="c1"></span>        <span class="kd">final</span> <span class="n">Editor</span> <span class="n">editor</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="na">getData</span><span class="o">(</span><span class="n">CommonDataKeys</span><span class="o">.</span><span class="na">EDITOR</span><span class="o">);</span>
+</span></span><span class="line"><span class="ln">50</span><span class="cl">        <span class="c1">// 仅在 当前工程和编辑器不为空时(它们都处于打开的状态)，且存在选中的字符时，设置该 Menu Action 可见且可用
+</span></span></span><span class="line"><span class="ln">51</span><span class="cl"><span class="c1"></span>        <span class="n">e</span><span class="o">.</span><span class="na">getPresentation</span><span class="o">().</span><span class="na">setEnabledAndVisible</span><span class="o">(</span>
+</span></span><span class="line"><span class="ln">52</span><span class="cl">                <span class="n">project</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">editor</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">editor</span><span class="o">.</span><span class="na">getSelectionModel</span><span class="o">().</span><span class="na">hasSelection</span><span class="o">());</span>
+</span></span><span class="line"><span class="ln">53</span><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="ln">54</span><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><ul>
 <li>src/main/resources/META-INF/plugin.xml</li>
 </ul>
-<div class="highlight"><pre class="chroma"><code class="language-xml" data-lang="xml"><span class="ln"> 1</span>
-<span class="ln"> 2</span><span class="nt">&lt;actions&gt;</span>
-<span class="ln"> 3</span>    <span class="c">&lt;!-- 将此 Action 放到弹出菜单的第一个位置; 如果项目和编辑器是打开的，有字符被选中时，它总是可用的 --&gt;</span>
-<span class="ln"> 4</span>    <span class="nt">&lt;action</span> <span class="na">id=</span><span class="s">&#34;com.dmall.rdp.plugin.demo.action.EditorReplaceAction&#34;</span>
-<span class="ln"> 5</span>            <span class="na">class=</span><span class="s">&#34;com.dmall.rdp.plugin.demo.action.EditorReplaceAction&#34;</span>
-<span class="ln"> 6</span>            <span class="na">text=</span><span class="s">&#34;选中替换&#34;</span>
-<span class="ln"> 7</span>            <span class="na">description=</span><span class="s">&#34;选中替换&#34;</span><span class="nt">&gt;</span>
-<span class="ln"> 8</span>        <span class="c">&lt;!-- 设置快捷键 Ctrl+Alt+G --&gt;</span>
-<span class="ln"> 9</span>        <span class="nt">&lt;keyboard-shortcut</span> <span class="na">keymap=</span><span class="s">&#34;$default&#34;</span> <span class="na">first-keystroke=</span><span class="s">&#34;control alt G&#34;</span><span class="nt">/&gt;</span>
-<span class="ln">10</span>        <span class="c">&lt;!-- 放到编辑器弹出菜单第一个位置 --&gt;</span>
-<span class="ln">11</span>        <span class="nt">&lt;add-to-group</span> <span class="na">group-id=</span><span class="s">&#34;EditorPopupMenu&#34;</span> <span class="na">anchor=</span><span class="s">&#34;first&#34;</span><span class="nt">/&gt;</span>
-<span class="ln">12</span>    <span class="nt">&lt;/action&gt;</span>
-<span class="ln">13</span><span class="nt">&lt;/actions&gt;</span>
-<span class="ln">14</span>
-</code></pre></div><h2 id="第四步-创建一个-action-展示-psi-信息">第四步 创建一个 Action 展示 PSI 信息</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="ln"> 1</span><span class="cl">
+</span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="nt">&lt;actions&gt;</span>
+</span></span><span class="line"><span class="ln"> 3</span><span class="cl">    <span class="c">&lt;!-- 将此 Action 放到弹出菜单的第一个位置; 如果项目和编辑器是打开的，有字符被选中时，它总是可用的 --&gt;</span>
+</span></span><span class="line"><span class="ln"> 4</span><span class="cl">    <span class="nt">&lt;action</span> <span class="na">id=</span><span class="s">&#34;com.dmall.rdp.plugin.demo.action.EditorReplaceAction&#34;</span>
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl">            <span class="na">class=</span><span class="s">&#34;com.dmall.rdp.plugin.demo.action.EditorReplaceAction&#34;</span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">            <span class="na">text=</span><span class="s">&#34;选中替换&#34;</span>
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">            <span class="na">description=</span><span class="s">&#34;选中替换&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">        <span class="c">&lt;!-- 设置快捷键 Ctrl+Alt+G --&gt;</span>
+</span></span><span class="line"><span class="ln"> 9</span><span class="cl">        <span class="nt">&lt;keyboard-shortcut</span> <span class="na">keymap=</span><span class="s">&#34;$default&#34;</span> <span class="na">first-keystroke=</span><span class="s">&#34;control alt G&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="ln">10</span><span class="cl">        <span class="c">&lt;!-- 放到编辑器弹出菜单第一个位置 --&gt;</span>
+</span></span><span class="line"><span class="ln">11</span><span class="cl">        <span class="nt">&lt;add-to-group</span> <span class="na">group-id=</span><span class="s">&#34;EditorPopupMenu&#34;</span> <span class="na">anchor=</span><span class="s">&#34;first&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="ln">12</span><span class="cl">    <span class="nt">&lt;/action&gt;</span>
+</span></span><span class="line"><span class="ln">13</span><span class="cl"><span class="nt">&lt;/actions&gt;</span>
+</span></span></code></pre></div><h2 id="第四步-创建一个-action-展示-psi-信息">第四步 创建一个 Action 展示 PSI 信息</h2>
 <h3 id="psi-简介">PSI 简介</h3>
 <p>程序结构接口(Program Structure Interface)，通常简称为PSI。
 是IntelliJ平台中负责解析文件和创建语法和语义代码模型的层。</p>
@@ -458,77 +524,124 @@ PSI 元素表示源代码的内部结构，是由 IntelliJ 平台解析的。
 <ul>
 <li>com.dmall.rdp.plugin.demo.action.PsiDemoAction</li>
 </ul>
-<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="cm">/**
-</span><span class="ln"> 2</span><span class="cm"> * PSI 演示 Action，展示光标所处位置上的 PSI 元素信息。
-</span><span class="ln"> 3</span><span class="cm"> *
-</span><span class="ln"> 4</span><span class="cm"> */</span>
-<span class="ln"> 5</span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">PsiDemoAction</span> <span class="kd">extends</span> <span class="n">AnAction</span> <span class="o">{</span>
-<span class="ln"> 6</span>    <span class="nd">@Override</span>
-<span class="ln"> 7</span>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">actionPerformed</span><span class="o">(</span><span class="n">AnActionEvent</span> <span class="n">anActionEvent</span><span class="o">)</span> <span class="o">{</span>
-<span class="ln"> 8</span>        <span class="c1">//获取当前编辑器和 PSIFile 对象
-</span><span class="ln"> 9</span><span class="c1"></span>        <span class="n">Editor</span> <span class="n">editor</span> <span class="o">=</span> <span class="n">anActionEvent</span><span class="o">.</span><span class="na">getData</span><span class="o">(</span><span class="n">CommonDataKeys</span><span class="o">.</span><span class="na">EDITOR</span><span class="o">);</span>
-<span class="ln">10</span>        <span class="n">PsiFile</span> <span class="n">psiFile</span> <span class="o">=</span> <span class="n">anActionEvent</span><span class="o">.</span><span class="na">getData</span><span class="o">(</span><span class="n">CommonDataKeys</span><span class="o">.</span><span class="na">PSI_FILE</span><span class="o">);</span>
-<span class="ln">11</span>        <span class="k">if</span> <span class="o">(</span><span class="n">editor</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">||</span> <span class="n">psiFile</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
-<span class="ln">12</span>            <span class="k">return</span><span class="o">;</span>
-<span class="ln">13</span>        <span class="o">}</span>
-<span class="ln">14</span>        <span class="c1">//获取光标在文档中的偏移量
-</span><span class="ln">15</span><span class="c1"></span>        <span class="kt">int</span> <span class="n">offset</span> <span class="o">=</span> <span class="n">editor</span><span class="o">.</span><span class="na">getCaretModel</span><span class="o">().</span><span class="na">getOffset</span><span class="o">();</span>
-<span class="ln">16</span>        <span class="kd">final</span> <span class="n">StringBuilder</span> <span class="n">infoBuilder</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringBuilder</span><span class="o">();</span>
-<span class="ln">17</span>        <span class="c1">//获取光标所在位置的 PSI 树中的元素
-</span><span class="ln">18</span><span class="c1"></span>        <span class="n">PsiElement</span> <span class="n">element</span> <span class="o">=</span> <span class="n">psiFile</span><span class="o">.</span><span class="na">findElementAt</span><span class="o">(</span><span class="n">offset</span><span class="o">);</span>
-<span class="ln">19</span>        <span class="n">infoBuilder</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;当前光标所指元素: &#34;</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="n">element</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;\n&#34;</span><span class="o">);</span>
-<span class="ln">20</span>        <span class="k">if</span> <span class="o">(</span><span class="n">element</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
-<span class="ln">21</span>            <span class="c1">//查找 方法
-</span><span class="ln">22</span><span class="c1"></span>            <span class="n">PsiMethod</span> <span class="n">containingMethod</span> <span class="o">=</span> <span class="n">PsiTreeUtil</span><span class="o">.</span><span class="na">getParentOfType</span><span class="o">(</span><span class="n">element</span><span class="o">,</span> <span class="n">PsiMethod</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
-<span class="ln">23</span>            <span class="n">infoBuilder</span>
-<span class="ln">24</span>                    <span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;方法: &#34;</span><span class="o">)</span>
-<span class="ln">25</span>                    <span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">containingMethod</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">?</span> <span class="n">containingMethod</span><span class="o">.</span><span class="na">getName</span><span class="o">()</span> <span class="o">:</span> <span class="s">&#34;none&#34;</span><span class="o">)</span>
-<span class="ln">26</span>                    <span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;\n&#34;</span><span class="o">);</span>
-<span class="ln">27</span>            <span class="k">if</span> <span class="o">(</span><span class="n">containingMethod</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
-<span class="ln">28</span>                <span class="c1">//查找方法所属的类
-</span><span class="ln">29</span><span class="c1"></span>                <span class="n">PsiClass</span> <span class="n">containingClass</span> <span class="o">=</span> <span class="n">containingMethod</span><span class="o">.</span><span class="na">getContainingClass</span><span class="o">();</span>
-<span class="ln">30</span>                <span class="n">infoBuilder</span>
-<span class="ln">31</span>                        <span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;类: &#34;</span><span class="o">)</span>
-<span class="ln">32</span>                        <span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">containingClass</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">?</span> <span class="n">containingClass</span><span class="o">.</span><span class="na">getName</span><span class="o">()</span> <span class="o">:</span> <span class="s">&#34;none&#34;</span><span class="o">)</span>
-<span class="ln">33</span>                        <span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;\n&#34;</span><span class="o">);</span>
-<span class="ln">34</span>                <span class="c1">//查找方法中的本地变量
-</span><span class="ln">35</span><span class="c1"></span>                <span class="n">infoBuilder</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;本地变量:\n&#34;</span><span class="o">);</span>
-<span class="ln">36</span>                <span class="n">containingMethod</span><span class="o">.</span><span class="na">accept</span><span class="o">(</span><span class="k">new</span> <span class="n">JavaRecursiveElementVisitor</span><span class="o">()</span> <span class="o">{</span>
-<span class="ln">37</span>                    <span class="nd">@Override</span>
-<span class="ln">38</span>                    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">visitLocalVariable</span><span class="o">(</span><span class="n">PsiLocalVariable</span> <span class="n">variable</span><span class="o">)</span> <span class="o">{</span>
-<span class="ln">39</span>                        <span class="kd">super</span><span class="o">.</span><span class="na">visitLocalVariable</span><span class="o">(</span><span class="n">variable</span><span class="o">);</span>
-<span class="ln">40</span>                        <span class="n">infoBuilder</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">variable</span><span class="o">.</span><span class="na">getName</span><span class="o">()).</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;\n&#34;</span><span class="o">);</span>
-<span class="ln">41</span>                    <span class="o">}</span>
-<span class="ln">42</span>                <span class="o">});</span>
-<span class="ln">43</span>            <span class="o">}</span>
-<span class="ln">44</span>        <span class="o">}</span>
-<span class="ln">45</span>        <span class="n">Messages</span><span class="o">.</span><span class="na">showMessageDialog</span><span class="o">(</span><span class="n">anActionEvent</span><span class="o">.</span><span class="na">getProject</span><span class="o">(),</span> <span class="n">infoBuilder</span><span class="o">.</span><span class="na">toString</span><span class="o">(),</span> <span class="s">&#34;PSI信息&#34;</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
-<span class="ln">46</span>    <span class="o">}</span>
-<span class="ln">47</span>
-<span class="ln">48</span>    <span class="nd">@Override</span>
-<span class="ln">49</span>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">update</span><span class="o">(</span><span class="n">AnActionEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-<span class="ln">50</span>        <span class="n">Editor</span> <span class="n">editor</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="na">getData</span><span class="o">(</span><span class="n">CommonDataKeys</span><span class="o">.</span><span class="na">EDITOR</span><span class="o">);</span>
-<span class="ln">51</span>        <span class="n">PsiFile</span> <span class="n">psiFile</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="na">getData</span><span class="o">(</span><span class="n">CommonDataKeys</span><span class="o">.</span><span class="na">PSI_FILE</span><span class="o">);</span>
-<span class="ln">52</span>        <span class="n">e</span><span class="o">.</span><span class="na">getPresentation</span><span class="o">().</span><span class="na">setEnabled</span><span class="o">(</span><span class="n">editor</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">psiFile</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">);</span>
-<span class="ln">53</span>    <span class="o">}</span>
-<span class="ln">54</span><span class="o">}</span>
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="ln"> 1</span><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="ln"> 2</span><span class="cl"><span class="cm"> * PSI 演示 Action，展示光标所处位置上的 PSI 元素信息。
+</span></span></span><span class="line"><span class="ln"> 3</span><span class="cl"><span class="cm"> *
+</span></span></span><span class="line"><span class="ln"> 4</span><span class="cl"><span class="cm"> */</span>
+</span></span><span class="line"><span class="ln"> 5</span><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">PsiDemoAction</span> <span class="kd">extends</span> <span class="n">AnAction</span> <span class="o">{</span>
+</span></span><span class="line"><span class="ln"> 6</span><span class="cl">    <span class="nd">@Override</span>
+</span></span><span class="line"><span class="ln"> 7</span><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">actionPerformed</span><span class="o">(</span><span class="n">AnActionEvent</span> <span class="n">anActionEvent</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="ln"> 8</span><span class="cl">        <span class="c1">//获取当前编辑器和 PSIFile 对象
+</span></span></span><span class="line"><span class="ln"> 9</span><span class="cl"><span class="c1"></span>        <span class="n">Editor</span> <span class="n">editor</span> <span class="o">=</span> <span class="n">anActionEvent</span><span class="o">.</span><span class="na">getData</span><span class="o">(</span><span class="n">CommonDataKeys</span><span class="o">.</span><span class="na">EDITOR</span><span class="o">);</span>
+</span></span><span class="line"><span class="ln">10</span><span class="cl">        <span class="n">PsiFile</span> <span class="n">psiFile</span> <span class="o">=</span> <span class="n">anActionEvent</span><span class="o">.</span><span class="na">getData</span><span class="o">(</span><span class="n">CommonDataKeys</span><span class="o">.</span><span class="na">PSI_FILE</span><span class="o">);</span>
+</span></span><span class="line"><span class="ln">11</span><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">editor</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">||</span> <span class="n">psiFile</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="ln">12</span><span class="cl">            <span class="k">return</span><span class="o">;</span>
+</span></span><span class="line"><span class="ln">13</span><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="ln">14</span><span class="cl">        <span class="c1">//获取光标在文档中的偏移量
+</span></span></span><span class="line"><span class="ln">15</span><span class="cl"><span class="c1"></span>        <span class="kt">int</span> <span class="n">offset</span> <span class="o">=</span> <span class="n">editor</span><span class="o">.</span><span class="na">getCaretModel</span><span class="o">().</span><span class="na">getOffset</span><span class="o">();</span>
+</span></span><span class="line"><span class="ln">16</span><span class="cl">        <span class="kd">final</span> <span class="n">StringBuilder</span> <span class="n">infoBuilder</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringBuilder</span><span class="o">();</span>
+</span></span><span class="line"><span class="ln">17</span><span class="cl">        <span class="c1">//获取光标所在位置的 PSI 树中的元素
+</span></span></span><span class="line"><span class="ln">18</span><span class="cl"><span class="c1"></span>        <span class="n">PsiElement</span> <span class="n">element</span> <span class="o">=</span> <span class="n">psiFile</span><span class="o">.</span><span class="na">findElementAt</span><span class="o">(</span><span class="n">offset</span><span class="o">);</span>
+</span></span><span class="line"><span class="ln">19</span><span class="cl">        <span class="n">infoBuilder</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;当前光标所指元素: &#34;</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="n">element</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;\n&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="ln">20</span><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">element</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="ln">21</span><span class="cl">            <span class="c1">//查找 方法
+</span></span></span><span class="line"><span class="ln">22</span><span class="cl"><span class="c1"></span>            <span class="n">PsiMethod</span> <span class="n">containingMethod</span> <span class="o">=</span> <span class="n">PsiTreeUtil</span><span class="o">.</span><span class="na">getParentOfType</span><span class="o">(</span><span class="n">element</span><span class="o">,</span> <span class="n">PsiMethod</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+</span></span><span class="line"><span class="ln">23</span><span class="cl">            <span class="n">infoBuilder</span>
+</span></span><span class="line"><span class="ln">24</span><span class="cl">                    <span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;方法: &#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="ln">25</span><span class="cl">                    <span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">containingMethod</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">?</span> <span class="n">containingMethod</span><span class="o">.</span><span class="na">getName</span><span class="o">()</span> <span class="o">:</span> <span class="s">&#34;none&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="ln">26</span><span class="cl">                    <span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;\n&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="ln">27</span><span class="cl">            <span class="k">if</span> <span class="o">(</span><span class="n">containingMethod</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="ln">28</span><span class="cl">                <span class="c1">//查找方法所属的类
+</span></span></span><span class="line"><span class="ln">29</span><span class="cl"><span class="c1"></span>                <span class="n">PsiClass</span> <span class="n">containingClass</span> <span class="o">=</span> <span class="n">containingMethod</span><span class="o">.</span><span class="na">getContainingClass</span><span class="o">();</span>
+</span></span><span class="line"><span class="ln">30</span><span class="cl">                <span class="n">infoBuilder</span>
+</span></span><span class="line"><span class="ln">31</span><span class="cl">                        <span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;类: &#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="ln">32</span><span class="cl">                        <span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">containingClass</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">?</span> <span class="n">containingClass</span><span class="o">.</span><span class="na">getName</span><span class="o">()</span> <span class="o">:</span> <span class="s">&#34;none&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="ln">33</span><span class="cl">                        <span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;\n&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="ln">34</span><span class="cl">                <span class="c1">//查找方法中的本地变量
+</span></span></span><span class="line"><span class="ln">35</span><span class="cl"><span class="c1"></span>                <span class="n">infoBuilder</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;本地变量:\n&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="ln">36</span><span class="cl">                <span class="n">containingMethod</span><span class="o">.</span><span class="na">accept</span><span class="o">(</span><span class="k">new</span> <span class="n">JavaRecursiveElementVisitor</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="ln">37</span><span class="cl">                    <span class="nd">@Override</span>
+</span></span><span class="line"><span class="ln">38</span><span class="cl">                    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">visitLocalVariable</span><span class="o">(</span><span class="n">PsiLocalVariable</span> <span class="n">variable</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="ln">39</span><span class="cl">                        <span class="kd">super</span><span class="o">.</span><span class="na">visitLocalVariable</span><span class="o">(</span><span class="n">variable</span><span class="o">);</span>
+</span></span><span class="line"><span class="ln">40</span><span class="cl">                        <span class="n">infoBuilder</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">variable</span><span class="o">.</span><span class="na">getName</span><span class="o">()).</span><span class="na">append</span><span class="o">(</span><span class="s">&#34;\n&#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="ln">41</span><span class="cl">                    <span class="o">}</span>
+</span></span><span class="line"><span class="ln">42</span><span class="cl">                <span class="o">});</span>
+</span></span><span class="line"><span class="ln">43</span><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="ln">44</span><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="ln">45</span><span class="cl">        <span class="n">Messages</span><span class="o">.</span><span class="na">showMessageDialog</span><span class="o">(</span><span class="n">anActionEvent</span><span class="o">.</span><span class="na">getProject</span><span class="o">(),</span> <span class="n">infoBuilder</span><span class="o">.</span><span class="na">toString</span><span class="o">(),</span> <span class="s">&#34;PSI信息&#34;</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+</span></span><span class="line"><span class="ln">46</span><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="ln">47</span><span class="cl">
+</span></span><span class="line"><span class="ln">48</span><span class="cl">    <span class="nd">@Override</span>
+</span></span><span class="line"><span class="ln">49</span><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">update</span><span class="o">(</span><span class="n">AnActionEvent</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="ln">50</span><span class="cl">        <span class="n">Editor</span> <span class="n">editor</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="na">getData</span><span class="o">(</span><span class="n">CommonDataKeys</span><span class="o">.</span><span class="na">EDITOR</span><span class="o">);</span>
+</span></span><span class="line"><span class="ln">51</span><span class="cl">        <span class="n">PsiFile</span> <span class="n">psiFile</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="na">getData</span><span class="o">(</span><span class="n">CommonDataKeys</span><span class="o">.</span><span class="na">PSI_FILE</span><span class="o">);</span>
+</span></span><span class="line"><span class="ln">52</span><span class="cl">        <span class="n">e</span><span class="o">.</span><span class="na">getPresentation</span><span class="o">().</span><span class="na">setEnabled</span><span class="o">(</span><span class="n">editor</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">psiFile</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">);</span>
+</span></span><span class="line"><span class="ln">53</span><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="ln">54</span><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><ul>
 <li>src/main/resources/META-INF/plugin.xml</li>
 </ul>
-<div class="highlight"><pre class="chroma"><code class="language-xml" data-lang="xml"><span class="ln"> 1</span>
-<span class="ln"> 2</span>    <span class="c">&lt;!-- 将此 Action 放在工具菜单的最后一个位置; 如果项目和编辑器是打开的，它总是可用的 --&gt;</span>
-<span class="ln"> 3</span>    <span class="nt">&lt;action</span>
-<span class="ln"> 4</span>            <span class="na">id=</span><span class="s">&#34;com.dmall.rdp.plugin.demo.action.PsiDemoAction&#34;</span>
-<span class="ln"> 5</span>            <span class="na">class=</span><span class="s">&#34;com.dmall.rdp.plugin.demo.action.PsiDemoAction&#34;</span>
-<span class="ln"> 6</span>            <span class="na">text=</span><span class="s">&#34;查看PSI信息 &#34;</span><span class="nt">&gt;</span>
-<span class="ln"> 7</span>        <span class="c">&lt;!-- 放到工具菜单第后一个位置 --&gt;</span>
-<span class="ln"> 8</span>        <span class="nt">&lt;add-to-group</span> <span class="na">group-id=</span><span class="s">&#34;ToolsMenu&#34;</span> <span class="na">anchor=</span><span class="s">&#34;last&#34;</span><span class="nt">/&gt;</span>
-<span class="ln"> 9</span>    <span class="nt">&lt;/action&gt;</span>
-<span class="ln">10</span>
-</code></pre></div><h2 id="第五步运行插件查看效果">第五步运行插件，查看效果</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="ln">1</span><span class="cl">
+</span></span><span class="line"><span class="ln">2</span><span class="cl">    <span class="c">&lt;!-- 将此 Action 放在工具菜单的最后一个位置; 如果项目和编辑器是打开的，它总是可用的 --&gt;</span>
+</span></span><span class="line"><span class="ln">3</span><span class="cl">    <span class="nt">&lt;action</span>
+</span></span><span class="line"><span class="ln">4</span><span class="cl">            <span class="na">id=</span><span class="s">&#34;com.dmall.rdp.plugin.demo.action.PsiDemoAction&#34;</span>
+</span></span><span class="line"><span class="ln">5</span><span class="cl">            <span class="na">class=</span><span class="s">&#34;com.dmall.rdp.plugin.demo.action.PsiDemoAction&#34;</span>
+</span></span><span class="line"><span class="ln">6</span><span class="cl">            <span class="na">text=</span><span class="s">&#34;查看PSI信息 &#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="ln">7</span><span class="cl">        <span class="c">&lt;!-- 放到工具菜单第后一个位置 --&gt;</span>
+</span></span><span class="line"><span class="ln">8</span><span class="cl">        <span class="nt">&lt;add-to-group</span> <span class="na">group-id=</span><span class="s">&#34;ToolsMenu&#34;</span> <span class="na">anchor=</span><span class="s">&#34;last&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="ln">9</span><span class="cl">    <span class="nt">&lt;/action&gt;</span>
+</span></span></code></pre></div><h2 id="第五步运行插件查看效果">第五步运行插件，查看效果</h2>
 <p>点击 Run Plugin 或 Debug Plugin 运行插件，试着操作，查看效果。</p>
-<p><img src="/images/idea/img.png" alt="img.png"></p>
-<p><img src="/images/idea/psi_review.png" alt="psi_review.png"></p>
+<p><figure>
+  <picture>
+
+    
+      
+        
+        
+        
+        
+        
+        
+    <img
+      loading="lazy"
+      decoding="async"
+      alt="img.png"
+      
+        class="image_figure image_internal image_unprocessed"
+        src="/images/idea/img.png"
+      
+      
+    />
+
+    </picture>
+</figure>
+</p>
+<p><figure>
+  <picture>
+
+    
+      
+        
+        
+        
+        
+        
+        
+    <img
+      loading="lazy"
+      decoding="async"
+      alt="psi_review.png"
+      
+        class="image_figure image_internal image_unprocessed"
+        src="/images/idea/psi_review.png"
+      
+      
+    />
+
+    </picture>
+</figure>
+</p>
 <h2 id="一些特别有用的参考">一些特别有用的参考</h2>
 <p>下面收集的文档对开发插件是非常有帮助的，建议深入熟悉。</p>
 <ul>
@@ -541,30 +654,40 @@ PSI 元素表示源代码的内部结构，是由 IntelliJ 平台解析的。
 <li>代码辅助生成类插件参考 <a href="https://github.com/mplushnikov/lombok-intellij-plugin">Lombok插件源码</a></li>
 <li>搜索扩展 Intellij IDEA 平台功能扩展点的开源实现代码，相当有用，能给你灵感 <a href="https://plugins.jetbrains.com/intellij-platform-explorer">Intellij Platform Explorer</a></li>
 </ul>
-    </div><div class="post_comments">
+    </div>
+<div class="post_comments">
+  
   
   
 </div>
 
 
+
+
   </article>
 <aside class="sidebar">
   <section class="sidebar_inner">
+    <br>
+    
+
         <h2>baihua.huang</h2>
       <div class="author_bio">
         开源爱好者，永远的学生，梦想者，持续改进者。
       </div>
       <a href='https://huangbaihua.gitee.io/about/' class="button mt-1" role="button" title='阅读更多'>阅读更多</a>
+
+    
+    
     <h2 class="mt-4">精选文章</h2>
     <ul>
       <li>
         <a href="https://huangbaihua.gitee.io/post/english/grammer-verb-outline/" class="nav-link" title="以动词概括的英语语法体系">以动词概括的英语语法体系</a>
       </li>
       <li>
-        <a href="https://huangbaihua.gitee.io/post/look-for-forward/" class="nav-link" title="计划分享预告">计划分享预告</a>
+        <a href="https://huangbaihua.gitee.io/post/idea/psi_intro/" class="nav-link" title="PSI(程序结构接口)-Intellij 平台的核心抽象">PSI(程序结构接口)-Intellij 平台的核心抽象</a>
       </li>
       <li>
-        <a href="https://huangbaihua.gitee.io/post/idea/psi_intro/" class="nav-link" title="PSI(程序结构接口)-Intellij 平台的核心抽象">PSI(程序结构接口)-Intellij 平台的核心抽象</a>
+        <a href="https://huangbaihua.gitee.io/post/idea/five_minute_quick_demo/" class="nav-link" title="5分钟 IDEA 插件开发快速入门 Demo">5分钟 IDEA 插件开发快速入门 Demo</a>
       </li>
       <li>
         <a href="https://huangbaihua.gitee.io/post/arch/consistent-hasing/" class="nav-link" title="现代软件过度工程中的十大错误">现代软件过度工程中的十大错误</a>
@@ -576,38 +699,14 @@ PSI 元素表示源代码的内部结构，是由 IntelliJ 平台解析的。
         <a href="https://huangbaihua.gitee.io/post/mermaid-in-hugo/" class="nav-link" title="在Hubo中使用Mermaid">在Hubo中使用Mermaid</a>
       </li>
       <li>
-        <a href="https://huangbaihua.gitee.io/post/mache-learing-lnear-regression/" class="nav-link" title="机器学习入门-算法-线性回归">机器学习入门-算法-线性回归</a>
+        <a href="https://huangbaihua.gitee.io/post/microservice-architecture/" class="nav-link" title="面向领域的微服务架构-来自优步的实践">面向领域的微服务架构-来自优步的实践</a>
       </li>
       <li>
-        <a href="https://huangbaihua.gitee.io/post/microservice-architecture/" class="nav-link" title="面向领域的微服务架构-来自优步的实践">面向领域的微服务架构-来自优步的实践</a>
+        <a href="https://huangbaihua.gitee.io/post/cap-theorem/" class="nav-link" title="CAP理论简介">CAP理论简介</a>
       </li>
     </ul>
     <h2 class="mt-4">最新文章</h2>
     <ul class="flex-column">
-      <li>
-        <a href="https://huangbaihua.gitee.io/post/english/grammer-verb-outline/" class="nav-link" title="以动词概括的英语语法体系">以动词概括的英语语法体系</a>
-      </li>
-      <li>
-        <a href="https://huangbaihua.gitee.io/post/look-for-forward/" class="nav-link" title="计划分享预告">计划分享预告</a>
-      </li>
-      <li>
-        <a href="https://huangbaihua.gitee.io/post/idea/psi_intro/" class="nav-link" title="PSI(程序结构接口)-Intellij 平台的核心抽象">PSI(程序结构接口)-Intellij 平台的核心抽象</a>
-      </li>
-      <li>
-        <a href="https://huangbaihua.gitee.io/post/arch/consistent-hasing/" class="nav-link" title="现代软件过度工程中的十大错误">现代软件过度工程中的十大错误</a>
-      </li>
-      <li>
-        <a href="https://huangbaihua.gitee.io/post/mache-learing-collaborative-filtering/" class="nav-link" title="机器学习入门-算法-协同过滤简介">机器学习入门-算法-协同过滤简介</a>
-      </li>
-      <li>
-        <a href="https://huangbaihua.gitee.io/post/mermaid-in-hugo/" class="nav-link" title="在Hubo中使用Mermaid">在Hubo中使用Mermaid</a>
-      </li>
-      <li>
-        <a href="https://huangbaihua.gitee.io/post/mache-learing-lnear-regression/" class="nav-link" title="机器学习入门-算法-线性回归">机器学习入门-算法-线性回归</a>
-      </li>
-      <li>
-        <a href="https://huangbaihua.gitee.io/post/microservice-architecture/" class="nav-link" title="面向领域的微服务架构-来自优步的实践">面向领域的微服务架构-来自优步的实践</a>
-      </li>
     </ul>
     <div>
       <h2 class="mt-4 taxonomy" id="categories-section">分类</h2>
@@ -617,11 +716,6 @@ PSI 元素表示源代码的内部结构，是由 IntelliJ 平台解析的。
           <span class="button_tally">4</span>
         </a>
         
-        <a href='https://huangbaihua.gitee.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/' class="post_tag button button_translucent" title="数据结构与算法">
-          数据结构与算法
-          <span class="button_tally">3</span>
-        </a>
-        
         <a href='https://huangbaihua.gitee.io/categories/idea%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/' class="post_tag button button_translucent" title="idea插件开发">
           IDEA插件开发
           <span class="button_tally">2</span>
@@ -629,11 +723,6 @@ PSI 元素表示源代码的内部结构，是由 IntelliJ 平台解析的。
         
         <a href='https://huangbaihua.gitee.io/categories/%E6%8A%80%E6%9C%AF%E7%AE%A1%E7%90%86/' class="post_tag button button_translucent" title="技术管理">
           技术管理
-          <span class="button_tally">2</span>
-        </a>
-        
-        <a href='https://huangbaihua.gitee.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/' class="post_tag button button_translucent" title="机器学习">
-          机器学习
           <span class="button_tally">2</span>
         </a>
         
@@ -652,6 +741,11 @@ PSI 元素表示源代码的内部结构，是由 IntelliJ 平台解析的。
           <span class="button_tally">1</span>
         </a>
         
+        <a href='https://huangbaihua.gitee.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/' class="post_tag button button_translucent" title="机器学习">
+          机器学习
+          <span class="button_tally">1</span>
+        </a>
+        
         <a href='https://huangbaihua.gitee.io/categories/%E8%8B%B1%E8%AF%AD/' class="post_tag button button_translucent" title="英语">
           英语
           <span class="button_tally">1</span>
@@ -660,17 +754,6 @@ PSI 元素表示源代码的内部结构，是由 IntelliJ 平台解析的。
         <a href='https://huangbaihua.gitee.io/categories/%E8%AF%91%E6%96%87/' class="post_tag button button_translucent" title="译文">
           译文
           <span class="button_tally">1</span>
-        </a>
-        
-        
-      </nav>
-    </div>
-    <div>
-      <h2 class="mt-4 taxonomy" id="series-section">专栏</h2>
-      <nav class="tags_nav">
-        <a href='https://huangbaihua.gitee.io/series/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6-%E5%9B%BE%E8%AE%BA/' class="post_tag button button_translucent" title="离散数学-图论">
-          离散数学-图论
-          <span class="button_tally">3</span>
         </a>
         
         
@@ -691,26 +774,6 @@ PSI 元素表示源代码的内部结构，是由 IntelliJ 平台解析的。
         
         <a href='https://huangbaihua.gitee.io/tags/%E5%8E%9F%E5%88%9B/' class="post_tag button button_translucent" title="原创">
           原创
-          <span class="button_tally">4</span>
-        </a>
-        
-        <a href='https://huangbaihua.gitee.io/tags/%E5%9B%BE%E8%AE%BA/' class="post_tag button button_translucent" title="图论">
-          图论
-          <span class="button_tally">3</span>
-        </a>
-        
-        <a href='https://huangbaihua.gitee.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/' class="post_tag button button_translucent" title="数据结构">
-          数据结构
-          <span class="button_tally">3</span>
-        </a>
-        
-        <a href='https://huangbaihua.gitee.io/tags/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/' class="post_tag button button_translucent" title="离散数学">
-          离散数学
-          <span class="button_tally">3</span>
-        </a>
-        
-        <a href='https://huangbaihua.gitee.io/tags/%E7%AE%97%E6%B3%95/' class="post_tag button button_translucent" title="算法">
-          算法
           <span class="button_tally">3</span>
         </a>
         
@@ -721,11 +784,6 @@ PSI 元素表示源代码的内部结构，是由 IntelliJ 平台解析的。
         
         <a href='https://huangbaihua.gitee.io/tags/%E6%8A%80%E6%9C%AF%E7%AE%A1%E7%90%86/' class="post_tag button button_translucent" title="技术管理">
           技术管理
-          <span class="button_tally">2</span>
-        </a>
-        
-        <a href='https://huangbaihua.gitee.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/' class="post_tag button button_translucent" title="机器学习">
-          机器学习
           <span class="button_tally">2</span>
         </a>
         
@@ -746,6 +804,31 @@ PSI 元素表示源代码的内部结构，是由 IntelliJ 平台解析的。
         
         <a href='https://huangbaihua.gitee.io/tags/mermaid/' class="post_tag button button_translucent" title="mermaid">
           MERMAID
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://huangbaihua.gitee.io/tags/%E5%85%8D%E8%B4%A3%E5%A3%B0%E6%98%8E/' class="post_tag button button_translucent" title="免责声明">
+          免责声明
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://huangbaihua.gitee.io/tags/%E5%85%B3%E4%BA%8E/' class="post_tag button button_translucent" title="关于">
+          关于
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://huangbaihua.gitee.io/tags/%E5%88%86%E5%B8%83%E5%BC%8F/' class="post_tag button button_translucent" title="分布式">
+          分布式
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://huangbaihua.gitee.io/tags/%E5%8D%8F%E5%90%8C%E8%BF%87%E6%BB%A4/' class="post_tag button button_translucent" title="协同过滤">
+          协同过滤
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://huangbaihua.gitee.io/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/' class="post_tag button button_translucent" title="微服务">
+          微服务
           <span class="button_tally">1</span>
         </a>
         
@@ -775,7 +858,7 @@ PSI 元素表示源代码的内部结构，是由 IntelliJ 平台解析的。
             </a>
             
             
-            <a href='https://huangbaihua.gitee.io/tags/%E5%85%8D%E8%B4%A3%E5%A3%B0%E6%98%8E/' class=" post_tag button button_translucent" data-position=1 title="免责声明">免责声明<span class="button_tally">1</span>
+            <a href='https://huangbaihua.gitee.io/tags/%E5%88%86%E5%B8%83%E5%BC%8F/' class=" post_tag button button_translucent" data-position=1 title="分布式">分布式<span class="button_tally">1</span>
             </a>
             
             
@@ -783,23 +866,7 @@ PSI 元素表示源代码的内部结构，是由 IntelliJ 平台解析的。
             </a>
             
             
-            <a href='https://huangbaihua.gitee.io/tags/%E5%88%86%E5%B8%83%E5%BC%8F/' class=" post_tag button button_translucent" data-position=1 title="分布式">分布式<span class="button_tally">1</span>
-            </a>
-            
-            
-            <a href='https://huangbaihua.gitee.io/tags/%E5%8D%8F%E5%90%8C%E8%BF%87%E6%BB%A4/' class=" post_tag button button_translucent" data-position=1 title="协同过滤">协同过滤<span class="button_tally">1</span>
-            </a>
-            
-            
-            <a href='https://huangbaihua.gitee.io/tags/%E5%8E%9F%E5%88%9B/' class=" post_tag button button_translucent" data-position=4 title="原创">原创<span class="button_tally">4</span>
-            </a>
-            
-            
-            <a href='https://huangbaihua.gitee.io/tags/%E5%9B%BE%E8%AE%BA/' class=" post_tag button button_translucent" data-position=3 title="图论">图论<span class="button_tally">3</span>
-            </a>
-            
-            
-            <a href='https://huangbaihua.gitee.io/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/' class=" post_tag button button_translucent" data-position=1 title="微服务">微服务<span class="button_tally">1</span>
+            <a href='https://huangbaihua.gitee.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/' class=" post_tag button button_translucent" data-position=1 title="机器学习">机器学习<span class="button_tally">1</span>
             </a>
             
             
@@ -807,19 +874,11 @@ PSI 元素表示源代码的内部结构，是由 IntelliJ 平台解析的。
             </a>
             
             
-            <a href='https://huangbaihua.gitee.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/' class=" post_tag button button_translucent" data-position=3 title="数据结构">数据结构<span class="button_tally">3</span>
+            <a href='https://huangbaihua.gitee.io/tags/%E5%85%8D%E8%B4%A3%E5%A3%B0%E6%98%8E/' class=" post_tag button button_translucent" data-position=1 title="免责声明">免责声明<span class="button_tally">1</span>
             </a>
             
             
-            <a href='https://huangbaihua.gitee.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/' class=" post_tag button button_translucent" data-position=2 title="机器学习">机器学习<span class="button_tally">2</span>
-            </a>
-            
-            
-            <a href='https://huangbaihua.gitee.io/tags/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/' class=" post_tag button button_translucent" data-position=3 title="离散数学">离散数学<span class="button_tally">3</span>
-            </a>
-            
-            
-            <a href='https://huangbaihua.gitee.io/tags/%E7%AE%97%E6%B3%95/' class=" post_tag button button_translucent" data-position=3 title="算法">算法<span class="button_tally">3</span>
+            <a href='https://huangbaihua.gitee.io/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/' class=" post_tag button button_translucent" data-position=1 title="微服务">微服务<span class="button_tally">1</span>
             </a>
             
             
@@ -827,7 +886,11 @@ PSI 元素表示源代码的内部结构，是由 IntelliJ 平台解析的。
             </a>
             
             
-            <a href='https://huangbaihua.gitee.io/tags/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/' class=" post_tag button button_translucent" data-position=1 title="线性回归">线性回归<span class="button_tally">1</span>
+            <a href='https://huangbaihua.gitee.io/tags/%E5%8D%8F%E5%90%8C%E8%BF%87%E6%BB%A4/' class=" post_tag button button_translucent" data-position=1 title="协同过滤">协同过滤<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://huangbaihua.gitee.io/tags/%E8%AF%91%E6%96%87/' class=" post_tag button button_translucent" data-position=10 title="译文">译文<span class="button_tally">10</span>
             </a>
             
             
@@ -839,11 +902,7 @@ PSI 元素表示源代码的内部结构，是由 IntelliJ 平台解析的。
             </a>
             
             
-            <a href='https://huangbaihua.gitee.io/tags/%E8%AE%A1%E5%88%92%E5%88%86%E4%BA%AB%E9%A2%84%E5%91%8A/' class=" post_tag button button_translucent" data-position=1 title="计划分享预告">计划分享预告<span class="button_tally">1</span>
-            </a>
-            
-            
-            <a href='https://huangbaihua.gitee.io/tags/%E8%AF%91%E6%96%87/' class=" post_tag button button_translucent" data-position=10 title="译文">译文<span class="button_tally">10</span>
+            <a href='https://huangbaihua.gitee.io/tags/%E5%8E%9F%E5%88%9B/' class=" post_tag button button_translucent" data-position=3 title="原创">原创<span class="button_tally">3</span>
             </a>
             
             <div class="tags_sort"><span title="sort alphabetically">[A~Z]</span><span title="sort by count">[0~9]</span>
@@ -885,7 +944,7 @@ PSI 元素表示源代码的内部结构，是由 IntelliJ 平台解析的。
     <path d="M105 193.7l38.7-119H66.4l38.7 119z"/>
     <path d="M105 193.7l38.7-119H198l-93 119z"/>
     <path d="M198 74.7l11.6 36.2c1 3 0 6.6-3 8.6l-101.5 74 93-119z"/>
-    <path d="M198 74.7h-54.3L167 3c1.2-3.6 6.4-3.6 7.6 0L198 74.8z"/> 
+    <path d="M198 74.7h-54.3L167 3c1.2-3.6 6.4-3.6 7.6 0L198 74.8z"/>
   </symbol>
   <symbol viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="rss">
     <circle cx="3.429" cy="20.571" r="3.429"></circle>
@@ -895,7 +954,7 @@ PSI 元素表示源代码的内部结构，是由 IntelliJ 平台解析的。
   <symbol viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" id="linkedin">
     <path d="M437 0H75C33.648 0 0 33.648 0 75v362c0 41.352 33.648 75 75 75h362c41.352 0 75-33.648 75-75V75c0-41.352-33.648-75-75-75zM181 406h-60V196h60zm0-240h-60v-60h60zm210 240h-60V286c0-16.54-13.46-30-30-30s-30 13.46-30 30v120h-60V196h60v11.309C286.719 202.422 296.93 196 316 196c40.691.043 75 36.547 75 79.688zm0 0"></path>
   </symbol>
-  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 612 612" id="arrow">
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 612 612" id="to-top">
     <path d="M604.501 440.509L325.398 134.956c-5.331-5.357-12.423-7.627-19.386-7.27-6.989-.357-14.056 1.913-19.387 7.27L7.499 440.509c-9.999 10.024-9.999 26.298 0 36.323s26.223 10.024 36.222 0l262.293-287.164L568.28 476.832c9.999 10.024 26.222 10.024 36.221 0 9.999-10.023 9.999-26.298 0-36.323z"></path>
   </symbol>
   <symbol viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" id="carly">
@@ -920,25 +979,39 @@ PSI 元素表示源代码的内部结构，是由 IntelliJ 平台解析的。
   <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="stackoverflow">
     <path d="M21 27v-8h3v11H0V19h3v8h18z"></path><path d="M17.1.2L15 1.8l7.9 10.6 2.1-1.6L17.1.2zm3.7 14.7L10.6 6.4l1.7-2 10.2 8.5-1.7 2zM7.2 12.3l12 5.6 1.1-2.4-12-5.6-1.1 2.4zm-1.8 6.8l13.56 1.96.17-2.38-13.26-2.55-.47 2.97zM19 25H5v-3h14v3z"></path>
   </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="xing">
+    <path d="M18.188 0c-.517 0-.741.325-.927.66 0 0-7.455 13.224-7.702 13.657.015.024 4.919 9.023 4.919 9.023.17.308.436.66.967.66h3.454c.211 0 .375-.078.463-.22.089-.151.089-.346-.009-.536l-4.879-8.916c-.004-.006-.004-.016 0-.022L22.139.756c.095-.191.097-.387.006-.535C22.056.078 21.894 0 21.686 0h-3.498zM3.648 4.74c-.211 0-.385.074-.473.216-.09.149-.078.339.02.531l2.34 4.05c.004.01.004.016 0 .021L1.86 16.051c-.099.188-.093.381 0 .529.085.142.239.234.45.234h3.461c.518 0 .766-.348.945-.667l3.734-6.609-2.378-4.155c-.172-.315-.434-.659-.962-.659H3.648v.016z"/>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 71 55" id="discord">
+    <path d="M60.1045 4.8978C55.5792 2.8214 50.7265 1.2916 45.6527 0.41542C45.5603 0.39851 45.468 0.440769 45.4204 0.525289C44.7963 1.6353 44.105 3.0834 43.6209 4.2216C38.1637 3.4046 32.7345 3.4046 27.3892 4.2216C26.905 3.0581 26.1886 1.6353 25.5617 0.525289C25.5141 0.443589 25.4218 0.40133 25.3294 0.41542C20.2584 1.2888 15.4057 2.8186 10.8776 4.8978C10.8384 4.9147 10.8048 4.9429 10.7825 4.9795C1.57795 18.7309 -0.943561 32.1443 0.293408 45.3914C0.299005 45.4562 0.335386 45.5182 0.385761 45.5576C6.45866 50.0174 12.3413 52.7249 18.1147 54.5195C18.2071 54.5477 18.305 54.5139 18.3638 54.4378C19.7295 52.5728 20.9469 50.6063 21.9907 48.5383C22.0523 48.4172 21.9935 48.2735 21.8676 48.2256C19.9366 47.4931 18.0979 46.6 16.3292 45.5858C16.1893 45.5041 16.1781 45.304 16.3068 45.2082C16.679 44.9293 17.0513 44.6391 17.4067 44.3461C17.471 44.2926 17.5606 44.2813 17.6362 44.3151C29.2558 49.6202 41.8354 49.6202 53.3179 44.3151C53.3935 44.2785 53.4831 44.2898 53.5502 44.3433C53.9057 44.6363 54.2779 44.9293 54.6529 45.2082C54.7816 45.304 54.7732 45.5041 54.6333 45.5858C52.8646 46.6197 51.0259 47.4931 49.0921 48.2228C48.9662 48.2707 48.9102 48.4172 48.9718 48.5383C50.038 50.6034 51.2554 52.5699 52.5959 54.435C52.6519 54.5139 52.7526 54.5477 52.845 54.5195C58.6464 52.7249 64.529 50.0174 70.6019 45.5576C70.6551 45.5182 70.6887 45.459 70.6943 45.3942C72.1747 30.0791 68.2147 16.7757 60.1968 4.9823C60.1772 4.9429 60.1437 4.9147 60.1045 4.8978ZM23.7259 37.3253C20.2276 37.3253 17.3451 34.1136 17.3451 30.1693C17.3451 26.225 20.1717 23.0133 23.7259 23.0133C27.308 23.0133 30.1626 26.2532 30.1066 30.1693C30.1066 34.1136 27.28 37.3253 23.7259 37.3253ZM47.3178 37.3253C43.8196 37.3253 40.9371 34.1136 40.9371 30.1693C40.9371 26.225 43.7636 23.0133 47.3178 23.0133C50.9 23.0133 53.7545 26.2532 53.6986 30.1693C53.6986 34.1136 50.9 37.3253 47.3178 37.3253Z"/>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 18" id="mastodon">
+    <path
+    fill="#ffffff"
+    d="m 15.054695,9.8859583 c -0.22611,1.1632697 -2.02517,2.4363497 -4.09138,2.6830797 -1.0774504,0.12856 -2.1382704,0.24673 -3.2694704,0.19484 -1.84996,-0.0848 -3.30971,-0.44157 -3.30971,-0.44157 0,0.1801 0.0111,0.35157 0.0333,0.51194 0.24051,1.82571 1.81034,1.93508 3.29737,1.98607 1.50088,0.0514 2.8373104,-0.37004 2.8373104,-0.37004 l 0.0617,1.35686 c 0,0 -1.0498104,0.56374 -2.9199404,0.66742 -1.03124,0.0567 -2.3117,-0.0259 -3.80308,-0.42069 -3.23454998,-0.85613 -3.79081998,-4.304 -3.87592998,-7.8024197 -0.026,-1.03871 -0.01,-2.01815 -0.01,-2.83732 0,-3.57732 2.34385998,-4.62587996 2.34385998,-4.62587996 1.18184,-0.54277 3.20976,-0.77101 5.318,-0.7882499985409 h 0.0518 C 9.8267646,0.01719834 11.856025,0.24547834 13.037775,0.78824834 c 0,0 2.34377,1.04855996 2.34377,4.62587996 0,0 0.0294,2.63937 -0.32687,4.47183"/>
+ <path
+    fill="#000000"
+    d="m 12.616925,5.6916583 v 4.3315297 h -1.71607 V 5.8189683 c 0,-0.88624 -0.37289,-1.33607 -1.1187604,-1.33607 -0.82467,0 -1.23799,0.53361 -1.23799,1.58875 v 2.30122 h -1.70594 v -2.30122 c 0,-1.05514 -0.4134,-1.58875 -1.23808,-1.58875 -0.74587,0 -1.11876,0.44983 -1.11876,1.33607 v 4.2042197 h -1.71607 V 5.6916583 c 0,-0.88527 0.22541,-1.58876 0.67817,-2.10922 0.46689,-0.52047 1.07833,-0.78727 1.83735,-0.78727 0.87816,0 1.54317,0.33752 1.98288,1.01267 l 0.42744,0.71655 0.42753,-0.71655 c 0.43961,-0.67515 1.10463,-1.01267 1.9828704,-1.01267 0.75893,0 1.37037,0.2668 1.83735,0.78727 0.45268,0.52046 0.67808,1.22395 0.67808,2.10922"/>
+  </symbol>
 </svg>
-
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
 <footer class="footer">
   <div class="footer_inner wrap pale">
-    <img src='https://huangbaihua.gitee.io/icons/apple-touch-icon.png' class="icon icon_2 transparent" alt="Keepwalking">
-    <p>Copyright&nbsp;<span class="year"></span>&nbsp;KEEPWALKING. All Rights Reserved</p><a class="to_top" href="#documentTop">
+    <img src='https://huangbaihua.gitee.io/icons/apple-touch-icon.png' class="icon icon_2 transparent" alt="Copyright © 2008–2022, Keepwalking; all rights reserved. Powered by Hugo">
+    <p>Copyright&nbsp;<span class="year"></span>&nbsp;COPYRIGHT © 2008–2022, KEEPWALKING; ALL RIGHTS RESERVED. POWERED BY HUGO. All Rights Reserved</p><a class="to_top" href="#documentTop">
   <svg class="icon">
-  <use xlink:href="#arrow"></use>
+  <title>to-top</title>
+  <use xlink:href="#to-top"></use>
 </svg>
+
 </a>
 
   </div>
 </footer>
 
-    <script type="text/javascript" src="https://huangbaihua.gitee.io/js/bundle.min.f2a388484c9a163666327c8d1d4c4a29c5893327ee7ddd02f8719aa4a90f7e850d78cf077da45b11f359a5afe11ffa49e744d9ef835e4465f73c4b99209316a4.js" integrity="sha512-8qOISEyaFjZmMnyNHUxKKcWJMyfufd0C&#43;HGapKkPfoUNeM8HfaRbEfNZpa/hH/pJ50TZ74NeRGX3PEuZIJMWpA==" crossorigin="anonymous"></script>
-    
+<script type="text/javascript" src="https://huangbaihua.gitee.io/zh/js/bundle.6253736a7a30f8dce4497a637233c790a6fab8efee82daa096a1c3a07f3cfdb4695ba1f6731ef325235a1a88e64d05098c1b13ed72dafea23d7120ee865961c3.js" integrity="sha512-YlNzanow&#43;NzkSXpjcjPHkKb6uO/ugtqglqHDoH88/bRpW6H2cx7zJSNaGojmTQUJjBsT7XLa/qI9cSDuhllhww==" crossorigin="anonymous"></script>
   </body>
 </html>
