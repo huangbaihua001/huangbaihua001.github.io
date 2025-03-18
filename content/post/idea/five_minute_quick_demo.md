@@ -34,7 +34,7 @@ image_featured = false
 使用 [IntelliJ Platform Plugin Template](https://github.com/JetBrains/intellij-platform-plugin-template) 快速构建一个插件项目 。
 利用 [IntelliJ Platform](https://plugins.jetbrains.com/docs/intellij/intellij-platform.html) 平台开发自己的第一个插件！
 
-![Requirement](https://img.shields.io/badge/JDK-8+-green.svg)
+![Requirement](/images/Blue_JDK_1.8+_Shield_Badge.svg))
 
 ## Demo简介
 

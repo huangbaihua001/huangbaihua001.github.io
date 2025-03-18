@@ -28,7 +28,7 @@
 <!-- preload assets declaration -->
 <!-- preload main css file -->
 {{ $styles := partialCached "func/getStylesBundle" . }}
-<link rel="preload" href="{{ $styles.Permalink }}" integrity = "{{ $styles.Data.Integrity }}" as="style" crossorigin="anonymous">
+<link rel="preload" href="{{ $styles.Permalink }}" integrity = "" as="style" crossorigin="anonymous">
 
 <!-- preload main javascript file -->
 {{ $bundle := partialCached "func/getJavascriptBundle" . }}
@@ -36,7 +36,7 @@
 "{{ $bundle.Data.Integrity }}" crossorigin="anonymous">
 
 <!-- link main css file -->
-<link rel="stylesheet" type="text/css" href="{{ $styles.Permalink }}" integrity="{{ $styles.Data.Integrity }}" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="{{ $styles.Permalink }}" integrity="" crossorigin="anonymous">
 <!-- load all custom css files -->
 {{- with $params.customCSS }}
   {{- range . -}}
