@@ -1,8 +1,8 @@
 +++
 author = "柏华"
-title = "初探 Transformer 背后的数学"
+title = "初探 Transformer 背后的数学原理"
 date = "2025-03-18"
-description = "初探 Transformer 背后的数学"
+description = "初探 Transformer 背后的数学原理"
 featured = true
 tags = [
     "AI",
