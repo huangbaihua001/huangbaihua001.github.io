@@ -120,4 +120,4 @@ Transformer 的成功离不开其背后的数学原理。从自注意力到多�
 
 机械工业出版社 《Transformer 自然语言处理实战》
 
-中国工业初版集团 《生成式 AI 实战 Transformer,Stable Diffusion,LangChain 和 AI Agent》
+中国工业出版集团 《生成式 AI 实战 Transformer,Stable Diffusion,LangChain 和 AI Agent》
