@@ -12,7 +12,7 @@ tags = [
 isCJKLanguage = true
 +++
 
-# 初探 Transformer 背后的数学
+# 初探 Transformer 背后的数学原理
 
 自2017年问世以来，Transformer 不仅是一种创新的模型架构，更是数学与工程精妙结合的典范。它通过自注意力机制（Self-Attention）等核心技术，为序列建模和长距离依赖问题提供了突破性的解决方案，深刻影响了自然语言处理、计算机视觉等领域。
 本博客以作者的个人理解，以 Transformer 为背景，从数学角度，初步探究 Transformer 模型背后的数学原理。
