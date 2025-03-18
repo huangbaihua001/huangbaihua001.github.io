@@ -1,0 +1,937 @@
+
+<!DOCTYPE html>
+<html
+  lang="zh"
+  data-figures=""
+  
+    class="page"
+  
+  
+    data-mode="lit"
+  
+  >
+  <head>
+<title>面向领域的微服务架构-来自优步的实践 | Keepwalking</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?36c89dc767ce47cf446295d1c91558b5";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+
+
+
+
+
+  
+<meta property="og:locale" content="zh" />
+
+<meta property="og:type" content="article">
+<meta name="description" content="面向领域的微服务架构-来自优步的实践" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:creator" content="baihua.huang@twitter.com">
+<meta name="twitter:title" content="面向领域的微服务架构-来自优步的实践" />
+<meta name="twitter:image" content="https://huangbaihua001.github.io/images/graph/u1.png"/>
+<meta property="og:url" content="https://huangbaihua001.github.io/post/microservice-architecture/" />
+<meta property="og:title" content="面向领域的微服务架构-来自优步的实践" />
+<meta property="og:description" content="面向领域的微服务架构-来自优步的实践" />
+<meta property="og:image" content="https://huangbaihua001.github.io/images/graph/u1.png" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="https://huangbaihua001.github.io/icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://huangbaihua001.github.io/icons/favicon-32x32.png">
+<link rel="manifest" href="https://huangbaihua001.github.io/icons/site.webmanifest">
+
+<link rel="canonical" href="https://huangbaihua001.github.io/post/microservice-architecture/">
+
+
+
+<link rel="preload" href="https://huangbaihua001.github.io/css/styles.42e2c5f6d8cf9c52872666f8d8b2678ad0c426978b9d78aff3c33b7a1e7f6f97f54bcdaf0518a25fb0fe26367d04f8b07c683b3b38b331cb098daadee06b1f3e.css" integrity = "" as="style" crossorigin="anonymous">
+
+
+
+<link rel="preload" href="https://huangbaihua001.github.io/zh/js/bundle.8c780bd81ad60843fdaba044c50bd4c680b31c239d7fc85d7a0cbe502379cde26544715223e63aee9a86379f306642868b96c6276ca97b0e267499d39dd28f94.js" as="script" integrity=
+"sha512-jHgL2BrWCEP9q6BExQvUxoCzHCOdf8hdegy&#43;UCN5zeJlRHFSI&#43;Y67pqGN58wZkKGi5bGJ2ypew4mdJnTndKPlA==" crossorigin="anonymous">
+
+
+<link rel="stylesheet" type="text/css" href="https://huangbaihua001.github.io/css/styles.42e2c5f6d8cf9c52872666f8d8b2678ad0c426978b9d78aff3c33b7a1e7f6f97f54bcdaf0518a25fb0fe26367d04f8b07c683b3b38b331cb098daadee06b1f3e.css" integrity="" crossorigin="anonymous">
+
+
+  </head>
+  <body
+    data-code="7"
+    data-lines="false"
+    id="documentTop"
+    data-lang="zh"
+  >
+
+<header class="nav_header" >
+  <nav class="nav"><a href='https://huangbaihua001.github.io/' class="nav_brand nav_item" title="Keepwalking">
+  <img src="https://huangbaihua001.github.io/logos/logo.png" class="logo" alt="Keepwalking">
+  <div class="nav_close">
+    <div><svg class="icon">
+  <title>open-menu</title>
+  <use xlink:href="#open-menu"></use>
+</svg>
+<svg class="icon">
+  <title>closeme</title>
+  <use xlink:href="#closeme"></use>
+</svg>
+</div>
+  </div>
+</a>
+
+    <div class='nav_body nav_body_left'>
+      
+      
+      
+        
+
+  <div class="nav_parent">
+    <a href="https://huangbaihua001.github.io/" class="nav_item" title="首页">首页 </a>
+  </div>
+  <div class="nav_parent">
+    <a href="https://huangbaihua001.github.io/post/" class="nav_item" title="文章">文章 </a>
+  </div>
+  <div class="nav_parent">
+    <a href="https://huangbaihua001.github.io/dsclaimer/" class="nav_item" title="免责声明">免责声明 </a>
+  </div>
+  <div class="nav_parent">
+    <a href="https://huangbaihua001.github.io/about/" class="nav_item" title="关于我">关于我 </a>
+  </div>
+      
+      <div class="nav_parent">
+        <a href="#" class="nav_item">🌐</a>
+        <div class="nav_sub">
+          <span class="nav_child"></span>
+          
+          <a href="https://huangbaihua001.github.io/" class="nav_child nav_item">中文</a>
+          
+          <a href="https://huangbaihua001.github.io/en/" class="nav_child nav_item">English</a>
+          
+        </div>
+      </div>
+<div class='follow'>
+  <a href="https://github.com/huangbaihua001">
+    <svg class="icon">
+  <title>github</title>
+  <use xlink:href="#github"></use>
+</svg>
+
+  </a>
+    
+  <a href="https://huangbaihua001.github.io/index.xml">
+    <svg class="icon">
+  <title>rss</title>
+  <use xlink:href="#rss"></use>
+</svg>
+
+  </a>
+<div class="color_mode">
+  <input type="checkbox" class="color_choice" id="mode">
+</div>
+
+</div>
+
+    </div>
+  </nav>
+</header>
+
+    <main>
+  
+<div class="grid-inverse wrap content">
+  <article class="post_content">
+    <h1 class="post_title">面向领域的微服务架构-来自优步的实践</h1>
+  <div class="post_meta">
+    <span><svg class="icon">
+  <title>calendar</title>
+  <use xlink:href="#calendar"></use>
+</svg>
+</span>
+    <span class="post_date">
+      2021年4月15日</span>
+    <span class="post_time"> · 阅读 16 分钟</span><span>&nbsp;· <a href='https://huangbaihua001.github.io/tags/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/' title="系统架构" class="post_tag button button_translucent">系统架构
+        </a><a href='https://huangbaihua001.github.io/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/' title="微服务" class="post_tag button button_translucent">微服务
+        </a><a href='https://huangbaihua001.github.io/tags/%E8%AF%91%E6%96%87/' title="译文" class="post_tag button button_translucent">译文
+        </a>
+    </span>
+    <span class="page_only">&nbsp;·
+  <div class="post_share">
+    分享到:
+    <a href="https://twitter.com/intent/tweet?text=%e9%9d%a2%e5%90%91%e9%a2%86%e5%9f%9f%e7%9a%84%e5%be%ae%e6%9c%8d%e5%8a%a1%e6%9e%b6%e6%9e%84-%e6%9d%a5%e8%87%aa%e4%bc%98%e6%ad%a5%e7%9a%84%e5%ae%9e%e8%b7%b5&url=https%3a%2f%2fhuangbaihua001.github.io%2fpost%2fmicroservice-architecture%2f&tw_p=tweetbutton" class="twitter" title="分享到 Twitter" target="_blank" rel="nofollow">
+      <svg class="icon">
+  <title>twitter</title>
+  <use xlink:href="#twitter"></use>
+</svg>
+
+    </a>
+    <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fhuangbaihua001.github.io%2fpost%2fmicroservice-architecture%2f&t=%e9%9d%a2%e5%90%91%e9%a2%86%e5%9f%9f%e7%9a%84%e5%be%ae%e6%9c%8d%e5%8a%a1%e6%9e%b6%e6%9e%84-%e6%9d%a5%e8%87%aa%e4%bc%98%e6%ad%a5%e7%9a%84%e5%ae%9e%e8%b7%b5" class="facebook" title="分享到 Facebook" target="_blank" rel="nofollow">
+      <svg class="icon">
+  <title>facebook</title>
+  <use xlink:href="#facebook"></use>
+</svg>
+
+    </a>
+    <a href="#linkedinshare" id = "linkedinshare" class="linkedin" title="分享到 LinkedIn" rel="nofollow">
+      <svg class="icon">
+  <title>linkedin</title>
+  <use xlink:href="#linkedin"></use>
+</svg>
+
+    </a>
+    <a href="https://huangbaihua001.github.io/post/microservice-architecture/" title="Copy Link" class="link link_yank">
+      <svg class="icon">
+  <title>copy</title>
+  <use xlink:href="#copy"></use>
+</svg>
+
+    </a>
+  </div>
+  </span>
+  </div>
+<div class="post_featured"><figure>
+  <picture>
+
+    
+      
+        
+        
+        
+        
+        
+        
+    <img
+      loading="lazy"
+      decoding="async"
+      alt=""
+      
+        class="image_figure image_featured image_internal image_unprocessed"
+        src="/images/graph/u1.png"
+      
+      
+    />
+
+    </picture>
+</figure>
+
+      </div>
+    <div class="post_body"><p>面向领域的微服务架构-来自优步的实践。</p>
+<p>源文: <a href="https://eng.uber.com/microservice-architecture/">Introduce Microservice Architecture</a> (Adam Gluck/Uber)</p>
+<h2 id="目录">目录</h2>
+<ul>
+<li><a href="#%E7%AE%80%E4%BB%8B">简介</a></li>
+<li><a href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%BE%AE%E6%9C%8D%E5%8A%A1">什么是微服务</a></li>
+<li><a href="#%E5%8A%A8%E6%9C%BA">动机</a></li>
+<li><a href="#%E9%9D%A2%E5%90%91%E9%A2%86%E5%9F%9F%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84">面向领域的微服务架构</a></li>
+<li><a href="#%E4%BC%98%E6%AD%A5%E7%9A%84%E5%AE%9E%E7%8E%B0">优步的实现</a></li>
+<li><a href="#%E6%89%A9%E5%B1%95">扩展</a></li>
+<li><a href="#%E6%94%B6%E7%9B%8A">收益</a></li>
+<li><a href="#%E5%AE%9E%E7%94%A8%E5%BB%BA%E8%AE%AE">实用建议</a></li>
+<li><a href="#%E6%9C%80%E5%90%8E%E7%9A%84%E6%84%9F%E6%83%B3">最后的感想</a></li>
+</ul>
+<h1 id="简介">简介</h1>
+<p>最近，业界围绕微服务架构，特别是微服务架构的缺陷展开了大量的讨论。仅仅几年前，正是由于微服务架构具有独立部署的灵活性，权属清晰，系统稳定性的提升，更好的关注点隔离等众多优势，很多人都欣然采用了微服务架构。但近年来，业界开始抨击微服务有大大增加系统复杂性的趋势，
+有时一个微小的功能都难于构建。</p>
+<p>由于优步发展到约2200个核心微服务，我们采用微服务架构也经历了这些优点和缺陷之间的取舍平衡(trade off)。在过去的2年里，优步一直试图降低微服务的复杂性，同时保持微服务架构的优势。
+我们希望通过这篇博文介绍我们对微服务架构的一般方法，我们称之为 &quot;面向领域的微服务架构&quot;(DOMA)的方法。</p>
+<p>虽然近些年由于这些缺陷人们对微服务架构的批评日益增多，但还是很少有人提倡完全拒绝微服务。它给运营上带来的效益太重要了，在这方面似乎还没有或部分可替代的架构。我们使用DOMA的目的是为那些想要降低整个系统复杂性的同时又能维持微服务优势的组织提供一种前进的道路。</p>
+<p>这篇文章解释了 DOMA 的概念, 是哪些因素导致优步会采用这种架构，它对平台和产品团队带来了哪些好处，最后是针对那些想采用这种架构的团队的一些实用建议。</p>
+<h1 id="什么是微服务">什么是微服务</h1>
+<p>微服务是面向服务架构的延伸。与2000年代规模较大的 &quot;服务 &quot;相比，微服务是代表一组更小范围的功能的应用程序。这些应用程序通过网络托管和提供，并暴露出一个定义良好的接口。其他应用程序通过 &quot;远程过程调用&quot;(RPC)来调用这个接口。</p>
+<p>微服务架构的关键特征是代码托管、调用和部署的方式。如果我们思考大型的单体应用，它们一般会被分割成具有明确定义接口的封装组件。这些接口就会直接在进程中调用，而不是通过网络。通过这种方式，我们也可以将微服务看作一个库，为了调用库中的所有功能有些性能影响（这些影响来自网络I/O和序列化/反序列化的开销）。</p>
+<p>当我们这样思考微服务的时候，可能会质疑自己为什么要采用微服务架构。答案通常是微服务可以独立部署且易于扩展。对于一个大型的单体应用，一个组织被迫一次性部署或发布所有的代码。应用程序的每一个新版本都可能涉及许多更改。部署变得风险大、耗时长。任何人都可以使整个系统瘫痪</p>
+<p>换句话说，组织采用微服务是为了运营效率而牺牲了性能。组织也必须承担支撑微服务所必需的维护基础设施的费用。事实证明，在多数情况下，这种取舍权衡是很有意义的，但是也强烈反对过早地采用微服务架构。</p>
+<h1 id="动机">动机</h1>
+<p>在优步，我们采用了微服务架构，因为当时(在大约2012-2013年)主要有两个单体服务，并且遇到以下诸多问题(这些问题正是微服务能解决的)。</p>
+<ul>
+<li>
+<p><span style='font-weight:bold'>可用性风险</span>。 在整个单体代码库中，一次回归就可以让整个系统(本例指优步所有系统)崩溃。</p>
+</li>
+<li>
+<p><span style='font-weight:bold'>风险大，昂贵的部署</span>。 部署是痛苦的，耗时的，而且需要经常回滚。</p>
+</li>
+<li>
+<p><span style='font-weight:bold'>关注点分离欠佳</span>。 很难在一个庞大的代码库中保持良好的关注点分离。在指数级增长的环境中，权宜之计有时会导致逻辑和组件之间的边界不清。</p>
+</li>
+<li>
+<p><span style='font-weight:bold'>执行效率低下</span>。 这些问题加在一起，使团队难以自治或独立执行。</p>
+</li>
+</ul>
+<p>换句话说，由于优步从10多个工程师发展到100多个工程师且拥有自己技术栈的团队时，单体架构将团队的命运捆绑在了一起并使其难以独立运作。
+因此，我们采用了微服务架构。 最终结果，我们的系统变得更加灵活，这使得团队更加自治。</p>
+<ul>
+<li>
+<p><span style='font-weight:bold'>系统可靠性</span>。总体系统可靠性在微服务体架构中得到提高。单个服务可以关闭(并回滚)，而不需要关闭整个系统。</p>
+</li>
+<li>
+<p><span style='font-weight:bold'>关注点分离</span>。从架构上讲，微服务架构迫使您问这样一个问题:“这个服务为什么存在?”，能更清晰地定义不同组件的角色。</p>
+</li>
+<li>
+<p><span style='font-weight:bold'>明确所有权</span>。 谁拥有什么代码变得更加清晰。 服务通常在个人、团队或组织级别拥有，从而实现更快的增长。</p>
+</li>
+<li>
+<p><span style='font-weight:bold'>自主执行</span>。独立的部署+更清晰的所有权，解锁了不同产品和平台团队的自主执行。</p>
+</li>
+<li>
+<p><span style='font-weight:bold'>开发速度</span>。团队可以独立部署他们的代码，这使他们能够按照自己的节奏执行。</p>
+</li>
+</ul>
+<p>可以毫不夸张地说，如果没有微服务架构，优步不可能实现今天保持的规模和服务质量。</p>
+<p>然而，随着公司规模的扩大，从100名工程师到1000名工程师，我们开始注意到一系列与大大增加系统复杂性相关的问题。
+在微服务架构中，用一个可以随时更改功能黑盒替换了一个单体代码库，这样容易导致意外行为。</p>
+<p>例如，工程师必须通过12个不同团队的约50项服务来调查问题的根本原因。</p>
+<p>理解服务之间的依赖关系会变得相当困难，因为服务之间的调用层次很深，通常跨越很多层。第n个依赖关系的延迟峰值可能会导致上游的一连串问题。
+如果没有合适的工具，就不可能看到实际发生的事情，这使得调试变得困难。</p>
+<p><figure>
+  <picture>
+
+    
+      
+        
+        
+        
+        
+        
+        
+    <img
+      loading="lazy"
+      decoding="async"
+      alt="2018年年中优步微服务架构在Jaeger中的调用依赖关系图"
+      
+        class="image_figure image_internal image_unprocessed"
+        src="/images/graph/u2.png"
+      
+      
+    />
+
+    </picture>
+</figure>
+</p>
+<p>为了构建一个简单的功能，工程师往往需要跨多个服务工作，所有这些服务都由不同的个人和团队拥有。
+这就需要广泛的合作，在会议、设计和代码审查上花费更多的时间。
+由于团队在彼此的服务中构建代码，修改彼此的数据模型，甚至代表服务所有者执行部署，早期对服务所有权的明确界限的承诺受到了影响。
+网络化的单体可能会形成，看似独立的服务都必须部署在一起，才能安全地执行任何变更。</p>
+<p>其结果是开发者体验变慢、服务所有者不稳定、迁移更痛苦等。对于已经采用微服务架构的企业来说，已经没有回头路了。这就变成了 &quot;<span style='font-weight:bold'>有了它们不能活，没有它们也不能活</span>&quot;。</p>
+<p><figure>
+  <picture>
+
+    
+      
+        
+        
+        
+        
+        
+        
+    <img
+      loading="lazy"
+      decoding="async"
+      alt="2018年左右优步的一个复杂流程的例子，在DOMA之前，一个简单的整合需要10个服务。"
+      
+        class="image_figure image_internal image_unprocessed"
+        src="/images/graph/u3.png"
+      
+      
+    />
+
+    </picture>
+</figure>
+</p>
+<h1 id="面向领域的微服务架构">面向领域的微服务架构</h1>
+<p>如果我们能把微服务看成是I/O绑定的库，把 &quot;微服务架构 &quot;看成是一个大型的、分布式的应用，那么我们就可以使用更好理解的架构去思考如何组织我们的代码。</p>
+<p>因此&quot;面向领域的微服务架构&quot;大量借鉴了<a href="https://en.wikipedia.org/wiki/Domain-driven_design"><font color='red'>领域驱动设计</font></a>、<a href="/post/the-clean-architecture"><font color='red'>清晰架构</font></a>、
+<a href="https://en.wikipedia.org/wiki/Service-oriented_architecture"><font color='red'>面向服务的架构</font></a>、以及<font color='red'>面向对象和接口的设计模式</font>等成熟的代码组织方式。
+我们认为DOMA的创新之处在于，它是一种相对新颖的方式，可以在大型组织的大型分布式系统中利用既定的设计原则。</p>
+<p>DOMA相关核心原则和术语如下：</p>
+<p>我们不是围绕单一的微服务，而是围绕相关微服务的集合。我们将这些称为<font color='red'>域</font>。我们进一步创建域的集合，我们称之为<font color='red'>层</font>。域所属的层建立了该域内的微服务允许承担哪些依赖关系。
+我们为域提供了清晰的接口，我们将其视为进入集合的入口。我们称这些为<font color='red'>网关</font>。最后，我们确定每个领域对其他领域来说都是不可知的，也就是说，一个域不应该在其代码库或数据模型里面硬编码与另一个域相关的逻辑。
+因为很多时候，团队确实需要在另一个团队的域中加入逻辑（例如，自定义的验证逻辑或数据模型上的一些元上下文）。
+我们提供了一个扩展架构来支持领域内定义良好的扩展点。换句话说，我们提供一个系统化的架构、领域网关和预定义的扩展点。DOMA的目的是将微服务架构从复杂的东西转变为可理解的东西：<font color='red'>一套结构化的、灵活的、可重用的、分层的组件</font>。</p>
+<p>这篇文章的其余部分将挖掘优步DOMA的实施，我们看到的好处，以及对可能想要采用这种架构的公司的实用建议。</p>
+<h1 id="优步的实现">优步的实现</h1>
+<h2 id="领域">领域</h2>
+<p>优步域代表了一个或多个微服务的集合，这些微服务与功能的逻辑分组相关联。在设计域的过程中，一个常见的问题是 &quot;一个域应该有多大？&quot;
+我们在这里不给出指导。有些域可以包含几十个服务，有些域只包含一个服务。重要的任务是仔细思考每个集合的逻辑作用。
+例如，我们的地图搜索服务构成了一个域，票价服务是一个域，匹配平台（匹配乘客和司机）是一个域。这些也不一定按照公司的组织结构来。
+例如优步地图组织本身分为3个域，3个不同的网关，网关背后有80个微服务。</p>
+<h2 id="分层设计">分层设计</h2>
+<p>在优步的微服务架构中，分层设计回答了 &quot;什么服务可以调用其他什么服务？&quot;的问题。因此，我们可以将层设计视为 &quot;规模化的关注点分离&quot;。
+另外，我们也可以把分层设计看作是 &quot;规模化的依赖管理&quot;。</p>
+<p>分层设计描述了一种机制，用于思考优步跨服务依赖性的故障爆炸半径和产品特异性。随着域从底层到顶层。
+它们在中断时对服务的影响较小，而且代表了更具体的产品使用场景。反之。
+底层的功能有更多的依赖性，因此往往有更大的障爆炸半径范围，也代表了更普遍的业务功能。
+下图说明了这个概念。</p>
+<p><figure>
+  <picture>
+
+    
+      
+        
+        
+        
+        
+        
+        
+    <img
+      loading="lazy"
+      decoding="async"
+      alt=""
+      
+        class="image_figure image_internal image_unprocessed"
+        src="/images/graph/u4.png"
+      
+      
+    />
+
+    </picture>
+</figure>
+</p>
+<p>我们可以把上层看作是具体的用户体验（比如移动功能），而下层则是通用的业务功能（比如账户管理）。
+层只依赖于其下的层，这给我们提供了一个有用的启发式方法来思考故障爆炸半径和领域整合等问题。</p>
+<p>值得注意的是，功能经常会从这个图表中 &quot;向下 &quot;移动，从具体到更普遍。可以想象，一个简单的功能，随着需求的发展，最终会变成越来越多的平台。
+事实上，这种向下迁移是意料之中的，优步的许多核心业务平台都是从骑手或司机的特定功能开始的。
+随着我们开展了更多的业务线，它们也有了更多的依赖性（如Uber Eats或Uber Freight），这些业务就变得更加普遍了。</p>
+<p>在优步内部，我们建立了以下五层。</p>
+<ol>
+<li>
+<p><span style='font-weight:bold'>基础设施层</span>。 提供任何工程组织都能使用的功能。这是优步对诸如存储或网络等大的工程问题的解决方案层。</p>
+</li>
+<li>
+<p><span style='font-weight:bold'>业务层</span>。 提供了优步作为一个组织可以使用的功能，但这些功能并不针对特定的产品类别或业务线（LOB），如乘车、外卖或货运。</p>
+</li>
+<li>
+<p><span style='font-weight:bold'>产品层</span>。 提供与特定产品类别或业务线（LOB）相关的功能，但与移动应用不可知。
+如 &quot;请求搭车 &quot;的逻辑，这是由多个面向Rides的应用（Rider，Rider &quot;Lite&quot;，m.uber.com等）所组成的。</p>
+</li>
+<li>
+<p><span style='font-weight:bold'>表现层</span>。 提供与面向消费者的应用（移动/网站）中存在的功能直接相关的功能。</p>
+</li>
+<li>
+<p><span style='font-weight:bold'>边缘层</span>。 将优步服务安全地暴露给外界。这一层也是移动应用感知的。</p>
+</li>
+</ol>
+<p>正如你所看到的，后续的每一层都代表着越来越具体的功能分组，而且爆炸半径越来越小（或换句话说，较少的组件依赖于该层内的功能）。</p>
+<h2 id="网关">网关</h2>
+<p>在微服务架构中，&quot;网关API&quot;这个词已经是一个广为人知的概念。除了我们倾向于把网关仅仅看作是进入底层服务集合(我们称之为域)的一个单一入口点外，我们的定义与既定的定义差别不大。一个网关的成功取决于API设计的成功。</p>
+<p><figure>
+  <picture>
+
+    
+      
+        
+        
+        
+        
+        
+        
+    <img
+      loading="lazy"
+      decoding="async"
+      alt=""
+      
+        class="image_figure image_internal image_unprocessed"
+        src="/images/graph/u5.png"
+      
+      
+    />
+
+    </picture>
+</figure>
+</p>
+<p>上图对网关进行了说明。它抽象出了域的内部细节--多个服务、数据表、ETL管道等。只有接口、RPC API、消息事件和查询暴露给其他域。</p>
+<p>由于上游消费者只在一个服务上运行，因此网关在未来的迁移、可发现性和整体系统复杂度方面提供了许多好处，上游服务只采取单一的依赖性，而不是依赖一个领域内可能存在的多个下游服务。
+如果我们从面向对象(OO)设计的意义上考虑网关，那么它们就是接口定义，使我们能够在底层的 &quot;实现&quot;（这里是底层微服务的集合）方面为所欲为。</p>
+<h1 id="扩展">扩展</h1>
+<p>扩展代表了一种扩展域的机制。扩展的基本定义是，它提供了一种机制，即
+用于扩展底层服务的功能，而不改变该服务的实际实现，也不影响其整体可靠性。
+在优步，我们提供两种不同的扩展模式：逻辑扩展和数据扩展。
+扩展的概念使我们能够将我们的架构扩展到多个团队能够相互独立地工作。</p>
+<h2 id="逻辑扩展">逻辑扩展</h2>
+<p>逻辑扩展提供了一种机制来扩展服务的底层逻辑。对于逻辑扩展，我们使用提供者的一个变体或插件模式，其接口是以服务为基础定义的。这使得扩展团队可以在不修改底层平台核心代码的情况下，以接口驱动的方式实现扩展逻辑。</p>
+<p>比如，一个司机上线。通常情况下，我们会进行各种检查，以确保司机被允许上线（安全检查、合规性等）。
+其中的每一项都是由各个团队拥有的。一种实现方式是让每个团队在同一个端点中编写逻辑，但这可能会引入复杂性。
+每项检查都需要自定义的、完全不相关的逻辑。</p>
+<p>在逻辑扩展的情况下，&quot;上线 &quot;端点将定义一个接口，他们希望每个扩展都能符合预定义的请求类型和响应。
+每个团队会注册一个扩展，负责执行这个逻辑。
+在这种情况下，他们可能会简单地获取一些关于司机的上下文，然后返回一个布尔值，说这个司机是否可以上线。
+上线端点将简单地迭代这些响应，并确定其中是否有假。</p>
+<p>这将核心代码与每个扩展解耦，并提供扩展之间的隔离，扩展不知道其他逻辑在执行什么。
+围绕着这一点，很容易建立更多的功能，比如可观察性或特性标记。</p>
+<h2 id="数据扩展">数据扩展</h2>
+<p>数据扩展提供了一种将任意数据附加到接口的机制，以避免核心平台数据模型的臃肿。
+对于数据扩展，我们利用Protobuf的Any功能，这样团队就可以将任意数据添加到请求中。
+服务通常会存储这些数据或将其传递给逻辑扩展，这样核心平台就永远不会负责反序列化（从而 &quot;知道&quot;）这个任意上下文。
+Protobuf的任何实现都会有一些基础设施开销，以换取更强的类型化。
+为了更简单的实现，我们可以很容易地使用JSON字符串来表示任意数据。</p>
+<h2 id="自定义">自定义</h2>
+<p>在逻辑和数据扩展之外，优步的很多团队都推出了自己适合自己领域的扩展模式。
+例如，与我们的展示架构绑定的很多集成都使用了基于DAG的任务执行逻辑。</p>
+<h1 id="收益">收益</h1>
+<p>优步的几乎每个主要领域都在一定程度上受到了DOMA的影响。在过去的一年里，我们主要关注优步的业务层，它为我们的各个业务领域提供了通用的逻辑。</p>
+<p>DOMA在优步还很年轻，我们很高兴能在未来分享更多数据和深入的架构案例。
+不过，在简化开发者体验和降低整体系统复杂度方面，早期的影响非常积极。</p>
+<h2 id="产品和平台">产品和平台</h2>
+<p>DOMA是优步整个产品和平台团队达成共识的结果。平台支持成本往往下降了一个数量级。产品团队从明确的权责边界和加快地开发中受益。</p>
+<p>例如，我们扩展架构的一个早期平台服务消费者能够将一个新功能的优先级和集成时间从三天下降到三个小时。
+通过采用扩展架构，减少代码审查、规划的时间，以及服务消费者的学习曲线。</p>
+<h2 id="降低复杂度">降低复杂度</h2>
+<p>以前产品团队需要调用许多下游服务来利用一个领域，现在他们只需要调用一个服务。通过减少上线一个新功能的服务数量。
+平台能够减少25-50%的上线时间。此外，我们能够将2200个微服务划分为70个领域。其中大约50%的服务已经实现。
+并且大部分已经计划在未来采用。</p>
+<h2 id="未来的迁移">未来的迁移</h2>
+<p>在优步，我们计算过微服务的半衰期是1.5年，也就是说每1.5年我们就有50%的微服务流失。
+如果没有网关，微服务架构很容易因为这种流失而陷入 &quot;迁移地狱&quot;。不断变化的微服务需要不断进行上游迁移。
+网关使团队能够避免对底层领域服务的依赖，这意味着这些服务可以在不强制进行上游迁移的情况下发生变化。</p>
+<p>优步在去年最大的两次平台改版都发生在网关背后。这些平台上有数百个依赖于它们的服务，它们将不得不迁移现有的服务消费者。
+在这些情况下，迁移的成本会非常高，使得重写整个平台不可行。</p>
+<h2 id="新业务线和产品">新业务线和产品</h2>
+<p>事实证明，使用DOMA设计的平台可扩展性更强，也更容易维护。
+优步的大多数团队采用DOMA是因为支持新业务线的成本太高。</p>
+<h1 id="实用建议">实用建议</h1>
+<p>本节为可能想采用DOMA的公司提供一些实用的建议。
+这里的指导原则是，根据我们的经验，一个成熟的、经过深思熟虑的微服务架构源于在正确的时间向正确的方向不断推进。
+现实情况是，对于一整个微服务架构来说，真正的 &quot;重写 &quot;是永远不可能的。</p>
+<p>因此，我们认为发展微服务架构更像是 &quot;修剪篱笆&quot;，使其最终正确地生长。
+而不是自上而下或一次性的架构（或重新架构）工作。这是一个动态和渐进的过程。</p>
+<h2 id="创业公司">创业公司</h2>
+<p>正如我们在上面看到的那样，首先要提出这样的问题， &quot;我们应该在什么时候采用微服务架构？&quot;和 &quot;它对我们的组织有意义吗？&quot;
+虽然微服务为拥有大量工程师的组织提供了操作上的好处，但这也带来了复杂性的增加，使功能的构建更加困难。</p>
+<p>在小型组织中，运营效益可能无法抵消架构复杂性的增加。此外，微服务架构往往需要专门的微服务系统。
+工程资源的支持，这可能超出了早期公司的预算，或者从优先级的角度来看是次优的。</p>
+<p>考虑到这一点，在一段时间内完全暂缓采用微服务也不是没有道理的。如果一个组织真的选择采用微服务。
+它应该思考 &quot;微服务作为大型分布式应用 &quot;的类比，以及它想要构建的微服务之间的关注点分离。
+另外，要认识到第一批微服务很可能是最重要的，也是持续时间最长的，因为它们真正描述了核心业务。</p>
+<h2 id="中等规模公司">中等规模公司</h2>
+<p>一旦公司发展到中等规模，拥有多个团队，不同的功能和平台之间的关注点明确划分就会变得模糊。这时微服务架构的作用就更加明显。</p>
+<p>在这个阶段，人们可以开始考虑微服务之间的层次结构。
+因为一些服务开始对业务运营变得更加关键，越来越多的团队依赖这些服务，依赖性管理也就可能变得越发重要。</p>
+<p>早期对平台化的投资可能会在未来得到回报。
+如果能建立产品完全不可知的业务平台，避免核心平台服务中的任意产品逻辑，才可能避免技术债务。
+此时采用扩展来实现这一目标或许是有意义的。</p>
+<p>鉴于微服务的数量可能还相当少，将它们集中在一起可能没有意义。
+不过，这里值得注意的是，在优步的DOMA实现背景下，一个领域可以包含一个服务，所以用 &quot;面向领域 &quot;的方式来思考可能还是有用的。</p>
+<h2 id="大公司">大公司</h2>
+<p>大公司一般都有规模较大的工程团队，团队可能有数百名工程师和数百个微服务以及众多的依赖关系。这时DOMA就能起到全部作用。
+这时会存在众多的微服务集群，这些集群可以很容易地归为域，在它们前面有一个网关。
+之前遗留的服务往往开始需要重构或重写，然后进行迁移，这时网关将很快会在服务的迁移便利性方面提供应有的作用。</p>
+<p>一些特定功能或分组的功能会作为“产品”服务来运行，被看作“平台”的其它服务会越来越多地支持多个产品， 此时明确的层次结构将变得越来越重要。
+现阶段，保持任意产品逻辑与平台脱钩至关重要。以免给平台团队带来沉重的运营负担以及造成全系统的不稳定。</p>
+<h1 id="最后的感想">最后的感想</h1>
+<p>随着优步越来越多的团队采用DOMA，我们仍在积极地发展DOMA。DOMA理解微服务架构的关键点在于它把该架构也只是看作一个大的分布式应用程序而已，同样的原则也可以应用于其它架构的进化，就像你应用到其它任何软件一样。
+DOMA只是一种在实践中思考这些原则的方法。我们希望其他人觉得它有用，我们也期待着反馈!</p>
+<p>DOMA本身是一个跨职能部门合作的成果，有近60位工程师参与，他们来自优步的各个部门。特别要感谢的是，在过去2年里为这项工作投入大量精力的人......。</p>
+<p>Alex Zylman,
+Alexandre Wilhelm, Allen Lu, Ankit Srivastava, Anthony Tran, Anupam Dikshit, Anurag Biyani, Daniel Wolf, Davide D’Agostino,
+Deepti Chedda, Dmitriy Bryndin, Gaurav Tungatkar, Jacob Greenleaf, Jaikumar Ganesh, Jennie Ngyuen, Joe McCabe,
+Joshua Shinavier, Julia Law, Kusha Kapoor, Linda Fu, Madan Thangavelu, Nimish Sheth, Parth Shah, Shawn Burke,
+Simon Newton, Steve Sherwood, Uday Kiran Medisetty, and Waleed Kadous</p>
+<p>#鸣谢:</p>
+<p>这项工作将业界现有的多种设计模式用来解决优步的问题，同时也提出了类似扩展的新模式。
+我们感谢业界做出的工作。我们也感谢领英的工程师们在“Superblocks”的工作，他们向我们讲述了他们的相关经验。</p>
+<p>(全文完)</p>
+    </div>
+<div class="post_comments">
+  
+  
+  
+</div>
+
+
+
+
+  </article>
+<aside class="sidebar">
+  <section class="sidebar_inner">
+    <br>
+    
+
+        <h2>baihua.huang</h2>
+      <div class="author_bio">
+        开源爱好者，永远的学生，梦想者，持续改进者。
+      </div>
+      <a href='https://huangbaihua001.github.io/about/' class="button mt-1" role="button" title='阅读更多'>阅读更多</a>
+
+    
+    
+    <h2 class="mt-4">精选文章</h2>
+    <ul>
+      <li>
+        <a href="https://huangbaihua001.github.io/post/ai/llm/transfermor_math/" class="nav-link" title="初探 Transformer 背后的数学">初探 Transformer 背后的数学</a>
+      </li>
+      <li>
+        <a href="https://huangbaihua001.github.io/post/english/how-to/" class="nav-link" title="如何在非母语环境下掌握英语">如何在非母语环境下掌握英语</a>
+      </li>
+      <li>
+        <a href="https://huangbaihua001.github.io/post/os/page_based_memory_management/" class="nav-link" title="操作系统 - 页式内存管理">操作系统 - 页式内存管理</a>
+      </li>
+      <li>
+        <a href="https://huangbaihua001.github.io/post/math/kruskal/" class="nav-link" title="图论-图解-克鲁斯卡尔 (Kruskal) 算法">图论-图解-克鲁斯卡尔 (Kruskal) 算法</a>
+      </li>
+      <li>
+        <a href="https://huangbaihua001.github.io/post/arch/arch_analysis_key/" class="nav-link" title="系统分析师重要知识点">系统分析师重要知识点</a>
+      </li>
+      <li>
+        <a href="https://huangbaihua001.github.io/post/english/grammer-verb-outline/" class="nav-link" title="以动词概括的英语语法体系">以动词概括的英语语法体系</a>
+      </li>
+      <li>
+        <a href="https://huangbaihua001.github.io/post/idea/psi_intro/" class="nav-link" title="PSI(程序结构接口)-Intellij 平台的核心抽象">PSI(程序结构接口)-Intellij 平台的核心抽象</a>
+      </li>
+      <li>
+        <a href="https://huangbaihua001.github.io/post/idea/five_minute_quick_demo/" class="nav-link" title="5分钟 IDEA 插件开发快速入门 Demo">5分钟 IDEA 插件开发快速入门 Demo</a>
+      </li>
+    </ul>
+    <h2 class="mt-4">最新文章</h2>
+    <ul class="flex-column">
+    </ul>
+    <div>
+      <h2 class="mt-4 taxonomy" id="categories-section">分类</h2>
+      <nav class="tags_nav">
+        <a href='https://huangbaihua001.github.io/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/' class="post_tag button button_translucent" title="系统架构">
+          系统架构
+          <span class="button_tally">4</span>
+        </a>
+        
+        <a href='https://huangbaihua001.github.io/categories/idea%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/' class="post_tag button button_translucent" title="idea插件开发">
+          IDEA插件开发
+          <span class="button_tally">2</span>
+        </a>
+        
+        <a href='https://huangbaihua001.github.io/categories/%E6%8A%80%E6%9C%AF%E7%AE%A1%E7%90%86/' class="post_tag button button_translucent" title="技术管理">
+          技术管理
+          <span class="button_tally">2</span>
+        </a>
+        
+        <a href='https://huangbaihua001.github.io/categories/%E8%8B%B1%E8%AF%AD/' class="post_tag button button_translucent" title="英语">
+          英语
+          <span class="button_tally">2</span>
+        </a>
+        
+        <a href='https://huangbaihua001.github.io/categories/5%E5%88%86%E9%92%9F%E5%85%A5%E9%97%A8%E7%B3%BB%E5%88%97/' class="post_tag button button_translucent" title="5分钟入门系列">
+          5分钟入门系列
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://huangbaihua001.github.io/categories/hugo/' class="post_tag button button_translucent" title="hugo">
+          HUGO
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://huangbaihua001.github.io/categories/%E5%8E%9F%E5%88%9B/' class="post_tag button button_translucent" title="原创">
+          原创
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://huangbaihua001.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/' class="post_tag button button_translucent" title="机器学习">
+          机器学习
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://huangbaihua001.github.io/categories/%E8%AF%91%E6%96%87/' class="post_tag button button_translucent" title="译文">
+          译文
+          <span class="button_tally">1</span>
+        </a>
+        
+        
+      </nav>
+    </div>
+    <div>
+      <h2 class="mt-4 taxonomy" id="tags-section">标签</h2>
+      <nav class="tags_nav">
+        <a href='https://huangbaihua001.github.io/tags/%E8%AF%91%E6%96%87/' class="post_tag button button_translucent" title="译文">
+          译文
+          <span class="button_tally">10</span>
+        </a>
+        
+        <a href='https://huangbaihua001.github.io/tags/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/' class="post_tag button button_translucent" title="系统架构">
+          系统架构
+          <span class="button_tally">9</span>
+        </a>
+        
+        <a href='https://huangbaihua001.github.io/tags/%E5%8E%9F%E5%88%9B/' class="post_tag button button_translucent" title="原创">
+          原创
+          <span class="button_tally">3</span>
+        </a>
+        
+        <a href='https://huangbaihua001.github.io/tags/idea%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/' class="post_tag button button_translucent" title="idea插件开发">
+          IDEA插件开发
+          <span class="button_tally">2</span>
+        </a>
+        
+        <a href='https://huangbaihua001.github.io/tags/%E6%8A%80%E6%9C%AF%E7%AE%A1%E7%90%86/' class="post_tag button button_translucent" title="技术管理">
+          技术管理
+          <span class="button_tally">2</span>
+        </a>
+        
+        <a href='https://huangbaihua001.github.io/tags/%E8%8B%B1%E8%AF%AD/' class="post_tag button button_translucent" title="英语">
+          英语
+          <span class="button_tally">2</span>
+        </a>
+        
+        <a href='https://huangbaihua001.github.io/tags/5%E5%88%86%E9%92%9F%E5%85%A5%E9%97%A8%E7%B3%BB%E5%88%97/' class="post_tag button button_translucent" title="5分钟入门系列">
+          5分钟入门系列
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://huangbaihua001.github.io/tags/ai/' class="post_tag button button_translucent" title="ai">
+          AI
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://huangbaihua001.github.io/tags/hugo/' class="post_tag button button_translucent" title="hugo">
+          HUGO
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://huangbaihua001.github.io/tags/index/' class="post_tag button button_translucent" title="index">
+          INDEX
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://huangbaihua001.github.io/tags/mermaid/' class="post_tag button button_translucent" title="mermaid">
+          MERMAID
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://huangbaihua001.github.io/tags/transformer/' class="post_tag button button_translucent" title="transformer">
+          TRANSFORMER
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://huangbaihua001.github.io/tags/%E5%85%8D%E8%B4%A3%E5%A3%B0%E6%98%8E/' class="post_tag button button_translucent" title="免责声明">
+          免责声明
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://huangbaihua001.github.io/tags/%E5%85%B3%E4%BA%8E/' class="post_tag button button_translucent" title="关于">
+          关于
+          <span class="button_tally">1</span>
+        </a>
+        
+        
+        <br>
+        <div class="post_tags_toggle button">所有标签</div>
+        <div class="post_tags">
+          <div class="tags_list">
+            
+            <a href='https://huangbaihua001.github.io/tags/5%E5%88%86%E9%92%9F%E5%85%A5%E9%97%A8%E7%B3%BB%E5%88%97/' class=" post_tag button button_translucent" data-position=1 title="5分钟入门系列">5分钟入门系列<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://huangbaihua001.github.io/tags/ai/' class=" post_tag button button_translucent" data-position=1 title="ai">AI<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://huangbaihua001.github.io/tags/hugo/' class=" post_tag button button_translucent" data-position=1 title="hugo">HUGO<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://huangbaihua001.github.io/tags/idea%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/' class=" post_tag button button_translucent" data-position=2 title="idea插件开发">IDEA插件开发<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://huangbaihua001.github.io/tags/index/' class=" post_tag button button_translucent" data-position=1 title="index">INDEX<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://huangbaihua001.github.io/tags/mermaid/' class=" post_tag button button_translucent" data-position=1 title="mermaid">MERMAID<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://huangbaihua001.github.io/tags/transformer/' class=" post_tag button button_translucent" data-position=1 title="transformer">TRANSFORMER<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://huangbaihua001.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/' class=" post_tag button button_translucent" data-position=1 title="操作系统">操作系统<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://huangbaihua001.github.io/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/' class=" post_tag button button_translucent" data-position=1 title="大模型">大模型<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://huangbaihua001.github.io/tags/%E9%9D%9E%E6%AF%8D%E8%AF%AD%E7%8E%AF%E5%A2%83/' class=" post_tag button button_translucent" data-position=1 title="非母语环境">非母语环境<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://huangbaihua001.github.io/tags/%E5%88%86%E5%B8%83%E5%BC%8F/' class=" post_tag button button_translucent" data-position=1 title="分布式">分布式<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://huangbaihua001.github.io/tags/%E5%85%B3%E4%BA%8E/' class=" post_tag button button_translucent" data-position=1 title="关于">关于<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://huangbaihua001.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/' class=" post_tag button button_translucent" data-position=1 title="机器学习">机器学习<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://huangbaihua001.github.io/tags/%E6%8A%80%E6%9C%AF%E7%AE%A1%E7%90%86/' class=" post_tag button button_translucent" data-position=2 title="技术管理">技术管理<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://huangbaihua001.github.io/tags/%E6%9E%B6%E6%9E%84%E5%B8%88/' class=" post_tag button button_translucent" data-position=1 title="架构师">架构师<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://huangbaihua001.github.io/tags/%E5%85%8D%E8%B4%A3%E5%A3%B0%E6%98%8E/' class=" post_tag button button_translucent" data-position=1 title="免责声明">免责声明<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://huangbaihua001.github.io/tags/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/' class=" post_tag button button_translucent" data-position=1 title="内存管理">内存管理<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://huangbaihua001.github.io/tags/%E5%9B%BE%E8%A7%96%E7%AE%97%E6%B3%95/' class=" post_tag button button_translucent" data-position=1 title="图觖算法">图觖算法<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://huangbaihua001.github.io/tags/%E5%9B%BE%E8%AE%BA/' class=" post_tag button button_translucent" data-position=1 title="图论">图论<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://huangbaihua001.github.io/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/' class=" post_tag button button_translucent" data-position=1 title="微服务">微服务<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://huangbaihua001.github.io/tags/%E7%B3%BB%E7%BB%9F%E5%88%86%E6%9E%90%E5%B8%88/' class=" post_tag button button_translucent" data-position=1 title="系统分析师">系统分析师<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://huangbaihua001.github.io/tags/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/' class=" post_tag button button_translucent" data-position=9 title="系统架构">系统架构<span class="button_tally">9</span>
+            </a>
+            
+            
+            <a href='https://huangbaihua001.github.io/tags/%E5%8D%8F%E5%90%8C%E8%BF%87%E6%BB%A4/' class=" post_tag button button_translucent" data-position=1 title="协同过滤">协同过滤<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://huangbaihua001.github.io/tags/%E8%AF%91%E6%96%87/' class=" post_tag button button_translucent" data-position=10 title="译文">译文<span class="button_tally">10</span>
+            </a>
+            
+            
+            <a href='https://huangbaihua001.github.io/tags/%E8%8B%B1%E8%AF%AD/' class=" post_tag button button_translucent" data-position=2 title="英语">英语<span class="button_tally">2</span>
+            </a>
+            
+            
+            <a href='https://huangbaihua001.github.io/tags/%E8%8B%B1%E8%AF%AD%E8%AF%AD%E6%B3%95/' class=" post_tag button button_translucent" data-position=1 title="英语语法">英语语法<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://huangbaihua001.github.io/tags/%E5%8E%9F%E5%88%9B/' class=" post_tag button button_translucent" data-position=3 title="原创">原创<span class="button_tally">3</span>
+            </a>
+            
+            <div class="tags_sort"><span title="sort alphabetically">[A~Z]</span><span title="sort by count">[0~9]</span>
+            </div>
+            <span class="tags_hide"><svg class="icon">
+            <use xlink:href="#closeme"></use>
+          </svg></span>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </section>
+</aside>
+
+  
+</div>
+    </main><svg width="0" height="0" class="hidden">
+  <symbol viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" id="facebook">
+    <path d="M437 0H75C33.648 0 0 33.648 0 75v362c0 41.352 33.648 75 75 75h151V331h-60v-90h60v-61c0-49.629 40.371-90 90-90h91v90h-91v61h91l-15 90h-76v181h121c41.352 0 75-33.648 75-75V75c0-41.352-33.648-75-75-75zm0 0"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.001 18.001" id="twitter">
+    <path d="M15.891 4.013c.808-.496 1.343-1.173 1.605-2.034a8.68 8.68 0 0 1-2.351.861c-.703-.756-1.593-1.14-2.66-1.14-1.043 0-1.924.366-2.643 1.078a3.56 3.56 0 0 0-1.076 2.605c0 .309.039.585.117.819-3.076-.105-5.622-1.381-7.628-3.837-.34.601-.51 1.213-.51 1.846 0 1.301.549 2.332 1.645 3.089-.625-.053-1.176-.211-1.645-.47 0 .929.273 1.705.82 2.388a3.623 3.623 0 0 0 2.115 1.291c-.312.08-.641.118-.979.118-.312 0-.533-.026-.664-.083.23.757.664 1.371 1.291 1.841a3.652 3.652 0 0 0 2.152.743C4.148 14.173 2.625 14.69.902 14.69c-.422 0-.721-.006-.902-.038 1.697 1.102 3.586 1.649 5.676 1.649 2.139 0 4.029-.542 5.674-1.626 1.645-1.078 2.859-2.408 3.639-3.974a10.77 10.77 0 0 0 1.172-4.892v-.468a7.788 7.788 0 0 0 1.84-1.921 8.142 8.142 0 0 1-2.11.593z"
+      ></path>
+  </symbol>
+  <symbol aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="mail">
+    <path  d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="calendar">
+    <path d="M452 40h-24V0h-40v40H124V0H84v40H60C26.916 40 0 66.916 0 100v352c0 33.084 26.916 60 60 60h392c33.084 0 60-26.916 60-60V100c0-33.084-26.916-60-60-60zm20 412c0 11.028-8.972 20-20 20H60c-11.028 0-20-8.972-20-20V188h432v264zm0-304H40v-48c0-11.028 8.972-20 20-20h24v40h40V80h264v40h40V80h24c11.028 0 20 8.972 20 20v48z"></path>
+    <path d="M76 230h40v40H76zm80 0h40v40h-40zm80 0h40v40h-40zm80 0h40v40h-40zm80 0h40v40h-40zM76 310h40v40H76zm80 0h40v40h-40zm80 0h40v40h-40zm80 0h40v40h-40zM76 390h40v40H76zm80 0h40v40h-40zm80 0h40v40h-40zm80 0h40v40h-40zm80-80h40v40h-40z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="github">
+    <path d="M255.968 5.329C114.624 5.329 0 120.401 0 262.353c0 113.536 73.344 209.856 175.104 243.872 12.8 2.368 17.472-5.568 17.472-12.384 0-6.112-.224-22.272-.352-43.712-71.2 15.52-86.24-34.464-86.24-34.464-11.616-29.696-28.416-37.6-28.416-37.6-23.264-15.936 1.728-15.616 1.728-15.616 25.696 1.824 39.2 26.496 39.2 26.496 22.848 39.264 59.936 27.936 74.528 21.344 2.304-16.608 8.928-27.936 16.256-34.368-56.832-6.496-116.608-28.544-116.608-127.008 0-28.064 9.984-51.008 26.368-68.992-2.656-6.496-11.424-32.64 2.496-68 0 0 21.504-6.912 70.4 26.336 20.416-5.696 42.304-8.544 64.096-8.64 21.728.128 43.648 2.944 64.096 8.672 48.864-33.248 70.336-26.336 70.336-26.336 13.952 35.392 5.184 61.504 2.56 68 16.416 17.984 26.304 40.928 26.304 68.992 0 98.72-59.84 120.448-116.864 126.816 9.184 7.936 17.376 23.616 17.376 47.584 0 34.368-.32 62.08-.32 70.496 0 6.88 4.608 14.88 17.6 12.352C438.72 472.145 512 375.857 512 262.353 512 120.401 397.376 5.329 255.968 5.329z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 212 212" id="gitlab">
+    <path d="M12.3 74.7h54L43.3 3c-1-3.6-6.4-3.6-7.6 0L12.3 74.8z" />
+    <path d="M12.3 74.7L.5 111c-1 3.2 0 6.8 3 8.8l101.6 74-92.5-119z"/>
+    <path d="M105 193.7l-38.6-119h-54l92.7 119z"/>
+    <path d="M105 193.7l38.7-119H66.4l38.7 119z"/>
+    <path d="M105 193.7l38.7-119H198l-93 119z"/>
+    <path d="M198 74.7l11.6 36.2c1 3 0 6.6-3 8.6l-101.5 74 93-119z"/>
+    <path d="M198 74.7h-54.3L167 3c1.2-3.6 6.4-3.6 7.6 0L198 74.8z"/>
+  </symbol>
+  <symbol viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="rss">
+    <circle cx="3.429" cy="20.571" r="3.429"></circle>
+    <path d="M11.429 24h4.57C15.999 15.179 8.821 8.001 0 8v4.572c6.302.001 11.429 5.126 11.429 11.428z"></path>
+    <path d="M24 24C24 10.766 13.234 0 0 0v4.571c10.714 0 19.43 8.714 19.43 19.429z"></path>
+  </symbol>
+  <symbol viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" id="linkedin">
+    <path d="M437 0H75C33.648 0 0 33.648 0 75v362c0 41.352 33.648 75 75 75h362c41.352 0 75-33.648 75-75V75c0-41.352-33.648-75-75-75zM181 406h-60V196h60zm0-240h-60v-60h60zm210 240h-60V286c0-16.54-13.46-30-30-30s-30 13.46-30 30v120h-60V196h60v11.309C286.719 202.422 296.93 196 316 196c40.691.043 75 36.547 75 79.688zm0 0"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 612 612" id="to-top">
+    <path d="M604.501 440.509L325.398 134.956c-5.331-5.357-12.423-7.627-19.386-7.27-6.989-.357-14.056 1.913-19.387 7.27L7.499 440.509c-9.999 10.024-9.999 26.298 0 36.323s26.223 10.024 36.222 0l262.293-287.164L568.28 476.832c9.999 10.024 26.222 10.024 36.221 0 9.999-10.023 9.999-26.298 0-36.323z"></path>
+  </symbol>
+  <symbol viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" id="carly">
+    <path d="M504.971 239.029L448 182.059V84c0-46.317-37.682-84-84-84h-44c-13.255 0-24 10.745-24 24s10.745 24 24 24h44c19.851 0 36 16.149 36 36v108c0 6.365 2.529 12.47 7.029 16.971L454.059 256l-47.029 47.029A24.002 24.002 0 0 0 400 320v108c0 19.851-16.149 36-36 36h-44c-13.255 0-24 10.745-24 24s10.745 24 24 24h44c46.318 0 84-37.683 84-84v-98.059l56.971-56.971c9.372-9.372 9.372-24.568 0-33.941zM112 192V84c0-19.851 16.149-36 36-36h44c13.255 0 24-10.745 24-24S205.255 0 192 0h-44c-46.318 0-84 37.683-84 84v98.059l-56.971 56.97c-9.373 9.373-9.373 24.568 0 33.941L64 329.941V428c0 46.317 37.682 84 84 84h44c13.255 0 24-10.745 24-24s-10.745-24-24-24h-44c-19.851 0-36-16.149-36-36V320c0-6.365-2.529-12.47-7.029-16.971L57.941 256l47.029-47.029A24.002 24.002 0 0 0 112 192z"></path>
+  </symbol>
+  <symbol viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="copy">
+    <path d="M23 2.75A2.75 2.75 0 0 0 20.25 0H8.75A2.75 2.75 0 0 0 6 2.75v13.5A2.75 2.75 0 0 0 8.75 19h11.5A2.75 2.75 0 0 0 23 16.25zM18.25 14.5h-7.5a.75.75 0 0 1 0-1.5h7.5a.75.75 0 0 1 0 1.5zm0-3h-7.5a.75.75 0 0 1 0-1.5h7.5a.75.75 0 0 1 0 1.5zm0-3h-7.5a.75.75 0 0 1 0-1.5h7.5a.75.75 0 0 1 0 1.5z"></path>
+    <path d="M8.75 20.5a4.255 4.255 0 0 1-4.25-4.25V2.75c0-.086.02-.166.025-.25H3.75A2.752 2.752 0 0 0 1 5.25v16A2.752 2.752 0 0 0 3.75 24h12a2.752 2.752 0 0 0 2.75-2.75v-.75z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512.001 512.001" id="closeme">
+    <path d="M284.286 256.002L506.143 34.144c7.811-7.811 7.811-20.475 0-28.285-7.811-7.81-20.475-7.811-28.285 0L256 227.717 34.143 5.859c-7.811-7.811-20.475-7.811-28.285 0-7.81 7.811-7.811 20.475 0 28.285l221.857 221.857L5.858 477.859c-7.811 7.811-7.811 20.475 0 28.285a19.938 19.938 0 0 0 14.143 5.857 19.94 19.94 0 0 0 14.143-5.857L256 284.287l221.857 221.857c3.905 3.905 9.024 5.857 14.143 5.857s10.237-1.952 14.143-5.857c7.811-7.811 7.811-20.475 0-28.285L284.286 256.002z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="open-menu">
+    <path d="M492 236H20c-11.046 0-20 8.954-20 20s8.954 20 20 20h472c11.046 0 20-8.954 20-20s-8.954-20-20-20zm0-160H20C8.954 76 0 84.954 0 96s8.954 20 20 20h472c11.046 0 20-8.954 20-20s-8.954-20-20-20zm0 320H20c-11.046 0-20 8.954-20 20s8.954 20 20 20h472c11.046 0 20-8.954 20-20s-8.954-20-20-20z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="instagram">
+    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id=youtube>
+    <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="stackoverflow">
+    <path d="M21 27v-8h3v11H0V19h3v8h18z"></path><path d="M17.1.2L15 1.8l7.9 10.6 2.1-1.6L17.1.2zm3.7 14.7L10.6 6.4l1.7-2 10.2 8.5-1.7 2zM7.2 12.3l12 5.6 1.1-2.4-12-5.6-1.1 2.4zm-1.8 6.8l13.56 1.96.17-2.38-13.26-2.55-.47 2.97zM19 25H5v-3h14v3z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="xing">
+    <path d="M18.188 0c-.517 0-.741.325-.927.66 0 0-7.455 13.224-7.702 13.657.015.024 4.919 9.023 4.919 9.023.17.308.436.66.967.66h3.454c.211 0 .375-.078.463-.22.089-.151.089-.346-.009-.536l-4.879-8.916c-.004-.006-.004-.016 0-.022L22.139.756c.095-.191.097-.387.006-.535C22.056.078 21.894 0 21.686 0h-3.498zM3.648 4.74c-.211 0-.385.074-.473.216-.09.149-.078.339.02.531l2.34 4.05c.004.01.004.016 0 .021L1.86 16.051c-.099.188-.093.381 0 .529.085.142.239.234.45.234h3.461c.518 0 .766-.348.945-.667l3.734-6.609-2.378-4.155c-.172-.315-.434-.659-.962-.659H3.648v.016z"/>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 71 55" id="discord">
+    <path d="M60.1045 4.8978C55.5792 2.8214 50.7265 1.2916 45.6527 0.41542C45.5603 0.39851 45.468 0.440769 45.4204 0.525289C44.7963 1.6353 44.105 3.0834 43.6209 4.2216C38.1637 3.4046 32.7345 3.4046 27.3892 4.2216C26.905 3.0581 26.1886 1.6353 25.5617 0.525289C25.5141 0.443589 25.4218 0.40133 25.3294 0.41542C20.2584 1.2888 15.4057 2.8186 10.8776 4.8978C10.8384 4.9147 10.8048 4.9429 10.7825 4.9795C1.57795 18.7309 -0.943561 32.1443 0.293408 45.3914C0.299005 45.4562 0.335386 45.5182 0.385761 45.5576C6.45866 50.0174 12.3413 52.7249 18.1147 54.5195C18.2071 54.5477 18.305 54.5139 18.3638 54.4378C19.7295 52.5728 20.9469 50.6063 21.9907 48.5383C22.0523 48.4172 21.9935 48.2735 21.8676 48.2256C19.9366 47.4931 18.0979 46.6 16.3292 45.5858C16.1893 45.5041 16.1781 45.304 16.3068 45.2082C16.679 44.9293 17.0513 44.6391 17.4067 44.3461C17.471 44.2926 17.5606 44.2813 17.6362 44.3151C29.2558 49.6202 41.8354 49.6202 53.3179 44.3151C53.3935 44.2785 53.4831 44.2898 53.5502 44.3433C53.9057 44.6363 54.2779 44.9293 54.6529 45.2082C54.7816 45.304 54.7732 45.5041 54.6333 45.5858C52.8646 46.6197 51.0259 47.4931 49.0921 48.2228C48.9662 48.2707 48.9102 48.4172 48.9718 48.5383C50.038 50.6034 51.2554 52.5699 52.5959 54.435C52.6519 54.5139 52.7526 54.5477 52.845 54.5195C58.6464 52.7249 64.529 50.0174 70.6019 45.5576C70.6551 45.5182 70.6887 45.459 70.6943 45.3942C72.1747 30.0791 68.2147 16.7757 60.1968 4.9823C60.1772 4.9429 60.1437 4.9147 60.1045 4.8978ZM23.7259 37.3253C20.2276 37.3253 17.3451 34.1136 17.3451 30.1693C17.3451 26.225 20.1717 23.0133 23.7259 23.0133C27.308 23.0133 30.1626 26.2532 30.1066 30.1693C30.1066 34.1136 27.28 37.3253 23.7259 37.3253ZM47.3178 37.3253C43.8196 37.3253 40.9371 34.1136 40.9371 30.1693C40.9371 26.225 43.7636 23.0133 47.3178 23.0133C50.9 23.0133 53.7545 26.2532 53.6986 30.1693C53.6986 34.1136 50.9 37.3253 47.3178 37.3253Z"/>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 18" id="mastodon">
+    <path
+    fill="#ffffff"
+    d="m 15.054695,9.8859583 c -0.22611,1.1632697 -2.02517,2.4363497 -4.09138,2.6830797 -1.0774504,0.12856 -2.1382704,0.24673 -3.2694704,0.19484 -1.84996,-0.0848 -3.30971,-0.44157 -3.30971,-0.44157 0,0.1801 0.0111,0.35157 0.0333,0.51194 0.24051,1.82571 1.81034,1.93508 3.29737,1.98607 1.50088,0.0514 2.8373104,-0.37004 2.8373104,-0.37004 l 0.0617,1.35686 c 0,0 -1.0498104,0.56374 -2.9199404,0.66742 -1.03124,0.0567 -2.3117,-0.0259 -3.80308,-0.42069 -3.23454998,-0.85613 -3.79081998,-4.304 -3.87592998,-7.8024197 -0.026,-1.03871 -0.01,-2.01815 -0.01,-2.83732 0,-3.57732 2.34385998,-4.62587996 2.34385998,-4.62587996 1.18184,-0.54277 3.20976,-0.77101 5.318,-0.7882499985409 h 0.0518 C 9.8267646,0.01719834 11.856025,0.24547834 13.037775,0.78824834 c 0,0 2.34377,1.04855996 2.34377,4.62587996 0,0 0.0294,2.63937 -0.32687,4.47183"/>
+ <path
+    fill="#000000"
+    d="m 12.616925,5.6916583 v 4.3315297 h -1.71607 V 5.8189683 c 0,-0.88624 -0.37289,-1.33607 -1.1187604,-1.33607 -0.82467,0 -1.23799,0.53361 -1.23799,1.58875 v 2.30122 h -1.70594 v -2.30122 c 0,-1.05514 -0.4134,-1.58875 -1.23808,-1.58875 -0.74587,0 -1.11876,0.44983 -1.11876,1.33607 v 4.2042197 h -1.71607 V 5.6916583 c 0,-0.88527 0.22541,-1.58876 0.67817,-2.10922 0.46689,-0.52047 1.07833,-0.78727 1.83735,-0.78727 0.87816,0 1.54317,0.33752 1.98288,1.01267 l 0.42744,0.71655 0.42753,-0.71655 c 0.43961,-0.67515 1.10463,-1.01267 1.9828704,-1.01267 0.75893,0 1.37037,0.2668 1.83735,0.78727 0.45268,0.52046 0.67808,1.22395 0.67808,2.10922"/>
+  </symbol>
+</svg>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+<footer class="footer">
+  <div class="footer_inner wrap pale">
+    <img src='https://huangbaihua001.github.io/icons/apple-touch-icon.png' class="icon icon_2 transparent" alt="Copyright © 2008–2022, Keepwalking; all rights reserved. Powered by Hugo">
+    <p>Copyright&nbsp;<span class="year"></span>&nbsp;COPYRIGHT © 2008–2022, KEEPWALKING; ALL RIGHTS RESERVED. POWERED BY HUGO. All Rights Reserved</p><a class="to_top" href="#documentTop">
+  <svg class="icon">
+  <title>to-top</title>
+  <use xlink:href="#to-top"></use>
+</svg>
+
+</a>
+
+  </div>
+</footer>
+
+<script type="text/javascript" src="https://huangbaihua001.github.io/zh/js/bundle.8c780bd81ad60843fdaba044c50bd4c680b31c239d7fc85d7a0cbe502379cde26544715223e63aee9a86379f306642868b96c6276ca97b0e267499d39dd28f94.js" integrity="sha512-jHgL2BrWCEP9q6BExQvUxoCzHCOdf8hdegy&#43;UCN5zeJlRHFSI&#43;Y67pqGN58wZkKGi5bGJ2ypew4mdJnTndKPlA==" crossorigin="anonymous"></script>
+  </body>
+</html>

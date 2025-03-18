@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>内存管理 on Keepwalking</title>
+    <link>https://huangbaihua001.github.io/tags/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/</link>
+    <description>Recent content in 内存管理 on Keepwalking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright © 2008–2022, Keepwalking; all rights reserved. Powered by Hugo</copyright>
+    <lastBuildDate>Fri, 20 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://huangbaihua001.github.io/tags/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>操作系统 - 页式内存管理</title>
+      <link>https://huangbaihua001.github.io/post/os/page_based_memory_management/</link>
+      <pubDate>Fri, 20 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://huangbaihua001.github.io/post/os/page_based_memory_management/</guid>
+      <description>
+        
+          
+            &lt;p&gt;页式内存管理是一种内存空间存储管理的技术，由于它不要求进程的程序段和数据在内存中连续存放，从而有效地解决了碎片问题。&lt;/p&gt;
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

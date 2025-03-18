@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>原创 on Keepwalking</title>
+    <link>https://huangbaihua001.github.io/tags/%E5%8E%9F%E5%88%9B/</link>
+    <description>Recent content in 原创 on Keepwalking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright © 2008–2022, Keepwalking; all rights reserved. Powered by Hugo</copyright>
+    <lastBuildDate>Sat, 20 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://huangbaihua001.github.io/tags/%E5%8E%9F%E5%88%9B/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>5分钟 IDEA 插件开发快速入门 Demo</title>
+      <link>https://huangbaihua001.github.io/post/idea/five_minute_quick_demo/</link>
+      <pubDate>Sat, 20 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://huangbaihua001.github.io/post/idea/five_minute_quick_demo/</guid>
+      <description>
+        
+          
+            &lt;p&gt;基于 Gradle 开发 IntelliJ 插件是官方推荐的方式。本 Demo
+使用 &lt;a href=&#34;https://github.com/JetBrains/intellij-platform-plugin-template&#34;&gt;IntelliJ Platform Plugin Template&lt;/a&gt; 快速构建一个插件项目 。
+利用 &lt;a href=&#34;https://plugins.jetbrains.com/docs/intellij/intellij-platform.html&#34;&gt;IntelliJ Platform&lt;/a&gt; 平台开发自己的第一个插件！&lt;/p&gt;
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>机器学习入门-算法-协同过滤简介</title>
+      <link>https://huangbaihua001.github.io/post/mache-learing-collaborative-filtering/</link>
+      <pubDate>Tue, 04 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://huangbaihua001.github.io/post/mache-learing-collaborative-filtering/</guid>
+      <description>
+        
+          
+            &lt;p&gt;本文是机器学习常用算法之协同过滤算法系列篇中的第一篇，主要讲解了协同过滤的基本概念，如何求相似度，以及如何根据基于物品的协同过滤对物品进行评分。&lt;/p&gt;
+          
+          
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>在Hubo中使用Mermaid</title>
+      <link>https://huangbaihua001.github.io/post/mermaid-in-hugo/</link>
+      <pubDate>Sat, 01 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://huangbaihua001.github.io/post/mermaid-in-hugo/</guid>
+      <description>
+        
+          
+            &lt;p&gt;本文章简要描述了在Hugo中如何引入&lt;a href=&#34;https://mermaidjs.github.io/&#34;&gt;Mermaid&lt;/a&gt;支持以及几个简单的图例&lt;/p&gt;
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>

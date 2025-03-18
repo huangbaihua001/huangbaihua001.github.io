@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>微服务 on Keepwalking</title>
+    <link>https://huangbaihua001.github.io/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/</link>
+    <description>Recent content in 微服务 on Keepwalking</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright © 2008–2022, Keepwalking; all rights reserved. Powered by Hugo</copyright>
+    <lastBuildDate>Thu, 15 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://huangbaihua001.github.io/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>面向领域的微服务架构-来自优步的实践</title>
+      <link>https://huangbaihua001.github.io/post/microservice-architecture/</link>
+      <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://huangbaihua001.github.io/post/microservice-architecture/</guid>
+      <description>
+        
+          
+            &lt;p&gt;面向领域的微服务架构-来自优步的实践。&lt;/p&gt;
+          
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>
